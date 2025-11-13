@@ -1,0 +1,472 @@
+\doxysection{Référence du fichier project\+\_\+parameters.\+h}
+\hypertarget{project__parameters_8h}{}\label{project__parameters_8h}\index{project\_parameters.h@{project\_parameters.h}}
+
+
+Paramètres.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae9f93758a369e9af97807b94a760e2c4}{WINDOW\+\_\+\+SCREENWIDTH}}~1820
+\begin{DoxyCompactList}\small\item\em Dimension horizontale de l\textquotesingle{}application en pixels (valeur par défaut = 980). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a5846cdd6001b96f307708ea242eca7cd}{WINDOW\+\_\+\+SCREENHEIGHT}}~980
+\begin{DoxyCompactList}\small\item\em Dimension verticale de l\textquotesingle{}application en pixels (valeur par défaut = 980). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a693f306b88f7336281e4d1f07754579c}{GAME\+\_\+\+WIDTH}}~8
+\begin{DoxyCompactList}\small\item\em Largeur par défaut du plateau de jeu en nombre de cases (valeur par défaut = 8). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_addffa3e327bacbc3da87278442b2b507}{GAME\+\_\+\+HEIGHT}}~8
+\begin{DoxyCompactList}\small\item\em Hauteur par défaut du plateau de jeu en nombre de cases (valeur par défaut = 8). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a95bff62335e9882ba22fe4e4f83a801c}{GAME\+\_\+\+LINES}}~true
+\begin{DoxyCompactList}\small\item\em Mode d\textquotesingle{}élimination des gemmes (true pour les lignes ou false pour les SCC) (valeur par défaut = true). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae8349b705221e2c4494ab5b7b631bd37}{GAME\+\_\+\+NODELAY}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation du mode nodelay (valeur par défaut = true). Spécifique au mode classique (toujours actif en mode puzzle). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae8034c133258121cd3b870bfbda6c1af}{GAME\+\_\+\+EASY}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation du mode facile (valeur par défaut = faux). Spécifique au mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae75e65c2ea7c2238bf72906aac7ea0fb}{GAME\+\_\+\+WRAP}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation des gemmes de gravité (valeur par défaut = false). Spécifique au mode classique. \end{DoxyCompactList}\item
+\#define \mbox{\hyperlink{project__parameters_8h_ad7ea260f5feb6cdb525eec8ddb461f6b}{GAME\+\_\+\+BOMBS}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation des bombes (valeur par défaut = faux). Spécifique au mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_afee6c5599c0c1f13b11b920667fb3ffc}{GAME\+\_\+\+UPGRADES}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation pour les mises à jour des gemmes (valeur par défaut = true). Pertinent à la fois en mode classique et puzzle. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a4348b46ca02d792c3de9b3cb773f6536}{GAME\+\_\+\+REFILL\+\_\+\+MODE}}~1
+\begin{DoxyCompactList}\small\item\em Mode de remplissage en mode puzzle (0\+: stocke les gemmes éliminées, 1\+: file prédéterminée de rochers et de bombes, 2\+: Pas de remplissage) (par défaut = 2). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a9bdecc9451ee5da58b0f3f3cfcb4fb25}{GAME\+\_\+\+BALANCED}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation pour la génération équilibrée en mode puzzle (par défaut = true). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a9e9342df4382751a637a20e67d4dad18}{GAME\+\_\+\+STORAGE\+\_\+\+INITIAL}}~2
+\begin{DoxyCompactList}\small\item\em Taille initiale de la file d\textquotesingle{}attente de stockage en mode puzzle (uniquement pertinent si refill\+\_\+mode vaut 1) (valeur par défaut = 2). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a0db61c50ceff028af3b8cfead5ff4db9}{GAME\+\_\+\+CLEARSCORE}}~10000
+\begin{DoxyCompactList}\small\item\em Score initial pour terminer le premier niveau en mode classique (par défaut = 10000). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a72f2b2e9edf08b673c361ca83a526515}{GAME\+\_\+\+CLEARMULTI}}~50
+\begin{DoxyCompactList}\small\item\em Pourcentage d\textquotesingle{}augmentation du score pour passer au niveau suivant en mode classique (valeur par défaut = 50 \%). Multiplicateur de score appliqué au score pour progresser au niveau suivant, après chaque niveau terminé en mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_aac140cade81e418372ce9c3a3c8ebb10}{TEST\+\_\+\+WIDTH}}~8
+\begin{DoxyCompactList}\small\item\em Largeur du plateau de jeu en nombre de cellules (valeur par défaut = 8). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a14389c8a68cdb41f60ab749fb1e12627}{TEST\+\_\+\+HEIGHT}}~8
+\begin{DoxyCompactList}\small\item\em Hauteur du plateau de jeu en nombre de cellules (valeur par défaut = 8). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a95964fbf58f22fcbfc1344450c781583}{TEST\+\_\+\+PUZZLE}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation du mode puzzle (valeur par défaut = false). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae4873e864ff78b5c86da84cc86db6e8d}{TEST\+\_\+\+LINES}}~true
+\begin{DoxyCompactList}\small\item\em Mode d\textquotesingle{}élimination des gemmes (true pour les lignes, false pour les SCC) (valeur par défaut = true). Pertinent à la fois en mode classique et en mode puzzle. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a58bb4744751b01e1d2d227f00dc66f56}{TEST\+\_\+\+NODELAY}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation du mode nodelay (valeur par défaut = true). Pertinent uniquement en mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a4d89963672c77fb75117c212da450c83}{TEST\+\_\+\+EASY}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation du mode easy (valeur par défaut = false). Pertinent uniquement en mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ac503b7d8eee407766028258442dd4b00}{TEST\+\_\+\+WRAP}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation des gemmes de gravité (valeur par défaut = false). Pertinent uniquement en mode classique. \end{DoxyCompactList}\item
+\#define \mbox{\hyperlink{project__parameters_8h_ad86ab79a65d1280601c0c6fc15b5c606}{TEST\+\_\+\+BOMBS}}~false
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation pour les bombes (valeur par défaut = false). Pertinent uniquement en mode classique. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_aa8bdfc0e63037147795c0b628c1014f4}{TEST\+\_\+\+UPGRADES}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation pour les améliorations (valeur par défaut = true). Pertinent à la fois en mode classique et en mode puzzle. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_aec8f20cd42250f7e2552763fb8004062}{TEST\+\_\+\+REFILL\+\_\+\+MODE}}~1
+\begin{DoxyCompactList}\small\item\em Mode de recharge de la file en mode puzzle (0\+: stocke les gemmes éliminées, 1\+: file prédéterminée de rochers et de bombes, 2\+: Pas de recharge) (valeur par défaut = 1). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_ae333b23c98188c41a19548cf32e5dd57}{TEST\+\_\+\+STORAGE\+\_\+\+INITIAL}}~2
+\begin{DoxyCompactList}\small\item\em Taille initiale de la file de stockage en mode puzzle (seulement pertinent si refill\+\_\+mode vaut 1) (valeur par défaut = 2). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a2e4341f96489d91bb23d94263fa32a72}{TEST\+\_\+\+BALANCED}}~true
+\begin{DoxyCompactList}\small\item\em Paramètre d\textquotesingle{}activation pour la génération équilibrée en mode puzzle (par défaut = true). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__parameters_8h_a5bd7195fdf55ee1df0a93c7414adda37}{SOLVER\+\_\+\+MAX\+\_\+\+CONFIGS}}~    4000000
+\begin{DoxyCompactList}\small\item\em Nombre maximal de configurations explorées par le solveur avant d\textquotesingle{}abandonner (valeur par défaut = 4 000 000). Fixé à -\/1 pour ne pas avoir de limite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Paramètres. 
+
+Valeurs par défaut des paramètres des jeux. 
+
+Définition dans le fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{project__parameters_8h_doc-define-members}
+\doxysubsection{Documentation des macros}
+\Hypertarget{project__parameters_8h_ae9f93758a369e9af97807b94a760e2c4}\index{project\_parameters.h@{project\_parameters.h}!WINDOW\_SCREENWIDTH@{WINDOW\_SCREENWIDTH}}
+\index{WINDOW\_SCREENWIDTH@{WINDOW\_SCREENWIDTH}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_SCREENWIDTH}{WINDOW\_SCREENWIDTH}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae9f93758a369e9af97807b94a760e2c4} 
+\#define WINDOW\+\_\+\+SCREENWIDTH~1820}
+
+
+
+Dimension horizontale de l\textquotesingle{}application en pixels (valeur par défaut = 980). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00025}{25}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a5846cdd6001b96f307708ea242eca7cd}\index{project\_parameters.h@{project\_parameters.h}!WINDOW\_SCREENHEIGHT@{WINDOW\_SCREENHEIGHT}}
+\index{WINDOW\_SCREENHEIGHT@{WINDOW\_SCREENHEIGHT}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_SCREENHEIGHT}{WINDOW\_SCREENHEIGHT}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a5846cdd6001b96f307708ea242eca7cd} 
+\#define WINDOW\+\_\+\+SCREENHEIGHT~980}
+
+
+
+Dimension verticale de l\textquotesingle{}application en pixels (valeur par défaut = 980). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00031}{31}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a693f306b88f7336281e4d1f07754579c}\index{project\_parameters.h@{project\_parameters.h}!GAME\_WIDTH@{GAME\_WIDTH}}
+\index{GAME\_WIDTH@{GAME\_WIDTH}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_WIDTH}{GAME\_WIDTH}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a693f306b88f7336281e4d1f07754579c} 
+\#define GAME\+\_\+\+WIDTH~8}
+
+
+
+Largeur par défaut du plateau de jeu en nombre de cases (valeur par défaut = 8). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00042}{42}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_addffa3e327bacbc3da87278442b2b507}\index{project\_parameters.h@{project\_parameters.h}!GAME\_HEIGHT@{GAME\_HEIGHT}}
+\index{GAME\_HEIGHT@{GAME\_HEIGHT}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_HEIGHT}{GAME\_HEIGHT}}
+{\footnotesize\ttfamily \label{project__parameters_8h_addffa3e327bacbc3da87278442b2b507} 
+\#define GAME\+\_\+\+HEIGHT~8}
+
+
+
+Hauteur par défaut du plateau de jeu en nombre de cases (valeur par défaut = 8). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00049}{49}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a95bff62335e9882ba22fe4e4f83a801c}\index{project\_parameters.h@{project\_parameters.h}!GAME\_LINES@{GAME\_LINES}}
+\index{GAME\_LINES@{GAME\_LINES}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_LINES}{GAME\_LINES}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a95bff62335e9882ba22fe4e4f83a801c} 
+\#define GAME\+\_\+\+LINES~true}
+
+
+
+Mode d\textquotesingle{}élimination des gemmes (true pour les lignes ou false pour les SCC) (valeur par défaut = true). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00056}{56}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ae8349b705221e2c4494ab5b7b631bd37}\index{project\_parameters.h@{project\_parameters.h}!GAME\_NODELAY@{GAME\_NODELAY}}
+\index{GAME\_NODELAY@{GAME\_NODELAY}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_NODELAY}{GAME\_NODELAY}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae8349b705221e2c4494ab5b7b631bd37} 
+\#define GAME\+\_\+\+NODELAY~true}
+
+
+
+Paramètre d\textquotesingle{}activation du mode nodelay (valeur par défaut = true). Spécifique au mode classique (toujours actif en mode puzzle). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00063}{63}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ae8034c133258121cd3b870bfbda6c1af}\index{project\_parameters.h@{project\_parameters.h}!GAME\_EASY@{GAME\_EASY}}
+\index{GAME\_EASY@{GAME\_EASY}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_EASY}{GAME\_EASY}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae8034c133258121cd3b870bfbda6c1af} 
+\#define GAME\+\_\+\+EASY~false}
+
+
+
+Paramètre d\textquotesingle{}activation du mode facile (valeur par défaut = faux). Spécifique au mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00070}{70}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ae75e65c2ea7c2238bf72906aac7ea0fb}\index{project\_parameters.h@{project\_parameters.h}!GAME\_WRAP@{GAME\_WRAP}}
+\index{GAME\_WRAP@{GAME\_WRAP}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_WRAP}{GAME\_WRAP}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae75e65c2ea7c2238bf72906aac7ea0fb} 
+\#define GAME\+\_\+\+WRAP~false}
+
+
+
+Paramètre d\textquotesingle{}activation des gemmes de gravité (valeur par défaut = false). Spécifique au mode classique.
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00076}{76}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ad7ea260f5feb6cdb525eec8ddb461f6b}\index{project\_parameters.h@{project\_parameters.h}!GAME\_BOMBS@{GAME\_BOMBS}}
+\index{GAME\_BOMBS@{GAME\_BOMBS}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_BOMBS}{GAME\_BOMBS}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ad7ea260f5feb6cdb525eec8ddb461f6b} 
+\#define GAME\+\_\+\+BOMBS~false}
+
+
+
+Paramètre d\textquotesingle{}activation des bombes (valeur par défaut = faux). Spécifique au mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00082}{82}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_afee6c5599c0c1f13b11b920667fb3ffc}\index{project\_parameters.h@{project\_parameters.h}!GAME\_UPGRADES@{GAME\_UPGRADES}}
+\index{GAME\_UPGRADES@{GAME\_UPGRADES}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_UPGRADES}{GAME\_UPGRADES}}
+{\footnotesize\ttfamily \label{project__parameters_8h_afee6c5599c0c1f13b11b920667fb3ffc} 
+\#define GAME\+\_\+\+UPGRADES~true}
+
+
+
+Paramètre d\textquotesingle{}activation pour les mises à jour des gemmes (valeur par défaut = true). Pertinent à la fois en mode classique et puzzle. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00089}{89}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a4348b46ca02d792c3de9b3cb773f6536}\index{project\_parameters.h@{project\_parameters.h}!GAME\_REFILL\_MODE@{GAME\_REFILL\_MODE}}
+\index{GAME\_REFILL\_MODE@{GAME\_REFILL\_MODE}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_REFILL\_MODE}{GAME\_REFILL\_MODE}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a4348b46ca02d792c3de9b3cb773f6536} 
+\#define GAME\+\_\+\+REFILL\+\_\+\+MODE~1}
+
+
+
+Mode de remplissage en mode puzzle (0\+: stocke les gemmes éliminées, 1\+: file prédéterminée de rochers et de bombes, 2\+: Pas de remplissage) (par défaut = 2). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00097}{97}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a9bdecc9451ee5da58b0f3f3cfcb4fb25}\index{project\_parameters.h@{project\_parameters.h}!GAME\_BALANCED@{GAME\_BALANCED}}
+\index{GAME\_BALANCED@{GAME\_BALANCED}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_BALANCED}{GAME\_BALANCED}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a9bdecc9451ee5da58b0f3f3cfcb4fb25} 
+\#define GAME\+\_\+\+BALANCED~true}
+
+
+
+Paramètre d\textquotesingle{}activation pour la génération équilibrée en mode puzzle (par défaut = true). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00104}{104}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a9e9342df4382751a637a20e67d4dad18}\index{project\_parameters.h@{project\_parameters.h}!GAME\_STORAGE\_INITIAL@{GAME\_STORAGE\_INITIAL}}
+\index{GAME\_STORAGE\_INITIAL@{GAME\_STORAGE\_INITIAL}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_STORAGE\_INITIAL}{GAME\_STORAGE\_INITIAL}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a9e9342df4382751a637a20e67d4dad18} 
+\#define GAME\+\_\+\+STORAGE\+\_\+\+INITIAL~2}
+
+
+
+Taille initiale de la file d\textquotesingle{}attente de stockage en mode puzzle (uniquement pertinent si refill\+\_\+mode vaut 1) (valeur par défaut = 2). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00111}{111}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a0db61c50ceff028af3b8cfead5ff4db9}\index{project\_parameters.h@{project\_parameters.h}!GAME\_CLEARSCORE@{GAME\_CLEARSCORE}}
+\index{GAME\_CLEARSCORE@{GAME\_CLEARSCORE}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_CLEARSCORE}{GAME\_CLEARSCORE}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a0db61c50ceff028af3b8cfead5ff4db9} 
+\#define GAME\+\_\+\+CLEARSCORE~10000}
+
+
+
+Score initial pour terminer le premier niveau en mode classique (par défaut = 10000). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00117}{117}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a72f2b2e9edf08b673c361ca83a526515}\index{project\_parameters.h@{project\_parameters.h}!GAME\_CLEARMULTI@{GAME\_CLEARMULTI}}
+\index{GAME\_CLEARMULTI@{GAME\_CLEARMULTI}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_CLEARMULTI}{GAME\_CLEARMULTI}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a72f2b2e9edf08b673c361ca83a526515} 
+\#define GAME\+\_\+\+CLEARMULTI~50}
+
+
+
+Pourcentage d\textquotesingle{}augmentation du score pour passer au niveau suivant en mode classique (valeur par défaut = 50 \%). Multiplicateur de score appliqué au score pour progresser au niveau suivant, après chaque niveau terminé en mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00125}{125}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_aac140cade81e418372ce9c3a3c8ebb10}\index{project\_parameters.h@{project\_parameters.h}!TEST\_WIDTH@{TEST\_WIDTH}}
+\index{TEST\_WIDTH@{TEST\_WIDTH}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_WIDTH}{TEST\_WIDTH}}
+{\footnotesize\ttfamily \label{project__parameters_8h_aac140cade81e418372ce9c3a3c8ebb10} 
+\#define TEST\+\_\+\+WIDTH~8}
+
+
+
+Largeur du plateau de jeu en nombre de cellules (valeur par défaut = 8). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00135}{135}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a14389c8a68cdb41f60ab749fb1e12627}\index{project\_parameters.h@{project\_parameters.h}!TEST\_HEIGHT@{TEST\_HEIGHT}}
+\index{TEST\_HEIGHT@{TEST\_HEIGHT}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_HEIGHT}{TEST\_HEIGHT}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a14389c8a68cdb41f60ab749fb1e12627} 
+\#define TEST\+\_\+\+HEIGHT~8}
+
+
+
+Hauteur du plateau de jeu en nombre de cellules (valeur par défaut = 8). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00141}{141}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a95964fbf58f22fcbfc1344450c781583}\index{project\_parameters.h@{project\_parameters.h}!TEST\_PUZZLE@{TEST\_PUZZLE}}
+\index{TEST\_PUZZLE@{TEST\_PUZZLE}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_PUZZLE}{TEST\_PUZZLE}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a95964fbf58f22fcbfc1344450c781583} 
+\#define TEST\+\_\+\+PUZZLE~false}
+
+
+
+Paramètre d\textquotesingle{}activation du mode puzzle (valeur par défaut = false). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00146}{146}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ae4873e864ff78b5c86da84cc86db6e8d}\index{project\_parameters.h@{project\_parameters.h}!TEST\_LINES@{TEST\_LINES}}
+\index{TEST\_LINES@{TEST\_LINES}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_LINES}{TEST\_LINES}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae4873e864ff78b5c86da84cc86db6e8d} 
+\#define TEST\+\_\+\+LINES~true}
+
+
+
+Mode d\textquotesingle{}élimination des gemmes (true pour les lignes, false pour les SCC) (valeur par défaut = true). Pertinent à la fois en mode classique et en mode puzzle. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00153}{153}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a58bb4744751b01e1d2d227f00dc66f56}\index{project\_parameters.h@{project\_parameters.h}!TEST\_NODELAY@{TEST\_NODELAY}}
+\index{TEST\_NODELAY@{TEST\_NODELAY}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_NODELAY}{TEST\_NODELAY}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a58bb4744751b01e1d2d227f00dc66f56} 
+\#define TEST\+\_\+\+NODELAY~true}
+
+
+
+Paramètre d\textquotesingle{}activation du mode nodelay (valeur par défaut = true). Pertinent uniquement en mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00159}{159}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a4d89963672c77fb75117c212da450c83}\index{project\_parameters.h@{project\_parameters.h}!TEST\_EASY@{TEST\_EASY}}
+\index{TEST\_EASY@{TEST\_EASY}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_EASY}{TEST\_EASY}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a4d89963672c77fb75117c212da450c83} 
+\#define TEST\+\_\+\+EASY~false}
+
+
+
+Paramètre d\textquotesingle{}activation du mode easy (valeur par défaut = false). Pertinent uniquement en mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00165}{165}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ac503b7d8eee407766028258442dd4b00}\index{project\_parameters.h@{project\_parameters.h}!TEST\_WRAP@{TEST\_WRAP}}
+\index{TEST\_WRAP@{TEST\_WRAP}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_WRAP}{TEST\_WRAP}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ac503b7d8eee407766028258442dd4b00} 
+\#define TEST\+\_\+\+WRAP~false}
+
+
+
+Paramètre d\textquotesingle{}activation des gemmes de gravité (valeur par défaut = false). Pertinent uniquement en mode classique.
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00172}{172}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ad86ab79a65d1280601c0c6fc15b5c606}\index{project\_parameters.h@{project\_parameters.h}!TEST\_BOMBS@{TEST\_BOMBS}}
+\index{TEST\_BOMBS@{TEST\_BOMBS}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_BOMBS}{TEST\_BOMBS}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ad86ab79a65d1280601c0c6fc15b5c606} 
+\#define TEST\+\_\+\+BOMBS~false}
+
+
+
+Paramètre d\textquotesingle{}activation pour les bombes (valeur par défaut = false). Pertinent uniquement en mode classique. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00178}{178}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_aa8bdfc0e63037147795c0b628c1014f4}\index{project\_parameters.h@{project\_parameters.h}!TEST\_UPGRADES@{TEST\_UPGRADES}}
+\index{TEST\_UPGRADES@{TEST\_UPGRADES}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_UPGRADES}{TEST\_UPGRADES}}
+{\footnotesize\ttfamily \label{project__parameters_8h_aa8bdfc0e63037147795c0b628c1014f4} 
+\#define TEST\+\_\+\+UPGRADES~true}
+
+
+
+Paramètre d\textquotesingle{}activation pour les améliorations (valeur par défaut = true). Pertinent à la fois en mode classique et en mode puzzle. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00184}{184}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_aec8f20cd42250f7e2552763fb8004062}\index{project\_parameters.h@{project\_parameters.h}!TEST\_REFILL\_MODE@{TEST\_REFILL\_MODE}}
+\index{TEST\_REFILL\_MODE@{TEST\_REFILL\_MODE}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_REFILL\_MODE}{TEST\_REFILL\_MODE}}
+{\footnotesize\ttfamily \label{project__parameters_8h_aec8f20cd42250f7e2552763fb8004062} 
+\#define TEST\+\_\+\+REFILL\+\_\+\+MODE~1}
+
+
+
+Mode de recharge de la file en mode puzzle (0\+: stocke les gemmes éliminées, 1\+: file prédéterminée de rochers et de bombes, 2\+: Pas de recharge) (valeur par défaut = 1). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00191}{191}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_ae333b23c98188c41a19548cf32e5dd57}\index{project\_parameters.h@{project\_parameters.h}!TEST\_STORAGE\_INITIAL@{TEST\_STORAGE\_INITIAL}}
+\index{TEST\_STORAGE\_INITIAL@{TEST\_STORAGE\_INITIAL}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_STORAGE\_INITIAL}{TEST\_STORAGE\_INITIAL}}
+{\footnotesize\ttfamily \label{project__parameters_8h_ae333b23c98188c41a19548cf32e5dd57} 
+\#define TEST\+\_\+\+STORAGE\+\_\+\+INITIAL~2}
+
+
+
+Taille initiale de la file de stockage en mode puzzle (seulement pertinent si refill\+\_\+mode vaut 1) (valeur par défaut = 2). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00197}{197}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a2e4341f96489d91bb23d94263fa32a72}\index{project\_parameters.h@{project\_parameters.h}!TEST\_BALANCED@{TEST\_BALANCED}}
+\index{TEST\_BALANCED@{TEST\_BALANCED}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_BALANCED}{TEST\_BALANCED}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a2e4341f96489d91bb23d94263fa32a72} 
+\#define TEST\+\_\+\+BALANCED~true}
+
+
+
+Paramètre d\textquotesingle{}activation pour la génération équilibrée en mode puzzle (par défaut = true). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00203}{203}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+
+\Hypertarget{project__parameters_8h_a5bd7195fdf55ee1df0a93c7414adda37}\index{project\_parameters.h@{project\_parameters.h}!SOLVER\_MAX\_CONFIGS@{SOLVER\_MAX\_CONFIGS}}
+\index{SOLVER\_MAX\_CONFIGS@{SOLVER\_MAX\_CONFIGS}!project\_parameters.h@{project\_parameters.h}}
+\doxysubsubsection{\texorpdfstring{SOLVER\_MAX\_CONFIGS}{SOLVER\_MAX\_CONFIGS}}
+{\footnotesize\ttfamily \label{project__parameters_8h_a5bd7195fdf55ee1df0a93c7414adda37} 
+\#define SOLVER\+\_\+\+MAX\+\_\+\+CONFIGS~    4000000}
+
+
+
+Nombre maximal de configurations explorées par le solveur avant d\textquotesingle{}abandonner (valeur par défaut = 4 000 000). Fixé à -\/1 pour ne pas avoir de limite. 
+
+Nombre maximal de configurations explorées par le solveur avant d\textquotesingle{}abandonner. 
+
+Définition à la ligne \mbox{\hyperlink{project__parameters_8h_source_l00215}{215}} du fichier \mbox{\hyperlink{project__parameters_8h_source}{project\+\_\+parameters.\+h}}.
+

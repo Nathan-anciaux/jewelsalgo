@@ -1,0 +1,110 @@
+\doxysection{Référence du fichier game\+\_\+scores.\+h}
+\hypertarget{game__scores_8h}{}\label{game__scores_8h}\index{game\_scores.h@{game\_scores.h}}
+
+
+Gestion des meilleurs scores en mode classique. Contient les fonctions permettant de charger, sauvegarder et trier les meilleurs scores à partir du fichier de scores.  
+
+
+{\ttfamily \#include "{}alloc.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structscore__table}{score\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Structure permettant de stocker le tableau des scores affiché par l\textquotesingle{}interface graphique (GUI). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__scores_8h_a56a82649320247fd21fe9607236b73f5}{load\+\_\+score\+\_\+table}} (const char \texorpdfstring{$\ast$}{*}filepath, int \texorpdfstring{$\ast$}{*}player\+\_\+score)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface graphique (GUI) pour charger le tableau des scores depuis le fichier de scores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__scores_8h_a23df78c5b568c2549c0e45d0e6eb7d79}{save\+\_\+score\+\_\+table}} (\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filepath, const char \texorpdfstring{$\ast$}{*}playername)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface graphique (GUI) pour sauvegarder une table de scores dans un fichier de scores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__scores_8h_a648cb18d0431dcd4bc910e6a23e70a20}{delete\+\_\+score\+\_\+table}} (\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface graphique (GUI) pour supprimer une table de scores et libérer la mémoire allouée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__scores_8h_af65c575cb1d616017e09e5023e353e02}{sort\+\_\+score\+\_\+table}} (\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9}{score\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em par l\textquotesingle{}interface graphique (GUI) pour trier to sort une table de scores en ordre décroissant, sur la base d\textquotesingle{}un type de score spécifié. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des meilleurs scores en mode classique. Contient les fonctions permettant de charger, sauvegarder et trier les meilleurs scores à partir du fichier de scores. 
+
+Il est nécessaire de respecter le format spécifié pour le fichier de scores afin d\textquotesingle{}assurer un chargement et une sauvegarde corrects des scores (voir la documentation du projet pour plus de détails). 
+
+Définition dans le fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game__scores_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__scores_8h_a56a82649320247fd21fe9607236b73f5}\index{game\_scores.h@{game\_scores.h}!load\_score\_table@{load\_score\_table}}
+\index{load\_score\_table@{load\_score\_table}!game\_scores.h@{game\_scores.h}}
+\doxysubsubsection{\texorpdfstring{load\_score\_table()}{load\_score\_table()}}
+{\footnotesize\ttfamily \label{game__scores_8h_a56a82649320247fd21fe9607236b73f5} 
+\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*} load\+\_\+score\+\_\+table (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filepath}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{player\+\_\+score}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface graphique (GUI) pour charger le tableau des scores depuis le fichier de scores. 
+
+Cette fonction lit un tableau de scores à partir du fichier spécifié. Si le fichier n\textquotesingle{}existe pas, elle crée un tableau de scores vide. Si player\+\_\+score est fourni, il est ajouté comme entrée pour le joueur actuel sous le nom « Player ». 
+\begin{DoxyParams}{Paramètres}
+{\em filepath} & Chemin d\textquotesingle{}accès sur disque au fichier des scores.  \\
+\hline
+{\em player\+\_\+score} & Pointeur vers le tableau de score du joueur actuel (NULL si utilisé pour charger les meilleurs scores depuis le menu). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__scores_8h_a23df78c5b568c2549c0e45d0e6eb7d79}\index{game\_scores.h@{game\_scores.h}!save\_score\_table@{save\_score\_table}}
+\index{save\_score\_table@{save\_score\_table}!game\_scores.h@{game\_scores.h}}
+\doxysubsubsection{\texorpdfstring{save\_score\_table()}{save\_score\_table()}}
+{\footnotesize\ttfamily \label{game__scores_8h_a23df78c5b568c2549c0e45d0e6eb7d79} 
+void save\+\_\+score\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filepath}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{playername}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface graphique (GUI) pour sauvegarder une table de scores dans un fichier de scores. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Pointeur vers la table des scores à sauvegarder.  \\
+\hline
+{\em filepath} & Chemin d\textquotesingle{}accès au fichier de scores.  \\
+\hline
+{\em playername} & Nom choisi pour le joueur courant (peut être NULL, quand aucun score du joueur courant n\textquotesingle{}est chargé dans la table). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__scores_8h_a648cb18d0431dcd4bc910e6a23e70a20}\index{game\_scores.h@{game\_scores.h}!delete\_score\_table@{delete\_score\_table}}
+\index{delete\_score\_table@{delete\_score\_table}!game\_scores.h@{game\_scores.h}}
+\doxysubsubsection{\texorpdfstring{delete\_score\_table()}{delete\_score\_table()}}
+{\footnotesize\ttfamily \label{game__scores_8h_a648cb18d0431dcd4bc910e6a23e70a20} 
+void delete\+\_\+score\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface graphique (GUI) pour supprimer une table de scores et libérer la mémoire allouée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Pointeur vers la table des scores à supprimer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__scores_8h_af65c575cb1d616017e09e5023e353e02}\index{game\_scores.h@{game\_scores.h}!sort\_score\_table@{sort\_score\_table}}
+\index{sort\_score\_table@{sort\_score\_table}!game\_scores.h@{game\_scores.h}}
+\doxysubsubsection{\texorpdfstring{sort\_score\_table()}{sort\_score\_table()}}
+{\footnotesize\ttfamily \label{game__scores_8h_af65c575cb1d616017e09e5023e353e02} 
+void sort\+\_\+score\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__table}{score\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9}{score\+\_\+type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+par l\textquotesingle{}interface graphique (GUI) pour trier to sort une table de scores en ordre décroissant, sur la base d\textquotesingle{}un type de score spécifié. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Pointeur vers la table des scores à trier.  \\
+\hline
+{\em type} & Type de score selon lequel trier. \\
+\hline
+\end{DoxyParams}

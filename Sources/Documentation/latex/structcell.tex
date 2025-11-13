@@ -1,0 +1,84 @@
+\doxysection{Référence de la structure cell}
+\hypertarget{structcell}{}\label{structcell}\index{cell@{cell}}
+
+
+Structure représentant une case. Utilisée pour communiquer le contenu d\textquotesingle{}une case à l\textquotesingle{}interface graphique.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}{element}} \mbox{\hyperlink{structcell_ae59aa899fb5c14e78181f791f131b5c9}{object}}
+\begin{DoxyCompactList}\small\item\em Type de la gemme ou de l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99}{gem\_power}} \mbox{\hyperlink{structcell_aea961eca028b6cf15d8cfa0a4bc2e42a}{power}}\\
+\>short \mbox{\hyperlink{structcell_a98411db922d52a2acf248bc69f857000}{countdown}}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant une case. Utilisée pour communiquer le contenu d\textquotesingle{}une case à l\textquotesingle{}interface graphique. 
+
+\begin{DoxyRemark}{Remarques}
+Cette structure est utilisée pour transmettre des informations sur une case à l\textquotesingle{}interface graphique afin qu\textquotesingle{}elle puisse afficher les visuels appropriés. Cet encodage de l\textquotesingle{}information de la case est spécifique à l\textquotesingle{}interface graphique. La façon dont vous choisissez de stocker les informations de la case en interne dans la logique du jeu vous appartient. Vous devrez convertir entre votre représentation interne et cette structure lors de la communication avec l\textquotesingle{}interface graphique qui se fait par la fonction board\+\_\+get\+\_\+cell définie ci-\/dessous. 
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00186}{186}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structcell_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structcell_ae59aa899fb5c14e78181f791f131b5c9}\index{cell@{cell}!object@{object}}
+\index{object@{object}!cell@{cell}}
+\doxysubsubsection{\texorpdfstring{object}{object}}
+{\footnotesize\ttfamily \label{structcell_ae59aa899fb5c14e78181f791f131b5c9} 
+\mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}{element}} object}
+
+
+
+Type de la gemme ou de l\textquotesingle{}élément. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00187}{187}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structcell_aea961eca028b6cf15d8cfa0a4bc2e42a}\index{cell@{cell}!power@{power}}
+\index{power@{power}!cell@{cell}}
+\doxysubsubsection{\texorpdfstring{power}{power}}
+{\footnotesize\ttfamily \label{structcell_aea961eca028b6cf15d8cfa0a4bc2e42a} 
+\mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99}{gem\+\_\+power}} power}
+
+Pouvoir pour les gemmes (non pertinent pour les non-\/gemmes). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00189}{189}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structcell_a98411db922d52a2acf248bc69f857000}\index{cell@{cell}!countdown@{countdown}}
+\index{countdown@{countdown}!cell@{cell}}
+\doxysubsubsection{\texorpdfstring{countdown}{countdown}}
+{\footnotesize\ttfamily \label{structcell_a98411db922d52a2acf248bc69f857000} 
+short countdown}
+
+Compte à rebours pour les bombes (non pertinent pour les non-\/bombes). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00191}{191}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structcell_acec066a9a33186586e107e620c1974bf}\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily \label{structcell_acec066a9a33186586e107e620c1974bf} 
+union  \{ ... \} }
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h}{game.\+h}}\end{DoxyCompactItemize}

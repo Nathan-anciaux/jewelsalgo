@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A: Référence du fichier game_ias.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__ias_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier game_ias.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>IA pour le mode classique.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
+</div>
+<p><a href="game__ias_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:aa6e4b8522426e1f7ced99774149da58f" id="r_aa6e4b8522426e1f7ced99774149da58f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6e4b8522426e1f7ced99774149da58f">ia_classic</a> { <a class="el" href="#aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497">IA_RANDOM</a>
+, <a class="el" href="#aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731">IA_SAFE</a>
+, <a class="el" href="#aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6">IA_AGRESSIVE</a>
+, <a class="el" href="#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>
+ }</td></tr>
+<tr class="memdesc:aa6e4b8522426e1f7ced99774149da58f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types d'IA disponibles pour le mode classique.  <a href="#aa6e4b8522426e1f7ced99774149da58f">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a3e3cfb29df793af5f9b338f6d356d967" id="r_a3e3cfb29df793af5f9b338f6d356d967"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e3cfb29df793af5f9b338f6d356d967">ia_random</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a3e3cfb29df793af5f9b338f6d356d967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation de l'IA aléatoire (c'est l'IA utilisée dans la démo affichée dans le menu).  <br /></td></tr>
+<tr class="memitem:a58ac94b35ed22fd80a39c55e4e01557f" id="r_a58ac94b35ed22fd80a39c55e4e01557f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58ac94b35ed22fd80a39c55e4e01557f">ia_safe</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a58ac94b35ed22fd80a39c55e4e01557f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation de l'IA prudente (l'IA essaie de jouer des coups plus proches du bord opposé à la gravité).  <br /></td></tr>
+<tr class="memitem:a4b6321b8cc0c0d34270dff0520d6ac8d" id="r_a4b6321b8cc0c0d34270dff0520d6ac8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b6321b8cc0c0d34270dff0520d6ac8d">ia_agressive</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a4b6321b8cc0c0d34270dff0520d6ac8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation de l'IA agressive (l'IA essaie de jouer des coups en direction de la gravité).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8866f6d09c99bb617b4bfe9bedc43128" id="r_a8866f6d09c99bb617b4bfe9bedc43128"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8866f6d09c99bb617b4bfe9bedc43128">ia_functions</a> [<a class="el" href="#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>])(<a class="el" href="structgame.html">game</a> *)</td></tr>
+<tr class="memdesc:a8866f6d09c99bb617b4bfe9bedc43128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeurs de fonctions pour les différentes IA.  <br /></td></tr>
+<tr class="memitem:a9f26b7ed155cc5852884b17e372adae7" id="r_a9f26b7ed155cc5852884b17e372adae7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f26b7ed155cc5852884b17e372adae7">ia_names</a> [<a class="el" href="#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>]</td></tr>
+<tr class="memdesc:a9f26b7ed155cc5852884b17e372adae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Noms des différentes IA (affichage dans le menu).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>IA pour le mode classique. </p>
+<p>Chaque IA implémente une stratégie pour jouer automatiquement. Une fonction d'IA doit jouer un coup dans le jeu et initialiser l'animation correspondante. Si aucun coup n'est possible, elle doit retourner false. En d'autres termes, l'interface graphique (GUI) utilise les fonctions d'IA pour jouer automatiquement en les appelant de manière répétée jusqu'à ce qu'aucun coup ne soit possible. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="game__ias_8h_source.html">game_ias.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="aa6e4b8522426e1f7ced99774149da58f" name="aa6e4b8522426e1f7ced99774149da58f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e4b8522426e1f7ced99774149da58f">&#9670;&#160;</a></span>ia_classic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aa6e4b8522426e1f7ced99774149da58f">ia_classic</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Types d'IA disponibles pour le mode classique. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497" name="aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497"></a>IA_RANDOM&#160;</td><td class="fielddoc"><p>IA aléatoire : joue des coups aléatoires. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731" name="aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731"></a>IA_SAFE&#160;</td><td class="fielddoc"><p>IA prudente : essaie de jouer des coups à l'opposé de la gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6" name="aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6"></a>IA_AGRESSIVE&#160;</td><td class="fielddoc"><p>IA agressive : essaie de jouer des coups vers la gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e" name="aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e"></a>IA_CLASSIC_SIZE&#160;</td><td class="fielddoc"><p>Nombre d'IA. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game__ias_8h_source.html#l00028">28</a> du fichier <a class="el" href="game__ias_8h_source.html">game_ias.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a3e3cfb29df793af5f9b338f6d356d967" name="a3e3cfb29df793af5f9b338f6d356d967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3cfb29df793af5f9b338f6d356d967">&#9670;&#160;</a></span>ia_random()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ia_random </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implémentation de l'IA aléatoire (c'est l'IA utilisée dans la démo affichée dans le menu). </p>
+<dl class="section remark"><dt>Remarques</dt><dd>L'IA doit toujours être capable de jouer un coup (votre implémentation doit s'arrêter lorsqu'aucun coup n'est disponible).</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si un coup a été joué, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Le jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a58ac94b35ed22fd80a39c55e4e01557f" name="a58ac94b35ed22fd80a39c55e4e01557f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58ac94b35ed22fd80a39c55e4e01557f">&#9670;&#160;</a></span>ia_safe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ia_safe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implémentation de l'IA prudente (l'IA essaie de jouer des coups plus proches du bord opposé à la gravité). </p>
+<dl class="section remark"><dt>Remarques</dt><dd>L'IA doit toujours être capable de jouer un coup (votre implémentation doit s'arrêter lorsqu'aucun coup n'est disponible).</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si un coup a été joué, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Le jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b6321b8cc0c0d34270dff0520d6ac8d" name="a4b6321b8cc0c0d34270dff0520d6ac8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b6321b8cc0c0d34270dff0520d6ac8d">&#9670;&#160;</a></span>ia_agressive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ia_agressive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implémentation de l'IA agressive (l'IA essaie de jouer des coups en direction de la gravité). </p>
+<dl class="section remark"><dt>Remarques</dt><dd>L'IA doit toujours être capable de jouer un coup (votre implémentation doit s'arrêter lorsqu'aucun coup n'est disponible).</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si un coup a été joué, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Le jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="a8866f6d09c99bb617b4bfe9bedc43128" name="a8866f6d09c99bb617b4bfe9bedc43128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8866f6d09c99bb617b4bfe9bedc43128">&#9670;&#160;</a></span>ia_functions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool(* ia_functions[<a class="el" href="#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>])(<a class="el" href="structgame.html">game</a> *) </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointeurs de fonctions pour les différentes IA. </p>
+
+</div>
+</div>
+<a id="a9f26b7ed155cc5852884b17e372adae7" name="a9f26b7ed155cc5852884b17e372adae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f26b7ed155cc5852884b17e372adae7">&#9670;&#160;</a></span>ia_names</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* ia_names[<a class="el" href="#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Noms des différentes IA (affichage dans le menu). </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__ias_8h.html">game_ias.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

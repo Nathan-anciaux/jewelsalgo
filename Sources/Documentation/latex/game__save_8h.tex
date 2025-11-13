@@ -1,0 +1,235 @@
+\doxysection{Référence du fichier game\+\_\+save.\+h}
+\hypertarget{game__save_8h}{}\label{game__save_8h}\index{game\_save.h@{game\_save.h}}
+
+
+Sauvegarde et chargement des états de jeu.  
+
+
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+scores.\+h"{}}\newline
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e}{save\+\_\+keywords}} \{ \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627}{SK\+\_\+\+WIDTH}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417}{SK\+\_\+\+HEIGHT}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85}{SK\+\_\+\+BOARD}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1}{SK\+\_\+\+GRAVITY}}
+, \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5}{SK\+\_\+\+REFILL\+\_\+\+QUEUE}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5}{SK\+\_\+\+PUZZLE}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200}{SK\+\_\+\+LINES}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc}{SK\+\_\+\+UPGRADES}}
+, \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6}{SK\+\_\+\+NODELAY}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb}{SK\+\_\+\+EASY}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720}{SK\+\_\+\+WRAP}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918}{SK\+\_\+\+BOMBS}}
+, \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580}{SK\+\_\+\+REFILL}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46}{SK\+\_\+\+GRAVITY\+\_\+\+CONTROL}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1}{SK\+\_\+\+LEVEL}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825}{SK\+\_\+\+LEVEL\+\_\+\+SCORE}}
+, \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d}{SK\+\_\+\+TARGET\+\_\+\+SCORE}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33}{SK\+\_\+\+SCALE\+\_\+\+SCORE}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d}{SK\+\_\+\+SCORE\+\_\+\+ARRAY}}
+, \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463}{SK\+\_\+\+REFILL\+\_\+\+COUNT}}
+, \newline
+\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{SK\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Mots-\/clés représentant les différents paramètres pouvant être sauvegardés/chargés dans un fichier d\textquotesingle{}état de jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{game__save_8h_afd4069222882228c80f4b74f4e89165d}{save\+\_\+game}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, const char \texorpdfstring{$\ast$}{*}filepath)
+\begin{DoxyCompactList}\small\item\em Sauvegarde l\textquotesingle{}état de jeu courant dans un fichier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__save_8h_a1650caae623be41ea09c4010ce4ecf9d}{load\+\_\+game}} (const char \texorpdfstring{$\ast$}{*}filepath)
+\begin{DoxyCompactList}\small\item\em Charge un état de jeu depuis un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__save_8h_ad7630c507a5ae77b817f605bd5b25ca2}{save\+\_\+keyword\+\_\+strings}} \mbox{[}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{SK\+\_\+\+SIZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chaînes correspondant aux mots-\/clés utilisés dans le fichier de sauvegarde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Sauvegarde et chargement des états de jeu. 
+
+\doxylink{game__save_8h}{game\+\_\+save.\+h}
+
+Fonctions utilisées pour sauvegarder et charger des états de jeu. Vous devez respecter le format spécifié pour les fichiers de sauvegarde afin d\textquotesingle{}assurer la compatibilité (voir la documentation du projet pour les détails). 
+
+Définition dans le fichier \mbox{\hyperlink{game__save_8h_source}{game\+\_\+save.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{game__save_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e}\index{game\_save.h@{game\_save.h}!save\_keywords@{save\_keywords}}
+\index{save\_keywords@{save\_keywords}!game\_save.h@{game\_save.h}}
+\doxysubsubsection{\texorpdfstring{save\_keywords}{save\_keywords}}
+{\footnotesize\ttfamily \label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e} 
+enum \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e}{save\+\_\+keywords}}}
+
+
+
+Mots-\/clés représentant les différents paramètres pouvant être sauvegardés/chargés dans un fichier d\textquotesingle{}état de jeu. 
+
+\begin{DoxyRemark}{Remarques}
+Rappel \+: tous les paramètres ne sont pas obligatoires dans un fichier de sauvegarde. Les seuls paramètres obligatoires sont les suivants (les autres peuvent être initialisés à des valeurs par défaut s\textquotesingle{}ils sont absents) \+:
+\begin{DoxyItemize}
+\item La largeur et la hauteur du plateau (SK\+\_\+\+WIDTH et SK\+\_\+\+HEIGHT).
+\item L\textquotesingle{}état du plateau (SK\+\_\+\+BOARD).
+\item Le mode de jeu (SK\+\_\+\+PUZZLE). 
+\end{DoxyItemize}
+\end{DoxyRemark}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_WIDTH@{SK\_WIDTH}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_WIDTH@{SK\_WIDTH}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627} 
+SK\+\_\+\+WIDTH&Largeur du plateau de jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_HEIGHT@{SK\_HEIGHT}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_HEIGHT@{SK\_HEIGHT}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417} 
+SK\+\_\+\+HEIGHT&Hauteur du plateau de jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_BOARD@{SK\_BOARD}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_BOARD@{SK\_BOARD}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85} 
+SK\+\_\+\+BOARD&État du plateau de jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_GRAVITY@{SK\_GRAVITY}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_GRAVITY@{SK\_GRAVITY}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1} 
+SK\+\_\+\+GRAVITY&Direction de la gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_REFILL\_QUEUE@{SK\_REFILL\_QUEUE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_REFILL\_QUEUE@{SK\_REFILL\_QUEUE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5} 
+SK\+\_\+\+REFILL\+\_\+\+QUEUE&File de remplissage elle-\/même (pour les modes de remplissage 0 ou 1). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_PUZZLE@{SK\_PUZZLE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_PUZZLE@{SK\_PUZZLE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5} 
+SK\+\_\+\+PUZZLE&Mode de jeu (puzzle ou classique). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_LINES@{SK\_LINES}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_LINES@{SK\_LINES}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200} 
+SK\+\_\+\+LINES&Spécification des zones éliminables. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_UPGRADES@{SK\_UPGRADES}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_UPGRADES@{SK\_UPGRADES}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc} 
+SK\+\_\+\+UPGRADES&Améliorations activées dans le jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_NODELAY@{SK\_NODELAY}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_NODELAY@{SK\_NODELAY}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6} 
+SK\+\_\+\+NODELAY&Mode sans délai pour l\textquotesingle{}élimination des gemmes. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_EASY@{SK\_EASY}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_EASY@{SK\_EASY}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb} 
+SK\+\_\+\+EASY&Mode facile du jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_WRAP@{SK\_WRAP}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_WRAP@{SK\_WRAP}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720} 
+SK\+\_\+\+WRAP&Mode wrap des gemmes pour le jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_BOMBS@{SK\_BOMBS}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_BOMBS@{SK\_BOMBS}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918} 
+SK\+\_\+\+BOMBS&Mode bombes du jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_REFILL@{SK\_REFILL}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_REFILL@{SK\_REFILL}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580} 
+SK\+\_\+\+REFILL&Mode de remplissage du jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_GRAVITY\_CONTROL@{SK\_GRAVITY\_CONTROL}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_GRAVITY\_CONTROL@{SK\_GRAVITY\_CONTROL}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46} 
+SK\+\_\+\+GRAVITY\+\_\+\+CONTROL&Mode de contrôle de la gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_LEVEL@{SK\_LEVEL}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_LEVEL@{SK\_LEVEL}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1} 
+SK\+\_\+\+LEVEL&Niveau actuel du jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_LEVEL\_SCORE@{SK\_LEVEL\_SCORE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_LEVEL\_SCORE@{SK\_LEVEL\_SCORE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825} 
+SK\+\_\+\+LEVEL\+\_\+\+SCORE&Score du niveau en cours. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_TARGET\_SCORE@{SK\_TARGET\_SCORE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_TARGET\_SCORE@{SK\_TARGET\_SCORE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d} 
+SK\+\_\+\+TARGET\+\_\+\+SCORE&Score cible pour le niveau en cours. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_SCALE\_SCORE@{SK\_SCALE\_SCORE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_SCALE\_SCORE@{SK\_SCALE\_SCORE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33} 
+SK\+\_\+\+SCALE\+\_\+\+SCORE&Pourcentage d\textquotesingle{}échelonnage du score. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_SCORE\_ARRAY@{SK\_SCORE\_ARRAY}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_SCORE\_ARRAY@{SK\_SCORE\_ARRAY}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d} 
+SK\+\_\+\+SCORE\+\_\+\+ARRAY&Tableau des scores pour tous les niveaux. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_REFILL\_COUNT@{SK\_REFILL\_COUNT}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_REFILL\_COUNT@{SK\_REFILL\_COUNT}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463} 
+SK\+\_\+\+REFILL\+\_\+\+COUNT&Nombre de remplissages déjà utilisés. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SK\_SIZE@{SK\_SIZE}!game\_save.h@{game\_save.h}}\index{game\_save.h@{game\_save.h}!SK\_SIZE@{SK\_SIZE}}}\Hypertarget{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}\label{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f} 
+SK\+\_\+\+SIZE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__save_8h_source_l00039}{39}} du fichier \mbox{\hyperlink{game__save_8h_source}{game\+\_\+save.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game__save_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__save_8h_afd4069222882228c80f4b74f4e89165d}\index{game\_save.h@{game\_save.h}!save\_game@{save\_game}}
+\index{save\_game@{save\_game}!game\_save.h@{game\_save.h}}
+\doxysubsubsection{\texorpdfstring{save\_game()}{save\_game()}}
+{\footnotesize\ttfamily \label{game__save_8h_afd4069222882228c80f4b74f4e89165d} 
+bool save\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Sauvegarde l\textquotesingle{}état de jeu courant dans un fichier. 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne true si la sauvegarde a réussi, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em filepath} & Chemin du fichier où l\textquotesingle{}état de jeu sera sauvegardé. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__save_8h_a1650caae623be41ea09c4010ce4ecf9d}\index{game\_save.h@{game\_save.h}!load\_game@{load\_game}}
+\index{load\_game@{load\_game}!game\_save.h@{game\_save.h}}
+\doxysubsubsection{\texorpdfstring{load\_game()}{load\_game()}}
+{\footnotesize\ttfamily \label{game__save_8h_a1650caae623be41ea09c4010ce4ecf9d} 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} load\+\_\+game (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Charge un état de jeu depuis un fichier. 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne un pointeur vers la structure de jeu chargée, ou NULL si le chargement a échoué. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em filepath} & Chemin du fichier à partir duquel l\textquotesingle{}état de jeu sera chargé. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-var-members}
+\Hypertarget{game__save_8h_doc-var-members}
+\doxysubsection{Documentation des variables}
+\Hypertarget{game__save_8h_ad7630c507a5ae77b817f605bd5b25ca2}\index{game\_save.h@{game\_save.h}!save\_keyword\_strings@{save\_keyword\_strings}}
+\index{save\_keyword\_strings@{save\_keyword\_strings}!game\_save.h@{game\_save.h}}
+\doxysubsubsection{\texorpdfstring{save\_keyword\_strings}{save\_keyword\_strings}}
+{\footnotesize\ttfamily \label{game__save_8h_ad7630c507a5ae77b817f605bd5b25ca2} 
+const char\texorpdfstring{$\ast$}{*} save\+\_\+keyword\+\_\+strings\mbox{[}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{SK\+\_\+\+SIZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Chaînes correspondant aux mots-\/clés utilisés dans le fichier de sauvegarde. 
+

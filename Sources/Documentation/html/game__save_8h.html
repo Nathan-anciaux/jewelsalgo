@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A: Référence du fichier game_save.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__save_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier game_save.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Sauvegarde et chargement des états de jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__scores_8h_source.html">game_scores.h</a>&quot;</code><br />
+</div>
+<p><a href="game__save_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a34a6dca287b21b7c046fe058b26d1a2e" id="r_a34a6dca287b21b7c046fe058b26d1a2e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2e">save_keywords</a> { <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627">SK_WIDTH</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417">SK_HEIGHT</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85">SK_BOARD</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1">SK_GRAVITY</a>
+, <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5">SK_REFILL_QUEUE</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5">SK_PUZZLE</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200">SK_LINES</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc">SK_UPGRADES</a>
+, <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6">SK_NODELAY</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb">SK_EASY</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720">SK_WRAP</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918">SK_BOMBS</a>
+, <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580">SK_REFILL</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46">SK_GRAVITY_CONTROL</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1">SK_LEVEL</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825">SK_LEVEL_SCORE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d">SK_TARGET_SCORE</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33">SK_SCALE_SCORE</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d">SK_SCORE_ARRAY</a>
+, <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463">SK_REFILL_COUNT</a>
+, <br />
+&#160;&#160;<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f">SK_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a34a6dca287b21b7c046fe058b26d1a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mots-clés représentant les différents paramètres pouvant être sauvegardés/chargés dans un fichier d'état de jeu.  <a href="#a34a6dca287b21b7c046fe058b26d1a2e">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:afd4069222882228c80f4b74f4e89165d" id="r_afd4069222882228c80f4b74f4e89165d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd4069222882228c80f4b74f4e89165d">save_game</a> (<a class="el" href="structgame.html">game</a> *g, const char *filepath)</td></tr>
+<tr class="memdesc:afd4069222882228c80f4b74f4e89165d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'état de jeu courant dans un fichier.  <br /></td></tr>
+<tr class="memitem:a1650caae623be41ea09c4010ce4ecf9d" id="r_a1650caae623be41ea09c4010ce4ecf9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgame.html">game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1650caae623be41ea09c4010ce4ecf9d">load_game</a> (const char *filepath)</td></tr>
+<tr class="memdesc:a1650caae623be41ea09c4010ce4ecf9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un état de jeu depuis un fichier.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad7630c507a5ae77b817f605bd5b25ca2" id="r_ad7630c507a5ae77b817f605bd5b25ca2"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7630c507a5ae77b817f605bd5b25ca2">save_keyword_strings</a> [<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f">SK_SIZE</a>]</td></tr>
+<tr class="memdesc:ad7630c507a5ae77b817f605bd5b25ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chaînes correspondant aux mots-clés utilisés dans le fichier de sauvegarde.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Sauvegarde et chargement des états de jeu. </p>
+<p><a class="el" href="game__save_8h.html" title="Sauvegarde et chargement des états de jeu.">game_save.h</a></p>
+<p>Fonctions utilisées pour sauvegarder et charger des états de jeu. Vous devez respecter le format spécifié pour les fichiers de sauvegarde afin d'assurer la compatibilité (voir la documentation du projet pour les détails). </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="game__save_8h_source.html">game_save.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a34a6dca287b21b7c046fe058b26d1a2e" name="a34a6dca287b21b7c046fe058b26d1a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34a6dca287b21b7c046fe058b26d1a2e">&#9670;&#160;</a></span>save_keywords</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2e">save_keywords</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mots-clés représentant les différents paramètres pouvant être sauvegardés/chargés dans un fichier d'état de jeu. </p>
+<dl class="section remark"><dt>Remarques</dt><dd>Rappel : tous les paramètres ne sont pas obligatoires dans un fichier de sauvegarde. Les seuls paramètres obligatoires sont les suivants (les autres peuvent être initialisés à des valeurs par défaut s'ils sont absents) :<ul>
+<li>La largeur et la hauteur du plateau (SK_WIDTH et SK_HEIGHT).</li>
+<li>L'état du plateau (SK_BOARD).</li>
+<li>Le mode de jeu (SK_PUZZLE). </li>
+</ul>
+</dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627" name="a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627"></a>SK_WIDTH&#160;</td><td class="fielddoc"><p>Largeur du plateau de jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417" name="a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417"></a>SK_HEIGHT&#160;</td><td class="fielddoc"><p>Hauteur du plateau de jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85" name="a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85"></a>SK_BOARD&#160;</td><td class="fielddoc"><p>État du plateau de jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1" name="a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1"></a>SK_GRAVITY&#160;</td><td class="fielddoc"><p>Direction de la gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5" name="a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5"></a>SK_REFILL_QUEUE&#160;</td><td class="fielddoc"><p>File de remplissage elle-même (pour les modes de remplissage 0 ou 1). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5" name="a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5"></a>SK_PUZZLE&#160;</td><td class="fielddoc"><p>Mode de jeu (puzzle ou classique). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200" name="a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200"></a>SK_LINES&#160;</td><td class="fielddoc"><p>Spécification des zones éliminables. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc" name="a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc"></a>SK_UPGRADES&#160;</td><td class="fielddoc"><p>Améliorations activées dans le jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6" name="a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6"></a>SK_NODELAY&#160;</td><td class="fielddoc"><p>Mode sans délai pour l'élimination des gemmes. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb" name="a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb"></a>SK_EASY&#160;</td><td class="fielddoc"><p>Mode facile du jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720" name="a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720"></a>SK_WRAP&#160;</td><td class="fielddoc"><p>Mode wrap des gemmes pour le jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918" name="a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918"></a>SK_BOMBS&#160;</td><td class="fielddoc"><p>Mode bombes du jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580" name="a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580"></a>SK_REFILL&#160;</td><td class="fielddoc"><p>Mode de remplissage du jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46" name="a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46"></a>SK_GRAVITY_CONTROL&#160;</td><td class="fielddoc"><p>Mode de contrôle de la gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1" name="a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1"></a>SK_LEVEL&#160;</td><td class="fielddoc"><p>Niveau actuel du jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825" name="a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825"></a>SK_LEVEL_SCORE&#160;</td><td class="fielddoc"><p>Score du niveau en cours. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d" name="a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d"></a>SK_TARGET_SCORE&#160;</td><td class="fielddoc"><p>Score cible pour le niveau en cours. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33" name="a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33"></a>SK_SCALE_SCORE&#160;</td><td class="fielddoc"><p>Pourcentage d'échelonnage du score. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d" name="a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d"></a>SK_SCORE_ARRAY&#160;</td><td class="fielddoc"><p>Tableau des scores pour tous les niveaux. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463" name="a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463"></a>SK_REFILL_COUNT&#160;</td><td class="fielddoc"><p>Nombre de remplissages déjà utilisés. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f" name="a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f"></a>SK_SIZE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game__save_8h_source.html#l00039">39</a> du fichier <a class="el" href="game__save_8h_source.html">game_save.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="afd4069222882228c80f4b74f4e89165d" name="afd4069222882228c80f4b74f4e89165d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd4069222882228c80f4b74f4e89165d">&#9670;&#160;</a></span>save_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool save_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde l'état de jeu courant dans un fichier. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si la sauvegarde a réussi, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">filepath</td><td>Chemin du fichier où l'état de jeu sera sauvegardé. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1650caae623be41ea09c4010ce4ecf9d" name="a1650caae623be41ea09c4010ce4ecf9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1650caae623be41ea09c4010ce4ecf9d">&#9670;&#160;</a></span>load_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgame.html">game</a> * load_game </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge un état de jeu depuis un fichier. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un pointeur vers la structure de jeu chargée, ou NULL si le chargement a échoué. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Chemin du fichier à partir duquel l'état de jeu sera chargé. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="ad7630c507a5ae77b817f605bd5b25ca2" name="ad7630c507a5ae77b817f605bd5b25ca2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7630c507a5ae77b817f605bd5b25ca2">&#9670;&#160;</a></span>save_keyword_strings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* save_keyword_strings[<a class="el" href="#a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f">SK_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Chaînes correspondant aux mots-clés utilisés dans le fichier de sauvegarde. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__save_8h.html">game_save.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

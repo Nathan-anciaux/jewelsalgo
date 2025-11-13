@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['game_5fclassic_5fend_0',['game_classic_end',['../game__play_8h.html#a36e508917adf0e7b2efd38343ab1f66a',1,'game_play.h']]],
+  ['game_5fclassic_5fscore_1',['game_classic_score',['../game__play_8h.html#a64ae1a0e66719fdf78fdc177e6511f83',1,'game_play.h']]],
+  ['game_5fclone_2',['game_clone',['../game_8h.html#a13b3b75d9b956754a2aa6a092c27ea9f',1,'game.h']]],
+  ['game_5fcreate_5fclassic_3',['game_create_classic',['../game_8h.html#a44f9223862342077d82e62ce8ebb33a9',1,'game.h']]],
+  ['game_5fcreate_5fpuzzle_4',['game_create_puzzle',['../game_8h.html#ad5f5bb4919000f95b969e94574e96aad',1,'game.h']]],
+  ['game_5fcycle_5fgravity_5',['game_cycle_gravity',['../game__play_8h.html#a6596d1cb756cb2a916fb04cbba02bc0e',1,'game_play.h']]],
+  ['game_5fend_5fanimation_6',['game_end_animation',['../game__play_8h.html#a9b4fa22a43b16fc32af54d1e5481b644',1,'game_play.h']]],
+  ['game_5fget_5fcell_5fkill_7',['game_get_cell_kill',['../game__play_8h.html#a5f741399745cf22fb3d767d58cf9fa00',1,'game_play.h']]],
+  ['game_5fget_5fcell_5fmove_8',['game_get_cell_move',['../game__play_8h.html#af02e2bb06ad073fb468c73c3bee9c87c',1,'game_play.h']]],
+  ['game_5fhandle_5fdetonation_9',['game_handle_detonation',['../game__play_8h.html#a2cb2c26c3a27f4552e64c2252e22cad6',1,'game_play.h']]],
+  ['game_5fhandle_5fhint_5frequest_10',['game_handle_hint_request',['../game__play_8h.html#a2cd4871bec0a43ab140d76b2b75122de',1,'game_play.h']]],
+  ['game_5fhandle_5fmouse_5fclick_11',['game_handle_mouse_click',['../game__play_8h.html#a1324a2e5a956f4c2e9e14a5b303d2cf3',1,'game_play.h']]],
+  ['game_5fhandle_5frefill_12',['game_handle_refill',['../game__play_8h.html#a5e4a00ae56ae68a932a5ede6726e1dd1',1,'game_play.h']]],
+  ['game_5fimplement_5fsolver_5fmove_13',['game_implement_solver_move',['../game__solver_8h.html#a1c56651acd6cef04890086deb4ee0011',1,'game_solver.h']]],
+  ['game_5finit_5fanimation_14',['game_init_animation',['../game__play_8h.html#ae1e2ed2d55b4517715025aa82f4d62a1',1,'game_play.h']]],
+  ['game_5fnext_5flevel_15',['game_next_level',['../game_8h.html#ab51d806a044271602387f76aea52aa6d',1,'game.h']]],
+  ['game_5fpuzzle_5fend_16',['game_puzzle_end',['../game__play_8h.html#a16d488ef38260e8ebc9eaf4ad0e439c4',1,'game_play.h']]],
+  ['game_5frelease_17',['game_release',['../game_8h.html#a45eee0c37c1a431ad796cae630affb9b',1,'game.h']]],
+  ['game_5fretrieve_5fhint_18',['game_retrieve_hint',['../game__play_8h.html#a42a14ef69830061c3975043003468f48',1,'game_play.h']]],
+  ['game_5fset_5fgravity_19',['game_set_gravity',['../game__play_8h.html#a54499c12942b45cd85fe82b761eeeedb',1,'game_play.h']]]
+];

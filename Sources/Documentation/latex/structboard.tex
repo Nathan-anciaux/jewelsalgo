@@ -1,0 +1,59 @@
+\doxysection{Référence de la structure board}
+\hypertarget{structboard}{}\label{structboard}\index{board@{board}}
+
+
+Structure représentant un plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structboard_a7c1d654b7b6114d7a0abc8d351dd1bcd}{dummy}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant un plateau de jeu. 
+
+Cette structure est utilisée pour représenter un plateau de jeu. L\textquotesingle{}implémentation réelle du plateau vous appartient, mais elle doit au moins contenir les informations suivantes \+:
+\begin{DoxyItemize}
+\item la largeur et la hauteur du plateau,
+\item la direction de la gravité,
+\item la case actuellement sélectionnée par le joueur (ou un indicateur indiquant qu\textquotesingle{}aucune case n\textquotesingle{}est sélectionnée),
+\item le contenu de chaque case, et
+\item la file de stockage si elle est utilisée (uniquement en mode puzzle dans un mode nécessitant une file de stockage).
+\end{DoxyItemize}
+
+Vous pouvez ajouter des champs supplémentaires si nécessaire pour votre implémentation (cela sera utile pour stocker des informations lorsqu\textquotesingle{}une animation est en cours, par exemple).
+
+\begin{DoxyRemark}{Remarques}
+Étant donné que l\textquotesingle{}implémentation du plateau vous appartient, l\textquotesingle{}interface graphique ne sait pas comment l\textquotesingle{}interpréter directement. C\textquotesingle{}est pourquoi vous devez écrire des fonctions que l\textquotesingle{}interface graphique appellera pour récupérer les informations du plateau. 
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00115}{115}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structboard_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structboard_a7c1d654b7b6114d7a0abc8d351dd1bcd}\index{board@{board}!dummy@{dummy}}
+\index{dummy@{dummy}!board@{board}}
+\doxysubsubsection{\texorpdfstring{dummy}{dummy}}
+{\footnotesize\ttfamily \label{structboard_a7c1d654b7b6114d7a0abc8d351dd1bcd} 
+int dummy}
+
+Champ factice pour éviter une erreur de structure vide à la compilation. Doit être remplacé par votre implémentation. 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00116}{116}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h}{game.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\doxysection{game\+\_\+solver.\+h}
+\hypertarget{game__solver_8h_source}{}\label{game__solver_8h_source}\mbox{\hyperlink{game__solver_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifndef\ GAME\_SOLVER\_H\_}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00021}00021\ \textcolor{preprocessor}{\#define\ GAME\_SOLVER\_H\_}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00023}00023\ \textcolor{comment}{/*\ \ \_\_\_\_\ \ \ \ \ \ \ \ \_\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00024}00024\ \textcolor{comment}{/*\ /\ \_\_\_|\ \ \_\_\_\ |\ |\_\ \ \ \_\_\_\_\_\ \_\ \_\_\ \ */}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00025}00025\ \textcolor{comment}{/*\ \(\backslash\)\_\_\_\ \(\backslash\)\ /\ \_\ \(\backslash\)|\ \(\backslash\)\ \(\backslash\)\ /\ /\ \_\ \(\backslash\)\ '\_\_|\ */}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00026}00026\ \textcolor{comment}{/*\ \ \_\_\_)\ |\ (\_)\ |\ |\(\backslash\)\ V\ /\ \ \_\_/\ |\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00027}00027\ \textcolor{comment}{/*\ |\_\_\_\_/\ \(\backslash\)\_\_\_/|\_|\ \(\backslash\)\_/\ \(\backslash\)\_\_\_|\_|\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8h}{game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00031}00031\ \textcolor{comment}{/*************************************/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00032}00032\ \textcolor{comment}{/*+\ Table\ de\ hachage\ (déjà\ écrite)\ \ +*/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00033}00033\ \textcolor{comment}{/*************************************/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00049}\mbox{\hyperlink{structhash__table}{00049}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00050}00050\ \{}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00051}\mbox{\hyperlink{structhash__table_a9c9a3f123adee804319243532f64c969}{00051}}\ \ \ \ \ \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}\ \mbox{\hyperlink{structhash__table_a9c9a3f123adee804319243532f64c969}{hash\_capacity}};\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00052}\mbox{\hyperlink{structhash__table_a7812332c3722d075ddc6dfc3bcc364a1}{00052}}\ \ \ \ \ \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}\ \mbox{\hyperlink{structhash__table_a7812332c3722d075ddc6dfc3bcc364a1}{hash\_size}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00053}\mbox{\hyperlink{structhash__table_a4416f9557c4ccc34b70357d638307da0}{00053}}\ \ \ \ \ \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}\ *\mbox{\hyperlink{structhash__table_a4416f9557c4ccc34b70357d638307da0}{hash\_table}};\ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00054}\mbox{\hyperlink{structhash__table_a8896aa1d0fd5bc5927a7dabde5fb42a8}{00054}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhash__table_a8896aa1d0fd5bc5927a7dabde5fb42a8}{element\_size}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00055}00055\ \}\ \mbox{\hyperlink{structhash__table}{hash\_table}};}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00064}\mbox{\hyperlink{game__solver_8h_ad6486b7480d1fb73104b75574171f95d}{00064}}\ \mbox{\hyperlink{structhash__table}{hash\_table}}\ *\mbox{\hyperlink{game__solver_8h_ad6486b7480d1fb73104b75574171f95d}{create\_hash\_table}}(}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{int}\ element\_size\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00066}00066\ );}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00072}\mbox{\hyperlink{game__solver_8h_aeb90c0d72995394b700a2afefeb55a26}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__solver_8h_aeb90c0d72995394b700a2afefeb55a26}{delete\_hash\_table}}(\mbox{\hyperlink{structhash__table}{hash\_table}}\ *ht\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00073}00073\ );}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00087}\mbox{\hyperlink{game__solver_8h_aaf489c344c876d8f35f64045f331bb46}{00087}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{game__solver_8h_aaf489c344c876d8f35f64045f331bb46}{hash\_table\_insert}}(\mbox{\hyperlink{structhash__table}{hash\_table}}\ *ht,\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *elements,\ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}\ i\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00090}00090\ );}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00092}00092\ \textcolor{comment}{/**********************/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00093}00093\ \textcolor{comment}{/*+\ Fonctions\ solveur\ +*/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00094}00094\ \textcolor{comment}{/**********************/}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00100}\mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}{00100}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00102}\mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46}{00102}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46}{SOLVER\_SWAP}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00103}\mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857}{00103}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857}{SOLVER\_GRAVITY}},\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00104}\mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a}{00104}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a}{SOLVER\_CYCLE}},\ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00105}\mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69}{00105}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69}{SOLVER\_STORAGE}}\ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00106}00106\ \}\ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}{solver\_move\_type}};}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00112}\mbox{\hyperlink{structsolver__move}{00112}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsolver__move}{solver\_move}}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00114}\mbox{\hyperlink{structsolver__move_a43ad5813f5daf2f5864ff1d5c1c2a96e}{00114}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}{solver\_move\_type}}\ \mbox{\hyperlink{structsolver__move_a43ad5813f5daf2f5864ff1d5c1c2a96e}{type}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00115}\mbox{\hyperlink{structsolver__move_a750b5d744c39a06bfb13e6eb010e35d0}{00115}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structsolver__move_a750b5d744c39a06bfb13e6eb010e35d0}{index}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00116}\mbox{\hyperlink{structsolver__move_ae4d7074e1fbd5d499081830e19685e64}{00116}}\ \ \ \ \ \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}}\ \mbox{\hyperlink{structsolver__move_ae4d7074e1fbd5d499081830e19685e64}{dir}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00117}\mbox{\hyperlink{structsolver__move_a8529d1a54102c9b749c3cd470dbffcb4}{00117}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsolver__move}{solver\_move}}\ *\mbox{\hyperlink{structsolver__move_a8529d1a54102c9b749c3cd470dbffcb4}{next}};\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00118}\mbox{\hyperlink{game__solver_8h_a084e489f5172359649052df82575daab}{00118}}\ \}\ \mbox{\hyperlink{structsolver__move}{solver\_move}};}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00127}\mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{00127}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00128}00128\ \{}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00129}\mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788}{00129}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788}{SOLVER\_TIMEOUT}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00130}\mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac}{00130}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac}{SOLVER\_UNSOLVABLE}},\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00131}\mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5}{00131}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5}{SOLVER\_SOLVED}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00132}00132\ \}\ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\_result\_type}};}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00138}\mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{00138}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00140}\mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480}{00140}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480}{SOLVER\_DFS}},}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00141}\mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4}{00141}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4}{SOLVER\_BFS}},}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00142}\mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8}{00142}}\ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8}{SOLVER\_ASTAR}}}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00143}00143\ \}\ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}};}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00152}\mbox{\hyperlink{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c}{00152}}\ \mbox{\hyperlink{structsolver__move}{solver\_move}}\ *\mbox{\hyperlink{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c}{solve\_puzzle}}(\mbox{\hyperlink{structgame}{game}}\ *g,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}}\ method,\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bound,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\_result\_type}}\ *result,\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *nb\_moves,\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *nb\_configs\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00158}00158\ );}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00172}\mbox{\hyperlink{game__solver_8h_a1c56651acd6cef04890086deb4ee0011}{00172}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{game__solver_8h_a1c56651acd6cef04890086deb4ee0011}{game\_implement\_solver\_move}}(\mbox{\hyperlink{structgame}{game}}\ *g,\ \mbox{\hyperlink{structsolver__move}{solver\_move}}\ *move);}
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{game__solver_8h_source_l00174}00174\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_SOLVER\_H\_}}
+
+\end{DoxyCode}

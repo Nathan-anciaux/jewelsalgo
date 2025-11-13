@@ -1,0 +1,40 @@
+\doxysection{project\+\_\+tools.\+h}
+\hypertarget{project__tools_8h_source}{}\label{project__tools_8h_source}\mbox{\hyperlink{project__tools_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00016}00016\ \textcolor{preprocessor}{\#ifndef\ \_TOOLS\_H\_}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00017}00017\ \textcolor{preprocessor}{\#define\ \_TOOLS\_H\_}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_timer.h>}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00025}00025\ \textcolor{comment}{/*\ \ \_\_\_\_\_\ \ \ \ \ \ \ \ \ \ \ \_\ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00026}00026\ \textcolor{comment}{/*\ |\_\ \ \ \_|\_\_\ \ \ \_\_\_\ |\ |\_\_\_\ \ */}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00027}00027\ \textcolor{comment}{/*\ \ \ |\ |/\ \_\ \(\backslash\)\ /\ \_\ \(\backslash\)|\ /\ \_\_|\ */}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00028}00028\ \textcolor{comment}{/*\ \ \ |\ |\ (\_)\ |\ (\_)\ |\ \(\backslash\)\_\_\ \(\backslash\)\ */}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00029}00029\ \textcolor{comment}{/*\ \ \ |\_|\(\backslash\)\_\_\_/\ \(\backslash\)\_\_\_/|\_|\_\_\_/\ */}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00031}00031\ \textcolor{comment}{//\ Shortcuts\ for\ the\ unsigned\ types}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00032}\mbox{\hyperlink{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc}{00032}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}};}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00033}\mbox{\hyperlink{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{00033}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{ushort}};}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00034}\mbox{\hyperlink{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{00034}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}};}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00035}\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{00035}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}};}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00044}\mbox{\hyperlink{project__tools_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{00044}}\ \textcolor{preprocessor}{\#define\ MAX(a,\ b)\ ((a)\ >\ (b)\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00053}\mbox{\hyperlink{project__tools_8h_a3acffbd305ee72dcd4593c0d8af64a4f}{00053}}\ \textcolor{preprocessor}{\#define\ MIN(a,\ b)\ ((a)\ <\ (b)\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00059}\mbox{\hyperlink{project__tools_8h_aac9153aee4bdb92701df902e06a74eb3}{00059}}\ \textcolor{preprocessor}{\#define\ SWAP(a,\ b)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00060}00060\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00061}00061\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ typeof(a)\ temp\ =\ a;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00062}00062\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ a\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ b;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00063}00063\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ b\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ temp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00064}00064\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{project__tools_8h_source_l00066}00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

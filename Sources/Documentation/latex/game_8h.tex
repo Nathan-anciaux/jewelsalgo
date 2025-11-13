@@ -1,0 +1,614 @@
+\doxysection{Référence du fichier game.\+h}
+\hypertarget{game_8h}{}\label{game_8h}\index{game.h@{game.h}}
+
+
+Implémentation du jeu.  
+
+
+{\ttfamily \#include "{}project\+\_\+tools.\+h"{}}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structboard}{board}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un plateau de jeu. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcell}{cell}}
+\begin{DoxyCompactList}\small\item\em Structure représentant une case. Utilisée pour communiquer le contenu d\textquotesingle{}une case à l\textquotesingle{}interface graphique. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structscore__block}{score\+\_\+block}}
+\begin{DoxyCompactList}\small\item\em Structure pour contenir les scores d\textquotesingle{}un jeu. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgame}{game}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un jeu complet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} \{ \newline
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065}{LEFT}}
+, \newline
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707}{SIZE\+\_\+\+DIRECTION}}
+ \}
+\begin{DoxyCompactList}\small\item\em Directions à l\textquotesingle{}intérieur d\textquotesingle{}un plateau de jeu. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}{element}} \{ \newline
+\mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc}{AMBER}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb}{AMETHYST}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a}{DIAMOND}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015}{EMERALD}}
+, \newline
+\mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13}{RUBY}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2}{SAPPHIRE}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d}{TOPAZ}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342}{HYPERCUBE}}
+, \newline
+\mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c}{ROCK}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4}{BOMB}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d}{EMPTY}}
+, \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463}{ELEM\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types d\textquotesingle{}éléments pouvant remplir une case du plateau de jeu. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99}{gem\+\_\+power}} \{ \newline
+\mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae}{GEM\+\_\+\+BASIC}}
+, \mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4}{GEM\+\_\+\+GRAVITY}}
+, \mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3}{GEM\+\_\+\+FLAME}}
+, \mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61}{GEM\+\_\+\+STAR}}
+, \newline
+\mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d}{GEM\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Pouvoirs qu\textquotesingle{}une gemme peut posséder. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9}{score\+\_\+type}} \{ \newline
+\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1}{SC\+\_\+\+GLOBAL}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37}{SC\+\_\+\+LEVEL}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053}{SC\+\_\+\+SWAPS}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb}{SC\+\_\+\+CONSUMED}}
+, \newline
+\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4}{SC\+\_\+\+FLAMED}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4}{SC\+\_\+\+STARRED}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885}{SC\+\_\+\+HYPERCUBES}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a}{SC\+\_\+\+GRAVITY}}
+, \newline
+\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4}{SC\+\_\+\+TIME}}
+, \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a}{SC\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Scores enregistrés dans un jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game_8h_aa5f054a29b034cdc2fda49e5dfbaedc0}{board\+\_\+get\+\_\+width}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Retourne la largeur d\textquotesingle{}un plateau de jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8h_adae09600ffeb93f71afdc213a779628a}{board\+\_\+get\+\_\+height}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Retourne la hauteur du plateau de jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} \mbox{\hyperlink{game_8h_af0e92d89cda5e91ee829eae058afd743}{board\+\_\+get\+\_\+gravity}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Retourne la direction de la gravité du plateau de jeu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8h_a5ca74f7a7f3b88a952db3e23c660f46e}{board\+\_\+get\+\_\+picked}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b, int \texorpdfstring{$\ast$}{*}i, int \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Récupère les coordonnées de la case actuellement sélectionnée dans le plateau (s\textquotesingle{}il y en a une). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a4f847d9abf5146416f7e85866670e09f}{board\+\_\+get\+\_\+cell}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b, int i, int j, \mbox{\hyperlink{structcell}{cell}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Récupère le contenu d\textquotesingle{}une case dans le plateau de jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8h_ad4c9348a40224dbb7d9d4cf4e1061f53}{board\+\_\+refill\+\_\+size}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Retourne la taille de la file de stockage dans le plateau (utilisée uniquement en mode puzzle). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8h_a9d8ffbcf93adcdcdaac74bed3deeb2be}{board\+\_\+read\+\_\+refill}} (\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}b, int k, \mbox{\hyperlink{structcell}{cell}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Lit une case de la file de stockage (sans la retirer). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_a44f9223862342077d82e62ce8ebb33a9}{game\+\_\+create\+\_\+classic}} (int width, int height, bool lines, int target\+\_\+score, int scale\+\_\+score, bool nodelay, bool upgrades, bool easy\+\_\+mode, bool gravity\+\_\+gems, bool bombs)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface pour initialiser un jeu classique avec la largeur et la hauteur spécifiées. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_ad5f5bb4919000f95b969e94574e96aad}{game\+\_\+create\+\_\+puzzle}} (int width, int height, bool lines, bool upgrades, short refill\+\_\+mode, int ini, bool balanced, short gravity\+\_\+control)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface pour initialiser un jeu puzzle avec la largeur et la hauteur spécifiées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_ab51d806a044271602387f76aea52aa6d}{game\+\_\+next\+\_\+level}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un niveau se termine en mode classique pour générer un nouveau plateau de jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a45eee0c37c1a431ad796cae630affb9b}{game\+\_\+release}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface pour libérer la mémoire allouée pour un jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_a13b3b75d9b956754a2aa6a092c27ea9f}{game\+\_\+clone}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface pour cloner une structure de jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Implémentation du jeu. 
+
+
+
+Définition dans le fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{game_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098}\index{game.h@{game.h}!direction@{direction}}
+\index{direction@{direction}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \label{game_8h_a99f26e6ee9fcd62f75203b5402df8098} 
+enum \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}}}
+
+
+
+Directions à l\textquotesingle{}intérieur d\textquotesingle{}un plateau de jeu. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!game.h@{game.h}}\index{game.h@{game.h}!UP@{UP}}}\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa}\label{game_8h_a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa} 
+UP&Direction haut. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!game.h@{game.h}}\index{game.h@{game.h}!RIGHT@{RIGHT}}}\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38}\label{game_8h_a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38} 
+RIGHT&Direction droite. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!game.h@{game.h}}\index{game.h@{game.h}!DOWN@{DOWN}}}\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da}\label{game_8h_a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da} 
+DOWN&Direction bas. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!game.h@{game.h}}\index{game.h@{game.h}!LEFT@{LEFT}}}\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065}\label{game_8h_a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065} 
+LEFT&Direction gauche. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIZE\_DIRECTION@{SIZE\_DIRECTION}!game.h@{game.h}}\index{game.h@{game.h}!SIZE\_DIRECTION@{SIZE\_DIRECTION}}}\Hypertarget{game_8h_a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707}\label{game_8h_a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707} 
+SIZE\+\_\+\+DIRECTION&Taille de l\textquotesingle{}énumération {\ttfamily \doxylink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00034}{34}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}\index{game.h@{game.h}!element@{element}}
+\index{element@{element}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{element}{element}}
+{\footnotesize\ttfamily \label{game_8h_aa94081298ab2dfd0f261cce6c203d9aa} 
+enum \mbox{\hyperlink{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}{element}}}
+
+
+
+Types d\textquotesingle{}éléments pouvant remplir une case du plateau de jeu. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AMBER@{AMBER}!game.h@{game.h}}\index{game.h@{game.h}!AMBER@{AMBER}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc} 
+AMBER&Représente une gemme de type AMBRE. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AMETHYST@{AMETHYST}!game.h@{game.h}}\index{game.h@{game.h}!AMETHYST@{AMETHYST}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb} 
+AMETHYST&Représente une gemme de type AMÉ\+THYSTE. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIAMOND@{DIAMOND}!game.h@{game.h}}\index{game.h@{game.h}!DIAMOND@{DIAMOND}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a} 
+DIAMOND&Représente une gemme de type DIAMANT. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMERALD@{EMERALD}!game.h@{game.h}}\index{game.h@{game.h}!EMERALD@{EMERALD}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015} 
+EMERALD&Représente une gemme de type É\+MERAUDE. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RUBY@{RUBY}!game.h@{game.h}}\index{game.h@{game.h}!RUBY@{RUBY}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13} 
+RUBY&Représente une gemme de type RUBIS. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SAPPHIRE@{SAPPHIRE}!game.h@{game.h}}\index{game.h@{game.h}!SAPPHIRE@{SAPPHIRE}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2} 
+SAPPHIRE&Représente une gemme de type SAPHIR. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOPAZ@{TOPAZ}!game.h@{game.h}}\index{game.h@{game.h}!TOPAZ@{TOPAZ}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d} 
+TOPAZ&Représente une gemme de type TOPAZE. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HYPERCUBE@{HYPERCUBE}!game.h@{game.h}}\index{game.h@{game.h}!HYPERCUBE@{HYPERCUBE}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342} 
+HYPERCUBE&Représente un Hypercube. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROCK@{ROCK}!game.h@{game.h}}\index{game.h@{game.h}!ROCK@{ROCK}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c} 
+ROCK&Représente un rocher. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOMB@{BOMB}!game.h@{game.h}}\index{game.h@{game.h}!BOMB@{BOMB}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4} 
+BOMB&Représente une bombe. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMPTY@{EMPTY}!game.h@{game.h}}\index{game.h@{game.h}!EMPTY@{EMPTY}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d} 
+EMPTY&Représente une case vide sur le plateau. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ELEM\_SIZE@{ELEM\_SIZE}!game.h@{game.h}}\index{game.h@{game.h}!ELEM\_SIZE@{ELEM\_SIZE}}}\Hypertarget{game_8h_aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463}\label{game_8h_aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463} 
+ELEM\+\_\+\+SIZE&Taille de l\textquotesingle{}énumération {\ttfamily \doxylink{game_8h_aa94081298ab2dfd0f261cce6c203d9aa}{element}}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00046}{46}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99}\index{game.h@{game.h}!gem\_power@{gem\_power}}
+\index{gem\_power@{gem\_power}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{gem\_power}{gem\_power}}
+{\footnotesize\ttfamily \label{game_8h_acfcd61708622882d4f74a2dc321b1d99} 
+enum \mbox{\hyperlink{game_8h_acfcd61708622882d4f74a2dc321b1d99}{gem\+\_\+power}}}
+
+
+
+Pouvoirs qu\textquotesingle{}une gemme peut posséder. 
+
+Il existe plusieurs types de gemmes avec pouvoirs \+:
+\begin{DoxyItemize}
+\item Gemmes de gravité \+: lorsqu\textquotesingle{}elles sont échangées avec un autre élément, elles changent la direction de la gravité vers une direction aléatoire (différente de la direction actuelle).
+\item Gemmes enflammées \+: lorsqu\textquotesingle{}elles sont détruites, elles détruisent également tous leurs voisins dans une zone 3x3.
+\item Gemmes étoilées \+: lorsqu\textquotesingle{}elles sont cassées, elles effacent toute leur ligne et colonne.
+\end{DoxyItemize}
+
+\begin{DoxyRemark}{Remarques}
+Dans l\textquotesingle{}interface graphique, ces paramètres n\textquotesingle{}affectent que la représentation visuelle de la gemme. Vous devez implémenter le comportement réel des gemmes avec pouvoirs dans la logique du jeu. 
+\end{DoxyRemark}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GEM\_BASIC@{GEM\_BASIC}!game.h@{game.h}}\index{game.h@{game.h}!GEM\_BASIC@{GEM\_BASIC}}}\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae}\label{game_8h_acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae} 
+GEM\+\_\+\+BASIC&Gemme basique (sans pouvoir). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GEM\_GRAVITY@{GEM\_GRAVITY}!game.h@{game.h}}\index{game.h@{game.h}!GEM\_GRAVITY@{GEM\_GRAVITY}}}\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4}\label{game_8h_acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4} 
+GEM\+\_\+\+GRAVITY&Gemme de gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GEM\_FLAME@{GEM\_FLAME}!game.h@{game.h}}\index{game.h@{game.h}!GEM\_FLAME@{GEM\_FLAME}}}\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3}\label{game_8h_acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3} 
+GEM\+\_\+\+FLAME&Gemme enflammée. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GEM\_STAR@{GEM\_STAR}!game.h@{game.h}}\index{game.h@{game.h}!GEM\_STAR@{GEM\_STAR}}}\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61}\label{game_8h_acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61} 
+GEM\+\_\+\+STAR&Gemme étoilée. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GEM\_SIZE@{GEM\_SIZE}!game.h@{game.h}}\index{game.h@{game.h}!GEM\_SIZE@{GEM\_SIZE}}}\Hypertarget{game_8h_acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d}\label{game_8h_acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d} 
+GEM\+\_\+\+SIZE&Taille de l\textquotesingle{}énumération {\ttfamily \doxylink{game_8h_acfcd61708622882d4f74a2dc321b1d99}{gem\+\_\+power}}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00080}{80}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9}\index{game.h@{game.h}!score\_type@{score\_type}}
+\index{score\_type@{score\_type}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{score\_type}{score\_type}}
+{\footnotesize\ttfamily \label{game_8h_aed36276ae7ac961357268efdfdbc85f9} 
+enum \mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9}{score\+\_\+type}}}
+
+
+
+Scores enregistrés dans un jeu. 
+
+La plupart des valeurs sont inutiles en mode puzzle. Néanmoins, elles sont toujours suivies par souci de simplicité.
+
+\begin{DoxyRemark}{Remarques}
+Le temps est stocké en secondes. Il est géré automatiquement par l\textquotesingle{}interface graphique. Vous devez l\textquotesingle{}initialiser à zéro au début du jeu. Il sera mis à jour automatiquement par l\textquotesingle{}interface graphique. 
+\end{DoxyRemark}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_GLOBAL@{SC\_GLOBAL}!game.h@{game.h}}\index{game.h@{game.h}!SC\_GLOBAL@{SC\_GLOBAL}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1} 
+SC\+\_\+\+GLOBAL&Score global. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_LEVEL@{SC\_LEVEL}!game.h@{game.h}}\index{game.h@{game.h}!SC\_LEVEL@{SC\_LEVEL}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37} 
+SC\+\_\+\+LEVEL&Niveau maximum atteint. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_SWAPS@{SC\_SWAPS}!game.h@{game.h}}\index{game.h@{game.h}!SC\_SWAPS@{SC\_SWAPS}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053} 
+SC\+\_\+\+SWAPS&Nombre total d\textquotesingle{}échanges. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_CONSUMED@{SC\_CONSUMED}!game.h@{game.h}}\index{game.h@{game.h}!SC\_CONSUMED@{SC\_CONSUMED}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb} 
+SC\+\_\+\+CONSUMED&Nombre total d\textquotesingle{}objets consommés. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_FLAMED@{SC\_FLAMED}!game.h@{game.h}}\index{game.h@{game.h}!SC\_FLAMED@{SC\_FLAMED}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4} 
+SC\+\_\+\+FLAMED&Nombre total de gemmes enflammées consommées. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_STARRED@{SC\_STARRED}!game.h@{game.h}}\index{game.h@{game.h}!SC\_STARRED@{SC\_STARRED}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4} 
+SC\+\_\+\+STARRED&Nombre total de gemmes étoilées consommées. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_HYPERCUBES@{SC\_HYPERCUBES}!game.h@{game.h}}\index{game.h@{game.h}!SC\_HYPERCUBES@{SC\_HYPERCUBES}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885} 
+SC\+\_\+\+HYPERCUBES&Nombre total d\textquotesingle{}hypercubes consommés. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_GRAVITY@{SC\_GRAVITY}!game.h@{game.h}}\index{game.h@{game.h}!SC\_GRAVITY@{SC\_GRAVITY}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a} 
+SC\+\_\+\+GRAVITY&Nombre total de changements de gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_TIME@{SC\_TIME}!game.h@{game.h}}\index{game.h@{game.h}!SC\_TIME@{SC\_TIME}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4} 
+SC\+\_\+\+TIME&Temps total joué. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SC\_SIZE@{SC\_SIZE}!game.h@{game.h}}\index{game.h@{game.h}!SC\_SIZE@{SC\_SIZE}}}\Hypertarget{game_8h_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a}\label{game_8h_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a} 
+SC\+\_\+\+SIZE&Taille de l\textquotesingle{}énumération. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00257}{257}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game_8h_aa5f054a29b034cdc2fda49e5dfbaedc0}\index{game.h@{game.h}!board\_get\_width@{board\_get\_width}}
+\index{board\_get\_width@{board\_get\_width}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_get\_width()}{board\_get\_width()}}
+{\footnotesize\ttfamily \label{game_8h_aa5f054a29b034cdc2fda49e5dfbaedc0} 
+int board\+\_\+get\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Retourne la largeur d\textquotesingle{}un plateau de jeu. 
+
+\begin{DoxyReturn}{Renvoie}
+La largeur d\textquotesingle{}un plateau de jeu. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers la structure du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_adae09600ffeb93f71afdc213a779628a}\index{game.h@{game.h}!board\_get\_height@{board\_get\_height}}
+\index{board\_get\_height@{board\_get\_height}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_get\_height()}{board\_get\_height()}}
+{\footnotesize\ttfamily \label{game_8h_adae09600ffeb93f71afdc213a779628a} 
+int board\+\_\+get\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Retourne la hauteur du plateau de jeu. 
+
+\begin{DoxyReturn}{Renvoie}
+La hauteur du plateau de jeu. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers la structure du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_af0e92d89cda5e91ee829eae058afd743}\index{game.h@{game.h}!board\_get\_gravity@{board\_get\_gravity}}
+\index{board\_get\_gravity@{board\_get\_gravity}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_get\_gravity()}{board\_get\_gravity()}}
+{\footnotesize\ttfamily \label{game_8h_af0e92d89cda5e91ee829eae058afd743} 
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} board\+\_\+get\+\_\+gravity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Retourne la direction de la gravité du plateau de jeu. 
+
+\begin{DoxyReturn}{Renvoie}
+La direction de la gravité du plateau de jeu. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers la structure du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a5ca74f7a7f3b88a952db3e23c660f46e}\index{game.h@{game.h}!board\_get\_picked@{board\_get\_picked}}
+\index{board\_get\_picked@{board\_get\_picked}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_get\_picked()}{board\_get\_picked()}}
+{\footnotesize\ttfamily \label{game_8h_a5ca74f7a7f3b88a952db3e23c660f46e} 
+bool board\+\_\+get\+\_\+picked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{i}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{j}{}\end{DoxyParamCaption})}
+
+
+
+Récupère les coordonnées de la case actuellement sélectionnée dans le plateau (s\textquotesingle{}il y en a une). 
+
+\begin{DoxyReturn}{Renvoie}
+True si une case est actuellement sélectionnée, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers la structure du plateau  \\
+\hline
+{\em i} & Pointeur pour retourner la coordonnée horizontale de la case sélectionnée dans le plateau (numérotée de gauche à droite).  \\
+\hline
+{\em j} & Pointeur pour retourner la coordonnée verticale de la case sélectionnée dans le plateau (numérotée de haut en bas). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a4f847d9abf5146416f7e85866670e09f}\index{game.h@{game.h}!board\_get\_cell@{board\_get\_cell}}
+\index{board\_get\_cell@{board\_get\_cell}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_get\_cell()}{board\_get\_cell()}}
+{\footnotesize\ttfamily \label{game_8h_a4f847d9abf5146416f7e85866670e09f} 
+void board\+\_\+get\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{int}]{i}{, }\item[{int}]{j}{, }\item[{\mbox{\hyperlink{structcell}{cell}} \texorpdfstring{$\ast$}{*}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Récupère le contenu d\textquotesingle{}une case dans le plateau de jeu. 
+
+Cette fonction remplit la structure de case fournie avec le contenu de la case située aux coordonnées spécifiées dans le plateau de jeu. 
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers la structure du plateau.  \\
+\hline
+{\em i} & Coordonnée horizontale de la case dans le plateau (numérotée de gauche à droite).  \\
+\hline
+{\em j} & Coordonnée verticale de la case dans le plateau (numérotée de haut en bas).  \\
+\hline
+{\em c} & Pointeur pour stocker la case. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_ad4c9348a40224dbb7d9d4cf4e1061f53}\index{game.h@{game.h}!board\_refill\_size@{board\_refill\_size}}
+\index{board\_refill\_size@{board\_refill\_size}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_refill\_size()}{board\_refill\_size()}}
+{\footnotesize\ttfamily \label{game_8h_ad4c9348a40224dbb7d9d4cf4e1061f53} 
+int board\+\_\+refill\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Retourne la taille de la file de stockage dans le plateau (utilisée uniquement en mode puzzle). 
+
+\begin{DoxyReturn}{Renvoie}
+La taille de la file de stockage, ou -\/1 s\textquotesingle{}il n\textquotesingle{}y a pas de file de stockage 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers le plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a9d8ffbcf93adcdcdaac74bed3deeb2be}\index{game.h@{game.h}!board\_read\_refill@{board\_read\_refill}}
+\index{board\_read\_refill@{board\_read\_refill}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{board\_read\_refill()}{board\_read\_refill()}}
+{\footnotesize\ttfamily \label{game_8h_a9d8ffbcf93adcdcdaac74bed3deeb2be} 
+bool board\+\_\+read\+\_\+refill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{int}]{k}{, }\item[{\mbox{\hyperlink{structcell}{cell}} \texorpdfstring{$\ast$}{*}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Lit une case de la file de stockage (sans la retirer). 
+
+\begin{DoxyRemark}{Remarques}
+S\textquotesingle{}il n\textquotesingle{}y a pas de file de stockage, la fonction doit retourner false.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+true si la lecture a réussi, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em b} & Pointeur vers le plateau  \\
+\hline
+{\em k} & Index dans le stockage à lire (0 est le premier élément à être retiré au début de la file).  \\
+\hline
+{\em c} & Pointeur pour stocker la case lue du stockage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a44f9223862342077d82e62ce8ebb33a9}\index{game.h@{game.h}!game\_create\_classic@{game\_create\_classic}}
+\index{game\_create\_classic@{game\_create\_classic}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_create\_classic()}{game\_create\_classic()}}
+{\footnotesize\ttfamily \label{game_8h_a44f9223862342077d82e62ce8ebb33a9} 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} game\+\_\+create\+\_\+classic (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{bool}]{lines}{, }\item[{int}]{target\+\_\+score}{, }\item[{int}]{scale\+\_\+score}{, }\item[{bool}]{nodelay}{, }\item[{bool}]{upgrades}{, }\item[{bool}]{easy\+\_\+mode}{, }\item[{bool}]{gravity\+\_\+gems}{, }\item[{bool}]{bombs}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface pour initialiser un jeu classique avec la largeur et la hauteur spécifiées. 
+
+Alloue de la mémoire pour la structure du jeu et initialise le jeu. Les cases sont toutes remplies aléatoirement avec des types de gemmes. La génération garantit que le jeu est stable \+: aucune zone destructible n\textquotesingle{}existe. De plus, elle doit également garantir qu\textquotesingle{}au moins un coup peut être joué.
+
+\begin{DoxyAttention}{Attention}
+Comme le mode classique n\textquotesingle{}utilise pas de file de stockage, le paramètre refill\+\_\+mode doit être défini à 2 (pas de file).
+\end{DoxyAttention}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers la structure de jeu initialisée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em width} & Largeur du plateau de jeu.  \\
+\hline
+{\em height} & Hauteur du plateau de jeu.  \\
+\hline
+{\em lines} & Mode d\textquotesingle{}élimination du jeu (lignes ou SCCs).  \\
+\hline
+{\em target\+\_\+score} & Score cible à atteindre pour terminer le niveau.  \\
+\hline
+{\em scale\+\_\+score} & Pourcentage de mise à l\textquotesingle{}échelle du score cible (appliqué après chaque niveau terminé).  \\
+\hline
+{\em nodelay} & Indicateur indiquant si le mode nodelay est activé.  \\
+\hline
+{\em upgrades} & Indicateur indiquant si les améliorations de gemmes sont activées.  \\
+\hline
+{\em easy\+\_\+mode} & Indicateur indiquant si le mode facile est activé.  \\
+\hline
+{\em gravity\+\_\+gems} & Indicateur indiquant si les gemmes de gravité sont activées.  \\
+\hline
+{\em bombs} & Indicateur indiquant si les bombes sont activées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_ad5f5bb4919000f95b969e94574e96aad}\index{game.h@{game.h}!game\_create\_puzzle@{game\_create\_puzzle}}
+\index{game\_create\_puzzle@{game\_create\_puzzle}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_create\_puzzle()}{game\_create\_puzzle()}}
+{\footnotesize\ttfamily \label{game_8h_ad5f5bb4919000f95b969e94574e96aad} 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} game\+\_\+create\+\_\+puzzle (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{bool}]{lines}{, }\item[{bool}]{upgrades}{, }\item[{short}]{refill\+\_\+mode}{, }\item[{int}]{ini}{, }\item[{bool}]{balanced}{, }\item[{short}]{gravity\+\_\+control}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface pour initialiser un jeu puzzle avec la largeur et la hauteur spécifiées. 
+
+Alloue de la mémoire pour la structure du jeu et initialise le jeu. Les cases sont soit vides, soit remplies aléatoirement avec des types de gemmes. La génération garantit que le jeu est stable \+:
+\begin{DoxyItemize}
+\item aucune zone destructible n\textquotesingle{}existe, et,
+\item il n\textquotesingle{}y a pas de case non vide au-\/dessus d\textquotesingle{}une case vide.
+\end{DoxyItemize}
+
+Le paramètre "{}balanced"{} indique si la génération équilibrée est activée. Lorsqu\textquotesingle{}elle est activée, le nombre de chaque type de gemme sur le plateau doit être un multiple de 3.
+
+Le paramètre refill\+\_\+mode spécifie comment la file de stockage doit être initialisée \+:
+\begin{DoxyItemize}
+\item Si refill\+\_\+mode est 0, la file de stockage est allouée et initialement vide. Les gemmes qui sont éliminées sont stockées dans la file de stockage et peuvent être utilisées pour remplir le plateau plus tard.
+\item Si refill\+\_\+mode est 1, la file de stockage est allouée et doit être remplie avec une séquence aléatoire de rochers et de bombes. La longueur de la séquence est fournie par le paramètre ini. Ce paramètre ne doit pas dépasser le nombre total de cases sur le plateau (s\textquotesingle{}il le fait, il doit être défini à width \texorpdfstring{$\ast$}{*} height).
+\item Si refill\+\_\+mode est 2, la file de stockage n\textquotesingle{}est pas utilisée et ne doit pas être allouée.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers la structure de jeu initialisée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em width} & Largeur du plateau de jeu.  \\
+\hline
+{\em height} & Hauteur du plateau de jeu  \\
+\hline
+{\em lines} & Mode d\textquotesingle{}élimination du jeu (lignes ou SCCs).  \\
+\hline
+{\em upgrades} & Indicateur indiquant si les améliorations de gemmes sont activées.  \\
+\hline
+{\em refill\+\_\+mode} & Indicateur indiquant le mode de stockage.  \\
+\hline
+{\em ini} & Taille initiale du stockage (pertinent uniquement si refill\+\_\+mode est défini à 1).  \\
+\hline
+{\em balanced} & Indicateur indiquant si la génération équilibrée est activée (le nombre de chaque type de gemme doit être un multiple de 3).  \\
+\hline
+{\em gravity\+\_\+control} & Mode de contrôle de la gravité (0 \+: ne peut pas changer, 1 \+: rotation horaire, 2 \+: libre). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_ab51d806a044271602387f76aea52aa6d}\index{game.h@{game.h}!game\_next\_level@{game\_next\_level}}
+\index{game\_next\_level@{game\_next\_level}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_next\_level()}{game\_next\_level()}}
+{\footnotesize\ttfamily \label{game_8h_ab51d806a044271602387f76aea52aa6d} 
+void game\+\_\+next\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un niveau se termine en mode classique pour générer un nouveau plateau de jeu. 
+
+Cette fonction libère le plateau de jeu actuel (mais pas toute la structure du jeu) et génère un nouveau plateau aléatoire avec les mêmes dimensions. Elle met également à jour le bloc de score\+:
+\begin{DoxyItemize}
+\item le niveau est incrémenté de 1,
+\item le level\+\_\+score est réinitialisé à 0,
+\item le target\+\_\+score est mis à jour en appliquant le pourcentage scale\+\_\+score.
+\end{DoxyItemize}
+
+\begin{DoxyRemark}{Remarques}
+S\textquotesingle{}il y avait des gemmes avec pouvoirs (enflammée, étoilée, gravité) ou des hypercubes sur le plateau précédent, ils doivent être préservés dans le nouveau plateau. Par exemple, s\textquotesingle{}il y avait 2 gemmes enflammées sur le plateau précédent, le nouveau plateau doit également contenir exactement 2 gemmes enflammées (elles peuvent être de types différents et placées à des emplacements différents). 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a45eee0c37c1a431ad796cae630affb9b}\index{game.h@{game.h}!game\_release@{game\_release}}
+\index{game\_release@{game\_release}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_release()}{game\_release()}}
+{\footnotesize\ttfamily \label{game_8h_a45eee0c37c1a431ad796cae630affb9b} 
+void game\+\_\+release (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface pour libérer la mémoire allouée pour un jeu. 
+
+Cette fonction libère la mémoire utilisée par le plateau de jeu et la structure du jeu elle-\/même. \Hypertarget{game_8h_a13b3b75d9b956754a2aa6a092c27ea9f}\index{game.h@{game.h}!game\_clone@{game\_clone}}
+\index{game\_clone@{game\_clone}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_clone()}{game\_clone()}}
+{\footnotesize\ttfamily \label{game_8h_a13b3b75d9b956754a2aa6a092c27ea9f} 
+\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*} game\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface pour cloner une structure de jeu. 
+
+Cette fonction crée une copie complète de la structure de jeu fournie, incluant le plateau de jeu et toutes les données associées.
+
+\begin{DoxyRemark}{Remarques}
+Cette fonction est utilisée par l\textquotesingle{}interface au début d\textquotesingle{}un jeu puzzle pour créer une sauvegarde de l\textquotesingle{}état initial du jeu (ce qui permet de le restaurer).
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers la structure de jeu clonée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu à cloner \\
+\hline
+\end{DoxyParams}

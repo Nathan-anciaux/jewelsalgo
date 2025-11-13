@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A:  Fichier source de game_ias.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__ias_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">game_ias.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="game__ias_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef GAME_IAS_H_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define GAME_IAS_H_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/*   ____ _               _         ____                        ___    _         */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/*  / ___| | __ _ ___ ___(_) ___   / ___| __ _ _ __ ___   ___  |_ _|  / \   ___  */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/* | |   | |/ _` / __/ __| |/ __| | |  _ / _` | &#39;_ ` _ \ / _ \  | |  / _ \ / __| */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/* | |___| | (_| \__ \__ \ | (__  | |_| | (_| | | | | | |  __/  | | / ___ \\__ \ */</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/*  \____|_|\__,_|___/___/_|\___|  \____|\__,_|_| |_| |_|\___| |___/_/   \_\___/ */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="game_8h.html">game.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58f">   28</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497">   30</a></span>    <a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497">IA_RANDOM</a>,      </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731">   31</a></span>    <a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731">IA_SAFE</a>,        </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6">   32</a></span>    <a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6">IA_AGRESSIVE</a>,   </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">   33</a></span>    <a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <a class="code hl_enumeration" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58f">ia_classic</a>;</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">extern</span> bool (*<a class="code hl_variable" href="game__ias_8h.html#a8866f6d09c99bb617b4bfe9bedc43128">ia_functions</a>[<a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>])(<a class="code hl_struct" href="structgame.html">game</a> *);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">extern</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="game__ias_8h.html#a9f26b7ed155cc5852884b17e372adae7">ia_names</a>[<a class="code hl_enumvalue" href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a>];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="game__ias_8h.html#a3e3cfb29df793af5f9b338f6d356d967">   58</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game__ias_8h.html#a3e3cfb29df793af5f9b338f6d356d967">ia_random</a>(<a class="code hl_struct" href="structgame.html">game</a> *g </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="game__ias_8h.html#a58ac94b35ed22fd80a39c55e4e01557f">   71</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game__ias_8h.html#a58ac94b35ed22fd80a39c55e4e01557f">ia_safe</a>(<a class="code hl_struct" href="structgame.html">game</a> *g </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="game__ias_8h.html#a4b6321b8cc0c0d34270dff0520d6ac8d">   84</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game__ias_8h.html#a4b6321b8cc0c0d34270dff0520d6ac8d">ia_agressive</a>(<a class="code hl_struct" href="structgame.html">game</a> *g </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agame_8h_html"><div class="ttname"><a href="game_8h.html">game.h</a></div><div class="ttdoc">Implémentation du jeu.</div></div>
+<div class="ttc" id="agame__ias_8h_html_a3e3cfb29df793af5f9b338f6d356d967"><div class="ttname"><a href="game__ias_8h.html#a3e3cfb29df793af5f9b338f6d356d967">ia_random</a></div><div class="ttdeci">bool ia_random(game *g)</div><div class="ttdoc">Implémentation de l&#39;IA aléatoire (c&#39;est l&#39;IA utilisée dans la démo affichée dans le menu).</div></div>
+<div class="ttc" id="agame__ias_8h_html_a4b6321b8cc0c0d34270dff0520d6ac8d"><div class="ttname"><a href="game__ias_8h.html#a4b6321b8cc0c0d34270dff0520d6ac8d">ia_agressive</a></div><div class="ttdeci">bool ia_agressive(game *g)</div><div class="ttdoc">Implémentation de l&#39;IA agressive (l&#39;IA essaie de jouer des coups en direction de la gravité).</div></div>
+<div class="ttc" id="agame__ias_8h_html_a58ac94b35ed22fd80a39c55e4e01557f"><div class="ttname"><a href="game__ias_8h.html#a58ac94b35ed22fd80a39c55e4e01557f">ia_safe</a></div><div class="ttdeci">bool ia_safe(game *g)</div><div class="ttdoc">Implémentation de l&#39;IA prudente (l&#39;IA essaie de jouer des coups plus proches du bord opposé à la grav...</div></div>
+<div class="ttc" id="agame__ias_8h_html_a8866f6d09c99bb617b4bfe9bedc43128"><div class="ttname"><a href="game__ias_8h.html#a8866f6d09c99bb617b4bfe9bedc43128">ia_functions</a></div><div class="ttdeci">bool(* ia_functions[IA_CLASSIC_SIZE])(game *)</div><div class="ttdoc">Pointeurs de fonctions pour les différentes IA.</div></div>
+<div class="ttc" id="agame__ias_8h_html_a9f26b7ed155cc5852884b17e372adae7"><div class="ttname"><a href="game__ias_8h.html#a9f26b7ed155cc5852884b17e372adae7">ia_names</a></div><div class="ttdeci">char * ia_names[IA_CLASSIC_SIZE]</div><div class="ttdoc">Noms des différentes IA (affichage dans le menu).</div></div>
+<div class="ttc" id="agame__ias_8h_html_aa6e4b8522426e1f7ced99774149da58f"><div class="ttname"><a href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58f">ia_classic</a></div><div class="ttdeci">ia_classic</div><div class="ttdoc">Types d&#39;IA disponibles pour le mode classique.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">game_ias.h:29</a></div></div>
+<div class="ttc" id="agame__ias_8h_html_aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497"><div class="ttname"><a href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497">IA_RANDOM</a></div><div class="ttdeci">@ IA_RANDOM</div><div class="ttdoc">IA aléatoire : joue des coups aléatoires.</div><div class="ttdef"><b>Definition</b> <a href="#l00030">game_ias.h:30</a></div></div>
+<div class="ttc" id="agame__ias_8h_html_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e"><div class="ttname"><a href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e">IA_CLASSIC_SIZE</a></div><div class="ttdeci">@ IA_CLASSIC_SIZE</div><div class="ttdoc">Nombre d&#39;IA.</div><div class="ttdef"><b>Definition</b> <a href="#l00033">game_ias.h:33</a></div></div>
+<div class="ttc" id="agame__ias_8h_html_aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6"><div class="ttname"><a href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6">IA_AGRESSIVE</a></div><div class="ttdeci">@ IA_AGRESSIVE</div><div class="ttdoc">IA agressive : essaie de jouer des coups vers la gravité.</div><div class="ttdef"><b>Definition</b> <a href="#l00032">game_ias.h:32</a></div></div>
+<div class="ttc" id="agame__ias_8h_html_aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731"><div class="ttname"><a href="game__ias_8h.html#aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731">IA_SAFE</a></div><div class="ttdeci">@ IA_SAFE</div><div class="ttdoc">IA prudente : essaie de jouer des coups à l&#39;opposé de la gravité.</div><div class="ttdef"><b>Definition</b> <a href="#l00031">game_ias.h:31</a></div></div>
+<div class="ttc" id="astructgame_html"><div class="ttname"><a href="structgame.html">game</a></div><div class="ttdoc">Structure représentant un jeu complet.</div><div class="ttdef"><b>Definition</b> <a href="game_8h_source.html#l00333">game.h:333</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__ias_8h.html">game_ias.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

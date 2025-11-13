@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A:  Fichier source de game.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">game.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="game_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef GAME_FULL_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define GAME_FULL_H_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">/*  __  __       _          ____                       */</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">/* |  \/  | __ _(_)_ __    / ___| __ _ _ __ ___   ___  */</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/* | |\/| |/ _` | | &#39;_ \  | |  _ / _` | &#39;_ ` _ \ / _ \ */</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/* | |  | | (_| | | | | | | |_| | (_| | | | | | |  __/ */</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/* |_|__|_|\__,_|_|_| |_|  \____|\__,_|_| |_| |_|\___| */</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/* / ___|| |_ _ __ _   _  ___| |_ _   _ _ __ ___       */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/* \___ \| __| &#39;__| | | |/ __| __| | | | &#39;__/ _ \      */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*  ___) | |_| |  | |_| | (__| |_| |_| | | |  __/      */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/* |____/ \__|_|   \__,_|\___|\__|\__,_|_|  \___|      */</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="project__tools_8h.html">project_tools.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;limits.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/***************************/</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/*+ Définition du plateau +*/</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/***************************/</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">   34</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa">   35</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa">UP</a>,            </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38">   36</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38">RIGHT</a>,         </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da">   37</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da">DOWN</a>,          </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065">   38</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065">LEFT</a>,          </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707">   39</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707">SIZE_DIRECTION</a> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>} <a class="code hl_enumeration" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a>;</div>
+</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aa">   46</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc">   47</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc">AMBER</a>,     </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb">   48</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb">AMETHYST</a>,  </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a">   49</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a">DIAMOND</a>,   </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015">   50</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015">EMERALD</a>,   </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13">   51</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13">RUBY</a>,      </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2">   52</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2">SAPPHIRE</a>,  </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d">   53</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d">TOPAZ</a>,     </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342">   54</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342">HYPERCUBE</a>, </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c">   55</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c">ROCK</a>,      </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4">   56</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4">BOMB</a>,      </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d">   57</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d">EMPTY</a>,     </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463">   58</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463">ELEM_SIZE</a>  </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <a class="code hl_enumeration" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aa">element</a>;</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="};">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99">   80</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae">   81</a></span>    <a class="code hl_enumvalue" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae">GEM_BASIC</a>,   </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4">   82</a></span>    <a class="code hl_enumvalue" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4">GEM_GRAVITY</a>, </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3">   83</a></span>    <a class="code hl_enumvalue" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3">GEM_FLAME</a>,   </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61">   84</a></span>    <a class="code hl_enumvalue" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61">GEM_STAR</a>,    </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d">   85</a></span>    <a class="code hl_enumvalue" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d">GEM_SIZE</a>     </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>} <a class="code hl_enumeration" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99">gem_power</a>;</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="};">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structboard.html">  115</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structboard.html#a7c1d654b7b6114d7a0abc8d351dd1bcd">  116</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structboard.html#a7c1d654b7b6114d7a0abc8d351dd1bcd">dummy</a>; </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>} <a class="code hl_struct" href="structboard.html">board</a>;</div>
+</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">/***************************************************************************/</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">/*+ Fonctions appelées par l&#39;interface pour récupérer des informations    +*/</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">/*+ sur un plateau de jeu                                                 +*/</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">/***************************************************************************/</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="game_8h.html#aa5f054a29b034cdc2fda49e5dfbaedc0">  132</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="game_8h.html#aa5f054a29b034cdc2fda49e5dfbaedc0">board_get_width</a>(<a class="code hl_struct" href="structboard.html">board</a> *b </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="game_8h.html#adae09600ffeb93f71afdc213a779628a">  142</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="game_8h.html#adae09600ffeb93f71afdc213a779628a">board_get_height</a>(<a class="code hl_struct" href="structboard.html">board</a> *b </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="game_8h.html#af0e92d89cda5e91ee829eae058afd743">  152</a></span><a class="code hl_enumeration" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a> <a class="code hl_function" href="game_8h.html#af0e92d89cda5e91ee829eae058afd743">board_get_gravity</a>(<a class="code hl_struct" href="structboard.html">board</a> *b </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="game_8h.html#a5ca74f7a7f3b88a952db3e23c660f46e">  163</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game_8h.html#a5ca74f7a7f3b88a952db3e23c660f46e">board_get_picked</a>(</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <a class="code hl_struct" href="structboard.html">board</a> *b, </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">int</span> *i,   </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">int</span> *j    </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span></div>
+<div class="foldopen" id="foldopen00186" data-start="{" data-end="};">
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="structcell.html">  186</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="structcell.html#ae59aa899fb5c14e78181f791f131b5c9">  187</a></span>    <a class="code hl_enumeration" href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aa">element</a> <a class="code hl_variable" href="structcell.html#ae59aa899fb5c14e78181f791f131b5c9">object</a>; </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="structcell.html#aea961eca028b6cf15d8cfa0a4bc2e42a">  189</a></span>        <a class="code hl_enumeration" href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99">gem_power</a> <a class="code hl_variable" href="structcell.html#aea961eca028b6cf15d8cfa0a4bc2e42a">power</a>; </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="structcell.html#a98411db922d52a2acf248bc69f857000">  191</a></span>        <span class="keywordtype">short</span> <a class="code hl_variable" href="structcell.html#a98411db922d52a2acf248bc69f857000">countdown</a>; </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    };</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>} <a class="code hl_struct" href="structcell.html">cell</a>;</div>
+</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="game_8h.html#a4f847d9abf5146416f7e85866670e09f">  204</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8h.html#a4f847d9abf5146416f7e85866670e09f">board_get_cell</a>(<a class="code hl_struct" href="structboard.html">board</a> *b, </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                    <span class="keywordtype">int</span> i,    </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                    <span class="keywordtype">int</span> j,  </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                    <a class="code hl_struct" href="structcell.html">cell</a> *c </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="game_8h.html#ad4c9348a40224dbb7d9d4cf4e1061f53">  220</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="game_8h.html#ad4c9348a40224dbb7d9d4cf4e1061f53">board_refill_size</a>(<a class="code hl_struct" href="structboard.html">board</a> *b </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="game_8h.html#a9d8ffbcf93adcdcdaac74bed3deeb2be">  233</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game_8h.html#a9d8ffbcf93adcdcdaac74bed3deeb2be">board_read_refill</a>(</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <a class="code hl_struct" href="structboard.html">board</a> *b, </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordtype">int</span> k,  </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <a class="code hl_struct" href="structcell.html">cell</a> *c </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">/*************************/</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">/*+ Définition d&#39;un jeu +*/</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">/*************************/</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span></div>
+<div class="foldopen" id="foldopen00257" data-start="{" data-end="};">
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9">  257</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1">  258</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1">SC_GLOBAL</a>,     </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37">  259</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37">SC_LEVEL</a>,      </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053">  260</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053">SC_SWAPS</a>,      </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb">  261</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb">SC_CONSUMED</a>,   </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4">  262</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4">SC_FLAMED</a>,     </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4">  263</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4">SC_STARRED</a>,    </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885">  264</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885">SC_HYPERCUBES</a>, </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a">  265</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a">SC_GRAVITY</a>,    </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4">  266</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4">SC_TIME</a>,       </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a">  267</a></span>    <a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a">SC_SIZE</a>,       </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>} <a class="code hl_enumeration" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9">score_type</a>;</div>
+</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span></div>
+<div class="foldopen" id="foldopen00278" data-start="{" data-end="};">
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="structscore__block.html">  278</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="structscore__block.html#acf4d33ee4cff36f69b924471174dcb11">  279</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#acf4d33ee4cff36f69b924471174dcb11">level</a>;        </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="structscore__block.html#acbab820ba8f07ce12abf06f782557eea">  280</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#acbab820ba8f07ce12abf06f782557eea">level_score</a>;  </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno"><a class="line" href="structscore__block.html#a6ddd7c025e2bb86591747beba23fb90e">  282</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#a6ddd7c025e2bb86591747beba23fb90e">target_score</a>; </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="structscore__block.html#addee15988cc8b91fcea403492a0d4f31">  284</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#addee15988cc8b91fcea403492a0d4f31">scale_score</a>;  </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="structscore__block.html#aaa31d042bd717890a3302aad14aaeb7a">  286</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#aaa31d042bd717890a3302aad14aaeb7a">scores</a>[<a class="code hl_enumvalue" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a">SC_SIZE</a>]; </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="structscore__block.html#a854d2c6abb3438fe38a3289254b8591f">  287</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structscore__block.html#a854d2c6abb3438fe38a3289254b8591f">refills</a>; </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>} <a class="code hl_struct" href="structscore__block.html">score_block</a>;</div>
+</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span></div>
+<div class="foldopen" id="foldopen00333" data-start="{" data-end="};">
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno"><a class="line" href="structgame.html">  333</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="comment">// Plateau de jeu</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="structgame.html#aab87b5092553854f1fc4b4b58969dfca">  335</a></span>    <a class="code hl_struct" href="structboard.html">board</a> *<a class="code hl_variable" href="structgame.html#aab87b5092553854f1fc4b4b58969dfca">b</a>; </div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="comment">// Le mode de jeu</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno"><a class="line" href="structgame.html#a87805d906d6c45b7588bf60bdc1f6cca">  338</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#a87805d906d6c45b7588bf60bdc1f6cca">puzzle</a>; </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="comment">// Paramètres communs aux deux modes</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno"><a class="line" href="structgame.html#a5755a8d50a94b18ab9827e67a45bca51">  341</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#a5755a8d50a94b18ab9827e67a45bca51">lines</a>; </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordtype">bool</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno"><a class="line" href="structgame.html#a4faf90ae3bbde81fc5f7ff669f960e4d">  344</a></span>        <a class="code hl_variable" href="structgame.html#a4faf90ae3bbde81fc5f7ff669f960e4d">upgrades</a>; </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno"><a class="line" href="structgame.html#afe15e22d35c57b61d55f150455e36266">  346</a></span>    <span class="keywordtype">short</span> <a class="code hl_variable" href="structgame.html#afe15e22d35c57b61d55f150455e36266">gravity_control</a>; </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <span class="comment">// Paramètres spécifiques au mode classique.</span></div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno"><a class="line" href="structgame.html#aec6c3893867bac330447292d8c19a96e">  351</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#aec6c3893867bac330447292d8c19a96e">nodelay</a>; </div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno"><a class="line" href="structgame.html#a5f6d36863ebf27fcebd90783fb1a9758">  354</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#a5f6d36863ebf27fcebd90783fb1a9758">easy</a>;    </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno"><a class="line" href="structgame.html#a8594fb038876720086b44eea472b9bf5">  357</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#a8594fb038876720086b44eea472b9bf5">gravity_gems</a>; </div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno"><a class="line" href="structgame.html#aded1016af8e7227caf116e7ee3c85b31">  359</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structgame.html#aded1016af8e7227caf116e7ee3c85b31">bombs</a>; </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    <span class="comment">// Paramètre spécifique au mode puzzle. Doit être défini à &quot;pas de file&quot;</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="comment">// (valeur 2) en mode classique.</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno"><a class="line" href="structgame.html#af5dc170d4e26d9f45f3b383e4f301b27">  363</a></span>    <span class="keywordtype">short</span> <a class="code hl_variable" href="structgame.html#af5dc170d4e26d9f45f3b383e4f301b27">refill_mode</a>; </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="comment">// Score</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno"><a class="line" href="structgame.html#a7684ff19ca9e62c1931f2a2a519b0790">  368</a></span>    <a class="code hl_struct" href="structscore__block.html">score_block</a> *<a class="code hl_variable" href="structgame.html#a7684ff19ca9e62c1931f2a2a519b0790">score</a>; </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>} <a class="code hl_struct" href="structgame.html">game</a>;</div>
+</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="comment">/************************************************************************************/</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="comment">/*+ Fonctions utilisées par l&#39;interface pour créer et mettre à jour un nouveau</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="comment"> * jeu +*/</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="comment">/************************************************************************************/</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno"><a class="line" href="game_8h.html#a44f9223862342077d82e62ce8ebb33a9">  397</a></span><a class="code hl_struct" href="structgame.html">game</a> *<a class="code hl_function" href="game_8h.html#a44f9223862342077d82e62ce8ebb33a9">game_create_classic</a>(</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    <span class="keywordtype">int</span> width,        </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordtype">int</span> height,       </div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    <span class="keywordtype">bool</span> lines,       </div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    <span class="keywordtype">int</span> target_score, </div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>    <span class="keywordtype">int</span> scale_score,  </div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    <span class="keywordtype">bool</span> nodelay,     </div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    <span class="keywordtype">bool</span> upgrades, </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <span class="keywordtype">bool</span> easy_mode,    </div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>    <span class="keywordtype">bool</span> gravity_gems, </div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <span class="keywordtype">bool</span> bombs         </div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span></div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno"><a class="line" href="game_8h.html#ad5f5bb4919000f95b969e94574e96aad">  447</a></span><a class="code hl_struct" href="structgame.html">game</a> *<a class="code hl_function" href="game_8h.html#ad5f5bb4919000f95b969e94574e96aad">game_create_puzzle</a>(</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordtype">int</span> width,     </div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>    <span class="keywordtype">int</span> height,    </div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    <span class="keywordtype">bool</span> lines,    </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="keywordtype">bool</span> upgrades, </div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    <span class="keywordtype">short</span> refill_mode, </div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>    <span class="keywordtype">int</span> ini,           </div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    <span class="keywordtype">bool</span> balanced,     </div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    <span class="keywordtype">short</span> gravity_control </div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>);</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span></div>
+<div class="line"><a id="l00484" name="l00484"></a><span class="lineno"><a class="line" href="game_8h.html#ab51d806a044271602387f76aea52aa6d">  484</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8h.html#ab51d806a044271602387f76aea52aa6d">game_next_level</a>(<a class="code hl_struct" href="structgame.html">game</a> *g </div>
+<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span>);</div>
+<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span></div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno"><a class="line" href="game_8h.html#a45eee0c37c1a431ad796cae630affb9b">  495</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8h.html#a45eee0c37c1a431ad796cae630affb9b">game_release</a>(<a class="code hl_struct" href="structgame.html">game</a> *g);</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span></div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno"><a class="line" href="game_8h.html#a13b3b75d9b956754a2aa6a092c27ea9f">  513</a></span><a class="code hl_struct" href="structgame.html">game</a> *<a class="code hl_function" href="game_8h.html#a13b3b75d9b956754a2aa6a092c27ea9f">game_clone</a>(<a class="code hl_struct" href="structgame.html">game</a> *g </div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>);</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span> </div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span><span class="preprocessor">#endif </span><span class="comment">// GAME_FULL_H_</span></div>
+<div class="ttc" id="agame_8h_html_a13b3b75d9b956754a2aa6a092c27ea9f"><div class="ttname"><a href="game_8h.html#a13b3b75d9b956754a2aa6a092c27ea9f">game_clone</a></div><div class="ttdeci">game * game_clone(game *g)</div><div class="ttdoc">Appelée par l&#39;interface pour cloner une structure de jeu.</div></div>
+<div class="ttc" id="agame_8h_html_a44f9223862342077d82e62ce8ebb33a9"><div class="ttname"><a href="game_8h.html#a44f9223862342077d82e62ce8ebb33a9">game_create_classic</a></div><div class="ttdeci">game * game_create_classic(int width, int height, bool lines, int target_score, int scale_score, bool nodelay, bool upgrades, bool easy_mode, bool gravity_gems, bool bombs)</div><div class="ttdoc">Appelée par l&#39;interface pour initialiser un jeu classique avec la largeur et la hauteur spécifiées.</div></div>
+<div class="ttc" id="agame_8h_html_a45eee0c37c1a431ad796cae630affb9b"><div class="ttname"><a href="game_8h.html#a45eee0c37c1a431ad796cae630affb9b">game_release</a></div><div class="ttdeci">void game_release(game *g)</div><div class="ttdoc">Appelée par l&#39;interface pour libérer la mémoire allouée pour un jeu.</div></div>
+<div class="ttc" id="agame_8h_html_a4f847d9abf5146416f7e85866670e09f"><div class="ttname"><a href="game_8h.html#a4f847d9abf5146416f7e85866670e09f">board_get_cell</a></div><div class="ttdeci">void board_get_cell(board *b, int i, int j, cell *c)</div><div class="ttdoc">Récupère le contenu d&#39;une case dans le plateau de jeu.</div></div>
+<div class="ttc" id="agame_8h_html_a5ca74f7a7f3b88a952db3e23c660f46e"><div class="ttname"><a href="game_8h.html#a5ca74f7a7f3b88a952db3e23c660f46e">board_get_picked</a></div><div class="ttdeci">bool board_get_picked(board *b, int *i, int *j)</div><div class="ttdoc">Récupère les coordonnées de la case actuellement sélectionnée dans le plateau (s&#39;il y en a une).</div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a></div><div class="ttdeci">direction</div><div class="ttdoc">Directions à l&#39;intérieur d&#39;un plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">game.h:34</a></div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707">SIZE_DIRECTION</a></div><div class="ttdeci">@ SIZE_DIRECTION</div><div class="ttdoc">Taille de l&#39;énumération direction.</div><div class="ttdef"><b>Definition</b> <a href="#l00039">game.h:39</a></div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da">DOWN</a></div><div class="ttdeci">@ DOWN</div><div class="ttdoc">Direction bas.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">game.h:37</a></div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa">UP</a></div><div class="ttdeci">@ UP</div><div class="ttdoc">Direction haut.</div><div class="ttdef"><b>Definition</b> <a href="#l00035">game.h:35</a></div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065">LEFT</a></div><div class="ttdeci">@ LEFT</div><div class="ttdoc">Direction gauche.</div><div class="ttdef"><b>Definition</b> <a href="#l00038">game.h:38</a></div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38">RIGHT</a></div><div class="ttdeci">@ RIGHT</div><div class="ttdoc">Direction droite.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">game.h:36</a></div></div>
+<div class="ttc" id="agame_8h_html_a9d8ffbcf93adcdcdaac74bed3deeb2be"><div class="ttname"><a href="game_8h.html#a9d8ffbcf93adcdcdaac74bed3deeb2be">board_read_refill</a></div><div class="ttdeci">bool board_read_refill(board *b, int k, cell *c)</div><div class="ttdoc">Lit une case de la file de stockage (sans la retirer).</div></div>
+<div class="ttc" id="agame_8h_html_aa5f054a29b034cdc2fda49e5dfbaedc0"><div class="ttname"><a href="game_8h.html#aa5f054a29b034cdc2fda49e5dfbaedc0">board_get_width</a></div><div class="ttdeci">int board_get_width(board *b)</div><div class="ttdoc">Retourne la largeur d&#39;un plateau de jeu.</div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aa"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aa">element</a></div><div class="ttdeci">element</div><div class="ttdoc">Types d&#39;éléments pouvant remplir une case du plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00046">game.h:46</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4">BOMB</a></div><div class="ttdeci">@ BOMB</div><div class="ttdoc">Représente une bombe.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">game.h:56</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d">EMPTY</a></div><div class="ttdeci">@ EMPTY</div><div class="ttdoc">Représente une case vide sur le plateau.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">game.h:57</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb">AMETHYST</a></div><div class="ttdeci">@ AMETHYST</div><div class="ttdoc">Représente une gemme de type AMÉTHYSTE.</div><div class="ttdef"><b>Definition</b> <a href="#l00048">game.h:48</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a">DIAMOND</a></div><div class="ttdeci">@ DIAMOND</div><div class="ttdoc">Représente une gemme de type DIAMANT.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">game.h:49</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2">SAPPHIRE</a></div><div class="ttdeci">@ SAPPHIRE</div><div class="ttdoc">Représente une gemme de type SAPHIR.</div><div class="ttdef"><b>Definition</b> <a href="#l00052">game.h:52</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015">EMERALD</a></div><div class="ttdeci">@ EMERALD</div><div class="ttdoc">Représente une gemme de type ÉMERAUDE.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">game.h:50</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc">AMBER</a></div><div class="ttdeci">@ AMBER</div><div class="ttdoc">Représente une gemme de type AMBRE.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">game.h:47</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c">ROCK</a></div><div class="ttdeci">@ ROCK</div><div class="ttdoc">Représente un rocher.</div><div class="ttdef"><b>Definition</b> <a href="#l00055">game.h:55</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463">ELEM_SIZE</a></div><div class="ttdeci">@ ELEM_SIZE</div><div class="ttdoc">Taille de l&#39;énumération element.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">game.h:58</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d">TOPAZ</a></div><div class="ttdeci">@ TOPAZ</div><div class="ttdoc">Représente une gemme de type TOPAZE.</div><div class="ttdef"><b>Definition</b> <a href="#l00053">game.h:53</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342">HYPERCUBE</a></div><div class="ttdeci">@ HYPERCUBE</div><div class="ttdoc">Représente un Hypercube.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">game.h:54</a></div></div>
+<div class="ttc" id="agame_8h_html_aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13"><div class="ttname"><a href="game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13">RUBY</a></div><div class="ttdeci">@ RUBY</div><div class="ttdoc">Représente une gemme de type RUBIS.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">game.h:51</a></div></div>
+<div class="ttc" id="agame_8h_html_ab51d806a044271602387f76aea52aa6d"><div class="ttname"><a href="game_8h.html#ab51d806a044271602387f76aea52aa6d">game_next_level</a></div><div class="ttdeci">void game_next_level(game *g)</div><div class="ttdoc">Appelée par l&#39;interface lorsqu&#39;un niveau se termine en mode classique pour générer un nouveau plateau...</div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99">gem_power</a></div><div class="ttdeci">gem_power</div><div class="ttdoc">Pouvoirs qu&#39;une gemme peut posséder.</div><div class="ttdef"><b>Definition</b> <a href="#l00080">game.h:80</a></div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d">GEM_SIZE</a></div><div class="ttdeci">@ GEM_SIZE</div><div class="ttdoc">Taille de l&#39;énumération gem_power.</div><div class="ttdef"><b>Definition</b> <a href="#l00085">game.h:85</a></div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae">GEM_BASIC</a></div><div class="ttdeci">@ GEM_BASIC</div><div class="ttdoc">Gemme basique (sans pouvoir).</div><div class="ttdef"><b>Definition</b> <a href="#l00081">game.h:81</a></div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4">GEM_GRAVITY</a></div><div class="ttdeci">@ GEM_GRAVITY</div><div class="ttdoc">Gemme de gravité.</div><div class="ttdef"><b>Definition</b> <a href="#l00082">game.h:82</a></div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61">GEM_STAR</a></div><div class="ttdeci">@ GEM_STAR</div><div class="ttdoc">Gemme étoilée.</div><div class="ttdef"><b>Definition</b> <a href="#l00084">game.h:84</a></div></div>
+<div class="ttc" id="agame_8h_html_acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3"><div class="ttname"><a href="game_8h.html#acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3">GEM_FLAME</a></div><div class="ttdeci">@ GEM_FLAME</div><div class="ttdoc">Gemme enflammée.</div><div class="ttdef"><b>Definition</b> <a href="#l00083">game.h:83</a></div></div>
+<div class="ttc" id="agame_8h_html_ad4c9348a40224dbb7d9d4cf4e1061f53"><div class="ttname"><a href="game_8h.html#ad4c9348a40224dbb7d9d4cf4e1061f53">board_refill_size</a></div><div class="ttdeci">int board_refill_size(board *b)</div><div class="ttdoc">Retourne la taille de la file de stockage dans le plateau (utilisée uniquement en mode puzzle).</div></div>
+<div class="ttc" id="agame_8h_html_ad5f5bb4919000f95b969e94574e96aad"><div class="ttname"><a href="game_8h.html#ad5f5bb4919000f95b969e94574e96aad">game_create_puzzle</a></div><div class="ttdeci">game * game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)</div><div class="ttdoc">Appelée par l&#39;interface pour initialiser un jeu puzzle avec la largeur et la hauteur spécifiées.</div></div>
+<div class="ttc" id="agame_8h_html_adae09600ffeb93f71afdc213a779628a"><div class="ttname"><a href="game_8h.html#adae09600ffeb93f71afdc213a779628a">board_get_height</a></div><div class="ttdeci">int board_get_height(board *b)</div><div class="ttdoc">Retourne la hauteur du plateau de jeu.</div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9">score_type</a></div><div class="ttdeci">score_type</div><div class="ttdoc">Scores enregistrés dans un jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00257">game.h:257</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb">SC_CONSUMED</a></div><div class="ttdeci">@ SC_CONSUMED</div><div class="ttdoc">Nombre total d&#39;objets consommés.</div><div class="ttdef"><b>Definition</b> <a href="#l00261">game.h:261</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a">SC_GRAVITY</a></div><div class="ttdeci">@ SC_GRAVITY</div><div class="ttdoc">Nombre total de changements de gravité.</div><div class="ttdef"><b>Definition</b> <a href="#l00265">game.h:265</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885">SC_HYPERCUBES</a></div><div class="ttdeci">@ SC_HYPERCUBES</div><div class="ttdoc">Nombre total d&#39;hypercubes consommés.</div><div class="ttdef"><b>Definition</b> <a href="#l00264">game.h:264</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4">SC_FLAMED</a></div><div class="ttdeci">@ SC_FLAMED</div><div class="ttdoc">Nombre total de gemmes enflammées consommées.</div><div class="ttdef"><b>Definition</b> <a href="#l00262">game.h:262</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053">SC_SWAPS</a></div><div class="ttdeci">@ SC_SWAPS</div><div class="ttdoc">Nombre total d&#39;échanges.</div><div class="ttdef"><b>Definition</b> <a href="#l00260">game.h:260</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37">SC_LEVEL</a></div><div class="ttdeci">@ SC_LEVEL</div><div class="ttdoc">Niveau maximum atteint.</div><div class="ttdef"><b>Definition</b> <a href="#l00259">game.h:259</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a">SC_SIZE</a></div><div class="ttdeci">@ SC_SIZE</div><div class="ttdoc">Taille de l&#39;énumération.</div><div class="ttdef"><b>Definition</b> <a href="#l00267">game.h:267</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1">SC_GLOBAL</a></div><div class="ttdeci">@ SC_GLOBAL</div><div class="ttdoc">Score global.</div><div class="ttdef"><b>Definition</b> <a href="#l00258">game.h:258</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4">SC_TIME</a></div><div class="ttdeci">@ SC_TIME</div><div class="ttdoc">Temps total joué.</div><div class="ttdef"><b>Definition</b> <a href="#l00266">game.h:266</a></div></div>
+<div class="ttc" id="agame_8h_html_aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4"><div class="ttname"><a href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4">SC_STARRED</a></div><div class="ttdeci">@ SC_STARRED</div><div class="ttdoc">Nombre total de gemmes étoilées consommées.</div><div class="ttdef"><b>Definition</b> <a href="#l00263">game.h:263</a></div></div>
+<div class="ttc" id="agame_8h_html_af0e92d89cda5e91ee829eae058afd743"><div class="ttname"><a href="game_8h.html#af0e92d89cda5e91ee829eae058afd743">board_get_gravity</a></div><div class="ttdeci">direction board_get_gravity(board *b)</div><div class="ttdoc">Retourne la direction de la gravité du plateau de jeu.</div></div>
+<div class="ttc" id="aproject__tools_8h_html"><div class="ttname"><a href="project__tools_8h.html">project_tools.h</a></div><div class="ttdoc">Tools.</div></div>
+<div class="ttc" id="astructboard_html"><div class="ttname"><a href="structboard.html">board</a></div><div class="ttdoc">Structure représentant un plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00115">game.h:115</a></div></div>
+<div class="ttc" id="astructboard_html_a7c1d654b7b6114d7a0abc8d351dd1bcd"><div class="ttname"><a href="structboard.html#a7c1d654b7b6114d7a0abc8d351dd1bcd">board::dummy</a></div><div class="ttdeci">int dummy</div><div class="ttdef"><b>Definition</b> <a href="#l00116">game.h:116</a></div></div>
+<div class="ttc" id="astructcell_html"><div class="ttname"><a href="structcell.html">cell</a></div><div class="ttdoc">Structure représentant une case. Utilisée pour communiquer le contenu d&#39;une case à l&#39;interface graphi...</div><div class="ttdef"><b>Definition</b> <a href="#l00186">game.h:186</a></div></div>
+<div class="ttc" id="astructcell_html_a98411db922d52a2acf248bc69f857000"><div class="ttname"><a href="structcell.html#a98411db922d52a2acf248bc69f857000">cell::countdown</a></div><div class="ttdeci">short countdown</div><div class="ttdef"><b>Definition</b> <a href="#l00191">game.h:191</a></div></div>
+<div class="ttc" id="astructcell_html_ae59aa899fb5c14e78181f791f131b5c9"><div class="ttname"><a href="structcell.html#ae59aa899fb5c14e78181f791f131b5c9">cell::object</a></div><div class="ttdeci">element object</div><div class="ttdoc">Type de la gemme ou de l&#39;élément.</div><div class="ttdef"><b>Definition</b> <a href="#l00187">game.h:187</a></div></div>
+<div class="ttc" id="astructcell_html_aea961eca028b6cf15d8cfa0a4bc2e42a"><div class="ttname"><a href="structcell.html#aea961eca028b6cf15d8cfa0a4bc2e42a">cell::power</a></div><div class="ttdeci">gem_power power</div><div class="ttdef"><b>Definition</b> <a href="#l00189">game.h:189</a></div></div>
+<div class="ttc" id="astructgame_html"><div class="ttname"><a href="structgame.html">game</a></div><div class="ttdoc">Structure représentant un jeu complet.</div><div class="ttdef"><b>Definition</b> <a href="#l00333">game.h:333</a></div></div>
+<div class="ttc" id="astructgame_html_a4faf90ae3bbde81fc5f7ff669f960e4d"><div class="ttname"><a href="structgame.html#a4faf90ae3bbde81fc5f7ff669f960e4d">game::upgrades</a></div><div class="ttdeci">bool upgrades</div><div class="ttdef"><b>Definition</b> <a href="#l00344">game.h:344</a></div></div>
+<div class="ttc" id="astructgame_html_a5755a8d50a94b18ab9827e67a45bca51"><div class="ttname"><a href="structgame.html#a5755a8d50a94b18ab9827e67a45bca51">game::lines</a></div><div class="ttdeci">bool lines</div><div class="ttdef"><b>Definition</b> <a href="#l00341">game.h:341</a></div></div>
+<div class="ttc" id="astructgame_html_a5f6d36863ebf27fcebd90783fb1a9758"><div class="ttname"><a href="structgame.html#a5f6d36863ebf27fcebd90783fb1a9758">game::easy</a></div><div class="ttdeci">bool easy</div><div class="ttdef"><b>Definition</b> <a href="#l00354">game.h:354</a></div></div>
+<div class="ttc" id="astructgame_html_a7684ff19ca9e62c1931f2a2a519b0790"><div class="ttname"><a href="structgame.html#a7684ff19ca9e62c1931f2a2a519b0790">game::score</a></div><div class="ttdeci">score_block * score</div><div class="ttdef"><b>Definition</b> <a href="#l00368">game.h:368</a></div></div>
+<div class="ttc" id="astructgame_html_a8594fb038876720086b44eea472b9bf5"><div class="ttname"><a href="structgame.html#a8594fb038876720086b44eea472b9bf5">game::gravity_gems</a></div><div class="ttdeci">bool gravity_gems</div><div class="ttdef"><b>Definition</b> <a href="#l00357">game.h:357</a></div></div>
+<div class="ttc" id="astructgame_html_a87805d906d6c45b7588bf60bdc1f6cca"><div class="ttname"><a href="structgame.html#a87805d906d6c45b7588bf60bdc1f6cca">game::puzzle</a></div><div class="ttdeci">bool puzzle</div><div class="ttdoc">Mode de jeu (true : mode puzzle, false : mode classique).</div><div class="ttdef"><b>Definition</b> <a href="#l00338">game.h:338</a></div></div>
+<div class="ttc" id="astructgame_html_aab87b5092553854f1fc4b4b58969dfca"><div class="ttname"><a href="structgame.html#aab87b5092553854f1fc4b4b58969dfca">game::b</a></div><div class="ttdeci">board * b</div><div class="ttdoc">Pointeur vers le plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00335">game.h:335</a></div></div>
+<div class="ttc" id="astructgame_html_aded1016af8e7227caf116e7ee3c85b31"><div class="ttname"><a href="structgame.html#aded1016af8e7227caf116e7ee3c85b31">game::bombs</a></div><div class="ttdeci">bool bombs</div><div class="ttdoc">Indicateur indiquant que le jeu peut générer des bombes.</div><div class="ttdef"><b>Definition</b> <a href="#l00359">game.h:359</a></div></div>
+<div class="ttc" id="astructgame_html_aec6c3893867bac330447292d8c19a96e"><div class="ttname"><a href="structgame.html#aec6c3893867bac330447292d8c19a96e">game::nodelay</a></div><div class="ttdeci">bool nodelay</div><div class="ttdef"><b>Definition</b> <a href="#l00351">game.h:351</a></div></div>
+<div class="ttc" id="astructgame_html_af5dc170d4e26d9f45f3b383e4f301b27"><div class="ttname"><a href="structgame.html#af5dc170d4e26d9f45f3b383e4f301b27">game::refill_mode</a></div><div class="ttdeci">short refill_mode</div><div class="ttdef"><b>Definition</b> <a href="#l00363">game.h:363</a></div></div>
+<div class="ttc" id="astructgame_html_afe15e22d35c57b61d55f150455e36266"><div class="ttname"><a href="structgame.html#afe15e22d35c57b61d55f150455e36266">game::gravity_control</a></div><div class="ttdeci">short gravity_control</div><div class="ttdef"><b>Definition</b> <a href="#l00346">game.h:346</a></div></div>
+<div class="ttc" id="astructscore__block_html"><div class="ttname"><a href="structscore__block.html">score_block</a></div><div class="ttdoc">Structure pour contenir les scores d&#39;un jeu.</div><div class="ttdef"><b>Definition</b> <a href="#l00278">game.h:278</a></div></div>
+<div class="ttc" id="astructscore__block_html_a6ddd7c025e2bb86591747beba23fb90e"><div class="ttname"><a href="structscore__block.html#a6ddd7c025e2bb86591747beba23fb90e">score_block::target_score</a></div><div class="ttdeci">int target_score</div><div class="ttdef"><b>Definition</b> <a href="#l00282">game.h:282</a></div></div>
+<div class="ttc" id="astructscore__block_html_a854d2c6abb3438fe38a3289254b8591f"><div class="ttname"><a href="structscore__block.html#a854d2c6abb3438fe38a3289254b8591f">score_block::refills</a></div><div class="ttdeci">int refills</div><div class="ttdef"><b>Definition</b> <a href="#l00287">game.h:287</a></div></div>
+<div class="ttc" id="astructscore__block_html_aaa31d042bd717890a3302aad14aaeb7a"><div class="ttname"><a href="structscore__block.html#aaa31d042bd717890a3302aad14aaeb7a">score_block::scores</a></div><div class="ttdeci">int scores[SC_SIZE]</div><div class="ttdoc">Tableau pour contenir diverses métriques de score.</div><div class="ttdef"><b>Definition</b> <a href="#l00286">game.h:286</a></div></div>
+<div class="ttc" id="astructscore__block_html_acbab820ba8f07ce12abf06f782557eea"><div class="ttname"><a href="structscore__block.html#acbab820ba8f07ce12abf06f782557eea">score_block::level_score</a></div><div class="ttdeci">int level_score</div><div class="ttdef"><b>Definition</b> <a href="#l00280">game.h:280</a></div></div>
+<div class="ttc" id="astructscore__block_html_acf4d33ee4cff36f69b924471174dcb11"><div class="ttname"><a href="structscore__block.html#acf4d33ee4cff36f69b924471174dcb11">score_block::level</a></div><div class="ttdeci">int level</div><div class="ttdoc">Niveau actuel (spécifique au mode classique).</div><div class="ttdef"><b>Definition</b> <a href="#l00279">game.h:279</a></div></div>
+<div class="ttc" id="astructscore__block_html_addee15988cc8b91fcea403492a0d4f31"><div class="ttname"><a href="structscore__block.html#addee15988cc8b91fcea403492a0d4f31">score_block::scale_score</a></div><div class="ttdeci">int scale_score</div><div class="ttdef"><b>Definition</b> <a href="#l00284">game.h:284</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game_8h.html">game.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

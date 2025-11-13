@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A: Référence du fichier game_play.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__play_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier game_play.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctions appelées par l'interface (GUI) pour gérer les entrées utilisateur. C'est ici que la logique du jeu doit être implémentée.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__solver_8h_source.html">game_solver.h</a>&quot;</code><br />
+</div>
+<p><a href="game__play_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a31d289b983e452f756528ed2a8efb763" id="r_a31d289b983e452f756528ed2a8efb763"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a> { <br />
+&#160;&#160;<a class="el" href="#a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1">ANIM_IDLE</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64">ANIM_MOVE_GOODSWAP</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44">ANIM_MOVE_BADSWAP</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797">ANIM_MOVE_ROLLBACK</a>
+, <br />
+&#160;&#160;<a class="el" href="#a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0">ANIM_MOVE_FALL</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50">ANIM_KILL</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f">ANIM_HINT</a>
+, <a class="el" href="#a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01">ANIM_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a31d289b983e452f756528ed2a8efb763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les animations disponibles programmées dans l'interface.  <a href="#a31d289b983e452f756528ed2a8efb763">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a731fce576881124219a9c0f328a65c36" id="r_a731fce576881124219a9c0f328a65c36"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a731fce576881124219a9c0f328a65c36">end_signal</a> { <a class="el" href="#a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac">SIGNAL_END_LEVEL</a>
+, <a class="el" href="#a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60">SIGNAL_END_CLGAME</a>
+, <a class="el" href="#a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f">SIGNAL_END_PUZZLE</a>
+, <a class="el" href="#a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6">SIGNAL_SIZE</a>
+ }</td></tr>
+<tr class="memdesc:a731fce576881124219a9c0f328a65c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilisé pour signaler la fin d'une partie.  <a href="#a731fce576881124219a9c0f328a65c36">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a944fc3ec73ac8ed28c8947cc6cea99f6" id="r_a944fc3ec73ac8ed28c8947cc6cea99f6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6">gem_kill</a> { <br />
+&#160;&#160;<a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44">KILL_NOKILL</a>
+, <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96">KILL_SHRINK</a>
+, <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44">KILL_SHATTER</a>
+, <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697">KILL_EXPLODE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7">KILL_EXPLODE_RING</a>
+, <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0">KILL_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a944fc3ec73ac8ed28c8947cc6cea99f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types d'animations d'élimination disponibles pour les gemmes.  <a href="#a944fc3ec73ac8ed28c8947cc6cea99f6">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae1e2ed2d55b4517715025aa82f4d62a1" id="r_ae1e2ed2d55b4517715025aa82f4d62a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1e2ed2d55b4517715025aa82f4d62a1">game_init_animation</a> (<a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a> type)</td></tr>
+<tr class="memdesc:ae1e2ed2d55b4517715025aa82f4d62a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre une animation du type spécifié.  <br /></td></tr>
+<tr class="memitem:a64ae1a0e66719fdf78fdc177e6511f83" id="r_a64ae1a0e66719fdf78fdc177e6511f83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64ae1a0e66719fdf78fdc177e6511f83">game_classic_score</a> (void)</td></tr>
+<tr class="memdesc:a64ae1a0e66719fdf78fdc177e6511f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'écran de score à la fin d'un niveau en mode classique.  <br /></td></tr>
+<tr class="memitem:a36e508917adf0e7b2efd38343ab1f66a" id="r_a36e508917adf0e7b2efd38343ab1f66a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36e508917adf0e7b2efd38343ab1f66a">game_classic_end</a> (void)</td></tr>
+<tr class="memdesc:a36e508917adf0e7b2efd38343ab1f66a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Termine une partie classique.  <br /></td></tr>
+<tr class="memitem:a16d488ef38260e8ebc9eaf4ad0e439c4" id="r_a16d488ef38260e8ebc9eaf4ad0e439c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16d488ef38260e8ebc9eaf4ad0e439c4">game_puzzle_end</a> (void)</td></tr>
+<tr class="memdesc:a16d488ef38260e8ebc9eaf4ad0e439c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Termine une partie puzzle.  <br /></td></tr>
+<tr class="memitem:a1324a2e5a956f4c2e9e14a5b303d2cf3" id="r_a1324a2e5a956f4c2e9e14a5b303d2cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1324a2e5a956f4c2e9e14a5b303d2cf3">game_handle_mouse_click</a> (<a class="el" href="structgame.html">game</a> *g, int i, int j)</td></tr>
+<tr class="memdesc:a1324a2e5a956f4c2e9e14a5b303d2cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'un clic souris est effectué sur une case du plateau.  <br /></td></tr>
+<tr class="memitem:a2cd4871bec0a43ab140d76b2b75122de" id="r_a2cd4871bec0a43ab140d76b2b75122de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cd4871bec0a43ab140d76b2b75122de">game_handle_hint_request</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a2cd4871bec0a43ab140d76b2b75122de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'une demande d'indice est faite (par ex., clic sur le bouton indice).  <br /></td></tr>
+<tr class="memitem:a2cb2c26c3a27f4552e64c2252e22cad6" id="r_a2cb2c26c3a27f4552e64c2252e22cad6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb2c26c3a27f4552e64c2252e22cad6">game_handle_detonation</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a2cb2c26c3a27f4552e64c2252e22cad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'une détonation est demandée par le joueur.  <br /></td></tr>
+<tr class="memitem:a54499c12942b45cd85fe82b761eeeedb" id="r_a54499c12942b45cd85fe82b761eeeedb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54499c12942b45cd85fe82b761eeeedb">game_set_gravity</a> (<a class="el" href="structgame.html">game</a> *g, <a class="el" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a> dir)</td></tr>
+<tr class="memdesc:a54499c12942b45cd85fe82b761eeeedb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'un changement de gravité vers une direction donnée est demandé.  <br /></td></tr>
+<tr class="memitem:a6596d1cb756cb2a916fb04cbba02bc0e" id="r_a6596d1cb756cb2a916fb04cbba02bc0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6596d1cb756cb2a916fb04cbba02bc0e">game_cycle_gravity</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a6596d1cb756cb2a916fb04cbba02bc0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsque la gravité est modifiée dans le sens horaire.  <br /></td></tr>
+<tr class="memitem:a5e4a00ae56ae68a932a5ede6726e1dd1" id="r_a5e4a00ae56ae68a932a5ede6726e1dd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e4a00ae56ae68a932a5ede6726e1dd1">game_handle_refill</a> (<a class="el" href="structgame.html">game</a> *g, int k)</td></tr>
+<tr class="memdesc:a5e4a00ae56ae68a932a5ede6726e1dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'un le joueur veut récupérer un objet dans la file de stockage.  <br /></td></tr>
+<tr class="memitem:a9b4fa22a43b16fc32af54d1e5481b644" id="r_a9b4fa22a43b16fc32af54d1e5481b644"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b4fa22a43b16fc32af54d1e5481b644">game_end_animation</a> (<a class="el" href="structgame.html">game</a> *g, <a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a> type)</td></tr>
+<tr class="memdesc:a9b4fa22a43b16fc32af54d1e5481b644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'une animation se termine.  <br /></td></tr>
+<tr class="memitem:af02e2bb06ad073fb468c73c3bee9c87c" id="r_af02e2bb06ad073fb468c73c3bee9c87c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af02e2bb06ad073fb468c73c3bee9c87c">game_get_cell_move</a> (<a class="el" href="structgame.html">game</a> *g, int i, int j, int *distance)</td></tr>
+<tr class="memdesc:af02e2bb06ad073fb468c73c3bee9c87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface uniquement lors des animations MOVE. Elle l'utilise pour récupérer les informations de déplacement des cases à afficher.  <br /></td></tr>
+<tr class="memitem:a5f741399745cf22fb3d767d58cf9fa00" id="r_a5f741399745cf22fb3d767d58cf9fa00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6">gem_kill</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f741399745cf22fb3d767d58cf9fa00">game_get_cell_kill</a> (<a class="el" href="structgame.html">game</a> *g, int i, int j)</td></tr>
+<tr class="memdesc:a5f741399745cf22fb3d767d58cf9fa00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface uniquement lors d'une animation KILL. Elle l'utilise pour récupérer les informations sur les cases à éliminer et l'animation à utiliser.  <br /></td></tr>
+<tr class="memitem:a42a14ef69830061c3975043003468f48" id="r_a42a14ef69830061c3975043003468f48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42a14ef69830061c3975043003468f48">game_retrieve_hint</a> (<a class="el" href="structgame.html">game</a> *g, int *i, int *j)</td></tr>
+<tr class="memdesc:a42a14ef69830061c3975043003468f48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'elle exécute une animation HINT. Sert à récupérer les coordonnées de la case à mettre en évidence.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a187d0f37c47a9f1b43da766cefc8deaf" id="r_a187d0f37c47a9f1b43da766cefc8deaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a187d0f37c47a9f1b43da766cefc8deaf">game_anim_signal</a></td></tr>
+<tr class="memdesc:a187d0f37c47a9f1b43da766cefc8deaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable globale utilisée pour signaler à l'interface quelle animation démarrer.  <br /></td></tr>
+<tr class="memitem:aeaa751f5198093b17a4560d765421ba8" id="r_aeaa751f5198093b17a4560d765421ba8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a731fce576881124219a9c0f328a65c36">end_signal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa751f5198093b17a4560d765421ba8">game_end_signal</a></td></tr>
+<tr class="memdesc:aeaa751f5198093b17a4560d765421ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable globale utilisée pour indiquer à l'interface quel écran de score afficher.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fonctions appelées par l'interface (GUI) pour gérer les entrées utilisateur. C'est ici que la logique du jeu doit être implémentée. </p>
+<p>Ce fichier déclare les fonctions que l'interface appelle pour gérer les interactions utilisateur pendant la partie. Vous devez implémenter ces fonctions pour traiter les clics de souris, les demandes d'indice, les détonations, les changements de gravité et les utilisations de la file de stockage. Il vous revient également de gérer les animations :</p><ul>
+<li>Vous pouvez démarrer des animations avec la fonction "game_init_animation" qui est déjà écrite.</li>
+<li>Une fois une animation démarrée, l'interface bloque les entrées utilisateur jusqu'à la fin de l'animation. À ce moment-là, elle appelle la fonction "game_end_animation" que vous devez implémenter pour gérer les étapes suivantes.</li>
+</ul>
+<dl class="section attention"><dt>Attention</dt><dd>Vous pouvez écrire des fonctions utilitaires supplémentaires si nécessaire, mais vous ne devez PAS modifier les prototypes de fonctions fournis dans ce fichier. </dd></dl>
+
+<p class="definition">Définition dans le fichier <a class="el" href="game__play_8h_source.html">game_play.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a31d289b983e452f756528ed2a8efb763" name="a31d289b983e452f756528ed2a8efb763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d289b983e452f756528ed2a8efb763">&#9670;&#160;</a></span>anim_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Les animations disponibles programmées dans l'interface. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1" name="a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1"></a>ANIM_IDLE&#160;</td><td class="fielddoc"><p>Pas d'animation. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64" name="a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64"></a>ANIM_MOVE_GOODSWAP&#160;</td><td class="fielddoc"><p>Animation de déplacement pour un échange valide. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44" name="a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44"></a>ANIM_MOVE_BADSWAP&#160;</td><td class="fielddoc"><p>Animation de déplacement pour un échange invalide (qui devra être annulé après l'animation). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797" name="a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797"></a>ANIM_MOVE_ROLLBACK&#160;</td><td class="fielddoc"><p>Animation de déplacement pour annuler un échange invalide. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0" name="a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0"></a>ANIM_MOVE_FALL&#160;</td><td class="fielddoc"><p>Animation de chute des gemmes. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50" name="a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50"></a>ANIM_KILL&#160;</td><td class="fielddoc"><p>Animation d'élimination des gemmes. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f" name="a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f"></a>ANIM_HINT&#160;</td><td class="fielddoc"><p>Animation d'indice. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01" name="a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01"></a>ANIM_SIZE&#160;</td><td class="fielddoc"><p>Nombre de types d'animation. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game__play_8h_source.html#l00041">41</a> du fichier <a class="el" href="game__play_8h_source.html">game_play.h</a>.</p>
+
+</div>
+</div>
+<a id="a731fce576881124219a9c0f328a65c36" name="a731fce576881124219a9c0f328a65c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731fce576881124219a9c0f328a65c36">&#9670;&#160;</a></span>end_signal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a731fce576881124219a9c0f328a65c36">end_signal</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utilisé pour signaler la fin d'une partie. </p>
+<dl class="section attention"><dt>Attention</dt><dd>DÉJÀ ÉCRIT. Ne pas modifier. </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac" name="a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac"></a>SIGNAL_END_LEVEL&#160;</td><td class="fielddoc"><p>Fin de niveau en mode classique. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60" name="a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60"></a>SIGNAL_END_CLGAME&#160;</td><td class="fielddoc"><p>Fin de partie en mode classique. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f" name="a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f"></a>SIGNAL_END_PUZZLE&#160;</td><td class="fielddoc"><p>Fin de partie puzzle. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6" name="a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6"></a>SIGNAL_SIZE&#160;</td><td class="fielddoc"><p>Nombre de signaux. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game__play_8h_source.html#l00094">94</a> du fichier <a class="el" href="game__play_8h_source.html">game_play.h</a>.</p>
+
+</div>
+</div>
+<a id="a944fc3ec73ac8ed28c8947cc6cea99f6" name="a944fc3ec73ac8ed28c8947cc6cea99f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a944fc3ec73ac8ed28c8947cc6cea99f6">&#9670;&#160;</a></span>gem_kill</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6">gem_kill</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Types d'animations d'élimination disponibles pour les gemmes. </p>
+<p>Ces types indiquent comment une gemme doit être animée lorsqu'elle est retirée du plateau. Cette information est utilisée par l'interface pour afficher l'animation appropriée.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>La différence entre KILL_SHRINK, KILL_SHATTER, KILL_EXPLODE et KILL_EXPLODE_RING est uniquement visuelle. </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44" name="a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44"></a>KILL_NOKILL&#160;</td><td class="fielddoc"><p>Gemme non éliminée (pas d'animation). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96" name="a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96"></a>KILL_SHRINK&#160;</td><td class="fielddoc"><p>Gemme qui rétrécit (animation standard). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44" name="a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44"></a>KILL_SHATTER&#160;</td><td class="fielddoc"><p>Gemme qui éclate (pour les gemmes éliminées par un hypercube ou une gemme étoilée). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697" name="a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697"></a>KILL_EXPLODE&#160;</td><td class="fielddoc"><p>Gemme qui explose (pour les gemmes éliminées par une gemme enflammée ou une bombe). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7" name="a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7"></a>KILL_EXPLODE_RING&#160;</td><td class="fielddoc"><p>Gemme qui explose en anneau (pour les gemmes enflammées et les bombes elles-mêmes). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0" name="a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0"></a>KILL_SIZE&#160;</td><td class="fielddoc"><p>Taille de l'énumération <a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6" title="Types d&#39;animations d&#39;élimination disponibles pour les gemmes.">gem_kill</a>. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game__play_8h_source.html#l00328">328</a> du fichier <a class="el" href="game__play_8h_source.html">game_play.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="ae1e2ed2d55b4517715025aa82f4d62a1" name="ae1e2ed2d55b4517715025aa82f4d62a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e2ed2d55b4517715025aa82f4d62a1">&#9670;&#160;</a></span>game_init_animation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_init_animation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Démarre une animation du type spécifié. </p>
+<p>Appelez cette fonction lorsque vous voulez démarrer une animation. Elle bloque les entrées du jeu jusqu'à ce que l'animation soit terminée. À ce moment-là, la fonction game_end_animation (que vous devez écrire) est appelée. Cela vous permet de gérer la fin de l'animation et la transition vers l'état de jeu suivant.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>Puisque l'implémentation du plateau vous revient, l'interface ne peut pas récupérer directement dans la structure de jeu les informations nécessaires pour afficher l'animation. Elle le fait en appelant les fonctions déclarées à la fin de ce fichier. Vous devez donc écrire ces fonctions pour que les animations s'affichent correctement.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Cette fonction est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type d'animation à démarrer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64ae1a0e66719fdf78fdc177e6511f83" name="a64ae1a0e66719fdf78fdc177e6511f83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ae1a0e66719fdf78fdc177e6511f83">&#9670;&#160;</a></span>game_classic_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_classic_score </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'écran de score à la fin d'un niveau en mode classique. </p>
+<p>Appelez cette fonction lorsque le joueur a terminé un niveau d'un jeu classique. Elle affiche l'écran de score. Le niveau suivant démarre lorsque l'utilisateur clique pour continuer.</p>
+<dl class="section attention"><dt>Attention</dt><dd>Cette fonction est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+
+</div>
+</div>
+<a id="a36e508917adf0e7b2efd38343ab1f66a" name="a36e508917adf0e7b2efd38343ab1f66a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36e508917adf0e7b2efd38343ab1f66a">&#9670;&#160;</a></span>game_classic_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_classic_end </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Termine une partie classique. </p>
+<p>Appelez cette fonction lorsqu'il n'y a plus de coups disponibles en mode classique. Elle met fin à la partie et affiche l'écran de score final.</p>
+<dl class="section attention"><dt>Attention</dt><dd>Cette fonction est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+
+</div>
+</div>
+<a id="a16d488ef38260e8ebc9eaf4ad0e439c4" name="a16d488ef38260e8ebc9eaf4ad0e439c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16d488ef38260e8ebc9eaf4ad0e439c4">&#9670;&#160;</a></span>game_puzzle_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_puzzle_end </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Termine une partie puzzle. </p>
+<p>Appelez cette fonction lorsqu'il ne reste plus de gemmes sur le plateau en mode puzzle. Elle met fin à la partie et affiche l'écran de victoire.</p>
+<dl class="section attention"><dt>Attention</dt><dd>Cette fonction est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+
+</div>
+</div>
+<a id="a1324a2e5a956f4c2e9e14a5b303d2cf3" name="a1324a2e5a956f4c2e9e14a5b303d2cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1324a2e5a956f4c2e9e14a5b303d2cf3">&#9670;&#160;</a></span>game_handle_mouse_click()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_handle_mouse_click </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>j</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'un clic souris est effectué sur une case du plateau. </p>
+<p>Cette fonction est appelée lorsque l'utilisateur clique sur une case du plateau. Si les coordonnées sont valides, la fonction doit effectuer les étapes suivantes :</p><ul>
+<li>Si aucune case n'est actuellement sélectionnée, sélectionner la case cliquée sans démarrer d'animation.</li>
+<li>Si une case est déjà sélectionnée mais que c'est la même que la case cliquée, la désélectionner sans démarrer d'animation.</li>
+<li>Si une case différente est déjà sélectionnée et que la case cliquée n'est PAS adjacente, désélectionner la case précédemment sélectionnée et sélectionner la case cliquée sans démarrer d'animation.</li>
+<li>Si une case différente est déjà sélectionnée et que la case cliquée EST adjacente, tenter d'échanger la case sélectionnée avec la case cliquée. Si l'échange est valide (c.-à-d. crée au moins une zone destructible), démarrer une animation GOODSWAP. S'il est invalide (c.-à-d. ne crée aucune zone destructible), démarrer une animation BADSWAP.</li>
+</ul>
+<dl class="section attention"><dt>Attention</dt><dd>Lorsqu'une animation est démarrée, l'interface bloque les entrées jusqu'à la fin de l'animation. À ce moment-là, elle appelle la fonction "game_end_animation" que vous devez implémenter pour gérer la suite. Par exemple, après une animation GOODSWAP, vous devrez démarrer une animation KILL car des zones destructibles sont à supprimer. À l'inverse, après une animation BADSWAP, vous devrez annuler l'échange avec une animation ROLLBACK. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">i</td><td>Coordonnée horizontale de la case dans le plateau (de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée verticale de la case dans le plateau (de haut en bas). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2cd4871bec0a43ab140d76b2b75122de" name="a2cd4871bec0a43ab140d76b2b75122de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd4871bec0a43ab140d76b2b75122de">&#9670;&#160;</a></span>game_handle_hint_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_handle_hint_request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'une demande d'indice est faite (par ex., clic sur le bouton indice). </p>
+<p>Cette fonction vérifie si un coup est disponible sur le plateau. Le cas échéant, elle propose un indice en sélectionnant une case qui peut être échangée pour créer un alignement et démarre l'animation HINT pour la mettre en évidence. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2cb2c26c3a27f4552e64c2252e22cad6" name="a2cb2c26c3a27f4552e64c2252e22cad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb2c26c3a27f4552e64c2252e22cad6">&#9670;&#160;</a></span>game_handle_detonation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_handle_detonation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'une détonation est demandée par le joueur. </p>
+<p>Cette fonction n'est appelée que si le jeu n'est PAS en mode nodelay (c.-à-d. les gemmes ne sont pas supprimées automatiquement après chaque échange). Elle gère la suppression des gemmes : vérifie s'il y a des gemmes à supprimer, met à jour l'état du jeu, puis démarre une animation KILL. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a54499c12942b45cd85fe82b761eeeedb" name="a54499c12942b45cd85fe82b761eeeedb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54499c12942b45cd85fe82b761eeeedb">&#9670;&#160;</a></span>game_set_gravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_set_gravity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a></td>          <td class="paramname"><span class="paramname"><em>dir</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'un changement de gravité vers une direction donnée est demandé. </p>
+<p>Une fois la gravité changée, la fonction doit vérifier si des gemmes peuvent tomber selon la nouvelle direction de gravité et, le cas échéant, les faire tomber (en particulier, une animation FALL doit être démarrée dans ce cas). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">dir</td><td>Nouvelle direction de la gravité. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6596d1cb756cb2a916fb04cbba02bc0e" name="a6596d1cb756cb2a916fb04cbba02bc0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6596d1cb756cb2a916fb04cbba02bc0e">&#9670;&#160;</a></span>game_cycle_gravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_cycle_gravity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsque la gravité est modifiée dans le sens horaire. </p>
+<p>Une fois la gravité changée, la fonction doit vérifier si des gemmes peuvent tomber selon la nouvelle direction de gravité et, le cas échéant, les faire tomber (en particulier, une animation FALL doit être démarrée dans ce cas). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e4a00ae56ae68a932a5ede6726e1dd1" name="a5e4a00ae56ae68a932a5ede6726e1dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e4a00ae56ae68a932a5ede6726e1dd1">&#9670;&#160;</a></span>game_handle_refill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_handle_refill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>k</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'un le joueur veut récupérer un objet dans la file de stockage. </p>
+<p>Cette fonction remplit le plateau depuis la file de stockage (si cette file n'est pas vide). Elle fait tomber l'objet récupéré depuis le côté opposé à la gravité à partir de l'indice spécifié en entrée.</p>
+<p>Cette fonction ne peut être utilisée qu'en mode puzzle lorsque la file de stockage est activée. Après avoir placé la gemme sur le plateau, la fonction doit démarrer une animation FALL pour faire tomber l'objet jusqu'à sa position.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>Si la demande ne peut pas être satisfaite (par exemple parce que la file de stockage est vide ou qu'il n'y a pas de place disponible sur le plateau pour placer la gemme), la fonction doit retourner sans rien faire (en particulier, aucune animation n'est démarrée). </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>Indice de la file de stockage à utiliser pour le remplissage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b4fa22a43b16fc32af54d1e5481b644" name="a9b4fa22a43b16fc32af54d1e5481b644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b4fa22a43b16fc32af54d1e5481b644">&#9670;&#160;</a></span>game_end_animation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_end_animation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'une animation se termine. </p>
+<p>Cette fonction est appelée lorsqu'une animation démarrée (par vous) avec game_init_animation se termine. Elle fournit le type d'animation qui vient de se terminer afin que vous puissiez gérer la suite du jeu. La suite dépend du type d'animation et de l'état du jeu. Deux exemples :</p>
+<p>Quand une animation FALL se termine, vous devez vérifier si des gemmes peuvent être éliminées,</p><ul>
+<li>si oui, mettez à jour l'état du jeu en conséquence et démarrez une animation KILL pour supprimer ces gemmes ;</li>
+<li>sinon, revenez à l'animation IDLE (qui permet de nouvelles entrées utilisateur).</li>
+</ul>
+<p>Quand une animation KILL se termine, vous devez vérifier si des gemmes peuvent tomber selon la gravité,</p><ul>
+<li>si oui, mettez à jour l'état du jeu en conséquence et démarrez une animation FALL pour les faire tomber ;</li>
+<li>sinon, revenez à l'animation IDLE (qui permet de nouvelles entrées utilisateur).</li>
+</ul>
+<dl class="section remark"><dt>Remarques</dt><dd>C'est également ici que vous devez mettre fin à une partie :<ul>
+<li>en mode classique, si un niveau a été terminé, appelez la fonction game_classic_score ;</li>
+<li>en mode classique, si le joueur n'a plus de coups (le joueur a perdu), appelez game_classic_end ;</li>
+<li>en mode puzzle, si le plateau est vide (le joueur a gagné), appelez game_puzzle_end. </li>
+</ul>
+</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">type</td><td>Type de l'animation qui vient de se terminer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af02e2bb06ad073fb468c73c3bee9c87c" name="af02e2bb06ad073fb468c73c3bee9c87c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02e2bb06ad073fb468c73c3bee9c87c">&#9670;&#160;</a></span>game_get_cell_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a> game_get_cell_move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>j</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>distance</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface uniquement lors des animations MOVE. Elle l'utilise pour récupérer les informations de déplacement des cases à afficher. </p>
+<p>Lors du premier appel (au début de l'animation), chaque élément doit déjà être à sa position finale (c.-à-d. après l'application du mouvement sur le plateau). Pour une case donnée, l'interface appelle cette fonction afin de savoir si le contenu de la case doit être déplacé depuis une autre position vers sa position actuelle et, le cas échéant, la direction et la distance du déplacement.</p>
+<p>Par exemple, si la fonction renvoie la direction LEFT et une distance 3 pour une case donnée, cela signifie que durant l'animation MOVE, le contenu démarrera 3 cases à DROITE de sa position actuelle et se déplacera vers la GAUCHE pour atteindre sa position finale.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>Les quatre animations de déplacement sont gérées de manière identique par l'interface.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La direction du déplacement. La distance parcourue est affectée au pointeur fourni. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">i</td><td>Coordonnée horizontale de la case dans le plateau (de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée verticale de la case dans le plateau (de haut en bas).  </td></tr>
+    <tr><td class="paramname">distance</td><td>Pointeur pour stocker la distance (peut être NULL si non nécessaire). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f741399745cf22fb3d767d58cf9fa00" name="a5f741399745cf22fb3d767d58cf9fa00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f741399745cf22fb3d767d58cf9fa00">&#9670;&#160;</a></span>game_get_cell_kill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a944fc3ec73ac8ed28c8947cc6cea99f6">gem_kill</a> game_get_cell_kill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>j</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface uniquement lors d'une animation KILL. Elle l'utilise pour récupérer les informations sur les cases à éliminer et l'animation à utiliser. </p>
+<p>Lors de l'appel, les éléments à éliminer doivent encore être sur le plateau (au démarrage d'une animation KILL, les éléments ne sont pas encore retirés ; ils sont seulement marqués, car l'interface doit connaître les types de gemmes à afficher). Pour chaque case, l'interface appelle cette fonction pour savoir si la case est marquée pour élimination et, le cas échéant, quelle animation utiliser.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>KILL_NOKILL si la case n'est pas marquée pour élimination ; sinon, l'animation d'élimination à afficher. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">i</td><td>Coordonnée horizontale de la case dans le plateau (de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée verticale de la case dans le plateau (de haut en bas). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42a14ef69830061c3975043003468f48" name="a42a14ef69830061c3975043003468f48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a14ef69830061c3975043003468f48">&#9670;&#160;</a></span>game_retrieve_hint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool game_retrieve_hint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>j</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'elle exécute une animation HINT. Sert à récupérer les coordonnées de la case à mettre en évidence. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>true si une case est effectivement mise en évidence, false sinon (ne devrait pas se produire puisqu'une animation HINT a été lancée). </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu.  </td></tr>
+    <tr><td class="paramname">i</td><td>Pointeur pour retourner la coordonnée horizontale de la case surlignée (de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur pour retourner la coordonnée verticale de la case surlignée (de haut en bas). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="a187d0f37c47a9f1b43da766cefc8deaf" name="a187d0f37c47a9f1b43da766cefc8deaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187d0f37c47a9f1b43da766cefc8deaf">&#9670;&#160;</a></span>game_anim_signal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a31d289b983e452f756528ed2a8efb763">anim_type</a> game_anim_signal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Variable globale utilisée pour signaler à l'interface quelle animation démarrer. </p>
+<dl class="section attention"><dt>Attention</dt><dd>Cette variable est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+
+</div>
+</div>
+<a id="aeaa751f5198093b17a4560d765421ba8" name="aeaa751f5198093b17a4560d765421ba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa751f5198093b17a4560d765421ba8">&#9670;&#160;</a></span>game_end_signal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a731fce576881124219a9c0f328a65c36">end_signal</a> game_end_signal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Variable globale utilisée pour indiquer à l'interface quel écran de score afficher. </p>
+<dl class="section attention"><dt>Attention</dt><dd>Cette variable est DÉJÀ ÉCRITE. Vous ne devez pas la modifier. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__play_8h.html">game_play.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

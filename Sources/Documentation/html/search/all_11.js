@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['target_5fscore_0',['target_score',['../structscore__block.html#a6ddd7c025e2bb86591747beba23fb90e',1,'score_block']]],
+  ['test_5fbalanced_1',['TEST_BALANCED',['../project__parameters_8h.html#a2e4341f96489d91bb23d94263fa32a72',1,'project_parameters.h']]],
+  ['test_5fbombs_2',['TEST_BOMBS',['../project__parameters_8h.html#ad86ab79a65d1280601c0c6fc15b5c606',1,'project_parameters.h']]],
+  ['test_5feasy_3',['TEST_EASY',['../project__parameters_8h.html#a4d89963672c77fb75117c212da450c83',1,'project_parameters.h']]],
+  ['test_5fheight_4',['TEST_HEIGHT',['../project__parameters_8h.html#a14389c8a68cdb41f60ab749fb1e12627',1,'project_parameters.h']]],
+  ['test_5flines_5',['TEST_LINES',['../project__parameters_8h.html#ae4873e864ff78b5c86da84cc86db6e8d',1,'project_parameters.h']]],
+  ['test_5fnodelay_6',['TEST_NODELAY',['../project__parameters_8h.html#a58bb4744751b01e1d2d227f00dc66f56',1,'project_parameters.h']]],
+  ['test_5fpuzzle_7',['TEST_PUZZLE',['../project__parameters_8h.html#a95964fbf58f22fcbfc1344450c781583',1,'project_parameters.h']]],
+  ['test_5frefill_5fmode_8',['TEST_REFILL_MODE',['../project__parameters_8h.html#aec8f20cd42250f7e2552763fb8004062',1,'project_parameters.h']]],
+  ['test_5fstorage_5finitial_9',['TEST_STORAGE_INITIAL',['../project__parameters_8h.html#ae333b23c98188c41a19548cf32e5dd57',1,'project_parameters.h']]],
+  ['test_5fupgrades_10',['TEST_UPGRADES',['../project__parameters_8h.html#aa8bdfc0e63037147795c0b628c1014f4',1,'project_parameters.h']]],
+  ['test_5fwidth_11',['TEST_WIDTH',['../project__parameters_8h.html#aac140cade81e418372ce9c3a3c8ebb10',1,'project_parameters.h']]],
+  ['test_5fwrap_12',['TEST_WRAP',['../project__parameters_8h.html#ac503b7d8eee407766028258442dd4b00',1,'project_parameters.h']]],
+  ['topaz_13',['TOPAZ',['../game_8h.html#aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d',1,'game.h']]],
+  ['trace_14',['TRACE',['../error_8h.html#a3067238f546cd726d1c6097bf36766b7',1,'TRACE:&#160;error.h'],['../error_8h.html#a4ac568348fbda3f2ce37f4cfc14c9598a7fa27e82c6c4f69434225ed81e5d151e',1,'TRACE:&#160;error.h']]],
+  ['trace_5fl_15',['TRACE_L',['../error_8h.html#a4b2413368a69341ef9ae7c1c8559416ea6571d99398352180b8ff9e33d65b2e71',1,'error.h']]],
+  ['type_16',['type',['../structsolver__move.html#a43ad5813f5daf2f5864ff1d5c1c2a96e',1,'solver_move']]]
+];

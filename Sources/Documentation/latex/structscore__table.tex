@@ -1,0 +1,115 @@
+\doxysection{Référence de la structure score\+\_\+table}
+\hypertarget{structscore__table}{}\label{structscore__table}\index{score\_table@{score\_table}}
+
+
+Structure permettant de stocker le tableau des scores affiché par l\textquotesingle{}interface graphique (GUI).  
+
+
+
+
+{\ttfamily \#include $<$game\+\_\+scores.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+char(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structscore__table_a7367d682545a13d06a44d90f238cf1bb}{names}} )\mbox{[}64\mbox{]}
+\begin{DoxyCompactList}\small\item\em Pointeur vers un tableau de noms de joueurs. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structscore__table_a80ff7adef586c4fadfb98807de4f0df9}{scores}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers un tableau de scores. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structscore__table_a439227feff9d7f55384e8780cfc2eb82}{size}}
+\item 
+int \mbox{\hyperlink{structscore__table_ac46dd81307b498cca4749973c32fbfe0}{player\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em Indice du score du joueur actuel (-\/1 si absent). \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structscore__table_a45b1e9ba5ab2a4e6d9b26818e51e0463}{permutation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure permettant de stocker le tableau des scores affiché par l\textquotesingle{}interface graphique (GUI). 
+
+Cette structure est utilisée dans trois situations spécifiques \+:
+\begin{DoxyItemize}
+\item Lors de l\textquotesingle{}affichage des meilleurs scores dans le menu. Dans ce cas, elle est remplie uniquement avec les scores chargés depuis le fichier de scores.
+\item Lors de l\textquotesingle{}affichage du score à la fin d\textquotesingle{}un niveau dans une partie classique. Dans ce cas, elle contient les meilleurs scores chargés depuis le fichier de scores ainsi que le score du joueur actuel.
+\item Lors de l\textquotesingle{}affichage du score final à la fin d\textquotesingle{}une partie classique. Dans ce cas, elle contient les meilleurs scores chargés depuis le fichier de scores ainsi que le score du joueur actuel.
+\end{DoxyItemize}
+
+\begin{DoxyRemark}{Remarques}
+Le tableau des noms de joueurs contient des chaînes de caractères d\textquotesingle{}une longueur maximale de 64 (y compris le caractère nul de fin), ce qui signifie que les noms de joueurs peuvent comporter au maximum 63 caractères. 
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00054}{54}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structscore__table_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structscore__table_a7367d682545a13d06a44d90f238cf1bb}\index{score\_table@{score\_table}!names@{names}}
+\index{names@{names}!score\_table@{score\_table}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{structscore__table_a7367d682545a13d06a44d90f238cf1bb} 
+char(\texorpdfstring{$\ast$}{*} names)\mbox{[}64\mbox{]}}
+
+
+
+Pointeur vers un tableau de noms de joueurs. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00055}{55}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+\Hypertarget{structscore__table_a80ff7adef586c4fadfb98807de4f0df9}\index{score\_table@{score\_table}!scores@{scores}}
+\index{scores@{scores}!score\_table@{score\_table}}
+\doxysubsubsection{\texorpdfstring{scores}{scores}}
+{\footnotesize\ttfamily \label{structscore__table_a80ff7adef586c4fadfb98807de4f0df9} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} scores}
+
+
+
+Pointeur vers un tableau de scores. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00056}{56}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+\Hypertarget{structscore__table_a439227feff9d7f55384e8780cfc2eb82}\index{score\_table@{score\_table}!size@{size}}
+\index{size@{size}!score\_table@{score\_table}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \label{structscore__table_a439227feff9d7f55384e8780cfc2eb82} 
+int size}
+
+Nombre d\textquotesingle{}entrées dans la table des scores (taille des tableaux des noms et des scores). 
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00057}{57}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+\Hypertarget{structscore__table_ac46dd81307b498cca4749973c32fbfe0}\index{score\_table@{score\_table}!player\_index@{player\_index}}
+\index{player\_index@{player\_index}!score\_table@{score\_table}}
+\doxysubsubsection{\texorpdfstring{player\_index}{player\_index}}
+{\footnotesize\ttfamily \label{structscore__table_ac46dd81307b498cca4749973c32fbfe0} 
+int player\+\_\+index}
+
+
+
+Indice du score du joueur actuel (-\/1 si absent). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00059}{59}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+\Hypertarget{structscore__table_a45b1e9ba5ab2a4e6d9b26818e51e0463}\index{score\_table@{score\_table}!permutation@{permutation}}
+\index{permutation@{permutation}!score\_table@{score\_table}}
+\doxysubsubsection{\texorpdfstring{permutation}{permutation}}
+{\footnotesize\ttfamily \label{structscore__table_a45b1e9ba5ab2a4e6d9b26818e51e0463} 
+int\texorpdfstring{$\ast$}{*} permutation}
+
+Pointeur vers un tableau représentant l\textquotesingle{}ordre trié des scores. 
+
+Définition à la ligne \mbox{\hyperlink{game__scores_8h_source_l00060}{60}} du fichier \mbox{\hyperlink{game__scores_8h_source}{game\+\_\+scores.\+h}}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game__scores_8h}{game\+\_\+scores.\+h}}\end{DoxyCompactItemize}

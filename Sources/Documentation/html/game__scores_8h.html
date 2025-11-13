@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A: Référence du fichier game_scores.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__scores_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier game_scores.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des meilleurs scores en mode classique. Contient les fonctions permettant de charger, sauvegarder et trier les meilleurs scores à partir du fichier de scores.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="alloc_8h_source.html">alloc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div>
+<p><a href="game__scores_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:score_5Ftable" id="r_score_5Ftable"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscore__table.html">score_table</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure permettant de stocker le tableau des scores affiché par l'interface graphique (GUI).  <a href="structscore__table.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a56a82649320247fd21fe9607236b73f5" id="r_a56a82649320247fd21fe9607236b73f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structscore__table.html">score_table</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56a82649320247fd21fe9607236b73f5">load_score_table</a> (const char *filepath, int *player_score)</td></tr>
+<tr class="memdesc:a56a82649320247fd21fe9607236b73f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface graphique (GUI) pour charger le tableau des scores depuis le fichier de scores.  <br /></td></tr>
+<tr class="memitem:a23df78c5b568c2549c0e45d0e6eb7d79" id="r_a23df78c5b568c2549c0e45d0e6eb7d79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23df78c5b568c2549c0e45d0e6eb7d79">save_score_table</a> (<a class="el" href="structscore__table.html">score_table</a> *table, const char *filepath, const char *playername)</td></tr>
+<tr class="memdesc:a23df78c5b568c2549c0e45d0e6eb7d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface graphique (GUI) pour sauvegarder une table de scores dans un fichier de scores.  <br /></td></tr>
+<tr class="memitem:a648cb18d0431dcd4bc910e6a23e70a20" id="r_a648cb18d0431dcd4bc910e6a23e70a20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a648cb18d0431dcd4bc910e6a23e70a20">delete_score_table</a> (<a class="el" href="structscore__table.html">score_table</a> *table)</td></tr>
+<tr class="memdesc:a648cb18d0431dcd4bc910e6a23e70a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface graphique (GUI) pour supprimer une table de scores et libérer la mémoire allouée.  <br /></td></tr>
+<tr class="memitem:af65c575cb1d616017e09e5023e353e02" id="r_af65c575cb1d616017e09e5023e353e02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af65c575cb1d616017e09e5023e353e02">sort_score_table</a> (<a class="el" href="structscore__table.html">score_table</a> *table, <a class="el" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9">score_type</a> type)</td></tr>
+<tr class="memdesc:af65c575cb1d616017e09e5023e353e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">par l'interface graphique (GUI) pour trier to sort une table de scores en ordre décroissant, sur la base d'un type de score spécifié.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des meilleurs scores en mode classique. Contient les fonctions permettant de charger, sauvegarder et trier les meilleurs scores à partir du fichier de scores. </p>
+<p>Il est nécessaire de respecter le format spécifié pour le fichier de scores afin d'assurer un chargement et une sauvegarde corrects des scores (voir la documentation du projet pour plus de détails). </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="game__scores_8h_source.html">game_scores.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a56a82649320247fd21fe9607236b73f5" name="a56a82649320247fd21fe9607236b73f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a82649320247fd21fe9607236b73f5">&#9670;&#160;</a></span>load_score_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structscore__table.html">score_table</a> * load_score_table </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>player_score</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface graphique (GUI) pour charger le tableau des scores depuis le fichier de scores. </p>
+<p>Cette fonction lit un tableau de scores à partir du fichier spécifié. Si le fichier n'existe pas, elle crée un tableau de scores vide. Si player_score est fourni, il est ajouté comme entrée pour le joueur actuel sous le nom « Player ». </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Chemin d'accès sur disque au fichier des scores.  </td></tr>
+    <tr><td class="paramname">player_score</td><td>Pointeur vers le tableau de score du joueur actuel (NULL si utilisé pour charger les meilleurs scores depuis le menu). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23df78c5b568c2549c0e45d0e6eb7d79" name="a23df78c5b568c2549c0e45d0e6eb7d79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23df78c5b568c2549c0e45d0e6eb7d79">&#9670;&#160;</a></span>save_score_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_score_table </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structscore__table.html">score_table</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>playername</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface graphique (GUI) pour sauvegarder une table de scores dans un fichier de scores. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Pointeur vers la table des scores à sauvegarder.  </td></tr>
+    <tr><td class="paramname">filepath</td><td>Chemin d'accès au fichier de scores.  </td></tr>
+    <tr><td class="paramname">playername</td><td>Nom choisi pour le joueur courant (peut être NULL, quand aucun score du joueur courant n'est chargé dans la table). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a648cb18d0431dcd4bc910e6a23e70a20" name="a648cb18d0431dcd4bc910e6a23e70a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a648cb18d0431dcd4bc910e6a23e70a20">&#9670;&#160;</a></span>delete_score_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_score_table </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structscore__table.html">score_table</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface graphique (GUI) pour supprimer une table de scores et libérer la mémoire allouée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Pointeur vers la table des scores à supprimer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af65c575cb1d616017e09e5023e353e02" name="af65c575cb1d616017e09e5023e353e02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af65c575cb1d616017e09e5023e353e02">&#9670;&#160;</a></span>sort_score_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sort_score_table </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structscore__table.html">score_table</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="game_8h.html#aed36276ae7ac961357268efdfdbc85f9">score_type</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>par l'interface graphique (GUI) pour trier to sort une table de scores en ordre décroissant, sur la base d'un type de score spécifié. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Pointeur vers la table des scores à trier.  </td></tr>
+    <tr><td class="paramname">type</td><td>Type de score selon lequel trier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__scores_8h.html">game_scores.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

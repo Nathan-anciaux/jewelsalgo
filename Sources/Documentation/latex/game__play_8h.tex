@@ -1,0 +1,563 @@
+\doxysection{Référence du fichier game\+\_\+play.\+h}
+\hypertarget{game__play_8h}{}\label{game__play_8h}\index{game\_play.h@{game\_play.h}}
+
+
+Fonctions appelées par l\textquotesingle{}interface (GUI) pour gérer les entrées utilisateur. C\textquotesingle{}est ici que la logique du jeu doit être implémentée.  
+
+
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+solver.\+h"{}}\newline
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}} \{ \newline
+\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1}{ANIM\+\_\+\+IDLE}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64}{ANIM\+\_\+\+MOVE\+\_\+\+GOODSWAP}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44}{ANIM\+\_\+\+MOVE\+\_\+\+BADSWAP}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797}{ANIM\+\_\+\+MOVE\+\_\+\+ROLLBACK}}
+, \newline
+\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0}{ANIM\+\_\+\+MOVE\+\_\+\+FALL}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50}{ANIM\+\_\+\+KILL}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f}{ANIM\+\_\+\+HINT}}
+, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01}{ANIM\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Les animations disponibles programmées dans l\textquotesingle{}interface. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36}{end\+\_\+signal}} \{ \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac}{SIGNAL\+\_\+\+END\+\_\+\+LEVEL}}
+, \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60}{SIGNAL\+\_\+\+END\+\_\+\+CLGAME}}
+, \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f}{SIGNAL\+\_\+\+END\+\_\+\+PUZZLE}}
+, \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6}{SIGNAL\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Utilisé pour signaler la fin d\textquotesingle{}une partie. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}{gem\+\_\+kill}} \{ \newline
+\mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44}{KILL\+\_\+\+NOKILL}}
+, \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96}{KILL\+\_\+\+SHRINK}}
+, \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44}{KILL\+\_\+\+SHATTER}}
+, \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697}{KILL\+\_\+\+EXPLODE}}
+, \newline
+\mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7}{KILL\+\_\+\+EXPLODE\+\_\+\+RING}}
+, \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0}{KILL\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types d\textquotesingle{}animations d\textquotesingle{}élimination disponibles pour les gemmes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__play_8h_ae1e2ed2d55b4517715025aa82f4d62a1}{game\+\_\+init\+\_\+animation}} (\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em Démarre une animation du type spécifié. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a64ae1a0e66719fdf78fdc177e6511f83}{game\+\_\+classic\+\_\+score}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran de score à la fin d\textquotesingle{}un niveau en mode classique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a36e508917adf0e7b2efd38343ab1f66a}{game\+\_\+classic\+\_\+end}} (void)
+\begin{DoxyCompactList}\small\item\em Termine une partie classique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a16d488ef38260e8ebc9eaf4ad0e439c4}{game\+\_\+puzzle\+\_\+end}} (void)
+\begin{DoxyCompactList}\small\item\em Termine une partie puzzle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a1324a2e5a956f4c2e9e14a5b303d2cf3}{game\+\_\+handle\+\_\+mouse\+\_\+click}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, int i, int j)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un clic souris est effectué sur une case du plateau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a2cd4871bec0a43ab140d76b2b75122de}{game\+\_\+handle\+\_\+hint\+\_\+request}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une demande d\textquotesingle{}indice est faite (par ex., clic sur le bouton indice). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a2cb2c26c3a27f4552e64c2252e22cad6}{game\+\_\+handle\+\_\+detonation}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une détonation est demandée par le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a54499c12942b45cd85fe82b761eeeedb}{game\+\_\+set\+\_\+gravity}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} dir)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un changement de gravité vers une direction donnée est demandé. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a6596d1cb756cb2a916fb04cbba02bc0e}{game\+\_\+cycle\+\_\+gravity}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsque la gravité est modifiée dans le sens horaire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a5e4a00ae56ae68a932a5ede6726e1dd1}{game\+\_\+handle\+\_\+refill}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, int k)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un le joueur veut récupérer un objet dans la file de stockage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__play_8h_a9b4fa22a43b16fc32af54d1e5481b644}{game\+\_\+end\+\_\+animation}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une animation se termine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} \mbox{\hyperlink{game__play_8h_af02e2bb06ad073fb468c73c3bee9c87c}{game\+\_\+get\+\_\+cell\+\_\+move}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, int i, int j, int \texorpdfstring{$\ast$}{*}distance)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface uniquement lors des animations MOVE. Elle l\textquotesingle{}utilise pour récupérer les informations de déplacement des cases à afficher. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}{gem\+\_\+kill}} \mbox{\hyperlink{game__play_8h_a5f741399745cf22fb3d767d58cf9fa00}{game\+\_\+get\+\_\+cell\+\_\+kill}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, int i, int j)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface uniquement lors d\textquotesingle{}une animation KILL. Elle l\textquotesingle{}utilise pour récupérer les informations sur les cases à éliminer et l\textquotesingle{}animation à utiliser. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game__play_8h_a42a14ef69830061c3975043003468f48}{game\+\_\+retrieve\+\_\+hint}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, int \texorpdfstring{$\ast$}{*}i, int \texorpdfstring{$\ast$}{*}j)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}elle exécute une animation HINT. Sert à récupérer les coordonnées de la case à mettre en évidence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}} \mbox{\hyperlink{game__play_8h_a187d0f37c47a9f1b43da766cefc8deaf}{game\+\_\+anim\+\_\+signal}}
+\begin{DoxyCompactList}\small\item\em Variable globale utilisée pour signaler à l\textquotesingle{}interface quelle animation démarrer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36}{end\+\_\+signal}} \mbox{\hyperlink{game__play_8h_aeaa751f5198093b17a4560d765421ba8}{game\+\_\+end\+\_\+signal}}
+\begin{DoxyCompactList}\small\item\em Variable globale utilisée pour indiquer à l\textquotesingle{}interface quel écran de score afficher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fonctions appelées par l\textquotesingle{}interface (GUI) pour gérer les entrées utilisateur. C\textquotesingle{}est ici que la logique du jeu doit être implémentée. 
+
+Ce fichier déclare les fonctions que l\textquotesingle{}interface appelle pour gérer les interactions utilisateur pendant la partie. Vous devez implémenter ces fonctions pour traiter les clics de souris, les demandes d\textquotesingle{}indice, les détonations, les changements de gravité et les utilisations de la file de stockage. Il vous revient également de gérer les animations \+:
+\begin{DoxyItemize}
+\item Vous pouvez démarrer des animations avec la fonction "{}game\+\_\+init\+\_\+animation"{} qui est déjà écrite.
+\item Une fois une animation démarrée, l\textquotesingle{}interface bloque les entrées utilisateur jusqu\textquotesingle{}à la fin de l\textquotesingle{}animation. À ce moment-\/là, elle appelle la fonction "{}game\+\_\+end\+\_\+animation"{} que vous devez implémenter pour gérer les étapes suivantes.
+\end{DoxyItemize}
+
+\begin{DoxyAttention}{Attention}
+Vous pouvez écrire des fonctions utilitaires supplémentaires si nécessaire, mais vous ne devez PAS modifier les prototypes de fonctions fournis dans ce fichier. 
+\end{DoxyAttention}
+
+
+Définition dans le fichier \mbox{\hyperlink{game__play_8h_source}{game\+\_\+play.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{game__play_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763}\index{game\_play.h@{game\_play.h}!anim\_type@{anim\_type}}
+\index{anim\_type@{anim\_type}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{anim\_type}{anim\_type}}
+{\footnotesize\ttfamily \label{game__play_8h_a31d289b983e452f756528ed2a8efb763} 
+enum \mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}}}
+
+
+
+Les animations disponibles programmées dans l\textquotesingle{}interface. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_IDLE@{ANIM\_IDLE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_IDLE@{ANIM\_IDLE}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763aed7d27993ddd345e399d8c599a9151c1} 
+ANIM\+\_\+\+IDLE&Pas d\textquotesingle{}animation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_MOVE\_GOODSWAP@{ANIM\_MOVE\_GOODSWAP}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_MOVE\_GOODSWAP@{ANIM\_MOVE\_GOODSWAP}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763a20ab227483f5c863d3be590b41e5dc64} 
+ANIM\+\_\+\+MOVE\+\_\+\+GOODSWAP&Animation de déplacement pour un échange valide. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_MOVE\_BADSWAP@{ANIM\_MOVE\_BADSWAP}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_MOVE\_BADSWAP@{ANIM\_MOVE\_BADSWAP}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763ae56d6327e0572db9b235ff256cb87f44} 
+ANIM\+\_\+\+MOVE\+\_\+\+BADSWAP&Animation de déplacement pour un échange invalide (qui devra être annulé après l\textquotesingle{}animation). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_MOVE\_ROLLBACK@{ANIM\_MOVE\_ROLLBACK}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_MOVE\_ROLLBACK@{ANIM\_MOVE\_ROLLBACK}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763a35536ef54d87cb29b850da2b8c620797} 
+ANIM\+\_\+\+MOVE\+\_\+\+ROLLBACK&Animation de déplacement pour annuler un échange invalide. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_MOVE\_FALL@{ANIM\_MOVE\_FALL}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_MOVE\_FALL@{ANIM\_MOVE\_FALL}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763ac43ee83421c83ebd0628aaa4752c9ee0} 
+ANIM\+\_\+\+MOVE\+\_\+\+FALL&Animation de chute des gemmes. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_KILL@{ANIM\_KILL}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_KILL@{ANIM\_KILL}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763ad595c019d6bb2253bb3789007ba04a50} 
+ANIM\+\_\+\+KILL&Animation d\textquotesingle{}élimination des gemmes. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_HINT@{ANIM\_HINT}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_HINT@{ANIM\_HINT}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763accba4f9907a9e9f58cb1a046e3521e0f} 
+ANIM\+\_\+\+HINT&Animation d\textquotesingle{}indice. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIM\_SIZE@{ANIM\_SIZE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!ANIM\_SIZE@{ANIM\_SIZE}}}\Hypertarget{game__play_8h_a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01}\label{game__play_8h_a31d289b983e452f756528ed2a8efb763a4c7dfdf3043691b9a6c9bfcb6004dc01} 
+ANIM\+\_\+\+SIZE&Nombre de types d\textquotesingle{}animation. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__play_8h_source_l00041}{41}} du fichier \mbox{\hyperlink{game__play_8h_source}{game\+\_\+play.\+h}}.
+
+\Hypertarget{game__play_8h_a731fce576881124219a9c0f328a65c36}\index{game\_play.h@{game\_play.h}!end\_signal@{end\_signal}}
+\index{end\_signal@{end\_signal}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{end\_signal}{end\_signal}}
+{\footnotesize\ttfamily \label{game__play_8h_a731fce576881124219a9c0f328a65c36} 
+enum \mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36}{end\+\_\+signal}}}
+
+
+
+Utilisé pour signaler la fin d\textquotesingle{}une partie. 
+
+\begin{DoxyAttention}{Attention}
+DÉ\+JÀ É\+CRIT. Ne pas modifier. 
+\end{DoxyAttention}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNAL\_END\_LEVEL@{SIGNAL\_END\_LEVEL}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!SIGNAL\_END\_LEVEL@{SIGNAL\_END\_LEVEL}}}\Hypertarget{game__play_8h_a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac}\label{game__play_8h_a731fce576881124219a9c0f328a65c36a564df124af44ec4fd3c7ace2a95b31ac} 
+SIGNAL\+\_\+\+END\+\_\+\+LEVEL&Fin de niveau en mode classique. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNAL\_END\_CLGAME@{SIGNAL\_END\_CLGAME}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!SIGNAL\_END\_CLGAME@{SIGNAL\_END\_CLGAME}}}\Hypertarget{game__play_8h_a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60}\label{game__play_8h_a731fce576881124219a9c0f328a65c36a0c109a77ac4a2223e1a06c56a1159e60} 
+SIGNAL\+\_\+\+END\+\_\+\+CLGAME&Fin de partie en mode classique. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNAL\_END\_PUZZLE@{SIGNAL\_END\_PUZZLE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!SIGNAL\_END\_PUZZLE@{SIGNAL\_END\_PUZZLE}}}\Hypertarget{game__play_8h_a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f}\label{game__play_8h_a731fce576881124219a9c0f328a65c36aa07d2cb5b1c9399cd3d1c977ff16da9f} 
+SIGNAL\+\_\+\+END\+\_\+\+PUZZLE&Fin de partie puzzle. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNAL\_SIZE@{SIGNAL\_SIZE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!SIGNAL\_SIZE@{SIGNAL\_SIZE}}}\Hypertarget{game__play_8h_a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6}\label{game__play_8h_a731fce576881124219a9c0f328a65c36aa1c2a665ba2fcdf37e93515d0a21e4f6} 
+SIGNAL\+\_\+\+SIZE&Nombre de signaux. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__play_8h_source_l00094}{94}} du fichier \mbox{\hyperlink{game__play_8h_source}{game\+\_\+play.\+h}}.
+
+\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}\index{game\_play.h@{game\_play.h}!gem\_kill@{gem\_kill}}
+\index{gem\_kill@{gem\_kill}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{gem\_kill}{gem\_kill}}
+{\footnotesize\ttfamily \label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6} 
+enum \mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}{gem\+\_\+kill}}}
+
+
+
+Types d\textquotesingle{}animations d\textquotesingle{}élimination disponibles pour les gemmes. 
+
+Ces types indiquent comment une gemme doit être animée lorsqu\textquotesingle{}elle est retirée du plateau. Cette information est utilisée par l\textquotesingle{}interface pour afficher l\textquotesingle{}animation appropriée.
+
+\begin{DoxyRemark}{Remarques}
+La différence entre KILL\+\_\+\+SHRINK, KILL\+\_\+\+SHATTER, KILL\+\_\+\+EXPLODE et KILL\+\_\+\+EXPLODE\+\_\+\+RING est uniquement visuelle. 
+\end{DoxyRemark}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_NOKILL@{KILL\_NOKILL}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_NOKILL@{KILL\_NOKILL}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a8ad5e956a0a1bf2ee5bdb4a31052fc44} 
+KILL\+\_\+\+NOKILL&Gemme non éliminée (pas d\textquotesingle{}animation). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_SHRINK@{KILL\_SHRINK}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_SHRINK@{KILL\_SHRINK}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6acccce01f6fd90ec19ed40bc8bee0bf96} 
+KILL\+\_\+\+SHRINK&Gemme qui rétrécit (animation standard). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_SHATTER@{KILL\_SHATTER}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_SHATTER@{KILL\_SHATTER}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a1c44522896023de31054addbab6d7a44} 
+KILL\+\_\+\+SHATTER&Gemme qui éclate (pour les gemmes éliminées par un hypercube ou une gemme étoilée). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_EXPLODE@{KILL\_EXPLODE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_EXPLODE@{KILL\_EXPLODE}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a06faffc0118878119796b9746f267697} 
+KILL\+\_\+\+EXPLODE&Gemme qui explose (pour les gemmes éliminées par une gemme enflammée ou une bombe). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_EXPLODE\_RING@{KILL\_EXPLODE\_RING}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_EXPLODE\_RING@{KILL\_EXPLODE\_RING}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a816bc06365c770b9b661df559a63a7c7} 
+KILL\+\_\+\+EXPLODE\+\_\+\+RING&Gemme qui explose en anneau (pour les gemmes enflammées et les bombes elles-\/mêmes). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KILL\_SIZE@{KILL\_SIZE}!game\_play.h@{game\_play.h}}\index{game\_play.h@{game\_play.h}!KILL\_SIZE@{KILL\_SIZE}}}\Hypertarget{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0}\label{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6a3670756c0b01445f828b9d5c538588a0} 
+KILL\+\_\+\+SIZE&Taille de l\textquotesingle{}énumération \doxylink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}{gem\+\_\+kill}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__play_8h_source_l00328}{328}} du fichier \mbox{\hyperlink{game__play_8h_source}{game\+\_\+play.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game__play_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__play_8h_ae1e2ed2d55b4517715025aa82f4d62a1}\index{game\_play.h@{game\_play.h}!game\_init\_animation@{game\_init\_animation}}
+\index{game\_init\_animation@{game\_init\_animation}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_init\_animation()}{game\_init\_animation()}}
+{\footnotesize\ttfamily \label{game__play_8h_ae1e2ed2d55b4517715025aa82f4d62a1} 
+void game\+\_\+init\+\_\+animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Démarre une animation du type spécifié. 
+
+Appelez cette fonction lorsque vous voulez démarrer une animation. Elle bloque les entrées du jeu jusqu\textquotesingle{}à ce que l\textquotesingle{}animation soit terminée. À ce moment-\/là, la fonction game\+\_\+end\+\_\+animation (que vous devez écrire) est appelée. Cela vous permet de gérer la fin de l\textquotesingle{}animation et la transition vers l\textquotesingle{}état de jeu suivant.
+
+\begin{DoxyRemark}{Remarques}
+Puisque l\textquotesingle{}implémentation du plateau vous revient, l\textquotesingle{}interface ne peut pas récupérer directement dans la structure de jeu les informations nécessaires pour afficher l\textquotesingle{}animation. Elle le fait en appelant les fonctions déclarées à la fin de ce fichier. Vous devez donc écrire ces fonctions pour que les animations s\textquotesingle{}affichent correctement.
+\end{DoxyRemark}
+\begin{DoxyAttention}{Attention}
+Cette fonction est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Paramètres}
+{\em type} & Type d\textquotesingle{}animation à démarrer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a64ae1a0e66719fdf78fdc177e6511f83}\index{game\_play.h@{game\_play.h}!game\_classic\_score@{game\_classic\_score}}
+\index{game\_classic\_score@{game\_classic\_score}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_classic\_score()}{game\_classic\_score()}}
+{\footnotesize\ttfamily \label{game__play_8h_a64ae1a0e66719fdf78fdc177e6511f83} 
+void game\+\_\+classic\+\_\+score (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran de score à la fin d\textquotesingle{}un niveau en mode classique. 
+
+Appelez cette fonction lorsque le joueur a terminé un niveau d\textquotesingle{}un jeu classique. Elle affiche l\textquotesingle{}écran de score. Le niveau suivant démarre lorsque l\textquotesingle{}utilisateur clique pour continuer.
+
+\begin{DoxyAttention}{Attention}
+Cette fonction est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}
+\Hypertarget{game__play_8h_a36e508917adf0e7b2efd38343ab1f66a}\index{game\_play.h@{game\_play.h}!game\_classic\_end@{game\_classic\_end}}
+\index{game\_classic\_end@{game\_classic\_end}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_classic\_end()}{game\_classic\_end()}}
+{\footnotesize\ttfamily \label{game__play_8h_a36e508917adf0e7b2efd38343ab1f66a} 
+void game\+\_\+classic\+\_\+end (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Termine une partie classique. 
+
+Appelez cette fonction lorsqu\textquotesingle{}il n\textquotesingle{}y a plus de coups disponibles en mode classique. Elle met fin à la partie et affiche l\textquotesingle{}écran de score final.
+
+\begin{DoxyAttention}{Attention}
+Cette fonction est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}
+\Hypertarget{game__play_8h_a16d488ef38260e8ebc9eaf4ad0e439c4}\index{game\_play.h@{game\_play.h}!game\_puzzle\_end@{game\_puzzle\_end}}
+\index{game\_puzzle\_end@{game\_puzzle\_end}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_puzzle\_end()}{game\_puzzle\_end()}}
+{\footnotesize\ttfamily \label{game__play_8h_a16d488ef38260e8ebc9eaf4ad0e439c4} 
+void game\+\_\+puzzle\+\_\+end (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Termine une partie puzzle. 
+
+Appelez cette fonction lorsqu\textquotesingle{}il ne reste plus de gemmes sur le plateau en mode puzzle. Elle met fin à la partie et affiche l\textquotesingle{}écran de victoire.
+
+\begin{DoxyAttention}{Attention}
+Cette fonction est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}
+\Hypertarget{game__play_8h_a1324a2e5a956f4c2e9e14a5b303d2cf3}\index{game\_play.h@{game\_play.h}!game\_handle\_mouse\_click@{game\_handle\_mouse\_click}}
+\index{game\_handle\_mouse\_click@{game\_handle\_mouse\_click}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_handle\_mouse\_click()}{game\_handle\_mouse\_click()}}
+{\footnotesize\ttfamily \label{game__play_8h_a1324a2e5a956f4c2e9e14a5b303d2cf3} 
+void game\+\_\+handle\+\_\+mouse\+\_\+click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{i}{, }\item[{int}]{j}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un clic souris est effectué sur une case du plateau. 
+
+Cette fonction est appelée lorsque l\textquotesingle{}utilisateur clique sur une case du plateau. Si les coordonnées sont valides, la fonction doit effectuer les étapes suivantes \+:
+\begin{DoxyItemize}
+\item Si aucune case n\textquotesingle{}est actuellement sélectionnée, sélectionner la case cliquée sans démarrer d\textquotesingle{}animation.
+\item Si une case est déjà sélectionnée mais que c\textquotesingle{}est la même que la case cliquée, la désélectionner sans démarrer d\textquotesingle{}animation.
+\item Si une case différente est déjà sélectionnée et que la case cliquée n\textquotesingle{}est PAS adjacente, désélectionner la case précédemment sélectionnée et sélectionner la case cliquée sans démarrer d\textquotesingle{}animation.
+\item Si une case différente est déjà sélectionnée et que la case cliquée EST adjacente, tenter d\textquotesingle{}échanger la case sélectionnée avec la case cliquée. Si l\textquotesingle{}échange est valide (c.-\/à-\/d. crée au moins une zone destructible), démarrer une animation GOODSWAP. S\textquotesingle{}il est invalide (c.-\/à-\/d. ne crée aucune zone destructible), démarrer une animation BADSWAP.
+\end{DoxyItemize}
+
+\begin{DoxyAttention}{Attention}
+Lorsqu\textquotesingle{}une animation est démarrée, l\textquotesingle{}interface bloque les entrées jusqu\textquotesingle{}à la fin de l\textquotesingle{}animation. À ce moment-\/là, elle appelle la fonction "{}game\+\_\+end\+\_\+animation"{} que vous devez implémenter pour gérer la suite. Par exemple, après une animation GOODSWAP, vous devrez démarrer une animation KILL car des zones destructibles sont à supprimer. À l\textquotesingle{}inverse, après une animation BADSWAP, vous devrez annuler l\textquotesingle{}échange avec une animation ROLLBACK. 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em i} & Coordonnée horizontale de la case dans le plateau (de gauche à droite).  \\
+\hline
+{\em j} & Coordonnée verticale de la case dans le plateau (de haut en bas). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a2cd4871bec0a43ab140d76b2b75122de}\index{game\_play.h@{game\_play.h}!game\_handle\_hint\_request@{game\_handle\_hint\_request}}
+\index{game\_handle\_hint\_request@{game\_handle\_hint\_request}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_handle\_hint\_request()}{game\_handle\_hint\_request()}}
+{\footnotesize\ttfamily \label{game__play_8h_a2cd4871bec0a43ab140d76b2b75122de} 
+void game\+\_\+handle\+\_\+hint\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une demande d\textquotesingle{}indice est faite (par ex., clic sur le bouton indice). 
+
+Cette fonction vérifie si un coup est disponible sur le plateau. Le cas échéant, elle propose un indice en sélectionnant une case qui peut être échangée pour créer un alignement et démarre l\textquotesingle{}animation HINT pour la mettre en évidence. 
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a2cb2c26c3a27f4552e64c2252e22cad6}\index{game\_play.h@{game\_play.h}!game\_handle\_detonation@{game\_handle\_detonation}}
+\index{game\_handle\_detonation@{game\_handle\_detonation}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_handle\_detonation()}{game\_handle\_detonation()}}
+{\footnotesize\ttfamily \label{game__play_8h_a2cb2c26c3a27f4552e64c2252e22cad6} 
+void game\+\_\+handle\+\_\+detonation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une détonation est demandée par le joueur. 
+
+Cette fonction n\textquotesingle{}est appelée que si le jeu n\textquotesingle{}est PAS en mode nodelay (c.-\/à-\/d. les gemmes ne sont pas supprimées automatiquement après chaque échange). Elle gère la suppression des gemmes \+: vérifie s\textquotesingle{}il y a des gemmes à supprimer, met à jour l\textquotesingle{}état du jeu, puis démarre une animation KILL. 
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a54499c12942b45cd85fe82b761eeeedb}\index{game\_play.h@{game\_play.h}!game\_set\_gravity@{game\_set\_gravity}}
+\index{game\_set\_gravity@{game\_set\_gravity}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_set\_gravity()}{game\_set\_gravity()}}
+{\footnotesize\ttfamily \label{game__play_8h_a54499c12942b45cd85fe82b761eeeedb} 
+void game\+\_\+set\+\_\+gravity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}}}]{dir}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un changement de gravité vers une direction donnée est demandé. 
+
+Une fois la gravité changée, la fonction doit vérifier si des gemmes peuvent tomber selon la nouvelle direction de gravité et, le cas échéant, les faire tomber (en particulier, une animation FALL doit être démarrée dans ce cas). 
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em dir} & Nouvelle direction de la gravité. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a6596d1cb756cb2a916fb04cbba02bc0e}\index{game\_play.h@{game\_play.h}!game\_cycle\_gravity@{game\_cycle\_gravity}}
+\index{game\_cycle\_gravity@{game\_cycle\_gravity}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_cycle\_gravity()}{game\_cycle\_gravity()}}
+{\footnotesize\ttfamily \label{game__play_8h_a6596d1cb756cb2a916fb04cbba02bc0e} 
+void game\+\_\+cycle\+\_\+gravity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsque la gravité est modifiée dans le sens horaire. 
+
+Une fois la gravité changée, la fonction doit vérifier si des gemmes peuvent tomber selon la nouvelle direction de gravité et, le cas échéant, les faire tomber (en particulier, une animation FALL doit être démarrée dans ce cas). 
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a5e4a00ae56ae68a932a5ede6726e1dd1}\index{game\_play.h@{game\_play.h}!game\_handle\_refill@{game\_handle\_refill}}
+\index{game\_handle\_refill@{game\_handle\_refill}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_handle\_refill()}{game\_handle\_refill()}}
+{\footnotesize\ttfamily \label{game__play_8h_a5e4a00ae56ae68a932a5ede6726e1dd1} 
+void game\+\_\+handle\+\_\+refill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{k}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}un le joueur veut récupérer un objet dans la file de stockage. 
+
+Cette fonction remplit le plateau depuis la file de stockage (si cette file n\textquotesingle{}est pas vide). Elle fait tomber l\textquotesingle{}objet récupéré depuis le côté opposé à la gravité à partir de l\textquotesingle{}indice spécifié en entrée.
+
+Cette fonction ne peut être utilisée qu\textquotesingle{}en mode puzzle lorsque la file de stockage est activée. Après avoir placé la gemme sur le plateau, la fonction doit démarrer une animation FALL pour faire tomber l\textquotesingle{}objet jusqu\textquotesingle{}à sa position.
+
+\begin{DoxyRemark}{Remarques}
+Si la demande ne peut pas être satisfaite (par exemple parce que la file de stockage est vide ou qu\textquotesingle{}il n\textquotesingle{}y a pas de place disponible sur le plateau pour placer la gemme), la fonction doit retourner sans rien faire (en particulier, aucune animation n\textquotesingle{}est démarrée). 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Paramètres}
+{\em k} & Indice de la file de stockage à utiliser pour le remplissage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a9b4fa22a43b16fc32af54d1e5481b644}\index{game\_play.h@{game\_play.h}!game\_end\_animation@{game\_end\_animation}}
+\index{game\_end\_animation@{game\_end\_animation}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_end\_animation()}{game\_end\_animation()}}
+{\footnotesize\ttfamily \label{game__play_8h_a9b4fa22a43b16fc32af54d1e5481b644} 
+void game\+\_\+end\+\_\+animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}une animation se termine. 
+
+Cette fonction est appelée lorsqu\textquotesingle{}une animation démarrée (par vous) avec game\+\_\+init\+\_\+animation se termine. Elle fournit le type d\textquotesingle{}animation qui vient de se terminer afin que vous puissiez gérer la suite du jeu. La suite dépend du type d\textquotesingle{}animation et de l\textquotesingle{}état du jeu. Deux exemples \+:
+
+Quand une animation FALL se termine, vous devez vérifier si des gemmes peuvent être éliminées,
+\begin{DoxyItemize}
+\item si oui, mettez à jour l\textquotesingle{}état du jeu en conséquence et démarrez une animation KILL pour supprimer ces gemmes ;
+\item sinon, revenez à l\textquotesingle{}animation IDLE (qui permet de nouvelles entrées utilisateur).
+\end{DoxyItemize}
+
+Quand une animation KILL se termine, vous devez vérifier si des gemmes peuvent tomber selon la gravité,
+\begin{DoxyItemize}
+\item si oui, mettez à jour l\textquotesingle{}état du jeu en conséquence et démarrez une animation FALL pour les faire tomber ;
+\item sinon, revenez à l\textquotesingle{}animation IDLE (qui permet de nouvelles entrées utilisateur).
+\end{DoxyItemize}
+
+\begin{DoxyRemark}{Remarques}
+C\textquotesingle{}est également ici que vous devez mettre fin à une partie \+:
+\begin{DoxyItemize}
+\item en mode classique, si un niveau a été terminé, appelez la fonction game\+\_\+classic\+\_\+score ;
+\item en mode classique, si le joueur n\textquotesingle{}a plus de coups (le joueur a perdu), appelez game\+\_\+classic\+\_\+end ;
+\item en mode puzzle, si le plateau est vide (le joueur a gagné), appelez game\+\_\+puzzle\+\_\+end. 
+\end{DoxyItemize}
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em type} & Type de l\textquotesingle{}animation qui vient de se terminer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_af02e2bb06ad073fb468c73c3bee9c87c}\index{game\_play.h@{game\_play.h}!game\_get\_cell\_move@{game\_get\_cell\_move}}
+\index{game\_get\_cell\_move@{game\_get\_cell\_move}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_cell\_move()}{game\_get\_cell\_move()}}
+{\footnotesize\ttfamily \label{game__play_8h_af02e2bb06ad073fb468c73c3bee9c87c} 
+\mbox{\hyperlink{game_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}} game\+\_\+get\+\_\+cell\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{i}{, }\item[{int}]{j}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{distance}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface uniquement lors des animations MOVE. Elle l\textquotesingle{}utilise pour récupérer les informations de déplacement des cases à afficher. 
+
+Lors du premier appel (au début de l\textquotesingle{}animation), chaque élément doit déjà être à sa position finale (c.-\/à-\/d. après l\textquotesingle{}application du mouvement sur le plateau). Pour une case donnée, l\textquotesingle{}interface appelle cette fonction afin de savoir si le contenu de la case doit être déplacé depuis une autre position vers sa position actuelle et, le cas échéant, la direction et la distance du déplacement.
+
+Par exemple, si la fonction renvoie la direction LEFT et une distance 3 pour une case donnée, cela signifie que durant l\textquotesingle{}animation MOVE, le contenu démarrera 3 cases à DROITE de sa position actuelle et se déplacera vers la GAUCHE pour atteindre sa position finale.
+
+\begin{DoxyRemark}{Remarques}
+Les quatre animations de déplacement sont gérées de manière identique par l\textquotesingle{}interface.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+La direction du déplacement. La distance parcourue est affectée au pointeur fourni. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em i} & Coordonnée horizontale de la case dans le plateau (de gauche à droite).  \\
+\hline
+{\em j} & Coordonnée verticale de la case dans le plateau (de haut en bas).  \\
+\hline
+{\em distance} & Pointeur pour stocker la distance (peut être NULL si non nécessaire). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a5f741399745cf22fb3d767d58cf9fa00}\index{game\_play.h@{game\_play.h}!game\_get\_cell\_kill@{game\_get\_cell\_kill}}
+\index{game\_get\_cell\_kill@{game\_get\_cell\_kill}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_cell\_kill()}{game\_get\_cell\_kill()}}
+{\footnotesize\ttfamily \label{game__play_8h_a5f741399745cf22fb3d767d58cf9fa00} 
+\mbox{\hyperlink{game__play_8h_a944fc3ec73ac8ed28c8947cc6cea99f6}{gem\+\_\+kill}} game\+\_\+get\+\_\+cell\+\_\+kill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{i}{, }\item[{int}]{j}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface uniquement lors d\textquotesingle{}une animation KILL. Elle l\textquotesingle{}utilise pour récupérer les informations sur les cases à éliminer et l\textquotesingle{}animation à utiliser. 
+
+Lors de l\textquotesingle{}appel, les éléments à éliminer doivent encore être sur le plateau (au démarrage d\textquotesingle{}une animation KILL, les éléments ne sont pas encore retirés ; ils sont seulement marqués, car l\textquotesingle{}interface doit connaître les types de gemmes à afficher). Pour chaque case, l\textquotesingle{}interface appelle cette fonction pour savoir si la case est marquée pour élimination et, le cas échéant, quelle animation utiliser.
+
+\begin{DoxyReturn}{Renvoie}
+KILL\+\_\+\+NOKILL si la case n\textquotesingle{}est pas marquée pour élimination ; sinon, l\textquotesingle{}animation d\textquotesingle{}élimination à afficher. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em i} & Coordonnée horizontale de la case dans le plateau (de gauche à droite).  \\
+\hline
+{\em j} & Coordonnée verticale de la case dans le plateau (de haut en bas). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__play_8h_a42a14ef69830061c3975043003468f48}\index{game\_play.h@{game\_play.h}!game\_retrieve\_hint@{game\_retrieve\_hint}}
+\index{game\_retrieve\_hint@{game\_retrieve\_hint}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_retrieve\_hint()}{game\_retrieve\_hint()}}
+{\footnotesize\ttfamily \label{game__play_8h_a42a14ef69830061c3975043003468f48} 
+bool game\+\_\+retrieve\+\_\+hint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{i}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{j}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface lorsqu\textquotesingle{}elle exécute une animation HINT. Sert à récupérer les coordonnées de la case à mettre en évidence. 
+
+\begin{DoxyReturn}{Renvoie}
+true si une case est effectivement mise en évidence, false sinon (ne devrait pas se produire puisqu\textquotesingle{}une animation HINT a été lancée). 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em i} & Pointeur pour retourner la coordonnée horizontale de la case surlignée (de gauche à droite).  \\
+\hline
+{\em j} & Pointeur pour retourner la coordonnée verticale de la case surlignée (de haut en bas). \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-var-members}
+\Hypertarget{game__play_8h_doc-var-members}
+\doxysubsection{Documentation des variables}
+\Hypertarget{game__play_8h_a187d0f37c47a9f1b43da766cefc8deaf}\index{game\_play.h@{game\_play.h}!game\_anim\_signal@{game\_anim\_signal}}
+\index{game\_anim\_signal@{game\_anim\_signal}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_anim\_signal}{game\_anim\_signal}}
+{\footnotesize\ttfamily \label{game__play_8h_a187d0f37c47a9f1b43da766cefc8deaf} 
+\mbox{\hyperlink{game__play_8h_a31d289b983e452f756528ed2a8efb763}{anim\+\_\+type}} game\+\_\+anim\+\_\+signal\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Variable globale utilisée pour signaler à l\textquotesingle{}interface quelle animation démarrer. 
+
+\begin{DoxyAttention}{Attention}
+Cette variable est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}
+\Hypertarget{game__play_8h_aeaa751f5198093b17a4560d765421ba8}\index{game\_play.h@{game\_play.h}!game\_end\_signal@{game\_end\_signal}}
+\index{game\_end\_signal@{game\_end\_signal}!game\_play.h@{game\_play.h}}
+\doxysubsubsection{\texorpdfstring{game\_end\_signal}{game\_end\_signal}}
+{\footnotesize\ttfamily \label{game__play_8h_aeaa751f5198093b17a4560d765421ba8} 
+\mbox{\hyperlink{game__play_8h_a731fce576881124219a9c0f328a65c36}{end\+\_\+signal}} game\+\_\+end\+\_\+signal\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Variable globale utilisée pour indiquer à l\textquotesingle{}interface quel écran de score afficher. 
+
+\begin{DoxyAttention}{Attention}
+Cette variable est DÉ\+JÀ É\+CRITE. Vous ne devez pas la modifier. 
+\end{DoxyAttention}

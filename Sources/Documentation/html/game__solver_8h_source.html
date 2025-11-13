@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A:  Fichier source de game_solver.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game__solver_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">game_solver.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="game__solver_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifndef GAME_SOLVER_H_</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define GAME_SOLVER_H_</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/*  ____        _                 */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/* / ___|  ___ | |_   _____ _ __  */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/* \___ \ / _ \| \ \ / / _ \ &#39;__| */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/*  ___) | (_) | |\ V /  __/ |    */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/* |____/ \___/|_| \_/ \___|_|    */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="game_8h.html">game.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*************************************/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/*+ Table de hachage (déjà écrite)  +*/</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/*************************************/</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structhash__table.html">   49</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structhash__table.html#a9c9a3f123adee804319243532f64c969">   51</a></span>    <a class="code hl_typedef" href="project__tools_8h.html#a718b4eb2652c286f4d42dc18a8e71a1a">ulong</a> <a class="code hl_variable" href="structhash__table.html#a9c9a3f123adee804319243532f64c969">hash_capacity</a>; </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structhash__table.html#a7812332c3722d075ddc6dfc3bcc364a1">   52</a></span>    <a class="code hl_typedef" href="project__tools_8h.html#a718b4eb2652c286f4d42dc18a8e71a1a">ulong</a> <a class="code hl_variable" href="structhash__table.html#a7812332c3722d075ddc6dfc3bcc364a1">hash_size</a>;     </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structhash__table.html#a4416f9557c4ccc34b70357d638307da0">   53</a></span>    <a class="code hl_typedef" href="project__tools_8h.html#a718b4eb2652c286f4d42dc18a8e71a1a">ulong</a> *<a class="code hl_variable" href="structhash__table.html#a4416f9557c4ccc34b70357d638307da0">hash_table</a>;   </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structhash__table.html#a8896aa1d0fd5bc5927a7dabde5fb42a8">   54</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structhash__table.html#a8896aa1d0fd5bc5927a7dabde5fb42a8">element_size</a>;    </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <a class="code hl_struct" href="structhash__table.html">hash_table</a>;</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="game__solver_8h.html#ad6486b7480d1fb73104b75574171f95d">   64</a></span><a class="code hl_struct" href="structhash__table.html">hash_table</a> *<a class="code hl_function" href="game__solver_8h.html#ad6486b7480d1fb73104b75574171f95d">create_hash_table</a>(</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> element_size </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="game__solver_8h.html#aeb90c0d72995394b700a2afefeb55a26">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game__solver_8h.html#aeb90c0d72995394b700a2afefeb55a26">delete_hash_table</a>(<a class="code hl_struct" href="structhash__table.html">hash_table</a> *ht </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="game__solver_8h.html#aaf489c344c876d8f35f64045f331bb46">   87</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game__solver_8h.html#aaf489c344c876d8f35f64045f331bb46">hash_table_insert</a>(<a class="code hl_struct" href="structhash__table.html">hash_table</a> *ht, </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                       <span class="keywordtype">int</span> *elements,  </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                       <a class="code hl_typedef" href="project__tools_8h.html#a718b4eb2652c286f4d42dc18a8e71a1a">ulong</a> i         </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/**********************/</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*+ Fonctions solveur +*/</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/**********************/</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span></div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="};">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5">  100</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46">  102</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46">SOLVER_SWAP</a>,    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857">  103</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857">SOLVER_GRAVITY</a>, </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a">  104</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a">SOLVER_CYCLE</a>,   </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69">  105</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69">SOLVER_STORAGE</a>  </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>} <a class="code hl_enumeration" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5">solver_move_type</a>;</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
+<div class="foldopen" id="foldopen00112" data-start="{" data-end="};">
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="structsolver__move.html">  112</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsolver__move.html">solver_move</a></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="structsolver__move.html#a43ad5813f5daf2f5864ff1d5c1c2a96e">  114</a></span>    <a class="code hl_enumeration" href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5">solver_move_type</a> <a class="code hl_variable" href="structsolver__move.html#a43ad5813f5daf2f5864ff1d5c1c2a96e">type</a>;    </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structsolver__move.html#a750b5d744c39a06bfb13e6eb010e35d0">  115</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsolver__move.html#a750b5d744c39a06bfb13e6eb010e35d0">index</a>;                </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structsolver__move.html#ae4d7074e1fbd5d499081830e19685e64">  116</a></span>    <a class="code hl_enumeration" href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a> <a class="code hl_variable" href="structsolver__move.html#ae4d7074e1fbd5d499081830e19685e64">dir</a>;            </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structsolver__move.html#a8529d1a54102c9b749c3cd470dbffcb4">  117</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsolver__move.html">solver_move</a> *<a class="code hl_variable" href="structsolver__move.html#a8529d1a54102c9b749c3cd470dbffcb4">next</a>; </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a084e489f5172359649052df82575daab">  118</a></span>} <a class="code hl_struct" href="structsolver__move.html">solver_move</a>;</div>
+</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="};">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80">  127</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788">  129</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788">SOLVER_TIMEOUT</a>,    </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac">  130</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac">SOLVER_UNSOLVABLE</a>, </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5">  131</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5">SOLVER_SOLVED</a>,     </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>} <a class="code hl_enumeration" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80">solver_result_type</a>;</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="};">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bf">  138</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>{</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480">  140</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480">SOLVER_DFS</a>,</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4">  141</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4">SOLVER_BFS</a>,</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8">  142</a></span>    <a class="code hl_enumvalue" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8">SOLVER_ASTAR</a></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>} <a class="code hl_enumeration" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bf">solver</a>;</div>
+</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="game__solver_8h.html#ae40d02a25ab6ff6768ba20afeaeb359c">  152</a></span><a class="code hl_struct" href="structsolver__move.html">solver_move</a> *<a class="code hl_function" href="game__solver_8h.html#ae40d02a25ab6ff6768ba20afeaeb359c">solve_puzzle</a>(<a class="code hl_struct" href="structgame.html">game</a> *g,                    </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                          <a class="code hl_enumeration" href="game__solver_8h.html#a2debe316c6874c013213554b33d598bf">solver</a> method,              </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                          <span class="keywordtype">int</span> bound,                  </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                          <a class="code hl_enumeration" href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80">solver_result_type</a> *result, </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                          <span class="keywordtype">int</span> *nb_moves,              </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                          <span class="keywordtype">int</span> *nb_configs             </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="game__solver_8h.html#a1c56651acd6cef04890086deb4ee0011">  172</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="game__solver_8h.html#a1c56651acd6cef04890086deb4ee0011">game_implement_solver_move</a>(<a class="code hl_struct" href="structgame.html">game</a> *g, <a class="code hl_struct" href="structsolver__move.html">solver_move</a> *move);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#endif </span><span class="comment">// GAME_SOLVER_H_</span></div>
+<div class="ttc" id="agame_8h_html"><div class="ttname"><a href="game_8h.html">game.h</a></div><div class="ttdoc">Implémentation du jeu.</div></div>
+<div class="ttc" id="agame_8h_html_a99f26e6ee9fcd62f75203b5402df8098"><div class="ttname"><a href="game_8h.html#a99f26e6ee9fcd62f75203b5402df8098">direction</a></div><div class="ttdeci">direction</div><div class="ttdoc">Directions à l&#39;intérieur d&#39;un plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="game_8h_source.html#l00034">game.h:34</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a0f9aa49fb3069bf4550a0cad8a5d7d80"><div class="ttname"><a href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80">solver_result_type</a></div><div class="ttdeci">solver_result_type</div><div class="ttdoc">Les trois résultats possibles renvoyés par le solveur.</div><div class="ttdef"><b>Definition</b> <a href="#l00127">game_solver.h:128</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5"><div class="ttname"><a href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5">SOLVER_SOLVED</a></div><div class="ttdeci">@ SOLVER_SOLVED</div><div class="ttdoc">Puzzle soluble. Une solution a été trouvée.</div><div class="ttdef"><b>Definition</b> <a href="#l00131">game_solver.h:131</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac"><div class="ttname"><a href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac">SOLVER_UNSOLVABLE</a></div><div class="ttdeci">@ SOLVER_UNSOLVABLE</div><div class="ttdoc">Puzzle insoluble. Toutes les configurations atteignables ont été explorées.</div><div class="ttdef"><b>Definition</b> <a href="#l00130">game_solver.h:130</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788"><div class="ttname"><a href="game__solver_8h.html#a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788">SOLVER_TIMEOUT</a></div><div class="ttdeci">@ SOLVER_TIMEOUT</div><div class="ttdoc">Dépassement du temps (itérations max). Certaines configurations n&#39;ont pas été explorées.</div><div class="ttdef"><b>Definition</b> <a href="#l00129">game_solver.h:129</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a1c56651acd6cef04890086deb4ee0011"><div class="ttname"><a href="game__solver_8h.html#a1c56651acd6cef04890086deb4ee0011">game_implement_solver_move</a></div><div class="ttdeci">bool game_implement_solver_move(game *g, solver_move *move)</div><div class="ttdoc">Implémente dans le jeu un coup fourni par le solveur.</div></div>
+<div class="ttc" id="agame__solver_8h_html_a2debe316c6874c013213554b33d598bf"><div class="ttname"><a href="game__solver_8h.html#a2debe316c6874c013213554b33d598bf">solver</a></div><div class="ttdeci">solver</div><div class="ttdoc">Résolveurs disponibles.</div><div class="ttdef"><b>Definition</b> <a href="#l00138">game_solver.h:139</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8"><div class="ttname"><a href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8">SOLVER_ASTAR</a></div><div class="ttdeci">@ SOLVER_ASTAR</div><div class="ttdef"><b>Definition</b> <a href="#l00142">game_solver.h:142</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480"><div class="ttname"><a href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480">SOLVER_DFS</a></div><div class="ttdeci">@ SOLVER_DFS</div><div class="ttdef"><b>Definition</b> <a href="#l00140">game_solver.h:140</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4"><div class="ttname"><a href="game__solver_8h.html#a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4">SOLVER_BFS</a></div><div class="ttdeci">@ SOLVER_BFS</div><div class="ttdef"><b>Definition</b> <a href="#l00141">game_solver.h:141</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a781edd9b56d672a39a8468d43ace02a5"><div class="ttname"><a href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5">solver_move_type</a></div><div class="ttdeci">solver_move_type</div><div class="ttdoc">Types de coups que le solveur peut effectuer (les coups disponibles dépendent des paramètres du jeu).</div><div class="ttdef"><b>Definition</b> <a href="#l00100">game_solver.h:101</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a"><div class="ttname"><a href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a">SOLVER_CYCLE</a></div><div class="ttdeci">@ SOLVER_CYCLE</div><div class="ttdoc">Coup de cycle de gravité (rotation horaire).</div><div class="ttdef"><b>Definition</b> <a href="#l00104">game_solver.h:104</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46"><div class="ttname"><a href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46">SOLVER_SWAP</a></div><div class="ttdeci">@ SOLVER_SWAP</div><div class="ttdoc">Coup d&#39;échange (entre deux cases adjacentes).</div><div class="ttdef"><b>Definition</b> <a href="#l00102">game_solver.h:102</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857"><div class="ttname"><a href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857">SOLVER_GRAVITY</a></div><div class="ttdeci">@ SOLVER_GRAVITY</div><div class="ttdoc">Coup de gravité (changer la gravité dans une direction quelconque).</div><div class="ttdef"><b>Definition</b> <a href="#l00103">game_solver.h:103</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69"><div class="ttname"><a href="game__solver_8h.html#a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69">SOLVER_STORAGE</a></div><div class="ttdeci">@ SOLVER_STORAGE</div><div class="ttdoc">Coup de stockage (prendre dans la file de remplissage).</div><div class="ttdef"><b>Definition</b> <a href="#l00105">game_solver.h:105</a></div></div>
+<div class="ttc" id="agame__solver_8h_html_aaf489c344c876d8f35f64045f331bb46"><div class="ttname"><a href="game__solver_8h.html#aaf489c344c876d8f35f64045f331bb46">hash_table_insert</a></div><div class="ttdeci">bool hash_table_insert(hash_table *ht, int *elements, ulong i)</div><div class="ttdoc">Tente d&#39;insérer un élément dans la table de hachage.</div></div>
+<div class="ttc" id="agame__solver_8h_html_ad6486b7480d1fb73104b75574171f95d"><div class="ttname"><a href="game__solver_8h.html#ad6486b7480d1fb73104b75574171f95d">create_hash_table</a></div><div class="ttdeci">hash_table * create_hash_table(int element_size)</div><div class="ttdoc">Crée une nouvelle table de hachage vide.</div></div>
+<div class="ttc" id="agame__solver_8h_html_ae40d02a25ab6ff6768ba20afeaeb359c"><div class="ttname"><a href="game__solver_8h.html#ae40d02a25ab6ff6768ba20afeaeb359c">solve_puzzle</a></div><div class="ttdeci">solver_move * solve_puzzle(game *g, solver method, int bound, solver_result_type *result, int *nb_moves, int *nb_configs)</div><div class="ttdoc">Appelée par l&#39;interface pour résoudre un puzzle avec le solveur indiqué.</div></div>
+<div class="ttc" id="agame__solver_8h_html_aeb90c0d72995394b700a2afefeb55a26"><div class="ttname"><a href="game__solver_8h.html#aeb90c0d72995394b700a2afefeb55a26">delete_hash_table</a></div><div class="ttdeci">void delete_hash_table(hash_table *ht)</div><div class="ttdoc">Supprime une table de hachage.</div></div>
+<div class="ttc" id="aproject__tools_8h_html_a718b4eb2652c286f4d42dc18a8e71a1a"><div class="ttname"><a href="project__tools_8h.html#a718b4eb2652c286f4d42dc18a8e71a1a">ulong</a></div><div class="ttdeci">unsigned long ulong</div><div class="ttdef"><b>Definition</b> <a href="project__tools_8h_source.html#l00035">project_tools.h:35</a></div></div>
+<div class="ttc" id="astructgame_html"><div class="ttname"><a href="structgame.html">game</a></div><div class="ttdoc">Structure représentant un jeu complet.</div><div class="ttdef"><b>Definition</b> <a href="game_8h_source.html#l00333">game.h:333</a></div></div>
+<div class="ttc" id="astructhash__table_html"><div class="ttname"><a href="structhash__table.html">hash_table</a></div><div class="ttdoc">Solveur pour le mode puzzle.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">game_solver.h:50</a></div></div>
+<div class="ttc" id="astructhash__table_html_a4416f9557c4ccc34b70357d638307da0"><div class="ttname"><a href="structhash__table.html#a4416f9557c4ccc34b70357d638307da0">hash_table::hash_table</a></div><div class="ttdeci">ulong * hash_table</div><div class="ttdoc">Pointeur vers la table elle-même (tableau d&#39;indices vers le stockage externe).</div><div class="ttdef"><b>Definition</b> <a href="#l00053">game_solver.h:53</a></div></div>
+<div class="ttc" id="astructhash__table_html_a7812332c3722d075ddc6dfc3bcc364a1"><div class="ttname"><a href="structhash__table.html#a7812332c3722d075ddc6dfc3bcc364a1">hash_table::hash_size</a></div><div class="ttdeci">ulong hash_size</div><div class="ttdoc">Taille de la table (nombre d&#39;éléments présents).</div><div class="ttdef"><b>Definition</b> <a href="#l00052">game_solver.h:52</a></div></div>
+<div class="ttc" id="astructhash__table_html_a8896aa1d0fd5bc5927a7dabde5fb42a8"><div class="ttname"><a href="structhash__table.html#a8896aa1d0fd5bc5927a7dabde5fb42a8">hash_table::element_size</a></div><div class="ttdeci">int element_size</div><div class="ttdoc">Nombre d&#39;entiers utilisés pour encoder un élément dans le stockage externe.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">game_solver.h:54</a></div></div>
+<div class="ttc" id="astructhash__table_html_a9c9a3f123adee804319243532f64c969"><div class="ttname"><a href="structhash__table.html#a9c9a3f123adee804319243532f64c969">hash_table::hash_capacity</a></div><div class="ttdeci">ulong hash_capacity</div><div class="ttdoc">Capacité actuelle de la table de hachage.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">game_solver.h:51</a></div></div>
+<div class="ttc" id="astructsolver__move_html"><div class="ttname"><a href="structsolver__move.html">solver_move</a></div><div class="ttdoc">Structure récursive représentant une séquence de coups d&#39;une solution de puzzle.</div><div class="ttdef"><b>Definition</b> <a href="#l00112">game_solver.h:113</a></div></div>
+<div class="ttc" id="astructsolver__move_html_a43ad5813f5daf2f5864ff1d5c1c2a96e"><div class="ttname"><a href="structsolver__move.html#a43ad5813f5daf2f5864ff1d5c1c2a96e">solver_move::type</a></div><div class="ttdeci">solver_move_type type</div><div class="ttdoc">Type du coup.</div><div class="ttdef"><b>Definition</b> <a href="#l00114">game_solver.h:114</a></div></div>
+<div class="ttc" id="astructsolver__move_html_a750b5d744c39a06bfb13e6eb010e35d0"><div class="ttname"><a href="structsolver__move.html#a750b5d744c39a06bfb13e6eb010e35d0">solver_move::index</a></div><div class="ttdeci">int index</div><div class="ttdoc">Pour un échange, indice de la première case. Pour un remplissage, indice où l&#39;élément est placé....</div><div class="ttdef"><b>Definition</b> <a href="#l00115">game_solver.h:115</a></div></div>
+<div class="ttc" id="astructsolver__move_html_a8529d1a54102c9b749c3cd470dbffcb4"><div class="ttname"><a href="structsolver__move.html#a8529d1a54102c9b749c3cd470dbffcb4">solver_move::next</a></div><div class="ttdeci">struct solver_move * next</div><div class="ttdoc">Pointeur vers le prochain coup dans la liste.</div><div class="ttdef"><b>Definition</b> <a href="#l00117">game_solver.h:117</a></div></div>
+<div class="ttc" id="astructsolver__move_html_ae4d7074e1fbd5d499081830e19685e64"><div class="ttname"><a href="structsolver__move.html#ae4d7074e1fbd5d499081830e19685e64">solver_move::dir</a></div><div class="ttdeci">direction dir</div><div class="ttdoc">Pour un échange, direction (RIGHT ou DOWN). Pour la gravité, nouvelle direction. Sans objet sinon.</div><div class="ttdef"><b>Definition</b> <a href="#l00116">game_solver.h:116</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game__solver_8h.html">game_solver.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

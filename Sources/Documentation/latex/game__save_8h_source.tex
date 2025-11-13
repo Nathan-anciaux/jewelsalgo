@@ -1,0 +1,54 @@
+\doxysection{game\+\_\+save.\+h}
+\hypertarget{game__save_8h_source}{}\label{game__save_8h_source}\mbox{\hyperlink{game__save_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00014}00014\ \textcolor{preprocessor}{\#ifndef\ GAME\_SAVE\_H}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00015}00015\ \textcolor{preprocessor}{\#define\ GAME\_SAVE\_H}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00017}00017\ \textcolor{comment}{/*\ \ \ \_\_\_\_\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\_\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00018}00018\ \textcolor{comment}{/*\ \ /\ \_\_\_|\ \_\_\ \_\ \_\ \_\_\ \_\_\_\ \ \ \_\_\_\ \ /\ \_\_\_|\ \ \_\_\ \_\_\_\ \ \ \_\_\_\_\_\ \ \_\_\_\ \ */}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00019}00019\ \textcolor{comment}{/*\ |\ |\ \ \_\ /\ \_`\ |\ '\_\ \`{}\ \_\ \(\backslash\)\ /\ \_\ \(\backslash\)\ \(\backslash\)\_\_\_\ \(\backslash\)\ /\ \_`\ \(\backslash\)\ \(\backslash\)\ /\ /\ \_\ \(\backslash\)/\ \_\_|\ */}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00020}00020\ \textcolor{comment}{/*\ |\ |\_|\ |\ (\_|\ |\ |\ |\ |\ |\ |\ \ \_\_/\ \ \_\_\_)\ |\ (\_|\ |\(\backslash\)\ V\ /\ \ \_\_/\(\backslash\)\_\_\ \(\backslash\)\ */}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00021}00021\ \textcolor{comment}{/*\ \ \(\backslash\)\_\_\_\_|\(\backslash\)\_\_,\_|\_|\ |\_|\ |\_|\(\backslash\)\_\_\_|\ |\_\_\_\_/\ \(\backslash\)\_\_,\_|\ \(\backslash\)\_/\ \(\backslash\)\_\_\_||\_\_\_/\ */}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8h}{game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__scores_8h}{game\_scores.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00039}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e}{00039}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00041}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627}{00041}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac239e5d189a671741436385bd0315627}{SK\_WIDTH}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00042}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417}{00042}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea1b343c16ccc1ff039e0ac315c1867417}{SK\_HEIGHT}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00043}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85}{00043}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea235f548385701f1fa219f2218dbd0f85}{SK\_BOARD}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00044}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1}{00044}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eac73c3cf98e9bbbee0371c1e1f1d5a2c1}{SK\_GRAVITY}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00045}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5}{00045}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab4ba3cce130e60388ed16ea6305804a5}{SK\_REFILL\_QUEUE}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00046}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5}{00046}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea06850540a3901b67f5fc67c8e2569fd5}{SK\_PUZZLE}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00047}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200}{00047}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea64105fc7afb1ce0e05dd107d2ecbd200}{SK\_LINES}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00048}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc}{00048}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7b9e1cd6ad03952bc5712bf5fd62a6fc}{SK\_UPGRADES}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00049}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6}{00049}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea4b28e6663f6ff9cdf5104700c99e99c6}{SK\_NODELAY}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00050}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb}{00050}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaf3c89abf065b882ce9cf01fb416575bb}{SK\_EASY}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00051}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720}{00051}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea9939d958e2791f78b06073f011e48720}{SK\_WRAP}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00052}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918}{00052}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ead14551ac05ab9df09c3ecbdf48d0f918}{SK\_BOMBS}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00053}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580}{00053}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eab7314d6f34b3727c32f1b9152f094580}{SK\_REFILL}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00054}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46}{00054}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea93419a7274d58be956d4f8e017f04d46}{SK\_GRAVITY\_CONTROL}},\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00055}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1}{00055}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eaaa636302aaf1617d350380e5a3fb1aa1}{SK\_LEVEL}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00056}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825}{00056}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabc47f3ff1695c95b7effed13c9e98825}{SK\_LEVEL\_SCORE}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00057}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d}{00057}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea7367b6c8dbd3b09e03b7c1371878846d}{SK\_TARGET\_SCORE}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00058}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33}{00058}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2ea56ae76703cf2905ec45b27b89c6eba33}{SK\_SCALE\_SCORE}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00059}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d}{00059}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eae31bd74e0b7648e489ee32ac31cee27d}{SK\_SCORE\_ARRAY}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00060}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463}{00060}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eabb8974b2e1ac2f3f030aa485d62a5463}{SK\_REFILL\_COUNT}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00061}\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{00061}}\ \ \ \ \ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{SK\_SIZE}}}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00062}00062\ \}\ \mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2e}{save\_keywords}};}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00068}00068\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{game__save_8h_ad7630c507a5ae77b817f605bd5b25ca2}{save\_keyword\_strings}}[\mbox{\hyperlink{game__save_8h_a34a6dca287b21b7c046fe058b26d1a2eacffb2c28704df7b3c16b3fe79806787f}{SK\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00077}\mbox{\hyperlink{game__save_8h_afd4069222882228c80f4b74f4e89165d}{00077}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{game__save_8h_afd4069222882228c80f4b74f4e89165d}{save\_game}}(\mbox{\hyperlink{structgame}{game}}\ *g,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00079}00079\ );}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00088}\mbox{\hyperlink{game__save_8h_a1650caae623be41ea09c4010ce4ecf9d}{00088}}\ \mbox{\hyperlink{structgame}{game}}\ *\mbox{\hyperlink{game__save_8h_a1650caae623be41ea09c4010ce4ecf9d}{load\_game}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00089}00089\ );}
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{game__save_8h_source_l00091}00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_SAVE\_H}}
+
+\end{DoxyCode}

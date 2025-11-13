@@ -1,0 +1,172 @@
+\doxysection{Référence du fichier game\+\_\+ias.\+h}
+\hypertarget{game__ias_8h}{}\label{game__ias_8h}\index{game\_ias.h@{game\_ias.h}}
+
+
+IA pour le mode classique.  
+
+
+{\ttfamily \#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58f}{ia\+\_\+classic}} \{ \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497}{IA\+\_\+\+RANDOM}}
+, \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731}{IA\+\_\+\+SAFE}}
+, \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6}{IA\+\_\+\+AGRESSIVE}}
+, \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}{IA\+\_\+\+CLASSIC\+\_\+\+SIZE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types d\textquotesingle{}IA disponibles pour le mode classique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{game__ias_8h_a3e3cfb29df793af5f9b338f6d356d967}{ia\+\_\+random}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Implémentation de l\textquotesingle{}IA aléatoire (c\textquotesingle{}est l\textquotesingle{}IA utilisée dans la démo affichée dans le menu). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game__ias_8h_a58ac94b35ed22fd80a39c55e4e01557f}{ia\+\_\+safe}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Implémentation de l\textquotesingle{}IA prudente (l\textquotesingle{}IA essaie de jouer des coups plus proches du bord opposé à la gravité). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game__ias_8h_a4b6321b8cc0c0d34270dff0520d6ac8d}{ia\+\_\+agressive}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Implémentation de l\textquotesingle{}IA agressive (l\textquotesingle{}IA essaie de jouer des coups en direction de la gravité). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__ias_8h_a8866f6d09c99bb617b4bfe9bedc43128}{ia\+\_\+functions}} \mbox{[}\mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}{IA\+\_\+\+CLASSIC\+\_\+\+SIZE}}\mbox{]})(\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Pointeurs de fonctions pour les différentes IA. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__ias_8h_a9f26b7ed155cc5852884b17e372adae7}{ia\+\_\+names}} \mbox{[}\mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}{IA\+\_\+\+CLASSIC\+\_\+\+SIZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Noms des différentes IA (affichage dans le menu). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+IA pour le mode classique. 
+
+Chaque IA implémente une stratégie pour jouer automatiquement. Une fonction d\textquotesingle{}IA doit jouer un coup dans le jeu et initialiser l\textquotesingle{}animation correspondante. Si aucun coup n\textquotesingle{}est possible, elle doit retourner false. En d\textquotesingle{}autres termes, l\textquotesingle{}interface graphique (GUI) utilise les fonctions d\textquotesingle{}IA pour jouer automatiquement en les appelant de manière répétée jusqu\textquotesingle{}à ce qu\textquotesingle{}aucun coup ne soit possible. 
+
+Définition dans le fichier \mbox{\hyperlink{game__ias_8h_source}{game\+\_\+ias.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{game__ias_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{game__ias_8h_aa6e4b8522426e1f7ced99774149da58f}\index{game\_ias.h@{game\_ias.h}!ia\_classic@{ia\_classic}}
+\index{ia\_classic@{ia\_classic}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_classic}{ia\_classic}}
+{\footnotesize\ttfamily \label{game__ias_8h_aa6e4b8522426e1f7ced99774149da58f} 
+enum \mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58f}{ia\+\_\+classic}}}
+
+
+
+Types d\textquotesingle{}IA disponibles pour le mode classique. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IA\_RANDOM@{IA\_RANDOM}!game\_ias.h@{game\_ias.h}}\index{game\_ias.h@{game\_ias.h}!IA\_RANDOM@{IA\_RANDOM}}}\Hypertarget{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497}\label{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fa2f040d3ff13b9fb4f49493ab8b0af497} 
+IA\+\_\+\+RANDOM&IA aléatoire \+: joue des coups aléatoires. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IA\_SAFE@{IA\_SAFE}!game\_ias.h@{game\_ias.h}}\index{game\_ias.h@{game\_ias.h}!IA\_SAFE@{IA\_SAFE}}}\Hypertarget{game__ias_8h_aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731}\label{game__ias_8h_aa6e4b8522426e1f7ced99774149da58faf5c827cc3049d623e5e42a173fb91731} 
+IA\+\_\+\+SAFE&IA prudente \+: essaie de jouer des coups à l\textquotesingle{}opposé de la gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IA\_AGRESSIVE@{IA\_AGRESSIVE}!game\_ias.h@{game\_ias.h}}\index{game\_ias.h@{game\_ias.h}!IA\_AGRESSIVE@{IA\_AGRESSIVE}}}\Hypertarget{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6}\label{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fadaf57bbacb1d76881d9a832bf49d62e6} 
+IA\+\_\+\+AGRESSIVE&IA agressive \+: essaie de jouer des coups vers la gravité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IA\_CLASSIC\_SIZE@{IA\_CLASSIC\_SIZE}!game\_ias.h@{game\_ias.h}}\index{game\_ias.h@{game\_ias.h}!IA\_CLASSIC\_SIZE@{IA\_CLASSIC\_SIZE}}}\Hypertarget{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}\label{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e} 
+IA\+\_\+\+CLASSIC\+\_\+\+SIZE&Nombre d\textquotesingle{}IA. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__ias_8h_source_l00028}{28}} du fichier \mbox{\hyperlink{game__ias_8h_source}{game\+\_\+ias.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game__ias_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__ias_8h_a3e3cfb29df793af5f9b338f6d356d967}\index{game\_ias.h@{game\_ias.h}!ia\_random@{ia\_random}}
+\index{ia\_random@{ia\_random}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_random()}{ia\_random()}}
+{\footnotesize\ttfamily \label{game__ias_8h_a3e3cfb29df793af5f9b338f6d356d967} 
+bool ia\+\_\+random (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Implémentation de l\textquotesingle{}IA aléatoire (c\textquotesingle{}est l\textquotesingle{}IA utilisée dans la démo affichée dans le menu). 
+
+\begin{DoxyRemark}{Remarques}
+L\textquotesingle{}IA doit toujours être capable de jouer un coup (votre implémentation doit s\textquotesingle{}arrêter lorsqu\textquotesingle{}aucun coup n\textquotesingle{}est disponible).
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+Retourne true si un coup a été joué, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Le jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__ias_8h_a58ac94b35ed22fd80a39c55e4e01557f}\index{game\_ias.h@{game\_ias.h}!ia\_safe@{ia\_safe}}
+\index{ia\_safe@{ia\_safe}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_safe()}{ia\_safe()}}
+{\footnotesize\ttfamily \label{game__ias_8h_a58ac94b35ed22fd80a39c55e4e01557f} 
+bool ia\+\_\+safe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Implémentation de l\textquotesingle{}IA prudente (l\textquotesingle{}IA essaie de jouer des coups plus proches du bord opposé à la gravité). 
+
+\begin{DoxyRemark}{Remarques}
+L\textquotesingle{}IA doit toujours être capable de jouer un coup (votre implémentation doit s\textquotesingle{}arrêter lorsqu\textquotesingle{}aucun coup n\textquotesingle{}est disponible).
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+Retourne true si un coup a été joué, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Le jeu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__ias_8h_a4b6321b8cc0c0d34270dff0520d6ac8d}\index{game\_ias.h@{game\_ias.h}!ia\_agressive@{ia\_agressive}}
+\index{ia\_agressive@{ia\_agressive}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_agressive()}{ia\_agressive()}}
+{\footnotesize\ttfamily \label{game__ias_8h_a4b6321b8cc0c0d34270dff0520d6ac8d} 
+bool ia\+\_\+agressive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Implémentation de l\textquotesingle{}IA agressive (l\textquotesingle{}IA essaie de jouer des coups en direction de la gravité). 
+
+\begin{DoxyRemark}{Remarques}
+L\textquotesingle{}IA doit toujours être capable de jouer un coup (votre implémentation doit s\textquotesingle{}arrêter lorsqu\textquotesingle{}aucun coup n\textquotesingle{}est disponible).
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+Retourne true si un coup a été joué, false sinon. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Le jeu. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-var-members}
+\Hypertarget{game__ias_8h_doc-var-members}
+\doxysubsection{Documentation des variables}
+\Hypertarget{game__ias_8h_a8866f6d09c99bb617b4bfe9bedc43128}\index{game\_ias.h@{game\_ias.h}!ia\_functions@{ia\_functions}}
+\index{ia\_functions@{ia\_functions}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_functions}{ia\_functions}}
+{\footnotesize\ttfamily \label{game__ias_8h_a8866f6d09c99bb617b4bfe9bedc43128} 
+bool(\texorpdfstring{$\ast$}{*} ia\+\_\+functions\mbox{[}\mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}{IA\+\_\+\+CLASSIC\+\_\+\+SIZE}}\mbox{]})(\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Pointeurs de fonctions pour les différentes IA. 
+
+\Hypertarget{game__ias_8h_a9f26b7ed155cc5852884b17e372adae7}\index{game\_ias.h@{game\_ias.h}!ia\_names@{ia\_names}}
+\index{ia\_names@{ia\_names}!game\_ias.h@{game\_ias.h}}
+\doxysubsubsection{\texorpdfstring{ia\_names}{ia\_names}}
+{\footnotesize\ttfamily \label{game__ias_8h_a9f26b7ed155cc5852884b17e372adae7} 
+char\texorpdfstring{$\ast$}{*} ia\+\_\+names\mbox{[}\mbox{\hyperlink{game__ias_8h_aa6e4b8522426e1f7ced99774149da58fabef18271f745839743be93db174e529e}{IA\+\_\+\+CLASSIC\+\_\+\+SIZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Noms des différentes IA (affichage dans le menu). 
+

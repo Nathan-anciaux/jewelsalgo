@@ -1,0 +1,264 @@
+\doxysection{Référence du fichier game\+\_\+solver.\+h}
+\hypertarget{game__solver_8h}{}\label{game__solver_8h}\index{game\_solver.h@{game\_solver.h}}
+{\ttfamily \#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structhash__table}{hash\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Solveur pour le mode puzzle. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structsolver__move}{solver\+\_\+move}}
+\begin{DoxyCompactList}\small\item\em Structure récursive représentant une séquence de coups d\textquotesingle{}une solution de puzzle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct solver\+\_\+move \mbox{\hyperlink{game__solver_8h_a084e489f5172359649052df82575daab}{solver\+\_\+move}}
+\begin{DoxyCompactList}\small\item\em Structure récursive représentant une séquence de coups d\textquotesingle{}une solution de puzzle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}{solver\+\_\+move\+\_\+type}} \{ \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46}{SOLVER\+\_\+\+SWAP}}
+, \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857}{SOLVER\+\_\+\+GRAVITY}}
+, \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a}{SOLVER\+\_\+\+CYCLE}}
+, \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69}{SOLVER\+\_\+\+STORAGE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types de coups que le solveur peut effectuer (les coups disponibles dépendent des paramètres du jeu). \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\+\_\+result\+\_\+type}} \{ \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788}{SOLVER\+\_\+\+TIMEOUT}}
+, \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac}{SOLVER\+\_\+\+UNSOLVABLE}}
+, \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5}{SOLVER\+\_\+\+SOLVED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Les trois résultats possibles renvoyés par le solveur. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}} \{ \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480}{SOLVER\+\_\+\+DFS}}
+, \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4}{SOLVER\+\_\+\+BFS}}
+, \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8}{SOLVER\+\_\+\+ASTAR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Résolveurs disponibles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__solver_8h_ad6486b7480d1fb73104b75574171f95d}{create\+\_\+hash\+\_\+table}} (int element\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Crée une nouvelle table de hachage vide. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__solver_8h_aeb90c0d72995394b700a2afefeb55a26}{delete\+\_\+hash\+\_\+table}} (\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*}ht)
+\begin{DoxyCompactList}\small\item\em Supprime une table de hachage. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game__solver_8h_aaf489c344c876d8f35f64045f331bb46}{hash\+\_\+table\+\_\+insert}} (\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*}ht, int \texorpdfstring{$\ast$}{*}elements, \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} i)
+\begin{DoxyCompactList}\small\item\em Tente d\textquotesingle{}insérer un élément dans la table de hachage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsolver__move}{solver\+\_\+move}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c}{solve\+\_\+puzzle}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}} method, int bound, \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\+\_\+result\+\_\+type}} \texorpdfstring{$\ast$}{*}result, int \texorpdfstring{$\ast$}{*}nb\+\_\+moves, int \texorpdfstring{$\ast$}{*}nb\+\_\+configs)
+\begin{DoxyCompactList}\small\item\em Appelée par l\textquotesingle{}interface pour résoudre un puzzle avec le solveur indiqué. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game__solver_8h_a1c56651acd6cef04890086deb4ee0011}{game\+\_\+implement\+\_\+solver\+\_\+move}} (\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{structsolver__move}{solver\+\_\+move}} \texorpdfstring{$\ast$}{*}move)
+\begin{DoxyCompactList}\small\item\em Implémente dans le jeu un coup fourni par le solveur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{game__solver_8h_doc-typedef-members}
+\doxysubsection{Documentation des définitions de type}
+\Hypertarget{game__solver_8h_a084e489f5172359649052df82575daab}\index{game\_solver.h@{game\_solver.h}!solver\_move@{solver\_move}}
+\index{solver\_move@{solver\_move}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{solver\_move}{solver\_move}}
+{\footnotesize\ttfamily \label{game__solver_8h_a084e489f5172359649052df82575daab} 
+typedef struct solver\+\_\+move solver\+\_\+move}
+
+
+
+Structure récursive représentant une séquence de coups d\textquotesingle{}une solution de puzzle. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{game__solver_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}\index{game\_solver.h@{game\_solver.h}!solver\_move\_type@{solver\_move\_type}}
+\index{solver\_move\_type@{solver\_move\_type}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{solver\_move\_type}{solver\_move\_type}}
+{\footnotesize\ttfamily \label{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5} 
+enum \mbox{\hyperlink{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5}{solver\+\_\+move\+\_\+type}}}
+
+
+
+Types de coups que le solveur peut effectuer (les coups disponibles dépendent des paramètres du jeu). 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_SWAP@{SOLVER\_SWAP}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_SWAP@{SOLVER\_SWAP}}}\Hypertarget{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46}\label{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a35114fdc702f48858342123fca635b46} 
+SOLVER\+\_\+\+SWAP&Coup d\textquotesingle{}échange (entre deux cases adjacentes). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_GRAVITY@{SOLVER\_GRAVITY}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_GRAVITY@{SOLVER\_GRAVITY}}}\Hypertarget{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857}\label{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a49f00510cbda73d14882335a6813b857} 
+SOLVER\+\_\+\+GRAVITY&Coup de gravité (changer la gravité dans une direction quelconque). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_CYCLE@{SOLVER\_CYCLE}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_CYCLE@{SOLVER\_CYCLE}}}\Hypertarget{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a}\label{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a1f4005d6eff9344802eaa182e528053a} 
+SOLVER\+\_\+\+CYCLE&Coup de cycle de gravité (rotation horaire). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_STORAGE@{SOLVER\_STORAGE}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_STORAGE@{SOLVER\_STORAGE}}}\Hypertarget{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69}\label{game__solver_8h_a781edd9b56d672a39a8468d43ace02a5a8c3df5ab202fa1fe785092d874821a69} 
+SOLVER\+\_\+\+STORAGE&Coup de stockage (prendre dans la file de remplissage). \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00100}{100}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+\Hypertarget{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}\index{game\_solver.h@{game\_solver.h}!solver\_result\_type@{solver\_result\_type}}
+\index{solver\_result\_type@{solver\_result\_type}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{solver\_result\_type}{solver\_result\_type}}
+{\footnotesize\ttfamily \label{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80} 
+enum \mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\+\_\+result\+\_\+type}}}
+
+
+
+Les trois résultats possibles renvoyés par le solveur. 
+
+\begin{DoxyRemark}{Remarques}
+Sert à distinguer les deux cas d\textquotesingle{}échec (dépassement de temps et puzzle insoluble). 
+\end{DoxyRemark}
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_TIMEOUT@{SOLVER\_TIMEOUT}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_TIMEOUT@{SOLVER\_TIMEOUT}}}\Hypertarget{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788}\label{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80ac89bb5f9e5d2f4bfa16f0985ea7f6788} 
+SOLVER\+\_\+\+TIMEOUT&Dépassement du temps (itérations max). Certaines configurations n\textquotesingle{}ont pas été explorées. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_UNSOLVABLE@{SOLVER\_UNSOLVABLE}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_UNSOLVABLE@{SOLVER\_UNSOLVABLE}}}\Hypertarget{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac}\label{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a9a16911819d3b18069a96b4cc470bcac} 
+SOLVER\+\_\+\+UNSOLVABLE&Puzzle insoluble. Toutes les configurations atteignables ont été explorées. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_SOLVED@{SOLVER\_SOLVED}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_SOLVED@{SOLVER\_SOLVED}}}\Hypertarget{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5}\label{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80a11f781ab41812dc8526331bfdafdb1c5} 
+SOLVER\+\_\+\+SOLVED&Puzzle soluble. Une solution a été trouvée. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00127}{127}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+\Hypertarget{game__solver_8h_a2debe316c6874c013213554b33d598bf}\index{game\_solver.h@{game\_solver.h}!solver@{solver}}
+\index{solver@{solver}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{solver}{solver}}
+{\footnotesize\ttfamily \label{game__solver_8h_a2debe316c6874c013213554b33d598bf} 
+enum \mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}}}
+
+
+
+Résolveurs disponibles. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_DFS@{SOLVER\_DFS}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_DFS@{SOLVER\_DFS}}}\Hypertarget{game__solver_8h_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480}\label{game__solver_8h_a2debe316c6874c013213554b33d598bfa7d17dfd38252d9136b162f29da70f480} 
+SOLVER\+\_\+\+DFS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_BFS@{SOLVER\_BFS}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_BFS@{SOLVER\_BFS}}}\Hypertarget{game__solver_8h_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4}\label{game__solver_8h_a2debe316c6874c013213554b33d598bfade64b57802ea9ca6cd6719485a4adfe4} 
+SOLVER\+\_\+\+BFS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVER\_ASTAR@{SOLVER\_ASTAR}!game\_solver.h@{game\_solver.h}}\index{game\_solver.h@{game\_solver.h}!SOLVER\_ASTAR@{SOLVER\_ASTAR}}}\Hypertarget{game__solver_8h_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8}\label{game__solver_8h_a2debe316c6874c013213554b33d598bfa109cf178ba25e8d030725b0bc6c393c8} 
+SOLVER\+\_\+\+ASTAR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00138}{138}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game__solver_8h_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{game__solver_8h_ad6486b7480d1fb73104b75574171f95d}\index{game\_solver.h@{game\_solver.h}!create\_hash\_table@{create\_hash\_table}}
+\index{create\_hash\_table@{create\_hash\_table}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{create\_hash\_table()}{create\_hash\_table()}}
+{\footnotesize\ttfamily \label{game__solver_8h_ad6486b7480d1fb73104b75574171f95d} 
+\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*} create\+\_\+hash\+\_\+table (\begin{DoxyParamCaption}\item[{int}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Crée une nouvelle table de hachage vide. 
+
+\begin{DoxyReturn}{Renvoie}
+La table de hachage vide créée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em element\+\_\+size} & Nombre d\textquotesingle{}entiers utilisés pour encoder un élément dans le stockage externe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__solver_8h_aeb90c0d72995394b700a2afefeb55a26}\index{game\_solver.h@{game\_solver.h}!delete\_hash\_table@{delete\_hash\_table}}
+\index{delete\_hash\_table@{delete\_hash\_table}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{delete\_hash\_table()}{delete\_hash\_table()}}
+{\footnotesize\ttfamily \label{game__solver_8h_aeb90c0d72995394b700a2afefeb55a26} 
+void delete\+\_\+hash\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{ht}{}\end{DoxyParamCaption})}
+
+
+
+Supprime une table de hachage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ht} & Table de hachage à supprimer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__solver_8h_aaf489c344c876d8f35f64045f331bb46}\index{game\_solver.h@{game\_solver.h}!hash\_table\_insert@{hash\_table\_insert}}
+\index{hash\_table\_insert@{hash\_table\_insert}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{hash\_table\_insert()}{hash\_table\_insert()}}
+{\footnotesize\ttfamily \label{game__solver_8h_aaf489c344c876d8f35f64045f331bb46} 
+bool hash\+\_\+table\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhash__table}{hash\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{ht}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{elements}{, }\item[{\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Tente d\textquotesingle{}insérer un élément dans la table de hachage. 
+
+\begin{DoxyRemark}{Remarques}
+L\textquotesingle{}indice i désigne la position de l\textquotesingle{}élément dans le tableau de stockage externe. Comme chaque élément est encodé comme une séquence d\textquotesingle{}entiers de taille fixe (champ element\+\_\+size), la table de hachage lit la séquence de element\+\_\+size entiers à partir de la position i \texorpdfstring{$\ast$}{*} element\+\_\+size dans ce tableau externe.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Renvoie}
+true si l\textquotesingle{}élément a été inséré, false s\textquotesingle{}il était déjà présent. Dans ce dernier cas, la table n\textquotesingle{}est pas modifiée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em ht} & Table de hachage.  \\
+\hline
+{\em elements} & Tableau de stockage externe contenant tous les éléments.  \\
+\hline
+{\em i} & Indice de l\textquotesingle{}élément à insérer dans le stockage externe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c}\index{game\_solver.h@{game\_solver.h}!solve\_puzzle@{solve\_puzzle}}
+\index{solve\_puzzle@{solve\_puzzle}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{solve\_puzzle()}{solve\_puzzle()}}
+{\footnotesize\ttfamily \label{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c} 
+\mbox{\hyperlink{structsolver__move}{solver\+\_\+move}} \texorpdfstring{$\ast$}{*} solve\+\_\+puzzle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{\mbox{\hyperlink{game__solver_8h_a2debe316c6874c013213554b33d598bf}{solver}}}]{method}{, }\item[{int}]{bound}{, }\item[{\mbox{\hyperlink{game__solver_8h_a0f9aa49fb3069bf4550a0cad8a5d7d80}{solver\+\_\+result\+\_\+type}} \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+moves}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+configs}{}\end{DoxyParamCaption})}
+
+
+
+Appelée par l\textquotesingle{}interface pour résoudre un puzzle avec le solveur indiqué. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers la liste des coups menant à la solution, ou NULL si aucune solution n\textquotesingle{}a été trouvée. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em g} & Pointeur vers la structure du jeu.  \\
+\hline
+{\em method} & Méthode de résolution (DFS, BFS, A\texorpdfstring{$\ast$}{*}).  \\
+\hline
+{\em bound} & Nombre maximal d\textquotesingle{}itérations avant délai (0 ou moins pour illimité).  \\
+\hline
+{\em result} & Pointeur vers une variable où stocker le résultat.  \\
+\hline
+{\em nb\+\_\+moves} & Pointeur vers un entier pour stocker le nombre de coups de la solution.  \\
+\hline
+{\em nb\+\_\+configs} & Pointeur vers un entier pour stocker le nombre de configurations explorées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__solver_8h_a1c56651acd6cef04890086deb4ee0011}\index{game\_solver.h@{game\_solver.h}!game\_implement\_solver\_move@{game\_implement\_solver\_move}}
+\index{game\_implement\_solver\_move@{game\_implement\_solver\_move}!game\_solver.h@{game\_solver.h}}
+\doxysubsubsection{\texorpdfstring{game\_implement\_solver\_move()}{game\_implement\_solver\_move()}}
+{\footnotesize\ttfamily \label{game__solver_8h_a1c56651acd6cef04890086deb4ee0011} 
+bool game\+\_\+implement\+\_\+solver\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame}{game}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{\mbox{\hyperlink{structsolver__move}{solver\+\_\+move}} \texorpdfstring{$\ast$}{*}}]{move}{}\end{DoxyParamCaption})}
+
+
+
+Implémente dans le jeu un coup fourni par le solveur. 
+
+Cette fonction prend une structure \doxylink{structsolver__move}{solver\+\_\+move} représentant un coup unique proposé par le solveur et tente de l\textquotesingle{}appliquer au jeu. Si le coup est valide dans l\textquotesingle{}état courant du jeu, il est appliqué et une animation doit être démarrée.
+
+\begin{DoxyReturn}{Renvoie}
+true si le coup a été appliqué avec succès, false sinon. 
+\end{DoxyReturn}

@@ -1,0 +1,109 @@
+\doxysection{Référence de la structure hash\+\_\+table}
+\hypertarget{structhash__table}{}\label{structhash__table}\index{hash\_table@{hash\_table}}
+
+
+Solveur pour le mode puzzle.  
+
+
+
+
+{\ttfamily \#include $<$game\+\_\+solver.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} \mbox{\hyperlink{structhash__table_a9c9a3f123adee804319243532f64c969}{hash\+\_\+capacity}}
+\begin{DoxyCompactList}\small\item\em Capacité actuelle de la table de hachage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} \mbox{\hyperlink{structhash__table_a7812332c3722d075ddc6dfc3bcc364a1}{hash\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Taille de la table (nombre d\textquotesingle{}éléments présents). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structhash__table_a4416f9557c4ccc34b70357d638307da0}{hash\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la table elle-\/même (tableau d\textquotesingle{}indices vers le stockage externe). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structhash__table_a8896aa1d0fd5bc5927a7dabde5fb42a8}{element\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Nombre d\textquotesingle{}entiers utilisés pour encoder un élément dans le stockage externe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Solveur pour le mode puzzle. 
+
+Ce module fournit des fonctionnalités pour résoudre les puzzles à l\textquotesingle{}aide de divers algorithmes de parcours de graphe (DFS, BFS et A\texorpdfstring{$\ast$}{*}). Une implémentation de table de hachage est également fournie pour stocker efficacement les configurations de plateau visitées par ces algorithmes. Elle est déjà programmée et vous NE DEVEZ PAS LA MODIFIER. Les seules fonctions à implémenter sont \doxylink{game__solver_8h_ae40d02a25ab6ff6768ba20afeaeb359c}{solve\+\_\+puzzle()} et \doxylink{game__solver_8h_a1c56651acd6cef04890086deb4ee0011}{game\+\_\+implement\+\_\+solver\+\_\+move()} à la fin de ce fichier (vous pouvez bien sûr ajouter vos propres fonctions utilitaires).
+
+\begin{DoxyRemark}{Remarques}
+La table de hachage ne peut stocker que des éléments encodés comme des tableaux d\textquotesingle{}entiers. Cela signifie que pour stocker des configurations de plateau, vous devez d\textquotesingle{}abord les encoder sous forme de tableaux d\textquotesingle{}entiers. De plus, la table de hachage ne stocke pas les éléments eux-\/mêmes, mais des indices vers un tableau de stockage externe que vous devez gérer vous-\/même.
+\end{DoxyRemark}
+Structure de table de hachage.
+
+Utilisée pour stocker les configurations de plateau visitées par le solveur. La table de hachage ne stocke pas les configurations elles-\/mêmes, mais des indices vers un tableau de stockage externe passé aux fonctions de la table (nécessaire car ce tableau de stockage peut être réalloué et déplacé en mémoire).
+
+\begin{DoxyRemark}{Remarques}
+Chaque élément inséré doit être encodé dans le tableau externe comme une séquence d\textquotesingle{}entiers (de longueur fixe, définie à la création de la table). En particulier, les configurations de plateau doivent être encodées sous forme de tableaux d\textquotesingle{}entiers. 
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00049}{49}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structhash__table_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structhash__table_a9c9a3f123adee804319243532f64c969}\index{hash\_table@{hash\_table}!hash\_capacity@{hash\_capacity}}
+\index{hash\_capacity@{hash\_capacity}!hash\_table@{hash\_table}}
+\doxysubsubsection{\texorpdfstring{hash\_capacity}{hash\_capacity}}
+{\footnotesize\ttfamily \label{structhash__table_a9c9a3f123adee804319243532f64c969} 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} hash\+\_\+capacity}
+
+
+
+Capacité actuelle de la table de hachage. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00051}{51}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+\Hypertarget{structhash__table_a7812332c3722d075ddc6dfc3bcc364a1}\index{hash\_table@{hash\_table}!hash\_size@{hash\_size}}
+\index{hash\_size@{hash\_size}!hash\_table@{hash\_table}}
+\doxysubsubsection{\texorpdfstring{hash\_size}{hash\_size}}
+{\footnotesize\ttfamily \label{structhash__table_a7812332c3722d075ddc6dfc3bcc364a1} 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}} hash\+\_\+size}
+
+
+
+Taille de la table (nombre d\textquotesingle{}éléments présents). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00052}{52}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+\Hypertarget{structhash__table_a4416f9557c4ccc34b70357d638307da0}\index{hash\_table@{hash\_table}!hash\_table@{hash\_table}}
+\index{hash\_table@{hash\_table}!hash\_table@{hash\_table}}
+\doxysubsubsection{\texorpdfstring{hash\_table}{hash\_table}}
+{\footnotesize\ttfamily \label{structhash__table_a4416f9557c4ccc34b70357d638307da0} 
+\mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structhash__table}{hash\+\_\+table}}}
+
+
+
+Pointeur vers la table elle-\/même (tableau d\textquotesingle{}indices vers le stockage externe). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00053}{53}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+\Hypertarget{structhash__table_a8896aa1d0fd5bc5927a7dabde5fb42a8}\index{hash\_table@{hash\_table}!element\_size@{element\_size}}
+\index{element\_size@{element\_size}!hash\_table@{hash\_table}}
+\doxysubsubsection{\texorpdfstring{element\_size}{element\_size}}
+{\footnotesize\ttfamily \label{structhash__table_a8896aa1d0fd5bc5927a7dabde5fb42a8} 
+int element\+\_\+size}
+
+
+
+Nombre d\textquotesingle{}entiers utilisés pour encoder un élément dans le stockage externe. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game__solver_8h_source_l00054}{54}} du fichier \mbox{\hyperlink{game__solver_8h_source}{game\+\_\+solver.\+h}}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game__solver_8h}{game\+\_\+solver.\+h}}\end{DoxyCompactItemize}

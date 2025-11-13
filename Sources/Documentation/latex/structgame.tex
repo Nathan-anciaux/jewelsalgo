@@ -1,0 +1,202 @@
+\doxysection{Référence de la structure game}
+\hypertarget{structgame}{}\label{structgame}\index{game@{game}}
+
+
+Structure représentant un jeu complet.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structboard}{board}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame_aab87b5092553854f1fc4b4b58969dfca}{b}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le plateau de jeu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structgame_a87805d906d6c45b7588bf60bdc1f6cca}{puzzle}}
+\begin{DoxyCompactList}\small\item\em Mode de jeu (true \+: mode puzzle, false \+: mode classique). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structgame_a5755a8d50a94b18ab9827e67a45bca51}{lines}}
+\item 
+bool \mbox{\hyperlink{structgame_a4faf90ae3bbde81fc5f7ff669f960e4d}{upgrades}}
+\item 
+short \mbox{\hyperlink{structgame_afe15e22d35c57b61d55f150455e36266}{gravity\+\_\+control}}
+\item 
+bool \mbox{\hyperlink{structgame_aec6c3893867bac330447292d8c19a96e}{nodelay}}
+\item 
+bool \mbox{\hyperlink{structgame_a5f6d36863ebf27fcebd90783fb1a9758}{easy}}
+\item 
+bool \mbox{\hyperlink{structgame_a8594fb038876720086b44eea472b9bf5}{gravity\+\_\+gems}}
+\item 
+bool \mbox{\hyperlink{structgame_aded1016af8e7227caf116e7ee3c85b31}{bombs}}
+\begin{DoxyCompactList}\small\item\em Indicateur indiquant que le jeu peut générer des bombes. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{structgame_af5dc170d4e26d9f45f3b383e4f301b27}{refill\+\_\+mode}}
+\item 
+\mbox{\hyperlink{structscore__block}{score\+\_\+block}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgame_a7684ff19ca9e62c1931f2a2a519b0790}{score}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant un jeu complet. 
+
+Cette structure contient toutes les informations sur un jeu en cours. Elle inclut le plateau de jeu, les paramètres du jeu (mode, options) et le score.
+
+\begin{DoxyRemark}{Remarques}
+Le paramètre le plus important est le booléen "{}puzzle"{} qui indique si le jeu est en mode puzzle (true) ou en mode classique (false). En fonction de ce paramètre, certains autres champs peuvent ne pas être pertinents et doivent être définis à des valeurs spécifiques.
+
+Les paramètres communs aux deux modes sont \+:
+\begin{DoxyItemize}
+\item lines \+: si le jeu utilise des zones destructibles basées sur les lignes ou les composantes fortement connexes (SCC),
+\item upgrades \+: si le jeu peut améliorer les gemmes (en gemmes enflammées, gemmes étoilées et hypercubes),
+\item gravity\+\_\+control \+: comment le joueur peut contrôler la gravité (0 \+: ne peut pas changer, 1 \+: rotation horaire, 2 \+: libre).
+\end{DoxyItemize}
+
+Les paramètres spécifiques au mode classique sont (nodelay doit toujours être à true en mode puzzle) \+:
+\begin{DoxyItemize}
+\item nodelay \+: si le jeu est en mode nodelay. true \+: les gemmes sont immédiatement détruites (toujours à cette valeur en mode puzzle), false \+: destruction sur demande,
+\item easy \+: si le jeu est en mode facile (de nouvelles gemmes sont générées de sorte qu\textquotesingle{}une solution existe toujours),
+\item gravity\+\_\+gems \+: si le jeu peut générer des gemmes de gravité,
+\item bombs \+: si le jeu peut générer des bombes.
+\end{DoxyItemize}
+
+L\textquotesingle{}unique paramètre spécifique au mode puzzle spécifie comment la file de stockage est utilisée (il doit être défini à "{}pas de file"{} (valeur 2) en mode classique) \+:
+\begin{DoxyItemize}
+\item refill\+\_\+mode \+: le mode de stockage utilisé en mode puzzle (0 \+: stocke les gemmes éliminées, 1 \+: file prédéterminée de rochers et bombes, 2 \+: Pas de file de stockage). 
+\end{DoxyItemize}
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00333}{333}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structgame_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structgame_aab87b5092553854f1fc4b4b58969dfca}\index{game@{game}!b@{b}}
+\index{b@{b}!game@{game}}
+\doxysubsubsection{\texorpdfstring{b}{b}}
+{\footnotesize\ttfamily \label{structgame_aab87b5092553854f1fc4b4b58969dfca} 
+\mbox{\hyperlink{structboard}{board}}\texorpdfstring{$\ast$}{*} b}
+
+
+
+Pointeur vers le plateau de jeu. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00335}{335}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a87805d906d6c45b7588bf60bdc1f6cca}\index{game@{game}!puzzle@{puzzle}}
+\index{puzzle@{puzzle}!game@{game}}
+\doxysubsubsection{\texorpdfstring{puzzle}{puzzle}}
+{\footnotesize\ttfamily \label{structgame_a87805d906d6c45b7588bf60bdc1f6cca} 
+bool puzzle}
+
+
+
+Mode de jeu (true \+: mode puzzle, false \+: mode classique). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00338}{338}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a5755a8d50a94b18ab9827e67a45bca51}\index{game@{game}!lines@{lines}}
+\index{lines@{lines}!game@{game}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{structgame_a5755a8d50a94b18ab9827e67a45bca51} 
+bool lines}
+
+Spécification des zones destructibles (true \+: lignes d\textquotesingle{}au moins 3, false \+: SCCs de taille au moins 4). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00341}{341}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a4faf90ae3bbde81fc5f7ff669f960e4d}\index{game@{game}!upgrades@{upgrades}}
+\index{upgrades@{upgrades}!game@{game}}
+\doxysubsubsection{\texorpdfstring{upgrades}{upgrades}}
+{\footnotesize\ttfamily \label{structgame_a4faf90ae3bbde81fc5f7ff669f960e4d} 
+bool upgrades}
+
+Indicateur indiquant que le jeu peut améliorer les gemmes (en gemmes enflammées, gemmes étoilées et hypercubes). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00344}{344}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_afe15e22d35c57b61d55f150455e36266}\index{game@{game}!gravity\_control@{gravity\_control}}
+\index{gravity\_control@{gravity\_control}!game@{game}}
+\doxysubsubsection{\texorpdfstring{gravity\_control}{gravity\_control}}
+{\footnotesize\ttfamily \label{structgame_afe15e22d35c57b61d55f150455e36266} 
+short gravity\+\_\+control}
+
+Contrôle de la gravité disponible pour le joueur (0 \+: ne peut pas changer, 1 \+: rotation horaire, 2 \+: libre). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00346}{346}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_aec6c3893867bac330447292d8c19a96e}\index{game@{game}!nodelay@{nodelay}}
+\index{nodelay@{nodelay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{nodelay}{nodelay}}
+{\footnotesize\ttfamily \label{structgame_aec6c3893867bac330447292d8c19a96e} 
+bool nodelay}
+
+Mode d\textquotesingle{}élimination (true \+: les gemmes sont immédiatement retirées après chaque échange, false \+: retrait sur demande de détonation). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00351}{351}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a5f6d36863ebf27fcebd90783fb1a9758}\index{game@{game}!easy@{easy}}
+\index{easy@{easy}!game@{game}}
+\doxysubsubsection{\texorpdfstring{easy}{easy}}
+{\footnotesize\ttfamily \label{structgame_a5f6d36863ebf27fcebd90783fb1a9758} 
+bool easy}
+
+Indicateur indiquant que le jeu est en mode facile (les gemmes sont générées de sorte qu\textquotesingle{}une solution existe toujours). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00354}{354}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a8594fb038876720086b44eea472b9bf5}\index{game@{game}!gravity\_gems@{gravity\_gems}}
+\index{gravity\_gems@{gravity\_gems}!game@{game}}
+\doxysubsubsection{\texorpdfstring{gravity\_gems}{gravity\_gems}}
+{\footnotesize\ttfamily \label{structgame_a8594fb038876720086b44eea472b9bf5} 
+bool gravity\+\_\+gems}
+
+Indicateur indiquant que le jeu peut générer des gemmes de gravité. 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00357}{357}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_aded1016af8e7227caf116e7ee3c85b31}\index{game@{game}!bombs@{bombs}}
+\index{bombs@{bombs}!game@{game}}
+\doxysubsubsection{\texorpdfstring{bombs}{bombs}}
+{\footnotesize\ttfamily \label{structgame_aded1016af8e7227caf116e7ee3c85b31} 
+bool bombs}
+
+
+
+Indicateur indiquant que le jeu peut générer des bombes. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00359}{359}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_af5dc170d4e26d9f45f3b383e4f301b27}\index{game@{game}!refill\_mode@{refill\_mode}}
+\index{refill\_mode@{refill\_mode}!game@{game}}
+\doxysubsubsection{\texorpdfstring{refill\_mode}{refill\_mode}}
+{\footnotesize\ttfamily \label{structgame_af5dc170d4e26d9f45f3b383e4f301b27} 
+short refill\+\_\+mode}
+
+File de stockage utilisée en mode puzzle (0 \+: stocke les gemmes éliminées, 1 \+: file prédéterminée de rochers et bombes, 2 \+: Pas de file de stockage). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00363}{363}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structgame_a7684ff19ca9e62c1931f2a2a519b0790}\index{game@{game}!score@{score}}
+\index{score@{score}!game@{game}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily \label{structgame_a7684ff19ca9e62c1931f2a2a519b0790} 
+\mbox{\hyperlink{structscore__block}{score\+\_\+block}}\texorpdfstring{$\ast$}{*} score}
+
+Pointeur vers le bloc de score. La plupart des champs ne sont significatifs qu\textquotesingle{}en mode classique, mais certains (comme le nombre de coups) sont également utilisés en mode puzzle. 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00368}{368}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h}{game.\+h}}\end{DoxyCompactItemize}

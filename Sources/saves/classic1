@@ -1,0 +1,28 @@
+puzzle = 0;
+lines = 1;
+nodelay = 1;
+refill = 2;
+easy = 0;
+wrap = 0;
+bombs = 0;
+upgrades = 1;
+gravity_control = 0;
+level = 1;
+level_score = 0;
+target_score = 10000;
+scale_score = 50;
+score_array = 0,1,0,0,0,0,0,0,1;
+refill_count = 0;
+width = 8;
+height = 8;
+gravity = 2;
+board = 
+T0 R0 D0 M0 R0 S0 R0 T0
+M0 E0 D0 M0 R0 M0 D0 T0
+T0 E0 S0 E0 T0 D0 D0 R0
+D0 S0 E0 T0 D0 E0 M0 M0
+E0 M0 R0 D0 E0 M0 R0 D0
+M0 R0 R0 E0 D0 M0 S0 T0
+T0 D0 M0 S0 S0 R0 M0 R0
+S0 S0 D0 M0 T0 R0 A0 S0
+;

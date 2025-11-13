@@ -1,0 +1,116 @@
+\doxysection{Référence de la structure score\+\_\+block}
+\hypertarget{structscore__block}{}\label{structscore__block}\index{score\_block@{score\_block}}
+
+
+Structure pour contenir les scores d\textquotesingle{}un jeu.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structscore__block_acf4d33ee4cff36f69b924471174dcb11}{level}}
+\begin{DoxyCompactList}\small\item\em Niveau actuel (spécifique au mode classique). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structscore__block_acbab820ba8f07ce12abf06f782557eea}{level\+\_\+score}}
+\item 
+int \mbox{\hyperlink{structscore__block_a6ddd7c025e2bb86591747beba23fb90e}{target\+\_\+score}}
+\item 
+int \mbox{\hyperlink{structscore__block_addee15988cc8b91fcea403492a0d4f31}{scale\+\_\+score}}
+\item 
+int \mbox{\hyperlink{structscore__block_aaa31d042bd717890a3302aad14aaeb7a}{scores}} \mbox{[}\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a}{SC\+\_\+\+SIZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau pour contenir diverses métriques de score. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structscore__block_a854d2c6abb3438fe38a3289254b8591f}{refills}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure pour contenir les scores d\textquotesingle{}un jeu. 
+
+\begin{DoxyRemark}{Remarques}
+La plupart des champs ne sont significatifs qu\textquotesingle{}en mode classique, mais certains sont également utilisés en mode puzzle. 
+\end{DoxyRemark}
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00278}{278}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structscore__block_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structscore__block_acf4d33ee4cff36f69b924471174dcb11}\index{score\_block@{score\_block}!level@{level}}
+\index{level@{level}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \label{structscore__block_acf4d33ee4cff36f69b924471174dcb11} 
+int level}
+
+
+
+Niveau actuel (spécifique au mode classique). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00279}{279}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structscore__block_acbab820ba8f07ce12abf06f782557eea}\index{score\_block@{score\_block}!level\_score@{level\_score}}
+\index{level\_score@{level\_score}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{level\_score}{level\_score}}
+{\footnotesize\ttfamily \label{structscore__block_acbab820ba8f07ce12abf06f782557eea} 
+int level\+\_\+score}
+
+Score depuis le début du niveau actuel (utilisé pour déterminer quand le niveau est terminé). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00280}{280}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structscore__block_a6ddd7c025e2bb86591747beba23fb90e}\index{score\_block@{score\_block}!target\_score@{target\_score}}
+\index{target\_score@{target\_score}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{target\_score}{target\_score}}
+{\footnotesize\ttfamily \label{structscore__block_a6ddd7c025e2bb86591747beba23fb90e} 
+int target\+\_\+score}
+
+Score cible à atteindre pour terminer le niveau actuel. 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00282}{282}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structscore__block_addee15988cc8b91fcea403492a0d4f31}\index{score\_block@{score\_block}!scale\_score@{scale\_score}}
+\index{scale\_score@{scale\_score}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{scale\_score}{scale\_score}}
+{\footnotesize\ttfamily \label{structscore__block_addee15988cc8b91fcea403492a0d4f31} 
+int scale\+\_\+score}
+
+Pourcentage d\textquotesingle{}augmentation du score cible (appliqué après chaque niveau terminé). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00284}{284}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structscore__block_aaa31d042bd717890a3302aad14aaeb7a}\index{score\_block@{score\_block}!scores@{scores}}
+\index{scores@{scores}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{scores}{scores}}
+{\footnotesize\ttfamily \label{structscore__block_aaa31d042bd717890a3302aad14aaeb7a} 
+int scores\mbox{[}\mbox{\hyperlink{game_8h_aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a}{SC\+\_\+\+SIZE}}\mbox{]}}
+
+
+
+Tableau pour contenir diverses métriques de score. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00286}{286}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+\Hypertarget{structscore__block_a854d2c6abb3438fe38a3289254b8591f}\index{score\_block@{score\_block}!refills@{refills}}
+\index{refills@{refills}!score\_block@{score\_block}}
+\doxysubsubsection{\texorpdfstring{refills}{refills}}
+{\footnotesize\ttfamily \label{structscore__block_a854d2c6abb3438fe38a3289254b8591f} 
+int refills}
+
+Nombre de fois qu\textquotesingle{}un élément a été défilé de la file de stockage (spécifique au mode puzzle). 
+
+Définition à la ligne \mbox{\hyperlink{game_8h_source_l00287}{287}} du fichier \mbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h}{game.\+h}}\end{DoxyCompactItemize}

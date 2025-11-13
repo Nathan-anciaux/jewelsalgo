@@ -1,0 +1,835 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>J&amp;A: Référence du fichier game.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">J&amp;A
+   </div>
+   <div id="projectbrief">Jewels and Algorithms</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('game_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier game.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implémentation du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="project__tools_8h_source.html">project_tools.h</a>&quot;</code><br />
+<code>#include &lt;limits.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div>
+<p><a href="game_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:board" id="r_board"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboard.html">board</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant un plateau de jeu.  <a href="structboard.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:cell" id="r_cell"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcell.html">cell</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant une case. Utilisée pour communiquer le contenu d'une case à l'interface graphique.  <a href="structcell.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:score_5Fblock" id="r_score_5Fblock"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscore__block.html">score_block</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour contenir les scores d'un jeu.  <a href="structscore__block.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:game" id="r_game"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame.html">game</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant un jeu complet.  <a href="structgame.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a99f26e6ee9fcd62f75203b5402df8098" id="r_a99f26e6ee9fcd62f75203b5402df8098"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098">direction</a> { <br />
+&#160;&#160;<a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa">UP</a>
+, <a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38">RIGHT</a>
+, <a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da">DOWN</a>
+, <a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065">LEFT</a>
+, <br />
+&#160;&#160;<a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707">SIZE_DIRECTION</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a99f26e6ee9fcd62f75203b5402df8098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Directions à l'intérieur d'un plateau de jeu.  <a href="#a99f26e6ee9fcd62f75203b5402df8098">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:aa94081298ab2dfd0f261cce6c203d9aa" id="r_aa94081298ab2dfd0f261cce6c203d9aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aa">element</a> { <br />
+&#160;&#160;<a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc">AMBER</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb">AMETHYST</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a">DIAMOND</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015">EMERALD</a>
+, <br />
+&#160;&#160;<a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13">RUBY</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2">SAPPHIRE</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d">TOPAZ</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342">HYPERCUBE</a>
+, <br />
+&#160;&#160;<a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c">ROCK</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4">BOMB</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d">EMPTY</a>
+, <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463">ELEM_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:aa94081298ab2dfd0f261cce6c203d9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types d'éléments pouvant remplir une case du plateau de jeu.  <a href="#aa94081298ab2dfd0f261cce6c203d9aa">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:acfcd61708622882d4f74a2dc321b1d99" id="r_acfcd61708622882d4f74a2dc321b1d99"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfcd61708622882d4f74a2dc321b1d99">gem_power</a> { <br />
+&#160;&#160;<a class="el" href="#acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae">GEM_BASIC</a>
+, <a class="el" href="#acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4">GEM_GRAVITY</a>
+, <a class="el" href="#acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3">GEM_FLAME</a>
+, <a class="el" href="#acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61">GEM_STAR</a>
+, <br />
+&#160;&#160;<a class="el" href="#acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d">GEM_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:acfcd61708622882d4f74a2dc321b1d99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pouvoirs qu'une gemme peut posséder.  <a href="#acfcd61708622882d4f74a2dc321b1d99">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:aed36276ae7ac961357268efdfdbc85f9" id="r_aed36276ae7ac961357268efdfdbc85f9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed36276ae7ac961357268efdfdbc85f9">score_type</a> { <br />
+&#160;&#160;<a class="el" href="#aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1">SC_GLOBAL</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37">SC_LEVEL</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053">SC_SWAPS</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb">SC_CONSUMED</a>
+, <br />
+&#160;&#160;<a class="el" href="#aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4">SC_FLAMED</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4">SC_STARRED</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885">SC_HYPERCUBES</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a">SC_GRAVITY</a>
+, <br />
+&#160;&#160;<a class="el" href="#aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4">SC_TIME</a>
+, <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a">SC_SIZE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:aed36276ae7ac961357268efdfdbc85f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scores enregistrés dans un jeu.  <a href="#aed36276ae7ac961357268efdfdbc85f9">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aa5f054a29b034cdc2fda49e5dfbaedc0" id="r_aa5f054a29b034cdc2fda49e5dfbaedc0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5f054a29b034cdc2fda49e5dfbaedc0">board_get_width</a> (<a class="el" href="structboard.html">board</a> *b)</td></tr>
+<tr class="memdesc:aa5f054a29b034cdc2fda49e5dfbaedc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la largeur d'un plateau de jeu.  <br /></td></tr>
+<tr class="memitem:adae09600ffeb93f71afdc213a779628a" id="r_adae09600ffeb93f71afdc213a779628a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adae09600ffeb93f71afdc213a779628a">board_get_height</a> (<a class="el" href="structboard.html">board</a> *b)</td></tr>
+<tr class="memdesc:adae09600ffeb93f71afdc213a779628a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la hauteur du plateau de jeu.  <br /></td></tr>
+<tr class="memitem:af0e92d89cda5e91ee829eae058afd743" id="r_af0e92d89cda5e91ee829eae058afd743"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098">direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0e92d89cda5e91ee829eae058afd743">board_get_gravity</a> (<a class="el" href="structboard.html">board</a> *b)</td></tr>
+<tr class="memdesc:af0e92d89cda5e91ee829eae058afd743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la direction de la gravité du plateau de jeu.  <br /></td></tr>
+<tr class="memitem:a5ca74f7a7f3b88a952db3e23c660f46e" id="r_a5ca74f7a7f3b88a952db3e23c660f46e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ca74f7a7f3b88a952db3e23c660f46e">board_get_picked</a> (<a class="el" href="structboard.html">board</a> *b, int *i, int *j)</td></tr>
+<tr class="memdesc:a5ca74f7a7f3b88a952db3e23c660f46e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les coordonnées de la case actuellement sélectionnée dans le plateau (s'il y en a une).  <br /></td></tr>
+<tr class="memitem:a4f847d9abf5146416f7e85866670e09f" id="r_a4f847d9abf5146416f7e85866670e09f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f847d9abf5146416f7e85866670e09f">board_get_cell</a> (<a class="el" href="structboard.html">board</a> *b, int i, int j, <a class="el" href="structcell.html">cell</a> *c)</td></tr>
+<tr class="memdesc:a4f847d9abf5146416f7e85866670e09f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le contenu d'une case dans le plateau de jeu.  <br /></td></tr>
+<tr class="memitem:ad4c9348a40224dbb7d9d4cf4e1061f53" id="r_ad4c9348a40224dbb7d9d4cf4e1061f53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4c9348a40224dbb7d9d4cf4e1061f53">board_refill_size</a> (<a class="el" href="structboard.html">board</a> *b)</td></tr>
+<tr class="memdesc:ad4c9348a40224dbb7d9d4cf4e1061f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la taille de la file de stockage dans le plateau (utilisée uniquement en mode puzzle).  <br /></td></tr>
+<tr class="memitem:a9d8ffbcf93adcdcdaac74bed3deeb2be" id="r_a9d8ffbcf93adcdcdaac74bed3deeb2be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d8ffbcf93adcdcdaac74bed3deeb2be">board_read_refill</a> (<a class="el" href="structboard.html">board</a> *b, int k, <a class="el" href="structcell.html">cell</a> *c)</td></tr>
+<tr class="memdesc:a9d8ffbcf93adcdcdaac74bed3deeb2be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit une case de la file de stockage (sans la retirer).  <br /></td></tr>
+<tr class="memitem:a44f9223862342077d82e62ce8ebb33a9" id="r_a44f9223862342077d82e62ce8ebb33a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgame.html">game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44f9223862342077d82e62ce8ebb33a9">game_create_classic</a> (int width, int height, bool lines, int target_score, int scale_score, bool nodelay, bool upgrades, bool easy_mode, bool gravity_gems, bool bombs)</td></tr>
+<tr class="memdesc:a44f9223862342077d82e62ce8ebb33a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface pour initialiser un jeu classique avec la largeur et la hauteur spécifiées.  <br /></td></tr>
+<tr class="memitem:ad5f5bb4919000f95b969e94574e96aad" id="r_ad5f5bb4919000f95b969e94574e96aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgame.html">game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5f5bb4919000f95b969e94574e96aad">game_create_puzzle</a> (int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)</td></tr>
+<tr class="memdesc:ad5f5bb4919000f95b969e94574e96aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface pour initialiser un jeu puzzle avec la largeur et la hauteur spécifiées.  <br /></td></tr>
+<tr class="memitem:ab51d806a044271602387f76aea52aa6d" id="r_ab51d806a044271602387f76aea52aa6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab51d806a044271602387f76aea52aa6d">game_next_level</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:ab51d806a044271602387f76aea52aa6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface lorsqu'un niveau se termine en mode classique pour générer un nouveau plateau de jeu.  <br /></td></tr>
+<tr class="memitem:a45eee0c37c1a431ad796cae630affb9b" id="r_a45eee0c37c1a431ad796cae630affb9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45eee0c37c1a431ad796cae630affb9b">game_release</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a45eee0c37c1a431ad796cae630affb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface pour libérer la mémoire allouée pour un jeu.  <br /></td></tr>
+<tr class="memitem:a13b3b75d9b956754a2aa6a092c27ea9f" id="r_a13b3b75d9b956754a2aa6a092c27ea9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgame.html">game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13b3b75d9b956754a2aa6a092c27ea9f">game_clone</a> (<a class="el" href="structgame.html">game</a> *g)</td></tr>
+<tr class="memdesc:a13b3b75d9b956754a2aa6a092c27ea9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelée par l'interface pour cloner une structure de jeu.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implémentation du jeu. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="game_8h_source.html">game.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a99f26e6ee9fcd62f75203b5402df8098" name="a99f26e6ee9fcd62f75203b5402df8098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f26e6ee9fcd62f75203b5402df8098">&#9670;&#160;</a></span>direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098">direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Directions à l'intérieur d'un plateau de jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa" name="a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa"></a>UP&#160;</td><td class="fielddoc"><p>Direction haut. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38" name="a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38"></a>RIGHT&#160;</td><td class="fielddoc"><p>Direction droite. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da" name="a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da"></a>DOWN&#160;</td><td class="fielddoc"><p>Direction bas. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065" name="a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065"></a>LEFT&#160;</td><td class="fielddoc"><p>Direction gauche. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707" name="a99f26e6ee9fcd62f75203b5402df8098a63e67c116902161b5158cdb07a569707"></a>SIZE_DIRECTION&#160;</td><td class="fielddoc"><p>Taille de l'énumération <span class="tt"><a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098" title="Directions à l&#39;intérieur d&#39;un plateau de jeu.">direction</a></span>. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game_8h_source.html#l00034">34</a> du fichier <a class="el" href="game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="aa94081298ab2dfd0f261cce6c203d9aa" name="aa94081298ab2dfd0f261cce6c203d9aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa94081298ab2dfd0f261cce6c203d9aa">&#9670;&#160;</a></span>element</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aa">element</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Types d'éléments pouvant remplir une case du plateau de jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc" name="aa94081298ab2dfd0f261cce6c203d9aaab2b41fdc9ef47b345b95936b36d730cc"></a>AMBER&#160;</td><td class="fielddoc"><p>Représente une gemme de type AMBRE. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb" name="aa94081298ab2dfd0f261cce6c203d9aaa48031009f20d4fde0e43f2df71cb46fb"></a>AMETHYST&#160;</td><td class="fielddoc"><p>Représente une gemme de type AMÉTHYSTE. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a" name="aa94081298ab2dfd0f261cce6c203d9aaa714f2cc5c292a305e2da3c03bd63916a"></a>DIAMOND&#160;</td><td class="fielddoc"><p>Représente une gemme de type DIAMANT. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015" name="aa94081298ab2dfd0f261cce6c203d9aaab0290ff19fa37cddd32e0ff253640015"></a>EMERALD&#160;</td><td class="fielddoc"><p>Représente une gemme de type ÉMERAUDE. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13" name="aa94081298ab2dfd0f261cce6c203d9aaafc8977f3b68e21de7e3fc1736df39b13"></a>RUBY&#160;</td><td class="fielddoc"><p>Représente une gemme de type RUBIS. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2" name="aa94081298ab2dfd0f261cce6c203d9aaaac82f5ee855ef9baf46500615e5324b2"></a>SAPPHIRE&#160;</td><td class="fielddoc"><p>Représente une gemme de type SAPHIR. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d" name="aa94081298ab2dfd0f261cce6c203d9aaaf35e6fba261d86abdee5d3001dbb1e0d"></a>TOPAZ&#160;</td><td class="fielddoc"><p>Représente une gemme de type TOPAZE. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342" name="aa94081298ab2dfd0f261cce6c203d9aaafa31250c7c4fa63ecdde6b2a4f3a8342"></a>HYPERCUBE&#160;</td><td class="fielddoc"><p>Représente un Hypercube. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c" name="aa94081298ab2dfd0f261cce6c203d9aaab39e373af8c527684a4f0ded36bd961c"></a>ROCK&#160;</td><td class="fielddoc"><p>Représente un rocher. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4" name="aa94081298ab2dfd0f261cce6c203d9aaa095285ba8fb2e1f9cfb29c80546f06e4"></a>BOMB&#160;</td><td class="fielddoc"><p>Représente une bombe. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d" name="aa94081298ab2dfd0f261cce6c203d9aaa2f0d18fc0d0fa4a6cd92dc328501874d"></a>EMPTY&#160;</td><td class="fielddoc"><p>Représente une case vide sur le plateau. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463" name="aa94081298ab2dfd0f261cce6c203d9aaad19977b860051540063ad21c5b7d1463"></a>ELEM_SIZE&#160;</td><td class="fielddoc"><p>Taille de l'énumération <span class="tt"><a class="el" href="#aa94081298ab2dfd0f261cce6c203d9aa" title="Types d&#39;éléments pouvant remplir une case du plateau de jeu.">element</a></span>. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game_8h_source.html#l00046">46</a> du fichier <a class="el" href="game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="acfcd61708622882d4f74a2dc321b1d99" name="acfcd61708622882d4f74a2dc321b1d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfcd61708622882d4f74a2dc321b1d99">&#9670;&#160;</a></span>gem_power</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#acfcd61708622882d4f74a2dc321b1d99">gem_power</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pouvoirs qu'une gemme peut posséder. </p>
+<p>Il existe plusieurs types de gemmes avec pouvoirs :</p><ul>
+<li>Gemmes de gravité : lorsqu'elles sont échangées avec un autre élément, elles changent la direction de la gravité vers une direction aléatoire (différente de la direction actuelle).</li>
+<li>Gemmes enflammées : lorsqu'elles sont détruites, elles détruisent également tous leurs voisins dans une zone 3x3.</li>
+<li>Gemmes étoilées : lorsqu'elles sont cassées, elles effacent toute leur ligne et colonne.</li>
+</ul>
+<dl class="section remark"><dt>Remarques</dt><dd>Dans l'interface graphique, ces paramètres n'affectent que la représentation visuelle de la gemme. Vous devez implémenter le comportement réel des gemmes avec pouvoirs dans la logique du jeu. </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae" name="acfcd61708622882d4f74a2dc321b1d99a9fbbc9388136569028caf5f8376a54ae"></a>GEM_BASIC&#160;</td><td class="fielddoc"><p>Gemme basique (sans pouvoir). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4" name="acfcd61708622882d4f74a2dc321b1d99aa13ff2e55d967277b59863837c787af4"></a>GEM_GRAVITY&#160;</td><td class="fielddoc"><p>Gemme de gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3" name="acfcd61708622882d4f74a2dc321b1d99ad89f82d72cc66f35747fc59027fdf0d3"></a>GEM_FLAME&#160;</td><td class="fielddoc"><p>Gemme enflammée. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61" name="acfcd61708622882d4f74a2dc321b1d99abb42a14059f9f3d0a7dbf0fe39e40c61"></a>GEM_STAR&#160;</td><td class="fielddoc"><p>Gemme étoilée. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d" name="acfcd61708622882d4f74a2dc321b1d99a2e3c6be73dd8c213591e04886040033d"></a>GEM_SIZE&#160;</td><td class="fielddoc"><p>Taille de l'énumération <span class="tt"><a class="el" href="#acfcd61708622882d4f74a2dc321b1d99" title="Pouvoirs qu&#39;une gemme peut posséder.">gem_power</a></span>. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game_8h_source.html#l00080">80</a> du fichier <a class="el" href="game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a id="aed36276ae7ac961357268efdfdbc85f9" name="aed36276ae7ac961357268efdfdbc85f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed36276ae7ac961357268efdfdbc85f9">&#9670;&#160;</a></span>score_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aed36276ae7ac961357268efdfdbc85f9">score_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scores enregistrés dans un jeu. </p>
+<p>La plupart des valeurs sont inutiles en mode puzzle. Néanmoins, elles sont toujours suivies par souci de simplicité.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>Le temps est stocké en secondes. Il est géré automatiquement par l'interface graphique. Vous devez l'initialiser à zéro au début du jeu. Il sera mis à jour automatiquement par l'interface graphique. </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1" name="aed36276ae7ac961357268efdfdbc85f9abc03d2b2a1c817758c8d37318e880db1"></a>SC_GLOBAL&#160;</td><td class="fielddoc"><p>Score global. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37" name="aed36276ae7ac961357268efdfdbc85f9ab38b6aef1d039c13071f72e4dca0bd37"></a>SC_LEVEL&#160;</td><td class="fielddoc"><p>Niveau maximum atteint. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053" name="aed36276ae7ac961357268efdfdbc85f9a93dc86d93765547dce9b954ba5a14053"></a>SC_SWAPS&#160;</td><td class="fielddoc"><p>Nombre total d'échanges. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb" name="aed36276ae7ac961357268efdfdbc85f9a04cb79d6a7f034c65bc958a20fe584cb"></a>SC_CONSUMED&#160;</td><td class="fielddoc"><p>Nombre total d'objets consommés. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4" name="aed36276ae7ac961357268efdfdbc85f9a49bb17f56d7f18a035906ca21457b4c4"></a>SC_FLAMED&#160;</td><td class="fielddoc"><p>Nombre total de gemmes enflammées consommées. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4" name="aed36276ae7ac961357268efdfdbc85f9af970fa6cebe5cc9c1544b89e71712df4"></a>SC_STARRED&#160;</td><td class="fielddoc"><p>Nombre total de gemmes étoilées consommées. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885" name="aed36276ae7ac961357268efdfdbc85f9a4171b11ea56d53c1553f2f47f25b2885"></a>SC_HYPERCUBES&#160;</td><td class="fielddoc"><p>Nombre total d'hypercubes consommés. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a" name="aed36276ae7ac961357268efdfdbc85f9a2867ccf7fd3ca57c7141f5292bbf298a"></a>SC_GRAVITY&#160;</td><td class="fielddoc"><p>Nombre total de changements de gravité. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4" name="aed36276ae7ac961357268efdfdbc85f9ae812bf288076fa01c7ec794b7a92deb4"></a>SC_TIME&#160;</td><td class="fielddoc"><p>Temps total joué. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a" name="aed36276ae7ac961357268efdfdbc85f9ab9a57cb93122b495fecd8102ac5bd00a"></a>SC_SIZE&#160;</td><td class="fielddoc"><p>Taille de l'énumération. </p>
+</td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="game_8h_source.html#l00257">257</a> du fichier <a class="el" href="game_8h_source.html">game.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="aa5f054a29b034cdc2fda49e5dfbaedc0" name="aa5f054a29b034cdc2fda49e5dfbaedc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5f054a29b034cdc2fda49e5dfbaedc0">&#9670;&#160;</a></span>board_get_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int board_get_width </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la largeur d'un plateau de jeu. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>La largeur d'un plateau de jeu. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers la structure du plateau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adae09600ffeb93f71afdc213a779628a" name="adae09600ffeb93f71afdc213a779628a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adae09600ffeb93f71afdc213a779628a">&#9670;&#160;</a></span>board_get_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int board_get_height </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la hauteur du plateau de jeu. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>La hauteur du plateau de jeu. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers la structure du plateau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af0e92d89cda5e91ee829eae058afd743" name="af0e92d89cda5e91ee829eae058afd743"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e92d89cda5e91ee829eae058afd743">&#9670;&#160;</a></span>board_get_gravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a99f26e6ee9fcd62f75203b5402df8098">direction</a> board_get_gravity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la direction de la gravité du plateau de jeu. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>La direction de la gravité du plateau de jeu. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers la structure du plateau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ca74f7a7f3b88a952db3e23c660f46e" name="a5ca74f7a7f3b88a952db3e23c660f46e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ca74f7a7f3b88a952db3e23c660f46e">&#9670;&#160;</a></span>board_get_picked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool board_get_picked </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>j</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les coordonnées de la case actuellement sélectionnée dans le plateau (s'il y en a une). </p>
+<dl class="section return"><dt>Renvoie</dt><dd>True si une case est actuellement sélectionnée, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers la structure du plateau  </td></tr>
+    <tr><td class="paramname">i</td><td>Pointeur pour retourner la coordonnée horizontale de la case sélectionnée dans le plateau (numérotée de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Pointeur pour retourner la coordonnée verticale de la case sélectionnée dans le plateau (numérotée de haut en bas). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f847d9abf5146416f7e85866670e09f" name="a4f847d9abf5146416f7e85866670e09f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f847d9abf5146416f7e85866670e09f">&#9670;&#160;</a></span>board_get_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void board_get_cell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>j</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell.html">cell</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le contenu d'une case dans le plateau de jeu. </p>
+<p>Cette fonction remplit la structure de case fournie avec le contenu de la case située aux coordonnées spécifiées dans le plateau de jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers la structure du plateau.  </td></tr>
+    <tr><td class="paramname">i</td><td>Coordonnée horizontale de la case dans le plateau (numérotée de gauche à droite).  </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée verticale de la case dans le plateau (numérotée de haut en bas).  </td></tr>
+    <tr><td class="paramname">c</td><td>Pointeur pour stocker la case. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad4c9348a40224dbb7d9d4cf4e1061f53" name="ad4c9348a40224dbb7d9d4cf4e1061f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c9348a40224dbb7d9d4cf4e1061f53">&#9670;&#160;</a></span>board_refill_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int board_refill_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la taille de la file de stockage dans le plateau (utilisée uniquement en mode puzzle). </p>
+<dl class="section return"><dt>Renvoie</dt><dd>La taille de la file de stockage, ou -1 s'il n'y a pas de file de stockage </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers le plateau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9d8ffbcf93adcdcdaac74bed3deeb2be" name="a9d8ffbcf93adcdcdaac74bed3deeb2be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d8ffbcf93adcdcdaac74bed3deeb2be">&#9670;&#160;</a></span>board_read_refill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool board_read_refill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboard.html">board</a> *</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>k</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell.html">cell</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit une case de la file de stockage (sans la retirer). </p>
+<dl class="section remark"><dt>Remarques</dt><dd>S'il n'y a pas de file de stockage, la fonction doit retourner false.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si la lecture a réussi, false sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>Pointeur vers le plateau  </td></tr>
+    <tr><td class="paramname">k</td><td>Index dans le stockage à lire (0 est le premier élément à être retiré au début de la file).  </td></tr>
+    <tr><td class="paramname">c</td><td>Pointeur pour stocker la case lue du stockage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a44f9223862342077d82e62ce8ebb33a9" name="a44f9223862342077d82e62ce8ebb33a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f9223862342077d82e62ce8ebb33a9">&#9670;&#160;</a></span>game_create_classic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgame.html">game</a> * game_create_classic </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>lines</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>target_score</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>scale_score</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>nodelay</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>upgrades</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>easy_mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>gravity_gems</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>bombs</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface pour initialiser un jeu classique avec la largeur et la hauteur spécifiées. </p>
+<p>Alloue de la mémoire pour la structure du jeu et initialise le jeu. Les cases sont toutes remplies aléatoirement avec des types de gemmes. La génération garantit que le jeu est stable : aucune zone destructible n'existe. De plus, elle doit également garantir qu'au moins un coup peut être joué.</p>
+<dl class="section attention"><dt>Attention</dt><dd>Comme le mode classique n'utilise pas de file de stockage, le paramètre refill_mode doit être défini à 2 (pas de file).</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la structure de jeu initialisée. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Largeur du plateau de jeu.  </td></tr>
+    <tr><td class="paramname">height</td><td>Hauteur du plateau de jeu.  </td></tr>
+    <tr><td class="paramname">lines</td><td>Mode d'élimination du jeu (lignes ou SCCs).  </td></tr>
+    <tr><td class="paramname">target_score</td><td>Score cible à atteindre pour terminer le niveau.  </td></tr>
+    <tr><td class="paramname">scale_score</td><td>Pourcentage de mise à l'échelle du score cible (appliqué après chaque niveau terminé).  </td></tr>
+    <tr><td class="paramname">nodelay</td><td>Indicateur indiquant si le mode nodelay est activé.  </td></tr>
+    <tr><td class="paramname">upgrades</td><td>Indicateur indiquant si les améliorations de gemmes sont activées.  </td></tr>
+    <tr><td class="paramname">easy_mode</td><td>Indicateur indiquant si le mode facile est activé.  </td></tr>
+    <tr><td class="paramname">gravity_gems</td><td>Indicateur indiquant si les gemmes de gravité sont activées.  </td></tr>
+    <tr><td class="paramname">bombs</td><td>Indicateur indiquant si les bombes sont activées. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5f5bb4919000f95b969e94574e96aad" name="ad5f5bb4919000f95b969e94574e96aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5f5bb4919000f95b969e94574e96aad">&#9670;&#160;</a></span>game_create_puzzle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgame.html">game</a> * game_create_puzzle </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>lines</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>upgrades</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short</td>          <td class="paramname"><span class="paramname"><em>refill_mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ini</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>balanced</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short</td>          <td class="paramname"><span class="paramname"><em>gravity_control</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface pour initialiser un jeu puzzle avec la largeur et la hauteur spécifiées. </p>
+<p>Alloue de la mémoire pour la structure du jeu et initialise le jeu. Les cases sont soit vides, soit remplies aléatoirement avec des types de gemmes. La génération garantit que le jeu est stable :</p><ul>
+<li>aucune zone destructible n'existe, et,</li>
+<li>il n'y a pas de case non vide au-dessus d'une case vide.</li>
+</ul>
+<p>Le paramètre "balanced" indique si la génération équilibrée est activée. Lorsqu'elle est activée, le nombre de chaque type de gemme sur le plateau doit être un multiple de 3.</p>
+<p>Le paramètre refill_mode spécifie comment la file de stockage doit être initialisée :</p><ul>
+<li>Si refill_mode est 0, la file de stockage est allouée et initialement vide. Les gemmes qui sont éliminées sont stockées dans la file de stockage et peuvent être utilisées pour remplir le plateau plus tard.</li>
+<li>Si refill_mode est 1, la file de stockage est allouée et doit être remplie avec une séquence aléatoire de rochers et de bombes. La longueur de la séquence est fournie par le paramètre ini. Ce paramètre ne doit pas dépasser le nombre total de cases sur le plateau (s'il le fait, il doit être défini à width * height).</li>
+<li>Si refill_mode est 2, la file de stockage n'est pas utilisée et ne doit pas être allouée.</li>
+</ul>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la structure de jeu initialisée. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Largeur du plateau de jeu.  </td></tr>
+    <tr><td class="paramname">height</td><td>Hauteur du plateau de jeu  </td></tr>
+    <tr><td class="paramname">lines</td><td>Mode d'élimination du jeu (lignes ou SCCs).  </td></tr>
+    <tr><td class="paramname">upgrades</td><td>Indicateur indiquant si les améliorations de gemmes sont activées.  </td></tr>
+    <tr><td class="paramname">refill_mode</td><td>Indicateur indiquant le mode de stockage.  </td></tr>
+    <tr><td class="paramname">ini</td><td>Taille initiale du stockage (pertinent uniquement si refill_mode est défini à 1).  </td></tr>
+    <tr><td class="paramname">balanced</td><td>Indicateur indiquant si la génération équilibrée est activée (le nombre de chaque type de gemme doit être un multiple de 3).  </td></tr>
+    <tr><td class="paramname">gravity_control</td><td>Mode de contrôle de la gravité (0 : ne peut pas changer, 1 : rotation horaire, 2 : libre). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab51d806a044271602387f76aea52aa6d" name="ab51d806a044271602387f76aea52aa6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51d806a044271602387f76aea52aa6d">&#9670;&#160;</a></span>game_next_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_next_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface lorsqu'un niveau se termine en mode classique pour générer un nouveau plateau de jeu. </p>
+<p>Cette fonction libère le plateau de jeu actuel (mais pas toute la structure du jeu) et génère un nouveau plateau aléatoire avec les mêmes dimensions. Elle met également à jour le bloc de score:</p><ul>
+<li>le niveau est incrémenté de 1,</li>
+<li>le level_score est réinitialisé à 0,</li>
+<li>le target_score est mis à jour en appliquant le pourcentage scale_score.</li>
+</ul>
+<dl class="section remark"><dt>Remarques</dt><dd>S'il y avait des gemmes avec pouvoirs (enflammée, étoilée, gravité) ou des hypercubes sur le plateau précédent, ils doivent être préservés dans le nouveau plateau. Par exemple, s'il y avait 2 gemmes enflammées sur le plateau précédent, le nouveau plateau doit également contenir exactement 2 gemmes enflammées (elles peuvent être de types différents et placées à des emplacements différents). </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a45eee0c37c1a431ad796cae630affb9b" name="a45eee0c37c1a431ad796cae630affb9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45eee0c37c1a431ad796cae630affb9b">&#9670;&#160;</a></span>game_release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_release </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface pour libérer la mémoire allouée pour un jeu. </p>
+<p>Cette fonction libère la mémoire utilisée par le plateau de jeu et la structure du jeu elle-même. </p>
+
+</div>
+</div>
+<a id="a13b3b75d9b956754a2aa6a092c27ea9f" name="a13b3b75d9b956754a2aa6a092c27ea9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13b3b75d9b956754a2aa6a092c27ea9f">&#9670;&#160;</a></span>game_clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgame.html">game</a> * game_clone </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgame.html">game</a> *</td>          <td class="paramname"><span class="paramname"><em>g</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelée par l'interface pour cloner une structure de jeu. </p>
+<p>Cette fonction crée une copie complète de la structure de jeu fournie, incluant le plateau de jeu et toutes les données associées.</p>
+<dl class="section remark"><dt>Remarques</dt><dd>Cette fonction est utilisée par l'interface au début d'un jeu puzzle pour créer une sauvegarde de l'état initial du jeu (ce qui permet de le restaurer).</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la structure de jeu clonée. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Pointeur vers la structure du jeu à cloner </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="game_8h.html">game.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

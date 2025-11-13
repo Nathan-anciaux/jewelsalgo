@@ -1,0 +1,157 @@
+\doxysection{Référence du fichier project\+\_\+tools.\+h}
+\hypertarget{project__tools_8h}{}\label{project__tools_8h}\index{project\_tools.h@{project\_tools.h}}
+
+
+Tools.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+timer.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{project__tools_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(a,  b)
+\begin{DoxyCompactList}\small\item\em Macro calculant le maximum de deux valeurs. Ne pas utiliser avec des expressions faisant des effets de bord ! Par exemple, MAX(x++, y) risque d\textquotesingle{}incrémenter la variable x deux fois (car si elle est plus grande que y, x++ est évalué dans (a) \texorpdfstring{$>$}{>} (b), puis dans (a)). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__tools_8h_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(a,  b)
+\begin{DoxyCompactList}\small\item\em Macro calculant le minimum de deux valeurs. Ne pas utiliser avec des expressions faisant des effets de bord ! Par exemple, MIN(x++, y) risque d\textquotesingle{}incrémenter la variable x deux fois (car si elle est plus grande que y, x++ est évalué dans (a) \texorpdfstring{$<$}{<} (b), puis dans (a)). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{project__tools_8h_aac9153aee4bdb92701df902e06a74eb3}{SWAP}}(a,  b)
+\begin{DoxyCompactList}\small\item\em Macro pour échanger deux valeurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \mbox{\hyperlink{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}}
+\item 
+typedef unsigned short \mbox{\hyperlink{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{ushort}}
+\item 
+typedef unsigned int \mbox{\hyperlink{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}
+\item 
+typedef unsigned long \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Tools. 
+
+Quelques macros et définitions de types que vous pouvez utiliser dans votre projet
+
+\begin{DoxyRemark}{Remarques}
+Vous ne devez PAS modifier ce fichier car les macros sont utilisés dans la mise en oeuvre de l\textquotesingle{}interface graphique. 
+\end{DoxyRemark}
+
+
+Définition dans le fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{project__tools_8h_doc-define-members}
+\doxysubsection{Documentation des macros}
+\Hypertarget{project__tools_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\index{project\_tools.h@{project\_tools.h}!MAX@{MAX}}
+\index{MAX@{MAX}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \label{project__tools_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f} 
+\#define MAX(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((a)\ >\ (b)\ ?\ (a)\ :\ (b))}
+
+\end{DoxyCode}
+
+
+Macro calculant le maximum de deux valeurs. Ne pas utiliser avec des expressions faisant des effets de bord ! Par exemple, MAX(x++, y) risque d\textquotesingle{}incrémenter la variable x deux fois (car si elle est plus grande que y, x++ est évalué dans (a) \texorpdfstring{$>$}{>} (b), puis dans (a)). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00044}{44}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+\Hypertarget{project__tools_8h_a3acffbd305ee72dcd4593c0d8af64a4f}\index{project\_tools.h@{project\_tools.h}!MIN@{MIN}}
+\index{MIN@{MIN}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \label{project__tools_8h_a3acffbd305ee72dcd4593c0d8af64a4f} 
+\#define MIN(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((a)\ <\ (b)\ ?\ (a)\ :\ (b))}
+
+\end{DoxyCode}
+
+
+Macro calculant le minimum de deux valeurs. Ne pas utiliser avec des expressions faisant des effets de bord ! Par exemple, MIN(x++, y) risque d\textquotesingle{}incrémenter la variable x deux fois (car si elle est plus grande que y, x++ est évalué dans (a) \texorpdfstring{$<$}{<} (b), puis dans (a)). 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00053}{53}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+\Hypertarget{project__tools_8h_aac9153aee4bdb92701df902e06a74eb3}\index{project\_tools.h@{project\_tools.h}!SWAP@{SWAP}}
+\index{SWAP@{SWAP}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{SWAP}{SWAP}}
+{\footnotesize\ttfamily \label{project__tools_8h_aac9153aee4bdb92701df902e06a74eb3} 
+\#define SWAP(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ typeof(a)\ temp\ =\ a;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ a\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ b;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ b\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ temp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Macro pour échanger deux valeurs. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00059}{59}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{project__tools_8h_doc-typedef-members}
+\doxysubsection{Documentation des définitions de type}
+\Hypertarget{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc}\index{project\_tools.h@{project\_tools.h}!uchar@{uchar}}
+\index{uchar@{uchar}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{uchar}{uchar}}
+{\footnotesize\ttfamily \label{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc} 
+typedef unsigned char \mbox{\hyperlink{project__tools_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00032}{32}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+\Hypertarget{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69}\index{project\_tools.h@{project\_tools.h}!ushort@{ushort}}
+\index{ushort@{ushort}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{ushort}{ushort}}
+{\footnotesize\ttfamily \label{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69} 
+typedef unsigned short \mbox{\hyperlink{project__tools_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{ushort}}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00033}{33}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+\Hypertarget{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}\index{project\_tools.h@{project\_tools.h}!uint@{uint}}
+\index{uint@{uint}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily \label{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14} 
+typedef unsigned int \mbox{\hyperlink{project__tools_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00034}{34}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
+\Hypertarget{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}\index{project\_tools.h@{project\_tools.h}!ulong@{ulong}}
+\index{ulong@{ulong}!project\_tools.h@{project\_tools.h}}
+\doxysubsubsection{\texorpdfstring{ulong}{ulong}}
+{\footnotesize\ttfamily \label{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a} 
+typedef unsigned long \mbox{\hyperlink{project__tools_8h_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{project__tools_8h_source_l00035}{35}} du fichier \mbox{\hyperlink{project__tools_8h_source}{project\+\_\+tools.\+h}}.
+
