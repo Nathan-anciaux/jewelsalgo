@@ -505,6 +505,7 @@ void render_game(game *g)
   case ANIM_MOVE_GOODSWAP:
   case ANIM_MOVE_ROLLBACK:
   case ANIM_MOVE_FALL:
+  {
     int distance = 0;
     direction dir = UP;
     // Movement animation: we render all the elements in movement mode.
@@ -516,7 +517,8 @@ void render_game(game *g)
         render_cell_move(g, i, j, dir, distance);
       }
     }
-    break;
+  }
+  break;
   case ANIM_KILL:
     // Kill animation: we render all the elements in kill mode.
     gem_kill killtype = KILL_NOKILL;
