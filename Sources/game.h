@@ -60,6 +60,7 @@ typedef struct
     int height;
     int direction;
     int index_selected_square;
+    int *position_square;
     cell *content_square;
     int *q;
 } board;

@@ -47,6 +47,7 @@ void board_get_cell(board *b, int i, int j, cell *c)
 
 int board_refill_size(board *)
 {
+
     return -1;
 }
 
