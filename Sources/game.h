@@ -60,7 +60,6 @@ typedef struct
     int height;
     int direction;
     int index_selected_square;
-    int *position_square;
     cell *content_square;
     int *q;
 } board;
@@ -69,6 +68,8 @@ typedef struct
 /*+ Fonctions appelées par l'interface pour récupérer des informations    +*/
 /*+ sur un plateau de jeu                                                 +*/
 /***************************************************************************/
+
+int index_board(board *b, int i, int j);
 
 int board_get_width(board *b);
 

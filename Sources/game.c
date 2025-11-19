@@ -28,10 +28,10 @@ direction board_get_gravity(board *b)
 
 bool board_get_picked(board *b, int *i, int *j)
 {
-    if (b->content_square[b->index_selected_square] != NULL)
+    if (b->index_selected_square != -1)
     {
-        i = b->index_selected_square / b->width;
-        j = b->index_selected_square % b->width;
+        *i = b->index_selected_square / b->width;
+        *j = b->index_selected_square % b->width;
         return true;
     }
     return false;
@@ -39,9 +39,9 @@ bool board_get_picked(board *b, int *i, int *j)
 
 void board_get_cell(board *b, int i, int j, cell *c)
 {
-    c->object = b->content_square->object;
-    c->power = b->content_square->power;
-    c->countdown = b->content_square->countdown;
+    c->object = b->content_square[index_board(b, i, j)].object;
+    c->power = b->content_square[index_board(b, i, j)].power;
+    c->countdown = b->content_square[index_board(b, i, j)].countdown;
     return;
 }
 
@@ -85,13 +85,9 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->index_selected_square = -1;
 
     // Score part
-    g->score = malloc(sizeof(score_block));
+    g->score = calloc(1, sizeof(score_block));
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
-    g->score->level = 0;
-    g->score->level_score = 0;
-    g->score->refills = 0;
-    g->score->scores;
     return g;
 }
 
