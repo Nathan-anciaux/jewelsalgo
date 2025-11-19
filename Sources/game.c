@@ -37,9 +37,11 @@ bool board_get_picked(board *b, int *i, int *j)
     return false;
 }
 
-void board_get_cell(board *, int, int, cell *)
+void board_get_cell(board *b, int i, int j, cell *c)
 {
-
+    c->object = b->content_square->object;
+    c->power = b->content_square->power;
+    c->countdown = b->content_square->countdown;
     return;
 }
 
