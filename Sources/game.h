@@ -10,9 +10,17 @@
 /*+ Définition du plateau +*/
 /***************************/
 
-typedef enum { UP, RIGHT, DOWN, LEFT, SIZE_DIRECTION } direction;
+typedef enum
+{
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT,
+    SIZE_DIRECTION
+} direction;
 
-typedef enum {
+typedef enum
+{
     AMBER,
     AMETHYST,
     DIAMOND,
@@ -27,7 +35,8 @@ typedef enum {
     ELEM_SIZE
 } element;
 
-typedef enum {
+typedef enum
+{
     GEM_BASIC,
     GEM_GRAVITY,
     GEM_FLAME,
@@ -35,8 +44,14 @@ typedef enum {
     GEM_SIZE
 } gem_power;
 
-typedef struct {
-    int dummy;
+typedef struct
+{
+    int width;
+    int height;
+    int direction;
+    int selected_square;
+    int *content_square;
+    int *q;
 } board;
 
 /***************************************************************************/
@@ -52,9 +67,11 @@ direction board_get_gravity(board *b);
 
 bool board_get_picked(board *b, int *i, int *j);
 
-typedef struct {
+typedef struct
+{
     element object;
-    union {
+    union
+    {
         gem_power power;
         short countdown;
     };
@@ -70,7 +87,8 @@ bool board_read_refill(board *b, int k, cell *c);
 /*+ Définition d'un jeu +*/
 /*************************/
 
-typedef enum {
+typedef enum
+{
     SC_GLOBAL,
     SC_LEVEL,
     SC_SWAPS,
@@ -83,7 +101,8 @@ typedef enum {
     SC_SIZE,
 } score_type;
 
-typedef struct {
+typedef struct
+{
     int level;
     int level_score;
     int target_score;
@@ -92,7 +111,8 @@ typedef struct {
     int refills;
 } score_block;
 
-typedef struct {
+typedef struct
+{
     board *b;
     bool puzzle;
     bool lines;
