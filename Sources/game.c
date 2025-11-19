@@ -37,11 +37,17 @@ bool board_get_picked(board *b, int *i, int *j)
     return false;
 }
 
-void board_get_cell(board *b, int i, int j, cell *c)
+void board_get_cell(board *b, int j, int i, cell *c)
 {
     c->object = b->content_square[index_board(b, i, j)].object;
-    c->power = b->content_square[index_board(b, i, j)].power;
-    c->countdown = b->content_square[index_board(b, i, j)].countdown;
+    if (b->content_square[index_board(b, i, j)].object == BOMB)
+    {
+        c->countdown = b->content_square[index_board(b, i, j)].countdown;
+    }
+    else
+    {
+        c->power = b->content_square[index_board(b, i, j)].power;
+    }
     return;
 }
 
@@ -76,8 +82,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->refill_mode = 2;
 
     // Board part
-    g->b = malloc(sizeof(board));
-    g->b->content_square = malloc(g->b->width * g->b->height * sizeof(int));
+    g->b = calloc(1, sizeof(board));
+    g->b->content_square = malloc(g->b->width * g->b->height * sizeof(cell));
     g->b->width = width;
     g->b->height = height;
     g->b->direction = DOWN;
