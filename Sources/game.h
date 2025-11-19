@@ -46,11 +46,21 @@ typedef enum
 
 typedef struct
 {
+    element object;
+    union
+    {
+        gem_power power;
+        short countdown;
+    };
+} cell;
+
+typedef struct
+{
     int width;
     int height;
     int direction;
     int selected_square;
-    int *content_square;
+    cell *content_square;
     int *q;
 } board;
 
@@ -66,16 +76,6 @@ int board_get_height(board *b);
 direction board_get_gravity(board *b);
 
 bool board_get_picked(board *b, int *i, int *j);
-
-typedef struct
-{
-    element object;
-    union
-    {
-        gem_power power;
-        short countdown;
-    };
-} cell;
 
 void board_get_cell(board *b, int i, int j, cell *c);
 
