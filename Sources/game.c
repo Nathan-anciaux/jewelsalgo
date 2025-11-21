@@ -37,11 +37,17 @@ bool board_get_picked(board *b, int *i, int *j)
     return false;
 }
 
-void board_get_cell(board *b, int i, int j, cell *c)
+void board_get_cell(board *b, int j, int i, cell *c)
 {
-    c->object = b->content_square->object;
-    c->power = b->content_square->power;
-    c->countdown = b->content_square->countdown;
+    c->object = b->content_square[index_board(b, i, j)].object;
+    if (b->content_square[index_board(b, i, j)].object == BOMB)
+    {
+        c->countdown = b->content_square[index_board(b, i, j)].countdown;
+    }
+    else
+    {
+        c->power = b->content_square[index_board(b, i, j)].power;
+    }
     return;
 }
 
@@ -84,17 +90,14 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->index_selected_square = -1;
 
     // Score part
-    g->score = malloc(sizeof(score_block));
+    g->score = calloc(1, sizeof(score_block));
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
-    g->score->level = 0;
-    g->score->level_score = 0;
-    g->score->refills = 0;
-    g->score->scores;
     return g;
 }
+}
 
-game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
+game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
 {
     return NULL;
 }
