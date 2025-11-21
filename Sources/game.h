@@ -69,6 +69,8 @@ typedef struct
 /*+ sur un plateau de jeu                                                 +*/
 /***************************************************************************/
 
+int index_board(board *b, int i, int j);
+
 int board_get_width(board *b);
 
 int board_get_height(board *b);
