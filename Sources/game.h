@@ -2,6 +2,7 @@
 #define GAME_FULL_H_
 
 #include "project_tools.h"
+#include "queue.h"
 #include <limits.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -61,7 +62,7 @@ typedef struct
     int direction;
     int index_selected_square;
     cell *content_square;
-    int *q;
+    queue *q;
 } board;
 
 /***************************************************************************/

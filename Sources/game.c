@@ -25,7 +25,7 @@ int board_get_height(board *b)
 }
 
 direction board_get_gravity(board *b)
-// Returns the direction of gravity on the game board
+// Returns the direction of gravity on the game boardmake
 {
     return b->direction;
 }
@@ -60,13 +60,13 @@ void board_get_cell(board *b, int j, int i, cell *c)
 int board_refill_size(board *)
 // Returns the size of the storage queue in the board (used only in puzzle mode).
 {
-
-    return -1;
+    return;
 }
 
-bool board_read_refill(board *, int, cell *)
+bool board_read_refill(board *b, int k, cell *c)
 // Reads an element from the storage queue (without removing it).
 {
+
     return false;
 }
 
@@ -109,6 +109,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
 // Called by the interface to initialize a puzzle game with the specified width and height.
 {
+
     return NULL;
 }
 
