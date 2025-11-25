@@ -105,8 +105,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
 
-    // Game valid
-
+    // basic board
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -114,13 +113,78 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
             g->b->content_square[index_board(g->b, i, j)].object = rand() % 7;
         }
     }
+
+    // fix stable board
+
+    bool stable = false;
+
+    while (!stable)
+    {
+        bool row = is_there_destructible_zone_row(g->b);
+        bool col = is_there_destructible_zone_col(g->b);
+        if ((row == false) && (col == false))
+        {
+            stable = true;
+        }
+    }
+
     return g;
 }
 
-bool is_there_destructible_zone(board *b)
-// check if there is a destructible zone
+bool is_there_destructible_zone_row(board *b)
+// remove destructible zones
 {
-    return false;
+    cell a;
+    bool change = false;
+    int j;
+    for (int i = 0; i < b->height; i++)
+    {
+        j = 0;
+        while (j < b->width - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i, j + 1)].object) &&
+                (b->content_square[index_board(b, i, j + 1)].object == b->content_square[index_board(b, i, j + 2)].object))
+            {
+                a.object = b->content_square[index_board(b, i, j + 1)].object;
+                b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
+                while (b->content_square[index_board(b, i, j + 1)].object == a.object)
+                {
+                    b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
+                }
+                change = true;
+            }
+            j++;
+        }
+    }
+    return change;
+}
+
+bool is_there_destructible_zone_col(board *b)
+// remove destructible zones
+{
+    cell a;
+    bool change = false;
+    int i;
+    for (int j = 0; j < b->width; j++)
+    {
+        i = 0;
+        while (i < b->height - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
+                (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
+            {
+                a.object = b->content_square[index_board(b, i + 1, j)].object;
+                b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                while (b->content_square[index_board(b, i + 1, j)].object == a.object)
+                {
+                    b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                }
+                change = true;
+            }
+            i++;
+        }
+    }
+    return change;
 }
 
 bool can_move_be_played(board *b)
