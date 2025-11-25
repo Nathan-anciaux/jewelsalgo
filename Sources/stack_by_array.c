@@ -9,7 +9,7 @@ typedef struct stack
 {
     int capacity;   // Taille totale du tableau alloué en mémoire.
     int size_stack; // Nombre d'éléments dans la pile représentée.
-    int *array;     // Tableau contenant les valeurs de la pile représentée.
+    cell *array;    // Tableau contenant les valeurs de la pile représentée.
 } stack;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ bool isempty_stack(stack *p)
     return p->size_stack == 0;
 }
 
-int pop(stack *p)
+cell pop(stack *p)
 {
     if (isempty_stack(p))
     {
@@ -76,7 +76,7 @@ int pop(stack *p)
         return EXIT_FAILURE;
     }
     p->size_stack--;
-    int result = p->array[p->size_stack];
+    cell result = p->array[p->size_stack];
     if ((p->size_stack * 100 / p->capacity) < 25)
     {
         shrink_stack(p);
@@ -84,7 +84,7 @@ int pop(stack *p)
     return result;
 }
 
-void push(int val, stack *p)
+void push(cell val, stack *p)
 {
     if (p->capacity == p->size_stack)
     {

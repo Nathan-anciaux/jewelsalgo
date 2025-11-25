@@ -108,7 +108,33 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 
 game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
 // Called by the interface to initialize a puzzle game with the specified width and height.
-{
+{ /*
+     // Game part
+     game *g = malloc(sizeof(*g));
+     g->lines = lines;
+     g->nodelay = true;
+     g->upgrades = upgrades;
+     g->easy = false;
+     g->gravity_gems = 2;
+     g->bombs = false;
+     g->gravity_control = 1;
+     g->puzzle = true;
+     g->refill_mode = 0;
+
+     // Board part
+     g->b = malloc(sizeof(g->b));
+     g->b->width = width;
+     g->b->height = height;
+     g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
+     g->b->direction = DOWN;
+     g->b->q = create_queue();
+     g->b->index_selected_square = -1;
+
+     // Score part
+     g->score = calloc(1, sizeof(g->score));
+
+
+     return g;*/
 
     return NULL;
 }
