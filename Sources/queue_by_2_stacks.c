@@ -76,3 +76,8 @@ int dequeue(queue *q)
     q->size--;
     return pop(q->right);
 }
+
+int get_queuesize(queue *q)
+{
+    return q->size;
+}

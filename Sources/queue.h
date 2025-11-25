@@ -34,4 +34,7 @@ void enqueue(int, queue *);
 // Renvoie la valeur la plus à droite de la file et la retire.
 int dequeue(queue *);
 
+// Renvoir size de la queue
+int get_queuesize(queue *q);
+
 #endif // QUEUE_H_

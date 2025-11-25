@@ -57,10 +57,10 @@ void board_get_cell(board *b, int j, int i, cell *c)
     return;
 }
 
-int board_refill_size(board *)
+int board_refill_size(board *q)
 // Returns the size of the storage queue in the board (used only in puzzle mode).
 {
-    return;
+    return get_queuesize(q);
 }
 
 bool board_read_refill(board *b, int k, cell *c)
@@ -109,8 +109,30 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
 // Called by the interface to initialize a puzzle game with the specified width and height.
 {
+    // Game part
+    game *g = malloc(sizeof(*g));
+    g->lines = lines;
+    g->nodelay = true;
+    g->upgrades = upgrades;
+    g->easy = easy_mode;
+    g->gravity_gems = 2;
+    g->bombs = false;
+    g->gravity_control = gravity_control;
+    g->puzzle = false;
+    g->refill_mode = refill_mode;
 
-    return NULL;
+    // Board part
+    g->b = malloc(sizeof(g->b));
+    g->b->width = width;
+    g->b->height = height;
+    g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
+    g->b->direction = DOWN;
+    g->b->q = NULL;
+    g->b->index_selected_square = -1;
+
+    // Score part
+    g->score = calloc(1, sizeof(g->score));
+    return g;
 }
 
 void game_next_level(game *)
