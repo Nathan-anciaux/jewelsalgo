@@ -50,11 +50,7 @@ void delete_queue(queue *q)
 
 bool isempty_queue(const queue *q)
 {
-    if (isempty_stack(q->left) && isempty_stack(q->right))
-    {
-        return true;
-    }
-    return false;
+    return isempty_stack(q->left) && isempty_stack(q->right);
 }
 
 void enqueue(int val, queue *q)
@@ -79,5 +75,9 @@ int dequeue(queue *q)
 
 int get_queuesize(queue *q)
 {
+    if (q == NULL)
+    {
+        return -1;
+    }
     return q->size;
 }

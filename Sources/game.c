@@ -57,10 +57,10 @@ void board_get_cell(board *b, int j, int i, cell *c)
     return;
 }
 
-int board_refill_size(board *q)
+int board_refill_size(board *b)
 // Returns the size of the storage queue in the board (used only in puzzle mode).
 {
-    return get_queuesize(q);
+    return get_queuesize(b->q);
 }
 
 bool board_read_refill(board *b, int k, cell *c)
@@ -79,7 +79,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 // Called by the interface to initialize a classic game with the specified width and height.
 {
     // Game part
-    game *g = malloc(sizeof(*g));
+    game *g;
+    g = malloc(sizeof(*g));
     g->lines = lines;
     g->nodelay = nodelay;
     g->upgrades = upgrades;
@@ -91,7 +92,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->refill_mode = 2;
 
     // Board part
-    g->b = malloc(sizeof(g->b));
+    g->b = malloc(sizeof(*(g->b))); // ou sizeof(board)
     g->b->width = width;
     g->b->height = height;
     g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
@@ -100,39 +101,38 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->index_selected_square = -1;
 
     // Score part
-    g->score = calloc(1, sizeof(g->score));
+    g->score = calloc(1, sizeof(*(g->score)));
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
+
+    // Game valid
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            g->b->content_square[index_board(g->b, i, j)].object = rand() % 7;
+        }
+    }
     return g;
 }
 
-game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
+bool is_there_destructible_zone(board *b)
+// check if there is a destructible zone
+{
+    return false;
+}
+
+bool can_move_be_played(board *b)
+// check if a move can be played
+{
+    return false;
+}
+
+game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
 // Called by the interface to initialize a puzzle game with the specified width and height.
 {
-    // Game part
-    game *g = malloc(sizeof(*g));
-    g->lines = lines;
-    g->nodelay = true;
-    g->upgrades = upgrades;
-    g->easy = easy_mode;
-    g->gravity_gems = 2;
-    g->bombs = false;
-    g->gravity_control = gravity_control;
-    g->puzzle = false;
-    g->refill_mode = refill_mode;
-
-    // Board part
-    g->b = malloc(sizeof(g->b));
-    g->b->width = width;
-    g->b->height = height;
-    g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
-    g->b->direction = DOWN;
-    g->b->q = NULL;
-    g->b->index_selected_square = -1;
-
-    // Score part
-    g->score = calloc(1, sizeof(g->score));
-    return g;
+    return NULL;
 }
 
 void game_next_level(game *)

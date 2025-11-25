@@ -10,35 +10,43 @@
 /*+ General functions +*/
 /***********************/
 
-bool ctl_valid_coordinates(game *g, int i, int j) {
+bool ctl_valid_coordinates(game *g, int i, int j)
+{
     return (g && i >= 0 && i < board_get_width(g->b) && j >= 0 &&
             j < board_get_height(g->b));
 }
 
-int ctl_valid_border_coordinates(game *g, int i, int j) {
-    if (!g) {
+int ctl_valid_border_coordinates(game *g, int i, int j)
+{
+    if (!g)
+    {
         return INT_MAX;
     }
-    switch (board_get_gravity(g->b)) {
+    switch (board_get_gravity(g->b))
+    {
     case UP:
         if (j == board_get_height(g->b) && i >= 0 &&
-            i < board_get_width(g->b)) {
+            i < board_get_width(g->b))
+        {
             return i;
         }
         break;
     case DOWN:
-        if (j == -1 && i >= 0 && i < board_get_width(g->b)) {
+        if (j == -1 && i >= 0 && i < board_get_width(g->b))
+        {
             return i;
         }
         break;
     case LEFT:
         if (i == board_get_width(g->b) && j >= 0 &&
-            j < board_get_height(g->b)) {
+            j < board_get_height(g->b))
+        {
             return j;
         }
         break;
     case RIGHT:
-        if (i == -1 && j >= 0 && j < board_get_height(g->b)) {
+        if (i == -1 && j >= 0 && j < board_get_height(g->b))
+        {
             return j;
         }
         break;
@@ -48,77 +56,100 @@ int ctl_valid_border_coordinates(game *g, int i, int j) {
     return INT_MAX;
 }
 
-bool ctl_check_game(game *g, bool messages) {
-    if (!g) {
-        if (messages) {
+bool ctl_check_game(game *g, bool messages)
+{
+    if (!g)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Game structure is invalid.\n");
         }
         return false;
     }
 
-    if (!g->b) {
-        if (messages) {
+    if (!g->b)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Game board is invalid.\n");
         }
         return false;
     }
 
-    if (g->gravity_control < 0 || g->gravity_control > 2) {
-        if (messages) {
+    if (g->gravity_control < 0 || g->gravity_control > 2)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Invalid gravity control mode.\n");
         }
         return false;
     }
 
-    if (board_get_width(g->b) <= 4 || board_get_height(g->b) <= 4) {
-        if (messages) {
+    if (board_get_width(g->b) <= 4 || board_get_height(g->b) <= 4)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Invalid game board dimensions.\n");
         }
         return false;
     }
 
-    if (g->gravity_control < 0 || g->gravity_control > 2) {
-        if (messages) {
+    if (g->gravity_control < 0 || g->gravity_control > 2)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Invalid gravity control mode.\n");
         }
         return false;
     }
 
-    if (g->score == NULL) {
-        if (messages) {
+    if (g->score == NULL)
+    {
+        if (messages)
+        {
             fprintf(stderr, "Error: Score block is not initialized.\n");
         }
         return false;
     }
 
     // Check puzzle mode case.
-    if (g->puzzle) {
-        if (g->refill_mode < 0 || g->refill_mode > 2) {
-            if (messages) {
+    if (g->puzzle)
+    {
+        if (g->refill_mode < 0 || g->refill_mode > 2)
+        {
+            if (messages)
+            {
                 fprintf(stderr, "Error: Invalid refill mode in puzzle game.\n");
             }
             return false;
         }
 
-        if (g->refill_mode != 2 && board_refill_size(g->b) < 0) {
-            if (messages) {
+        if (g->refill_mode != 2 && board_refill_size(g->b) < 0)
+        {
+            if (messages)
+            {
                 fprintf(stderr, "Error: Refill mode enabled but storage is not "
                                 "initialized.\n");
             }
             return false;
         }
 
-        if (g->refill_mode == 2 && board_refill_size(g->b) >= 0) {
-            if (messages) {
+        if (g->refill_mode == 2 && board_refill_size(g->b) >= 0)
+        {
+            if (messages)
+            {
                 fprintf(stderr, "Error: Refill mode disabled but storage is "
                                 "initialized.\n");
             }
             return false;
         }
     } // Check classic mode case.
-    else {
-        if (g->refill_mode != 2 || board_refill_size(g->b) >= 0) {
-            if (messages) {
+    else
+    {
+        if (g->refill_mode != 2 || board_refill_size(g->b) >= 0)
+        {
+            if (messages)
+            {
                 fprintf(stderr, "Error: Refill should be disabled and storage "
                                 "should not be initialized in classic game.\n");
             }
@@ -128,44 +159,50 @@ bool ctl_check_game(game *g, bool messages) {
     return true;
 }
 
-void ctl_get_params(game *g) {
-    if (!g) {
+void ctl_get_params(game *g)
+{
+    if (!g)
+    {
         fprintf(stderr, "ctl_get_params: Invalid game structure.\n");
         return;
     }
-    var_game_hsize       = board_get_width(g->b);
-    var_game_vsize       = board_get_height(g->b);
-    var_game_lines       = g->lines;
-    var_game_nodelay     = g->nodelay;
-    var_game_upgrades    = g->upgrades;
-    var_game_easy        = g->easy;
-    var_game_wrap        = g->gravity_gems;
-    var_game_bombs       = g->bombs;
-    var_game_upgrades    = g->upgrades;
+    var_game_hsize = board_get_width(g->b);
+    var_game_vsize = board_get_height(g->b);
+    var_game_lines = g->lines;
+    var_game_nodelay = g->nodelay;
+    var_game_upgrades = g->upgrades;
+    var_game_easy = g->easy;
+    var_game_wrap = g->gravity_gems;
+    var_game_bombs = g->bombs;
+    var_game_upgrades = g->upgrades;
     var_game_refill_mode = g->refill_mode;
-    var_gravity_mode     = g->gravity_control;
+    var_gravity_mode = g->gravity_control;
 }
 
-void ctl_kill_game(void) {
-    if (var_game) {
+void ctl_kill_game(void)
+{
+    if (var_game)
+    {
         game_release(var_game);
     }
-    if (var_game_backup) {
+    if (var_game_backup)
+    {
         game_release(var_game_backup);
     }
-    var_game        = NULL;
+    var_game = NULL;
     var_game_backup = NULL;
     ctl_release_storage_buttons();
 }
 
-bool ctl_fillbuttons_used                 = false;
-bool *ctl_fillbuttons[SIZE_DIRECTION]     = {NULL, NULL, NULL, NULL};
+bool ctl_fillbuttons_used = false;
+bool *ctl_fillbuttons[SIZE_DIRECTION] = {NULL, NULL, NULL, NULL};
 int ctl_fillbuttons_count[SIZE_DIRECTION] = {0, 0, 0, 0};
 
-void ctl_init_storage_buttons(int w, int h) {
-    ctl_fillbuttons_count[UP]    = w;
-    ctl_fillbuttons_count[DOWN]  = w;
-    ctl_fillbuttons_count[LEFT]  = h;
+void ctl_init_storage_buttons(int w, int h)
+{
+    ctl_fillbuttons_count[UP] = w;
+    ctl_fillbuttons_count[DOWN] = w;
+    ctl_fillbuttons_count[LEFT] = h;
     ctl_fillbuttons_count[RIGHT] = h;
     CREATE_ZERO_MEMORY(ctl_fillbuttons[UP], w);
     CREATE_ZERO_MEMORY(ctl_fillbuttons[DOWN], w);
@@ -174,27 +211,32 @@ void ctl_init_storage_buttons(int w, int h) {
     ctl_fillbuttons_used = true;
 }
 
-void ctl_release_storage_buttons(void) {
+void ctl_release_storage_buttons(void)
+{
     free(ctl_fillbuttons[UP]);
     free(ctl_fillbuttons[DOWN]);
     free(ctl_fillbuttons[LEFT]);
     free(ctl_fillbuttons[RIGHT]);
-    ctl_fillbuttons[UP]    = NULL;
-    ctl_fillbuttons[DOWN]  = NULL;
-    ctl_fillbuttons[LEFT]  = NULL;
+    ctl_fillbuttons[UP] = NULL;
+    ctl_fillbuttons[DOWN] = NULL;
+    ctl_fillbuttons[LEFT] = NULL;
     ctl_fillbuttons[RIGHT] = NULL;
-    ctl_fillbuttons_used   = false;
+    ctl_fillbuttons_used = false;
 }
 
-void ctl_update_game_timer(void) {
-    if (var_game && var_game->score) {
+void ctl_update_game_timer(void)
+{
+    if (var_game && var_game->score)
+    {
         var_game->score->scores[SC_TIME] =
             get_time_counter() / 1000; // Save time in seconds
     }
 }
 
-void ctl_keyboard_general_menu(SDL_KeyCode key) {
-    switch (key) {
+void ctl_keyboard_general_menu(SDL_KeyCode key)
+{
+    switch (key)
+    {
     case SDLK_UP:
         var_selected_button = var_buttons[var_selected_button].up;
         return;
@@ -221,8 +263,10 @@ void ctl_keyboard_general_menu(SDL_KeyCode key) {
     }
 }
 
-void ctl_handle_anim_signals(void) {
-    switch (game_anim_signal) {
+void ctl_handle_anim_signals(void)
+{
+    switch (game_anim_signal)
+    {
     case ANIM_IDLE:
         var_init_idle();
         break;
@@ -244,26 +288,32 @@ void ctl_handle_anim_signals(void) {
     game_anim_signal = ANIM_SIZE; // Resetting the signal
 }
 
-void ctl_handle_end_signals(void) {
+void ctl_handle_end_signals(void)
+{
     // These signals are ignored in menu and test modes
-    if (var_gui_mode == GUIMODE_MENUS || var_gui_mode == GUIMODE_TEST) {
+    if (var_gui_mode == GUIMODE_MENUS || var_gui_mode == GUIMODE_TEST)
+    {
         game_end_signal = SIGNAL_SIZE; // Resetting the signal
         return;
     }
 
-    switch (game_end_signal) {
+    switch (game_end_signal)
+    {
     case SIGNAL_END_LEVEL:
-        if (var_gui_mode == GUIMODE_CLASSIC) {
+        if (var_gui_mode == GUIMODE_CLASSIC)
+        {
             ctl_end_classic(false);
         }
         break;
     case SIGNAL_END_CLGAME:
-        if (var_gui_mode == GUIMODE_CLASSIC) {
+        if (var_gui_mode == GUIMODE_CLASSIC)
+        {
             ctl_end_classic(true);
         }
         break;
     case SIGNAL_END_PUZZLE:
-        if (var_gui_mode == GUIMODE_PUZZLE) {
+        if (var_gui_mode == GUIMODE_PUZZLE)
+        {
             ctl_end_puzzle();
         }
         break;
@@ -277,27 +327,36 @@ void ctl_handle_end_signals(void) {
 /*+ Management of score screen +*/
 /********************************/
 
-bool ctl_mouse_score_screen(int x, int y) {
-    for (int i = BT_SCGLOBAL; i <= BT_SCTIME; i++) {
-        if (mouse_capture_button(x, y, i)) {
+bool ctl_mouse_score_screen(int x, int y)
+{
+    for (int i = BT_SCGLOBAL; i <= BT_SCTIME; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
-    if (var_scores_page > 0) {
-        if (mouse_capture_button(x, y, BT_PREVSCORE)) {
+    if (var_scores_page > 0)
+    {
+        if (mouse_capture_button(x, y, BT_PREVSCORE))
+        {
             return true;
         }
     }
-    if (var_scores_page < var_scores_max_page - 1) {
-        if (mouse_capture_button(x, y, BT_NEXTSCORE)) {
+    if (var_scores_page < var_scores_max_page - 1)
+    {
+        if (mouse_capture_button(x, y, BT_NEXTSCORE))
+        {
             return true;
         }
     }
     return false;
 }
 
-void ctl_button_push_score(void) {
-    switch (var_pushed_button) {
+void ctl_button_push_score(void)
+{
+    switch (var_pushed_button)
+    {
     case BT_SCGLOBAL:
         sort_score_table(var_score_table, SC_GLOBAL);
         break;
@@ -326,12 +385,14 @@ void ctl_button_push_score(void) {
         sort_score_table(var_score_table, SC_TIME);
         break;
     case BT_PREVSCORE:
-        if (var_scores_page > 0) {
+        if (var_scores_page > 0)
+        {
             var_scores_page--;
         }
         break;
     case BT_NEXTSCORE:
-        if (var_scores_page < var_scores_max_page - 1) {
+        if (var_scores_page < var_scores_max_page - 1)
+        {
             var_scores_page++;
         }
         break;
@@ -344,11 +405,14 @@ void ctl_button_push_score(void) {
 /*+ Management of zoom +*/
 /************************/
 
-bool ctl_keyboard_zoom(SDL_KeyCode key) {
-    if (flags[NOSCROLL]) {
+bool ctl_keyboard_zoom(SDL_KeyCode key)
+{
+    if (flags[NOSCROLL])
+    {
         return false;
     }
-    switch (key) {
+    switch (key)
+    {
     case SDLK_KP_PLUS:
     case SDLK_EQUALS:
     case SDLK_PLUS:
@@ -372,17 +436,23 @@ bool ctl_keyboard_zoom(SDL_KeyCode key) {
 /*+ Management of gravity wheel +*/
 /*********************************/
 
-bool ctl_keyboard_gravitywheel(SDL_KeyCode key) {
+bool ctl_keyboard_gravitywheel(SDL_KeyCode key)
+{
     if (!var_game || flags[NOGAMEINPUT] || flags[NOPLAYER] ||
-        var_game->gravity_control == 0) {
+        var_game->gravity_control == 0)
+    {
         return false;
     }
 
-    if (var_game->gravity_control == 1 && key == SDLK_g) {
+    if (var_game->gravity_control == 1 && key == SDLK_g)
+    {
         var_push_button(BT_GRAVITY);
         return true;
-    } else if (var_game->gravity_control == 2) {
-        switch (key) {
+    }
+    else if (var_game->gravity_control == 2)
+    {
+        switch (key)
+        {
         case SDLK_UP:
             var_push_button(BT_GUP);
             return true;
@@ -410,15 +480,20 @@ bool ctl_keyboard_gravitywheel(SDL_KeyCode key) {
     return false;
 }
 
-bool ctl_mouse_gravitywheel(int x, int y) {
+bool ctl_mouse_gravitywheel(int x, int y)
+{
     if (!var_game || flags[NOGAMEINPUT] || flags[NOPLAYER] ||
-        var_game->gravity_control == 0) {
+        var_game->gravity_control == 0)
+    {
         return false;
     }
 
-    if (var_game->gravity_control == 1) {
+    if (var_game->gravity_control == 1)
+    {
         return mouse_capture_button(x, y, BT_GRAVITY);
-    } else if (var_game->gravity_control == 2) {
+    }
+    else if (var_game->gravity_control == 2)
+    {
         return mouse_capture_button(x, y, BT_GRAVITY) ||
                mouse_capture_button(x, y, BT_GUP) ||
                mouse_capture_button(x, y, BT_GRIGHT) ||
@@ -428,13 +503,16 @@ bool ctl_mouse_gravitywheel(int x, int y) {
     return false;
 }
 
-void ctl_button_push_gravitywheel(void) {
+void ctl_button_push_gravitywheel(void)
+{
     if (!var_game || flags[NOGAMEINPUT] || flags[NOPLAYER] ||
-        var_game->gravity_control == 0) {
+        var_game->gravity_control == 0)
+    {
         return;
     }
 
-    switch (var_pushed_button) {
+    switch (var_pushed_button)
+    {
     case BT_GRAVITY:
         game_cycle_gravity(var_game);
         break;
@@ -462,7 +540,8 @@ void ctl_button_push_gravitywheel(void) {
 /**
  * @brief Initializes the demo game.
  */
-void ctl_init_demo_game(void) {
+void ctl_init_demo_game(void)
+{
     reset_flags();
     ctl_kill_game();
 
@@ -474,13 +553,17 @@ void ctl_init_demo_game(void) {
     int w = var_screen_width / var_tile_size - 2;
     var_game =
         game_create_classic(w, h, true, -1, 1, true, true, true, false, false);
-    if (!ctl_check_game(var_game, false)) {
+
+    if (!ctl_check_game(var_game, false))
+    {
         fprintf(stderr, "Error: Creation of the demo game failed.\n");
         game_release(var_game);
         var_game = NULL;
         return;
     }
-    if (var_game->puzzle) {
+
+    if (var_game->puzzle)
+    {
         fprintf(stderr, "Error: Created demo game is not in classic mode.\n");
         game_release(var_game);
         var_game = NULL;
@@ -492,49 +575,63 @@ void ctl_init_demo_game(void) {
     var_gui_mode = GUIMODE_MENUS;
     scroll_to_center(board_get_width(var_game->b),
                      board_get_height(var_game->b), var_screen_width);
-    var_game_ia        = true;
+    var_game_ia = true;
     var_game_ia_choice = IA_RANDOM;
     set_flag(NOPLAYER);
     set_flag(NOSCROLL);
 }
 
-void ctl_keyboard_mainmenu(SDL_KeyCode key) {
-    if (var_high_scores) {
+void ctl_keyboard_mainmenu(SDL_KeyCode key)
+{
+    if (var_high_scores)
+    {
         return;
     }
     ctl_keyboard_general_menu(key);
     return;
 }
 
-bool ctl_mouse_mainmenu(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_mainmenu(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false;
-    } else if (var_high_scores) {
+    }
+    else if (var_high_scores)
+    {
         return mouse_capture_button(x, y, BT_SCOREBACK) ||
                ctl_mouse_score_screen(x, y);
     }
-    for (int i = BT_GAME; i <= BT_QUIT; i++) {
-        if (mouse_capture_button(x, y, i)) {
+    for (int i = BT_GAME; i <= BT_QUIT; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
     return false;
 }
 
-bool ctl_mouse_classic_setup(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_classic_setup(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
-    for (int i = BT_SETWIDTH; i <= BT_SETMENU; i++) {
-        if (mouse_capture_button(x, y, i)) {
+    for (int i = BT_SETWIDTH; i <= BT_SETMENU; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
 
     for (int i = BT_SETNODELAY; i <= (var_game_ia_menu ? BT_SETIAR : BT_SETCTR);
-         i++) {
-        if (mouse_capture_button(x, y, i)) {
+         i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
@@ -542,71 +639,85 @@ bool ctl_mouse_classic_setup(int x, int y) {
     return false;
 }
 
-bool ctl_mouse_puzzle_setup(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_puzzle_setup(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
-    for (int i = BT_SETWIDTH; i <= BT_SETMENU; i++) {
-        if (mouse_capture_button(x, y, i)) {
+    for (int i = BT_SETWIDTH; i <= BT_SETMENU; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
 
-    for (int i = BT_SETBALANCED; i <= BT_SETGRAVITYR; i++) {
-        if (mouse_capture_button(x, y, i)) {
+    for (int i = BT_SETBALANCED; i <= BT_SETGRAVITYR; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
 
     if (var_game_refill_mode != 2 &&
-        mouse_capture_button(x, y, BT_SETINITIAL)) {
+        mouse_capture_button(x, y, BT_SETINITIAL))
+    {
         return true;
     }
 
     return false;
 }
 
-void ctl_enter_menu(bool initdemo) {
+void ctl_enter_menu(bool initdemo)
+{
     var_high_scores = false;
     var_release_score_table();
-    var_gui_mode        = GUIMODE_MENUS;
-    var_current_menu    = MENU_MAIN;
+    var_gui_mode = GUIMODE_MENUS;
+    var_current_menu = MENU_MAIN;
     var_selected_button = BT_GAME;
     var_reset_buttons();
 
     // Initilization of the demo game.
-    if (initdemo) {
+    if (initdemo)
+    {
         ctl_init_demo_game();
         set_flag(NOPLAYER);
         set_flag(NOSCROLL);
     }
 }
 
-void ctl_enter_setupclassic(void) {
-    var_gui_mode        = GUIMODE_MENUS;
-    var_current_menu    = MENU_CLASSIC;
+void ctl_enter_setupclassic(void)
+{
+    var_gui_mode = GUIMODE_MENUS;
+    var_current_menu = MENU_CLASSIC;
     var_selected_button = BT_SETSTART;
     var_reset_buttons();
 }
 
-void ctl_enter_setuppuzzle(void) {
-    var_gui_mode        = GUIMODE_MENUS;
-    var_current_menu    = MENU_PUZZLE;
+void ctl_enter_setuppuzzle(void)
+{
+    var_gui_mode = GUIMODE_MENUS;
+    var_current_menu = MENU_PUZZLE;
     var_selected_button = BT_SETSTART;
     var_reset_buttons();
 }
 
-void ctl_enter_highscores(void) {
+void ctl_enter_highscores(void)
+{
     // Loads the score table (with the current player's score if any)
     var_release_score_table();
     var_score_table = load_score_table("./scores/scores", NULL);
 
-    if (var_score_table) {
+    if (var_score_table)
+    {
         // Initializes the score table parameters
-        var_scores_page     = 0;
+        var_scores_page = 0;
         var_scores_max_page = var_score_table->size / var_scores_per_page;
-        if (var_score_table->size % var_scores_per_page > 0) {
+        if (var_score_table->size % var_scores_per_page > 0)
+        {
             var_scores_max_page++;
         }
         sort_score_table(var_score_table, SC_GLOBAL);
@@ -615,9 +726,12 @@ void ctl_enter_highscores(void) {
     var_reset_buttons();
 }
 
-void ctl_button_push_mainmenu(void) {
-    if (!var_high_scores) {
-        switch (var_pushed_button) {
+void ctl_button_push_mainmenu(void)
+{
+    if (!var_high_scores)
+    {
+        switch (var_pushed_button)
+        {
         case BT_GAME:
             ctl_enter_setupclassic();
             break;
@@ -639,17 +753,22 @@ void ctl_button_push_mainmenu(void) {
         default:
             break;
         }
-    } else {
+    }
+    else
+    {
         ctl_button_push_score();
-        if (var_pushed_button == BT_SCOREBACK) {
+        if (var_pushed_button == BT_SCOREBACK)
+        {
             var_release_score_table();
             ctl_enter_menu(false);
         }
     }
 }
 
-void ctl_button_push_setupclassic(void) {
-    switch (var_pushed_button) {
+void ctl_button_push_setupclassic(void)
+{
+    switch (var_pushed_button)
+    {
     case BT_SETHEIGHT:
         init_text_buffer(ED_HEIGHT);
         break;
@@ -705,8 +824,10 @@ void ctl_button_push_setupclassic(void) {
     }
 }
 
-void ctl_button_push_setuppuzzle(void) {
-    switch (var_pushed_button) {
+void ctl_button_push_setuppuzzle(void)
+{
+    switch (var_pushed_button)
+    {
     case BT_SETHEIGHT:
         init_text_buffer(ED_HEIGHT);
         break;
@@ -764,7 +885,8 @@ void ctl_button_push_setuppuzzle(void) {
 /*+ Management of classic mode +*/
 /********************************/
 
-void ctl_init_classic(void) {
+void ctl_init_classic(void)
+{
     // Resets all flags.
     reset_flags();
 
@@ -778,27 +900,32 @@ void ctl_init_classic(void) {
         var_game_hsize, var_game_vsize, var_game_lines, var_game_clearscore,
         var_game_clearmulti, var_game_nodelay, var_game_upgrades, var_game_easy,
         var_game_wrap, var_game_bombs);
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Creation of a classic game failed.\n");
         ctl_enter_menu(true);
         return;
     }
-    if (var_game->puzzle) {
+    if (var_game->puzzle)
+    {
         fprintf(stderr, "Error: Created game is not in classic mode.\n");
         ctl_enter_menu(true);
         return;
     }
 
     // Setting the gui mode to gameplay.
-    var_gui_mode             = GUIMODE_CLASSIC;
+    var_gui_mode = GUIMODE_CLASSIC;
     var_current_classic_mode = CLASSIC_GAMEPLAY;
 
     // Initialization of the IA settings.
-    if (var_game_ia_menu) {
+    if (var_game_ia_menu)
+    {
         set_flag(NOPLAYER);
-        var_game_ia        = true;
+        var_game_ia = true;
         var_game_ia_choice = var_game_ia_choice_menu;
-    } else {
+    }
+    else
+    {
         remove_flag(NOPLAYER);
         var_game_ia = false;
     }
@@ -811,21 +938,24 @@ void ctl_init_classic(void) {
     init_time_counter();
 }
 
-void ctl_newlevel_classic(void) {
+void ctl_newlevel_classic(void)
+{
     var_release_score_table();
 
     // Advances to the next level.
     game_next_level(var_game);
 
     // Checking the game.
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(
             stderr,
             "Error: Creation of a classic game for the next level failed.\n");
         ctl_enter_menu(true);
         return;
     }
-    if (var_game->puzzle) {
+    if (var_game->puzzle)
+    {
         fprintf(stderr, "Error: Next game is not in classic mode.\n");
         ctl_enter_menu(true);
         return;
@@ -844,7 +974,8 @@ void ctl_newlevel_classic(void) {
     remove_flag(NOSCROLL);
 }
 
-void ctl_end_classic(bool lost) {
+void ctl_end_classic(bool lost)
+{
     // Preventing game inputs
     set_flag(INMENU);
     set_flag(NOSCROLL);
@@ -859,21 +990,24 @@ void ctl_end_classic(bool lost) {
         "./scores/scores", var_game ? var_game->score->scores : NULL);
 
     // Initializes the score table parameters
-    if (var_score_table) {
-        var_scores_page     = 0;
+    if (var_score_table)
+    {
+        var_scores_page = 0;
         var_scores_max_page = var_score_table->size / var_scores_per_page;
-        if (var_score_table->size % var_scores_per_page > 0) {
+        if (var_score_table->size % var_scores_per_page > 0)
+        {
             var_scores_max_page++;
         }
         sort_score_table(var_score_table, SC_GLOBAL);
     }
 
     // Updates the GUI mode
-    var_gui_mode             = GUIMODE_CLASSIC;
+    var_gui_mode = GUIMODE_CLASSIC;
     var_current_classic_mode = lost ? CLASSIC_LOST : CLASSIC_ENDLEVEL;
 }
 
-void ctl_menu_classic(void) {
+void ctl_menu_classic(void)
+{
     // Preventing game inputs
     set_flag(INMENU);
     set_flag(NOSCROLL);
@@ -882,36 +1016,43 @@ void ctl_menu_classic(void) {
     pause_time_counter();
     var_game->score->scores[SC_TIME] = get_time_counter() / 1000;
 
-    var_gui_mode                     = GUIMODE_CLASSIC;
-    var_current_classic_mode         = CLASSIC_MENU;
+    var_gui_mode = GUIMODE_CLASSIC;
+    var_current_classic_mode = CLASSIC_MENU;
 }
 
-void ctl_gameplay_classic(void) {
-    if (var_current_classic_mode == CLASSIC_LOST) {
+void ctl_gameplay_classic(void)
+{
+    if (var_current_classic_mode == CLASSIC_LOST)
+    {
         return;
     }
     remove_flag(INMENU);
     remove_flag(NOSCROLL);
     resume_time_counter();
-    var_gui_mode             = GUIMODE_CLASSIC;
+    var_gui_mode = GUIMODE_CLASSIC;
     var_current_classic_mode = CLASSIC_GAMEPLAY;
 }
 
-bool ctl_keyboard_classicmode(SDL_KeyCode key) {
+bool ctl_keyboard_classicmode(SDL_KeyCode key)
+{
     // Only process inputs in gameplay mode.
-    if (var_current_classic_mode != CLASSIC_GAMEPLAY || flags[PUSHED]) {
+    if (var_current_classic_mode != CLASSIC_GAMEPLAY || flags[PUSHED])
+    {
         return false;
     }
 
     // First handle zoom keys (can be used anytime provided that the no scroll
     // flag is not set).
-    if (ctl_keyboard_zoom(key)) {
+    if (ctl_keyboard_zoom(key))
+    {
         return true;
     }
 
     // When in no game input mode, only the escape key is processed.
-    if (flags[NOGAMEINPUT] || flags[NOPLAYER]) {
-        if (key == SDLK_ESCAPE) {
+    if (flags[NOGAMEINPUT] || flags[NOPLAYER])
+    {
+        if (key == SDLK_ESCAPE)
+        {
             var_push_button(BT_MENU);
             return true;
         }
@@ -919,9 +1060,11 @@ bool ctl_keyboard_classicmode(SDL_KeyCode key) {
     }
 
     // Otherwise, process the keys normally.
-    switch (key) {
+    switch (key)
+    {
     case SDLK_d:
-        if (!var_game->nodelay) {
+        if (!var_game->nodelay)
+        {
             var_push_button(BT_DETONATE);
             return true;
         }
@@ -944,15 +1087,21 @@ bool ctl_keyboard_classicmode(SDL_KeyCode key) {
     return false;
 }
 
-bool ctl_mouse_classicmode(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_classicmode(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
-    if (var_current_classic_mode == CLASSIC_GAMEPLAY) {
-        if (flags[NOGAMEINPUT] || flags[NOPLAYER]) {
+    if (var_current_classic_mode == CLASSIC_GAMEPLAY)
+    {
+        if (flags[NOGAMEINPUT] || flags[NOPLAYER])
+        {
             return mouse_capture_button(x, y, BT_MENU);
-        } else {
+        }
+        else
+        {
             return mouse_capture_button(x, y, BT_SAVE) ||
                    mouse_capture_button(x, y, BT_HINT) ||
                    mouse_capture_button(x, y, BT_MENU) ||
@@ -961,7 +1110,8 @@ bool ctl_mouse_classicmode(int x, int y) {
         }
     }
 
-    switch (var_current_classic_mode) {
+    switch (var_current_classic_mode)
+    {
     case CLASSIC_MENU:
         return mouse_capture_button(x, y, BT_CLASSICCONTINUE) ||
                mouse_capture_button(x, y, BT_CLASSICRESTART) ||
@@ -982,9 +1132,12 @@ bool ctl_mouse_classicmode(int x, int y) {
     return false;
 }
 
-void ctl_button_push_classic(void) {
-    if (var_current_classic_mode == CLASSIC_GAMEPLAY) {
-        switch (var_pushed_button) {
+void ctl_button_push_classic(void)
+{
+    if (var_current_classic_mode == CLASSIC_GAMEPLAY)
+    {
+        switch (var_pushed_button)
+        {
         case BT_SAVE:
             ctl_update_game_timer();
             init_text_buffer(ED_SAVE);
@@ -996,15 +1149,19 @@ void ctl_button_push_classic(void) {
             ctl_menu_classic();
             break;
         case BT_DETONATE:
-            if (var_game && !var_game->nodelay) {
+            if (var_game && !var_game->nodelay)
+            {
                 game_handle_detonation(var_game);
             }
         default:
             break;
         }
         return;
-    } else if (var_current_classic_mode == CLASSIC_MENU) {
-        switch (var_pushed_button) {
+    }
+    else if (var_current_classic_mode == CLASSIC_MENU)
+    {
+        switch (var_pushed_button)
+        {
         case BT_CLASSICCONTINUE:
             ctl_gameplay_classic();
             break;
@@ -1018,10 +1175,13 @@ void ctl_button_push_classic(void) {
             break;
         }
         return;
-    } else if (var_current_classic_mode == CLASSIC_ENDLEVEL ||
-               var_current_classic_mode == CLASSIC_LOST) {
+    }
+    else if (var_current_classic_mode == CLASSIC_ENDLEVEL ||
+             var_current_classic_mode == CLASSIC_LOST)
+    {
         ctl_button_push_score();
-        switch (var_pushed_button) {
+        switch (var_pushed_button)
+        {
         case BT_SCORECONTINUE:
             var_release_score_table();
             ctl_newlevel_classic();
@@ -1043,7 +1203,8 @@ void ctl_button_push_classic(void) {
 /*+ Management of puzzle mode +*/
 /*******************************/
 
-void ctl_init_puzzle(void) {
+void ctl_init_puzzle(void)
+{
     // Resets all flags.
     reset_flags();
 
@@ -1057,54 +1218,60 @@ void ctl_init_puzzle(void) {
         var_game_hsize, var_game_vsize, var_game_lines, var_game_upgrades,
         var_game_refill_mode, var_game_storage_initial, var_game_balanced,
         var_gravity_mode);
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Creation of a puzzle game failed.\n");
         ctl_enter_menu(true);
         return;
     }
-    if (!var_game->puzzle) {
+    if (!var_game->puzzle)
+    {
         fprintf(stderr, "Error: Created game is not in puzzle mode.\n");
         ctl_enter_menu(true);
         return;
     }
 
     // Creation of the refill buttons if refill mode is activated.
-    if (var_game_refill_mode != 2) {
+    if (var_game_refill_mode != 2)
+    {
         ctl_init_storage_buttons(board_get_width(var_game->b),
                                  board_get_height(var_game->b));
     }
 
     // Creates a clone of the game for restoration after solving.
-    var_game_backup         = game_clone(var_game);
+    var_game_backup = game_clone(var_game);
 
     // NO IA in puzzle mode.
-    var_game_ia             = false;
+    var_game_ia = false;
 
     // Setting the gui mode to puzzle mode and gameplay.
-    var_gui_mode            = GUIMODE_PUZZLE;
+    var_gui_mode = GUIMODE_PUZZLE;
     var_current_puzzle_mode = PUZZLE_GAMEPLAY;
 
     // Initialization of the GUI elements.
-    var_selected_button     = BT_NONE;
+    var_selected_button = BT_NONE;
     scroll_to_center(board_get_width(var_game->b),
                      board_get_height(var_game->b), var_uiboxes[BX_GRAVITY].x);
     var_init_idle();
     init_time_counter();
 }
 
-void ctl_restore_puzzle(void) {
-    if (var_game_backup) {
+void ctl_restore_puzzle(void)
+{
+    if (var_game_backup)
+    {
         game *temp = var_game;
-        var_game   = game_clone(var_game_backup);
+        var_game = game_clone(var_game_backup);
         game_release(temp);
-        var_gui_mode            = GUIMODE_PUZZLE;
+        var_gui_mode = GUIMODE_PUZZLE;
         var_current_puzzle_mode = PUZZLE_GAMEPLAY;
         init_time_counter();
         reset_flags();
     }
 }
 
-void ctl_end_puzzle(void) {
+void ctl_end_puzzle(void)
+{
     // Preventing game inputs
     set_flag(INMENU);
     set_flag(NOSCROLL);
@@ -1113,11 +1280,12 @@ void ctl_end_puzzle(void) {
     pause_time_counter();
     var_game->score->scores[SC_TIME] = get_time_counter() / 1000;
 
-    var_gui_mode                     = GUIMODE_PUZZLE;
-    var_current_puzzle_mode          = PUZZLE_SUMMARY;
+    var_gui_mode = GUIMODE_PUZZLE;
+    var_current_puzzle_mode = PUZZLE_SUMMARY;
 }
 
-void ctl_menu_puzzle(void) {
+void ctl_menu_puzzle(void)
+{
     // Preventing game inputs
     set_flag(INMENU);
     set_flag(NOSCROLL);
@@ -1126,26 +1294,31 @@ void ctl_menu_puzzle(void) {
     pause_time_counter();
     var_game->score->scores[SC_TIME] = get_time_counter() / 1000;
 
-    var_gui_mode                     = GUIMODE_PUZZLE;
-    var_current_puzzle_mode          = PUZZLE_MENU;
+    var_gui_mode = GUIMODE_PUZZLE;
+    var_current_puzzle_mode = PUZZLE_MENU;
 }
 
-void ctl_gameplay_puzzle(void) {
-    if (var_current_puzzle_mode == PUZZLE_SUMMARY) {
+void ctl_gameplay_puzzle(void)
+{
+    if (var_current_puzzle_mode == PUZZLE_SUMMARY)
+    {
         return;
     }
     remove_flag(INMENU);
     remove_flag(NOSCROLL);
     resume_time_counter();
-    var_gui_mode            = GUIMODE_PUZZLE;
+    var_gui_mode = GUIMODE_PUZZLE;
     var_current_puzzle_mode = PUZZLE_GAMEPLAY;
 }
 
-void ctl_solver_puzzle(solver mode) {
-    if (!var_game) {
+void ctl_solver_puzzle(solver mode)
+{
+    if (!var_game)
+    {
         return;
     }
-    if (mode < 0 || mode > SOLVER_ASTAR) {
+    if (mode < 0 || mode > SOLVER_ASTAR)
+    {
         fprintf(stderr, "ctl_start_solver: Invalid solver mode %d\n", mode);
         exit(EXIT_FAILURE);
     }
@@ -1153,7 +1326,7 @@ void ctl_solver_puzzle(solver mode) {
     pause_time_counter();
     var_game->score->scores[SC_TIME] = get_time_counter() / 1000;
 
-    var_game_solver_path             = solve_puzzle(
+    var_game_solver_path = solve_puzzle(
         var_game, mode, SOLVER_MAX_CONFIGS, &var_game_solver_result,
         &var_game_solver_nb_moves, &var_game_solver_nb_configs);
 
@@ -1163,13 +1336,15 @@ void ctl_solver_puzzle(solver mode) {
 
     // Updates the time counter of the game
 
-    var_gui_mode            = GUIMODE_PUZZLE;
+    var_gui_mode = GUIMODE_PUZZLE;
     var_current_puzzle_mode = PUZZLE_SOLVER;
 }
 
-void ctl_implement_solution_puzzle(void) {
+void ctl_implement_solution_puzzle(void)
+{
     if (var_game_solver_path == NULL ||
-        var_game_solver_result != SOLVER_SOLVED) {
+        var_game_solver_result != SOLVER_SOLVED)
+    {
         return;
     }
     var_game_solver = true;
@@ -1177,10 +1352,13 @@ void ctl_implement_solution_puzzle(void) {
     set_flag(NOPLAYER);
 }
 
-void ctl_button_push_puzzle(void) {
-    if (var_current_puzzle_mode == PUZZLE_GAMEPLAY) {
+void ctl_button_push_puzzle(void)
+{
+    if (var_current_puzzle_mode == PUZZLE_GAMEPLAY)
+    {
         ctl_button_push_gravitywheel();
-        switch (var_pushed_button) {
+        switch (var_pushed_button)
+        {
         case BT_SAVE:
             ctl_update_game_timer();
             init_text_buffer(ED_SAVE);
@@ -1203,7 +1381,8 @@ void ctl_button_push_puzzle(void) {
         return;
     }
 
-    switch (var_pushed_button) {
+    switch (var_pushed_button)
+    {
     case BT_PUZZLEQUIT:
         ctl_enter_menu(true);
         break;
@@ -1217,7 +1396,8 @@ void ctl_button_push_puzzle(void) {
         ctl_gameplay_puzzle();
         break;
     case BT_PUZZLEBACKSOLVER:
-        while (var_game_solver_path) {
+        while (var_game_solver_path)
+        {
             solver_move *next = var_game_solver_path->next;
             free(var_game_solver_path);
             var_game_solver_path = next;
@@ -1232,21 +1412,26 @@ void ctl_button_push_puzzle(void) {
     }
 }
 
-bool ctl_keyboard_puzzle(SDL_KeyCode key) {
+bool ctl_keyboard_puzzle(SDL_KeyCode key)
+{
     // Only process inputs in gameplay mode.
-    if (var_current_puzzle_mode != PUZZLE_GAMEPLAY || flags[PUSHED]) {
+    if (var_current_puzzle_mode != PUZZLE_GAMEPLAY || flags[PUSHED])
+    {
         return false;
     }
 
     // First handle zoom keys (can be used anytime provided that the no scroll
     // flag is not set).
-    if (ctl_keyboard_zoom(key)) {
+    if (ctl_keyboard_zoom(key))
+    {
         return true;
     }
 
     // When in no game input mode, only the escape key is processed.
-    if (flags[NOGAMEINPUT] || flags[NOPLAYER]) {
-        if (key == SDLK_ESCAPE) {
+    if (flags[NOGAMEINPUT] || flags[NOPLAYER])
+    {
+        if (key == SDLK_ESCAPE)
+        {
             var_push_button(BT_MENU);
             return true;
         }
@@ -1254,7 +1439,8 @@ bool ctl_keyboard_puzzle(SDL_KeyCode key) {
     }
 
     // Otherwise, process the keys normally.
-    switch (key) {
+    switch (key)
+    {
     case SDLK_l:
         var_push_button(BT_SOLVER);
         return true;
@@ -1274,15 +1460,19 @@ bool ctl_keyboard_puzzle(SDL_KeyCode key) {
     return ctl_keyboard_gravitywheel(key);
 }
 
-bool ctl_mouse_puzzle(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_puzzle(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
     // Mouse in gameplay mode.
-    if (var_current_puzzle_mode == PUZZLE_GAMEPLAY) {
+    if (var_current_puzzle_mode == PUZZLE_GAMEPLAY)
+    {
         // When in no game input mode, only the menu button is processed.
-        if (flags[NOGAMEINPUT] || flags[NOPLAYER]) {
+        if (flags[NOGAMEINPUT] || flags[NOPLAYER])
+        {
             return mouse_capture_button(x, y, BT_MENU);
         }
         // Otherwise, check other HUD buttons.
@@ -1295,7 +1485,8 @@ bool ctl_mouse_puzzle(int x, int y) {
     }
 
     // We turn to mouse in other puzzle modes.
-    switch (var_current_puzzle_mode) {
+    switch (var_current_puzzle_mode)
+    {
     case PUZZLE_SOLVER:
         return mouse_capture_button(x, y, BT_PUZZLEBACKSOLVER) ||
                (var_game_solver_result == SOLVER_SOLVED &&
@@ -1322,31 +1513,37 @@ bool ctl_mouse_puzzle(int x, int y) {
 /*+ Management of test mode +*/
 /*****************************/
 
-void ctl_test_initial(bool puzzlemode) {
+void ctl_test_initial(bool puzzlemode)
+{
     reset_flags();
     ctl_kill_game();
     // Reinitializing the zoom level.
     init_zoom_game();
 
-    if (puzzlemode) {
+    if (puzzlemode)
+    {
         var_game = game_create_puzzle(
             var_test_game_vsize, var_test_game_hsize, TEST_LINES, TEST_UPGRADES,
             var_test_game_refill_mode, var_test_game_storage_initial,
             var_test_game_balanced, 2);
-    } else {
+    }
+    else
+    {
         var_game = game_create_classic(
             var_test_game_hsize, var_test_game_vsize, TEST_LINES, -1, 1,
             TEST_NODELAY, TEST_UPGRADES, TEST_EASY, TEST_WRAP, TEST_BOMBS);
     }
 
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Creation of a test game failed.\n");
         ctl_enter_menu(true);
         return;
     }
 
     // Creation of the refill buttons if refill mode is activated.
-    if (var_game->puzzle && var_game->refill_mode != 2) {
+    if (var_game->puzzle && var_game->refill_mode != 2)
+    {
         ctl_init_storage_buttons(board_get_width(var_game->b),
                                  board_get_height(var_game->b));
     }
@@ -1355,7 +1552,7 @@ void ctl_test_initial(bool puzzlemode) {
     var_game->gravity_control = 2;
 
     // Switch to test mode.
-    var_gui_mode              = GUIMODE_TEST;
+    var_gui_mode = GUIMODE_TEST;
 
     // Initialization of the GUI elements.
     var_init_idle();
@@ -1368,9 +1565,11 @@ void ctl_test_initial(bool puzzlemode) {
     var_game_ia = false;
 }
 
-void ctl_test_puzzle(void) {
+void ctl_test_puzzle(void)
+{
     // If the old game was not in puzzle mode, just reinitialize everything.
-    if (!var_game || !var_game->puzzle) {
+    if (!var_game || !var_game->puzzle)
+    {
         ctl_test_initial(true);
         return;
     }
@@ -1387,18 +1586,21 @@ void ctl_test_puzzle(void) {
     ctl_kill_game();
     var_game = g;
 
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Creation of the new test game failed.\n");
         ctl_enter_menu(true);
         return;
     }
-    if (!var_game->puzzle) {
+    if (!var_game->puzzle)
+    {
         fprintf(stderr, "Error: Created test game is not in puzzle mode.\n");
         ctl_enter_menu(true);
         return;
     }
     var_game->gravity_control = 2;
-    if (var_game_refill_mode != 2) {
+    if (var_game_refill_mode != 2)
+    {
         ctl_init_storage_buttons(board_get_width(var_game->b),
                                  board_get_height(var_game->b));
     }
@@ -1416,9 +1618,11 @@ void ctl_test_puzzle(void) {
     init_time_counter();
 }
 
-void ctl_test_classic(void) {
+void ctl_test_classic(void)
+{
     // If the old game was in puzzle mode, just reinitialize everything.
-    if (!var_game || var_game->puzzle) {
+    if (!var_game || var_game->puzzle)
+    {
         ctl_test_initial(false);
         return;
     }
@@ -1435,12 +1639,14 @@ void ctl_test_classic(void) {
     ctl_kill_game();
     var_game = g;
 
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Creation of the new test game failed.\n");
         ctl_enter_menu(true);
         return;
     }
-    if (var_game->puzzle) {
+    if (var_game->puzzle)
+    {
         fprintf(stderr, "Error: Created test game is not in classic mode.\n");
         ctl_enter_menu(true);
         return;
@@ -1449,7 +1655,7 @@ void ctl_test_classic(void) {
     var_game->gravity_control = 2;
 
     // Switch to test mode.
-    var_gui_mode              = GUIMODE_TEST;
+    var_gui_mode = GUIMODE_TEST;
 
     // Initialization of the GUI elements.
     var_init_idle();
@@ -1461,13 +1667,15 @@ void ctl_test_classic(void) {
     init_time_counter();
 }
 
-void ctl_test_load(const char *filepath) {
+void ctl_test_load(const char *filepath)
+{
     // Killing all eventual previous games and reinitializing the zoom level.
     ctl_kill_game();
     init_zoom_game();
     // Load the game from the specified file.
     var_game = load_game(filepath);
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Failed to load test game from %s\n", filepath);
         ctl_enter_menu(true);
         return;
@@ -1476,7 +1684,8 @@ void ctl_test_load(const char *filepath) {
     // Enforces that the gravity control is free.
     var_game->gravity_control = 2;
 
-    if (var_game->puzzle && var_game->refill_mode != 2) {
+    if (var_game->puzzle && var_game->refill_mode != 2)
+    {
         ctl_init_storage_buttons(board_get_width(var_game->b),
                                  board_get_height(var_game->b));
     }
@@ -1493,7 +1702,8 @@ void ctl_test_load(const char *filepath) {
     init_time_counter();
 }
 
-void ctl_load_game(const char *filepath) {
+void ctl_load_game(const char *filepath)
+{
     reset_flags();
     // Killing all eventual previous games.
     ctl_kill_game();
@@ -1503,24 +1713,29 @@ void ctl_load_game(const char *filepath) {
     // Creation of the game itself
     var_game = load_game(filepath);
 
-    if (!ctl_check_game(var_game, true)) {
+    if (!ctl_check_game(var_game, true))
+    {
         fprintf(stderr, "Error: Failed to load the game.\n");
         ctl_enter_menu(true);
         return;
     }
 
-    if (var_game->puzzle) {
-        var_gui_mode            = GUIMODE_PUZZLE;
+    if (var_game->puzzle)
+    {
+        var_gui_mode = GUIMODE_PUZZLE;
         var_current_puzzle_mode = PUZZLE_GAMEPLAY;
-        if (var_game->refill_mode != 2) {
+        if (var_game->refill_mode != 2)
+        {
             ctl_init_storage_buttons(board_get_width(var_game->b),
                                      board_get_height(var_game->b));
         }
 
         // Creates a clone of the game for restoration after solving.
         var_game_backup = game_clone(var_game);
-    } else {
-        var_gui_mode             = GUIMODE_CLASSIC;
+    }
+    else
+    {
+        var_gui_mode = GUIMODE_CLASSIC;
         var_current_classic_mode = CLASSIC_GAMEPLAY;
     }
 
@@ -1528,22 +1743,29 @@ void ctl_load_game(const char *filepath) {
     scroll_to_center(board_get_width(var_game->b),
                      board_get_height(var_game->b), var_uiboxes[BX_GRAVITY].x);
     var_init_idle();
-    if (var_game->score) {
+    if (var_game->score)
+    {
         init_time_counter_start(var_game->score->scores[SC_TIME]);
-    } else {
+    }
+    else
+    {
         init_time_counter();
     }
 
     var_game_ia = false;
 }
 
-bool ctl_keyboard_testmodemenu(SDL_KeyCode key) {
-    if (flags[PUSHED]) {
+bool ctl_keyboard_testmodemenu(SDL_KeyCode key)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
-    if (flags[NOGAMEINPUT]) {
-        if (key == SDLK_ESCAPE) {
+    if (flags[NOGAMEINPUT])
+    {
+        if (key == SDLK_ESCAPE)
+        {
             var_push_button(BT_MENU); // Only menu button is active
             return true;
         }
@@ -1551,13 +1773,15 @@ bool ctl_keyboard_testmodemenu(SDL_KeyCode key) {
     }
 
     // keyboard_gameplay(key);
-    switch (key) {
+    switch (key)
+    {
     case SDLK_ESCAPE:
         var_push_button(BT_MENU);
         return true;
         break;
     case SDLK_h:
-        if (!var_game->puzzle) {
+        if (!var_game->puzzle)
+        {
             var_push_button(BT_HINT);
             return true;
         }
@@ -1567,7 +1791,8 @@ bool ctl_keyboard_testmodemenu(SDL_KeyCode key) {
         return true;
         break;
     case SDLK_d:
-        if (!var_game->puzzle && !var_game->nodelay) {
+        if (!var_game->puzzle && !var_game->nodelay)
+        {
             var_push_button(BT_DETONATE);
             return true;
         }
@@ -1579,38 +1804,52 @@ bool ctl_keyboard_testmodemenu(SDL_KeyCode key) {
     return ctl_keyboard_gravitywheel(key);
 }
 
-bool ctl_mouse_testmodemenu(int x, int y) {
-    if (flags[PUSHED]) {
+bool ctl_mouse_testmodemenu(int x, int y)
+{
+    if (flags[PUSHED])
+    {
         return false; // Ignore mouse clicks if a button is already pushed
     }
 
-    for (int i = BT_TESTWIDTH; i <= BT_UPGRADES; i++) {
-        if (mouse_capture_button(x, y, i)) {
+    for (int i = BT_TESTWIDTH; i <= BT_UPGRADES; i++)
+    {
+        if (mouse_capture_button(x, y, i))
+        {
             return true;
         }
     }
 
-    if (var_test_game_refill_mode == 1) {
-        if (mouse_capture_button(x, y, BT_TESTSTINIT)) {
+    if (var_test_game_refill_mode == 1)
+    {
+        if (mouse_capture_button(x, y, BT_TESTSTINIT))
+        {
             return true;
         }
     }
 
-    if (var_game && !var_game->puzzle) {
-        for (int i = BT_NODELAY; i <= BT_BOMB; i++) {
-            if (mouse_capture_button(x, y, i)) {
+    if (var_game && !var_game->puzzle)
+    {
+        for (int i = BT_NODELAY; i <= BT_BOMB; i++)
+        {
+            if (mouse_capture_button(x, y, i))
+            {
                 return true;
             }
         }
-    } else {
-        for (int i = BT_TESTGENPUZZLE; i <= BT_TESTBALANCED; i++) {
-            if (mouse_capture_button(x, y, i)) {
+    }
+    else
+    {
+        for (int i = BT_TESTGENPUZZLE; i <= BT_TESTBALANCED; i++)
+        {
+            if (mouse_capture_button(x, y, i))
+            {
                 return true;
             }
         }
     }
 
-    if (flags[NOGAMEINPUT]) {
+    if (flags[NOGAMEINPUT])
+    {
         return mouse_capture_button(x, y,
                                     BT_MENU); // Only menu button is active
     }
@@ -1618,23 +1857,28 @@ bool ctl_mouse_testmodemenu(int x, int y) {
     // Otherwise, we check all buttons.
 
     // Gravity wheel buttons
-    if (ctl_mouse_gravitywheel(x, y)) {
+    if (ctl_mouse_gravitywheel(x, y))
+    {
         return true;
     }
 
     // Save and menu buttons
     if (mouse_capture_button(x, y, BT_MENU) ||
-        mouse_capture_button(x, y, BT_SAVE)) {
+        mouse_capture_button(x, y, BT_SAVE))
+    {
         return true;
     }
 
     // Buttons depending on game mode
-    if (!var_game->puzzle) {
-        if (mouse_capture_button(x, y, BT_HINT)) {
+    if (!var_game->puzzle)
+    {
+        if (mouse_capture_button(x, y, BT_HINT))
+        {
             return true;
         }
 
-        if (!var_game->nodelay && mouse_capture_button(x, y, BT_DETONATE)) {
+        if (!var_game->nodelay && mouse_capture_button(x, y, BT_DETONATE))
+        {
             return true;
         }
     }
@@ -1642,8 +1886,10 @@ bool ctl_mouse_testmodemenu(int x, int y) {
     return false;
 }
 
-void ctl_button_push_testmode(void) {
-    switch (var_pushed_button) {
+void ctl_button_push_testmode(void)
+{
+    switch (var_pushed_button)
+    {
     case BT_SELECMODEL:
         var_game->lines = true;
         break;
@@ -1719,16 +1965,19 @@ void ctl_button_push_testmode(void) {
 /*+ Game state +*/
 /****************/
 
-void ctl_solver_turn(void) {
-    if (!var_game || !var_game_solver || !var_game_solver_path) {
+void ctl_solver_turn(void)
+{
+    if (!var_game || !var_game_solver || !var_game_solver_path)
+    {
         var_game_solver = false;
         return;
     }
     game_implement_solver_move(var_game, var_game_solver_path);
-    solver_move *temp    = var_game_solver_path;
+    solver_move *temp = var_game_solver_path;
     var_game_solver_path = var_game_solver_path->next;
     free(temp);
-    if (!var_game_solver_path) {
+    if (!var_game_solver_path)
+    {
         var_game_solver = false;
     }
 }
@@ -1737,19 +1986,23 @@ void ctl_solver_turn(void) {
 /*+ Display functions +*/
 /***********************/
 
-static void ctl_display_graylayer(void) {
+static void ctl_display_graylayer(void)
+{
     // Displays a gray layer over the demo game.
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 127);
     SDL_RenderFillRect(renderer, NULL);
     SDL_SetRenderDrawColor(renderer, COLOR_TUPLE(WHITE));
 }
 
-void ctl_display(void) {
+void ctl_display(void)
+{
     render_game(var_game);
-    switch (var_gui_mode) {
+    switch (var_gui_mode)
+    {
     case GUIMODE_MENUS:
         ctl_display_graylayer();
-        switch (var_current_menu) {
+        switch (var_current_menu)
+        {
         case MENU_MAIN:
             render_mainmenu();
             break;
@@ -1784,9 +2037,12 @@ void ctl_display(void) {
 /*+ Button pushes +*/
 /*******************/
 
-void ctl_button_push(void) {
-    if (var_gui_mode == GUIMODE_MENUS) {
-        switch (var_current_menu) {
+void ctl_button_push(void)
+{
+    if (var_gui_mode == GUIMODE_MENUS)
+    {
+        switch (var_current_menu)
+        {
         case MENU_MAIN:
             ctl_button_push_mainmenu();
             break;
@@ -1800,8 +2056,11 @@ void ctl_button_push(void) {
             fprintf(stderr, "Unknown GUI menu: %d\n", var_current_menu);
             exit(EXIT_FAILURE);
         }
-    } else {
-        switch (var_gui_mode) {
+    }
+    else
+    {
+        switch (var_gui_mode)
+        {
         case GUIMODE_CLASSIC:
             ctl_button_push_classic();
             break;
@@ -1823,17 +2082,22 @@ void ctl_button_push(void) {
 /*+ Prise en compte des actions **/
 /*********************************/
 
-void ctl_mouse_motion(SDL_Event *theevent) {
-    if (flags[MOUSEDOWN] && !flags[NOSCROLL]) {
+void ctl_mouse_motion(SDL_Event *theevent)
+{
+    if (flags[MOUSEDOWN] && !flags[NOSCROLL])
+    {
         scroll_with_mouse(theevent->motion.x, theevent->motion.y);
     }
     var_mousePosx = theevent->motion.x;
     var_mousePosy = theevent->motion.y;
 }
 
-static bool ctl_mouse_button_action(int x, int y) {
-    if (var_gui_mode == GUIMODE_MENUS) {
-        switch (var_current_menu) {
+static bool ctl_mouse_button_action(int x, int y)
+{
+    if (var_gui_mode == GUIMODE_MENUS)
+    {
+        switch (var_current_menu)
+        {
         case MENU_MAIN:
             return ctl_mouse_mainmenu(x, y);
             break;
@@ -1846,8 +2110,11 @@ static bool ctl_mouse_button_action(int x, int y) {
         default:
             break;
         }
-    } else {
-        switch (var_gui_mode) {
+    }
+    else
+    {
+        switch (var_gui_mode)
+        {
         case GUIMODE_CLASSIC:
             return ctl_mouse_classicmode(x, y);
             break;
@@ -1864,34 +2131,44 @@ static bool ctl_mouse_button_action(int x, int y) {
     return false;
 }
 
-void ctl_mouse_click(SDL_Event *theevent) {
-    if (!flags[MOUSEDOWN] && theevent->button.button == SDL_BUTTON_LEFT) {
+void ctl_mouse_click(SDL_Event *theevent)
+{
+    if (!flags[MOUSEDOWN] && theevent->button.button == SDL_BUTTON_LEFT)
+    {
         set_flag(MOUSEDOWN);
     }
     if (ctl_mouse_button_action(theevent->button.x, theevent->button.y) ||
-        flags[NOGAMEINPUT] || flags[NOPLAYER]) {
+        flags[NOGAMEINPUT] || flags[NOPLAYER])
+    {
         return;
-    } else {
+    }
+    else
+    {
         var_mouse_time = SDL_GetTicks64();
     }
 }
 
-void ctl_mouse_unclick(SDL_Event *theevent) {
-    if (flags[MOUSEDOWN] && theevent->button.button == SDL_BUTTON_LEFT) {
+void ctl_mouse_unclick(SDL_Event *theevent)
+{
+    if (flags[MOUSEDOWN] && theevent->button.button == SDL_BUTTON_LEFT)
+    {
         remove_flag(MOUSEDOWN);
     }
 
-    if (flags[NOGAMEINPUT] || flags[NOPLAYER]) {
+    if (flags[NOGAMEINPUT] || flags[NOPLAYER])
+    {
         return;
     }
 
-    if (SDL_GetTicks64() - var_mouse_time < 200) {
+    if (SDL_GetTicks64() - var_mouse_time < 200)
+    {
         int i, j;
         render_coordinates_screen_to_board(theevent->button.x,
                                            theevent->button.y, &i, &j);
 
         // If these are valid board coordinates, we handle the click.
-        if (ctl_valid_coordinates(var_game, i, j)) {
+        if (ctl_valid_coordinates(var_game, i, j))
+        {
             game_handle_mouse_click(var_game, i, j);
             return;
         }
@@ -1899,7 +2176,8 @@ void ctl_mouse_unclick(SDL_Event *theevent) {
         // If there is a refill queue and the click is on the border, we handle
         // it.
         int ind = ctl_valid_border_coordinates(var_game, i, j);
-        if (var_game->refill_mode != 2 && ind != INT_MAX) {
+        if (var_game->refill_mode != 2 && ind != INT_MAX)
+        {
             ctl_fillbuttons[(board_get_gravity(var_game->b) + 2) % 4][ind] =
                 true;
             var_button_countdown = SDL_GetTicks();
@@ -1909,8 +2187,10 @@ void ctl_mouse_unclick(SDL_Event *theevent) {
     }
 }
 
-void ctl_input(SDL_Event *theevent) {
-    switch (theevent->key.keysym.sym) {
+void ctl_input(SDL_Event *theevent)
+{
+    switch (theevent->key.keysym.sym)
+    {
     case SDLK_F1:
         ctl_enter_menu(true);
         break;
@@ -1921,8 +2201,10 @@ void ctl_input(SDL_Event *theevent) {
         break;
     }
 
-    if (var_gui_mode == GUIMODE_MENUS) {
-        switch (var_current_menu) {
+    if (var_gui_mode == GUIMODE_MENUS)
+    {
+        switch (var_current_menu)
+        {
         case MENU_MAIN:
             ctl_keyboard_mainmenu(theevent->key.keysym.sym);
             break;
@@ -1934,8 +2216,11 @@ void ctl_input(SDL_Event *theevent) {
             break;
         }
         return;
-    } else {
-        switch (var_gui_mode) {
+    }
+    else
+    {
+        switch (var_gui_mode)
+        {
         case GUIMODE_CLASSIC:
             ctl_keyboard_classicmode(theevent->key.keysym.sym);
             break;
@@ -1952,31 +2237,40 @@ void ctl_input(SDL_Event *theevent) {
 }
 
 static char filepath[256];
-void ctl_handle_edit_return(void) {
-    switch (var_edit_mode) {
+void ctl_handle_edit_return(void)
+{
+    switch (var_edit_mode)
+    {
     case ED_SAVE:
         sprintf(filepath, "./saves/%s", var_editbuffer->content);
         save_game(var_game, filepath);
         break;
     case ED_LOAD:
         sprintf(filepath, "./saves/%s", var_editbuffer->content);
-        if (var_gui_mode == GUIMODE_MENUS) {
+        if (var_gui_mode == GUIMODE_MENUS)
+        {
             ctl_load_game(filepath);
-        } else if (var_gui_mode == GUIMODE_TEST) {
+        }
+        else if (var_gui_mode == GUIMODE_TEST)
+        {
             ctl_test_load(filepath);
         }
         break;
     case ED_NAME:
-        if (!var_score_table) {
+        if (!var_score_table)
+        {
             fprintf(stderr, "No score table initialized.\n");
             exit(EXIT_FAILURE);
             break;
         }
         if (var_score_table->player_index >= 0 &&
-            var_score_table->player_index < var_score_table->size) {
+            var_score_table->player_index < var_score_table->size)
+        {
             save_score_table(var_score_table, "./scores/scores",
                              var_editbuffer->content);
-        } else {
+        }
+        else
+        {
             fprintf(stderr, "Invalid player index in score table: %d\n",
                     var_score_table->player_index);
             exit(EXIT_FAILURE);
@@ -1989,14 +2283,15 @@ void ctl_handle_edit_return(void) {
     }
     free_text_buffer(var_editbuffer);
     var_editbuffer = NULL;
-    var_edit_mode  = ED_NONE;
+    var_edit_mode = ED_NONE;
 }
 
 /*******************/
 /*+ Boucle de jeu **/
 /*******************/
 
-void event_loop() {
+void event_loop()
+{
     // game* testcb = load_original("test10.bpz");
     // save_game(testcb, "./saves/mytest");
     // game_release(testcb);
@@ -2012,12 +2307,15 @@ void event_loop() {
     // int toto = 0;
 
     // Main game loop
-    while (!flags[QUIT]) {
+    while (!flags[QUIT])
+    {
         // Handling animations
-        switch (var_anim_type) {
+        switch (var_anim_type)
+        {
         case ANIM_KILL:
             var_kill_increment();
-            if (var_kill_get_frame() >= 32) {
+            if (var_kill_get_frame() >= 32)
+            {
                 game_end_animation(var_game, ANIM_KILL);
                 remove_flag(NOGAMEINPUT);
             }
@@ -2028,19 +2326,24 @@ void event_loop() {
         case ANIM_MOVE_ROLLBACK:
             var_move_increment();
             // If the move animation has reached its maximum frame count.
-            if (var_move_get_frame() >= NBFRAMES_MOVE) {
+            if (var_move_get_frame() >= NBFRAMES_MOVE)
+            {
                 var_cell_movement_done++;
-                if (var_cell_movement_done >= var_cell_movement) {
+                if (var_cell_movement_done >= var_cell_movement)
+                {
                     game_end_animation(var_game, var_anim_type);
                     remove_flag(NOGAMEINPUT);
-                } else {
+                }
+                else
+                {
                     var_move_reset();
                 }
             }
             break;
         case ANIM_HINT:
             var_hint_increment();
-            if (var_hint_get_frame() >= NBFRAMES_HINT) {
+            if (var_hint_get_frame() >= NBFRAMES_HINT)
+            {
                 game_end_animation(var_game, ANIM_HINT);
                 remove_flag(NOGAMEINPUT);
             }
@@ -2056,33 +2359,41 @@ void event_loop() {
         ctl_handle_end_signals();
 
         // Handling events
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
                 set_flag(QUIT);
                 break;
             }
 
             // Locks the keyboard until a key is released.
-            if ((flags[KEYDOWN] && event.type != SDL_KEYUP)) {
+            if ((flags[KEYDOWN] && event.type != SDL_KEYUP))
+            {
                 continue;
             }
-            if (flags[KEYDOWN] && event.type == SDL_KEYUP) {
+            if (flags[KEYDOWN] && event.type == SDL_KEYUP)
+            {
                 flags[KEYDOWN] = false;
             }
 
             // Text input mode
-            if (var_edit_mode != ED_NONE) {
-                switch (event.type) {
+            if (var_edit_mode != ED_NONE)
+            {
+                switch (event.type)
+                {
                 case SDL_TEXTINPUT:
                     if (var_edit_mode == ED_NAME &&
                         (event.text.text[0] == ',' ||
-                         event.text.text[0] == ';')) {
+                         event.text.text[0] == ';'))
+                    {
                         break;
                     }
                     append_to_text_buffer(var_editbuffer, event.text.text);
                     break;
                 case SDL_KEYDOWN:
-                    switch (event.key.keysym.sym) {
+                    switch (event.key.keysym.sym)
+                    {
                     case SDLK_BACKSPACE:
                         if (var_editbuffer->length > 0)
                             remove_char(var_editbuffer);
@@ -2094,7 +2405,7 @@ void event_loop() {
                     case SDLK_ESCAPE:
                         free_text_buffer(var_editbuffer);
                         var_editbuffer = NULL;
-                        var_edit_mode  = ED_NONE;
+                        var_edit_mode = ED_NONE;
                         break;
                     default:
                         break;
@@ -2106,7 +2417,8 @@ void event_loop() {
             }
 
             // Mouse handling
-            switch (event.type) {
+            switch (event.type)
+            {
             case SDL_MOUSEMOTION:
                 ctl_mouse_motion(&event);
                 break;
@@ -2122,7 +2434,8 @@ void event_loop() {
             }
 
             // Keyboard handling
-            if (event.type == SDL_KEYDOWN) {
+            if (event.type == SDL_KEYDOWN)
+            {
                 set_flag(KEYDOWN);
                 ctl_input(&event);
             }
@@ -2132,11 +2445,15 @@ void event_loop() {
         ctl_handle_anim_signals();
 
         // Reset of the buttons and handling of pushes (if necessary)
-        if (flags[PUSHED] && SDL_GetTicks() - var_button_countdown >= 100) {
+        if (flags[PUSHED] && SDL_GetTicks() - var_button_countdown >= 100)
+        {
             var_reset_buttons();
-            for (int d = 0; d < SIZE_DIRECTION; d++) {
-                if (ctl_fillbuttons[d]) {
-                    for (int i = 0; i < ctl_fillbuttons_count[d]; i++) {
+            for (int d = 0; d < SIZE_DIRECTION; d++)
+            {
+                if (ctl_fillbuttons[d])
+                {
+                    for (int i = 0; i < ctl_fillbuttons_count[d]; i++)
+                    {
                         ctl_fillbuttons[d][i] = false;
                     }
                 }
@@ -2150,12 +2467,14 @@ void event_loop() {
 
         // Handling the case when the IA is activated.
         if (var_game_ia && !flags[NOGAMEINPUT] && !flags[INMENU] &&
-            SDL_GetTicks64() - var_ia_countdown >= 1000) {
+            SDL_GetTicks64() - var_ia_countdown >= 1000)
+        {
             var_ia_countdown = SDL_GetTicks64();
             ia_functions[var_game_ia_choice](var_game);
         }
 
-        if (var_game_solver && !flags[NOGAMEINPUT] && !flags[INMENU]) {
+        if (var_game_solver && !flags[NOGAMEINPUT] && !flags[INMENU])
+        {
             ctl_solver_turn();
         }
         ctl_handle_anim_signals();

@@ -59,8 +59,8 @@ typedef struct
 {
     int width;
     int height;
-    int direction;
-    int index_selected_square;
+    int direction;             // gravité
+    int index_selected_square; // -1 si aucune cell selec
     cell *content_square;
     queue *q;
 } board;
@@ -146,5 +146,9 @@ void game_next_level(game *g);
 void game_release(game *g);
 
 game *game_clone(game *g);
+
+bool is_there_destructible_zone(board *b);
+
+bool can_move_be_played(board *b);
 
 #endif // GAME_FULL_H_
