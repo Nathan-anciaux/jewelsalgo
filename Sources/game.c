@@ -1,3 +1,4 @@
+#include "queue.h"
 #include "game.h"
 #include "alloc.h"
 #include "gui_gamevars.h"
@@ -57,10 +58,14 @@ void board_get_cell(board *b, int j, int i, cell *c)
     return;
 }
 
-int board_refill_size(board *)
+int board_refill_size(board *b)
 // Returns the size of the storage queue in the board (used only in puzzle mode).
 {
-    return;
+    if (b->q == NULL)
+    {
+        return -1;
+    }
+    return getsize_queue(b->q);
 }
 
 bool board_read_refill(board *b, int k, cell *c)
@@ -94,7 +99,13 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b = malloc(sizeof(g->b));
     g->b->width = width;
     g->b->height = height;
-    g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
+    g->b->content_square = malloc(g->b->width * g->b->height * sizeof(cell));
+    for (int i = 0; i < g->b->width * g->b->height; i++)
+    {
+        g->b->content_square[i].object = rand() % 7;
+        g->b->content_square[i].power = GEM_BASIC;
+        g->b->content_square[i].countdown = 0;
+    }
     g->b->direction = DOWN;
     g->b->q = NULL;
     g->b->index_selected_square = -1;
@@ -135,7 +146,6 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
 
 
      return g;*/
-
     return NULL;
 }
 

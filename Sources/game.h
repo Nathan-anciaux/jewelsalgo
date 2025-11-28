@@ -45,7 +45,7 @@ typedef enum
     GEM_SIZE
 } gem_power;
 
-typedef struct
+typedef struct cell
 {
     element object;
     union
