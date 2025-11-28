@@ -61,15 +61,11 @@ void board_get_cell(board *b, int j, int i, cell *c)
 int board_refill_size(board *b)
 // Returns the size of the storage queue in the board (used only in puzzle mode).
 {
-<<<<<<< HEAD
     if (b->q == NULL)
     {
         return -1;
     }
     return getsize_queue(b->q);
-=======
-    return get_queuesize(b->q);
->>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
 }
 
 bool board_read_refill(board *b, int k, cell *c)
@@ -120,17 +116,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
 
-    // basic board
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            g->b->content_square[index_board(g->b, i, j)].object = rand() % 7;
-        }
-    }
-
     // fix stable board
-
+    /*
     bool stable = false;
 
     while (!stable)
@@ -142,7 +129,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
             stable = true;
         }
     }
-
+*/
     return g;
 }
 
@@ -202,46 +189,40 @@ bool is_there_destructible_zone_col(board *b)
     return change;
 }
 
+game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
+// Called by the interface to initialize a puzzle game with the specified width and height.
+
+{
+    game *g = malloc(sizeof(*g));
+    cell a;
+    bool change = false;
+    int j;
+    for (int i = 0; i < b->height; i++)
+    {
+        j = 0;
+        while (j < b->width - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i, j + 1)].object) &&
+                (b->content_square[index_board(b, i, j + 1)].object == b->content_square[index_board(b, i, j + 2)].object))
+            {
+                a.object = b->content_square[index_board(b, i, j + 1)].object;
+                b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
+                while (b->content_square[index_board(b, i, j + 1)].object == a.object)
+                {
+                    b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
+                }
+                change = true;
+            }
+            j++;
+        }
+    }
+    return g;
+}
+
 bool can_move_be_played(board *b)
 // check if a move can be played
 {
     return false;
-}
-
-game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
-// Called by the interface to initialize a puzzle game with the specified width and height.
-<<<<<<< HEAD
-{ /*
-     // Game part
-     game *g = malloc(sizeof(*g));
-     g->lines = lines;
-     g->nodelay = true;
-     g->upgrades = upgrades;
-     g->easy = false;
-     g->gravity_gems = 2;
-     g->bombs = false;
-     g->gravity_control = 1;
-     g->puzzle = true;
-     g->refill_mode = 0;
-
-     // Board part
-     g->b = malloc(sizeof(g->b));
-     g->b->width = width;
-     g->b->height = height;
-     g->b->content_square = calloc(g->b->width * g->b->height, sizeof(cell));
-     g->b->direction = DOWN;
-     g->b->q = create_queue();
-     g->b->index_selected_square = -1;
-
-     // Score part
-     g->score = calloc(1, sizeof(g->score));
-
-
-     return g;*/
-=======
-{
->>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
-    return NULL;
 }
 
 void game_next_level(game *)

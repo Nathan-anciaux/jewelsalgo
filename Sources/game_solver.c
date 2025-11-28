@@ -42,7 +42,11 @@ void delete_hash_table(hash_table *ht)
 // integers.
 static ulong
 <<<<<<< HEAD
+<<<<<<< HEAD
 hash_function(int *elt,           //!< The element to hash.
+=======
+hash_function(int *elem,          //!< The element to hash.
+>>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
 =======
 hash_function(int *elem,          //!< The element to hash.
 >>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
@@ -55,7 +59,11 @@ hash_function(int *elem,          //!< The element to hash.
     for (int j = 0; j < size; j++)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         hash = (hash * ((ulong)size + 1) + ((ulong)elt[j]) * a) %
+=======
+        hash = (hash * ((ulong)size + 1) + ((ulong)elem[j]) * a) %
+>>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
 =======
         hash = (hash * ((ulong)size + 1) + ((ulong)elem[j]) * a) %
 >>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
