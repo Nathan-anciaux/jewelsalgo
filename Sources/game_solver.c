@@ -41,7 +41,11 @@ void delete_hash_table(hash_table *ht)
 // Hash function using a simple polynomial rolling hash. Hashes an array of
 // integers.
 static ulong
+<<<<<<< HEAD
 hash_function(int *elt,           //!< The element to hash.
+=======
+hash_function(int *elem,          //!< The element to hash.
+>>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
               int size,           //!< Size of the element (number of integers).
               ulong hash_capacity //!< Capacity of the hash table.
 )
@@ -50,7 +54,11 @@ hash_function(int *elt,           //!< The element to hash.
     ulong a = 0x9e3779b9; // fractional bits of the golden ratio
     for (int j = 0; j < size; j++)
     {
+<<<<<<< HEAD
         hash = (hash * ((ulong)size + 1) + ((ulong)elt[j]) * a) %
+=======
+        hash = (hash * ((ulong)size + 1) + ((ulong)elem[j]) * a) %
+>>>>>>> 92ab899151e5969b37a1c0387a6760a3b65bde89
                hash_capacity;
     }
     return hash;

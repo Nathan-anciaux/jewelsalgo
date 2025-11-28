@@ -132,6 +132,10 @@ cell dequeue(queue *q)
 
 int get_queuesize(queue *q)
 {
+    if (q == NULL)
+    {
+        return -1;
+    }
     return q->size;
 }
 
