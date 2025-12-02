@@ -193,30 +193,7 @@ game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
 // Called by the interface to initialize a puzzle game with the specified width and height.
 
 {
-    game *g = malloc(sizeof(*g));
-    cell a;
-    bool change = false;
-    int j;
-    for (int i = 0; i < b->height; i++)
-    {
-        j = 0;
-        while (j < b->width - 2)
-        {
-            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i, j + 1)].object) &&
-                (b->content_square[index_board(b, i, j + 1)].object == b->content_square[index_board(b, i, j + 2)].object))
-            {
-                a.object = b->content_square[index_board(b, i, j + 1)].object;
-                b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
-                while (b->content_square[index_board(b, i, j + 1)].object == a.object)
-                {
-                    b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
-                }
-                change = true;
-            }
-            j++;
-        }
-    }
-    return g;
+    return NULL;
 }
 
 bool can_move_be_played(board *b)
