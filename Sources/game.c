@@ -117,7 +117,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->score->scale_score = scale_score;
 
     // fix stable board
-    /*
+
     bool stable = false;
 
     while (!stable)
@@ -129,7 +129,6 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
             stable = true;
         }
     }
-*/
     return g;
 }
 
