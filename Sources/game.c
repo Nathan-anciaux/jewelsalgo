@@ -71,8 +71,22 @@ int board_refill_size(board *b)
 bool board_read_refill(board *b, int k, cell *c)
 // Reads an element from the storage queue (without removing it).
 {
-
-    return false;
+    if (k >= board_refill_size(b))
+    {
+        return false;
+    }
+    bool booleen = false;
+    for (int i = 0; i < board_refill_size(b) - k; i++)
+    {
+        enqueue(dequeue(b->q), b->q);
+    }
+    *c = dequeue(b->q);
+    enqueue(*c, b->q);
+    for (int j = 0; j < k; j++)
+    {
+        enqueue(dequeue(b->q), b->q);
+    }
+    return true;
 }
 
 /******************************************************************************/
