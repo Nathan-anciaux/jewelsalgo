@@ -31,7 +31,7 @@ direction board_get_gravity(board *b)
     return b->direction;
 }
 
-bool board_get_picked(board *b, int *i, int *j)
+bool board_get_picked(board *b, int *j, int *i)
 // Retrieves the coordinates of the currently selected square on the board (if there is one).
 {
     if (b->index_selected_square != -1)
@@ -124,7 +124,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     {
         bool row = is_there_destructible_zone_row(g->b);
         bool col = is_there_destructible_zone_col(g->b);
-        if ((row == false) && (col == false))
+        bool verif = can_move_be_played(g->b);
+        if ((row == false) && (col == false) && (verif == false))
         {
             stable = true;
         }
@@ -188,17 +189,90 @@ bool is_there_destructible_zone_col(board *b)
     return change;
 }
 
+bool can_move_be_played(board *b)
+// check if a move can be played
+{
+    cell tmp;
+
+    // up square
+    for (int i = 1; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
+            b->content_square[index_board(b, i - 1, j)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
+            b->content_square[index_board(b, i - 1, j)] = tmp;
+        }
+    }
+
+    // down square
+    for (int i = 0; i < b->height - 1; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
+            b->content_square[index_board(b, i + 1, j)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
+            b->content_square[index_board(b, i + 1, j)] = tmp;
+        }
+    }
+
+    // left square
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 1; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
+            b->content_square[index_board(b, i, j - 1)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
+            b->content_square[index_board(b, i, j - 1)] = tmp;
+        }
+    }
+
+    // right square
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width - 1; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
+            b->content_square[index_board(b, i, j + 1)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
+            b->content_square[index_board(b, i, j + 1)] = tmp;
+        }
+    }
+    return false;
+}
+
 game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
 // Called by the interface to initialize a puzzle game with the specified width and height.
 
 {
     return NULL;
-}
-
-bool can_move_be_played(board *b)
-// check if a move can be played
-{
-    return false;
 }
 
 void game_next_level(game *)
