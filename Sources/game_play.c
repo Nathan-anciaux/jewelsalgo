@@ -48,7 +48,8 @@ bool is_adjacent(game *g, int i, int j)
     }
     int i_pos_select = g->b->index_selected_square / g->b->width;
     int j_pos_select = g->b->index_selected_square % g->b->width;
-    if (((j == j_pos_select) && (i == i_pos_select + g->b->width || i == i_pos_select - g->b->width)) || ((i == i_pos_select) && (j == j_pos_select + 1 || j == j_pos_select - 1)))
+    if (((j == j_pos_select) && (i == i_pos_select + g->b->width || i == i_pos_select - g->b->width)) ||
+        ((i == i_pos_select) && (j == j_pos_select + 1 || j == j_pos_select - 1)))
     {
         return true;
     }
@@ -57,11 +58,42 @@ bool is_adjacent(game *g, int i, int j)
 
 void game_handle_mouse_click(game *g, int i, int j)
 {
-    if (board_get_picked(g->b, &i, &j) || !is_adjacent(g, i, j))
+    if (!board_get_picked(g->b, &i, &j))
     {
-        g->b->index_selected_square = index_board(g->b, i, j);
+        return;
+    }
+    int index = index_board(g->b, i, j);
+    if (g->b->index_selected_square == -1)
+    {
+        g->b->index_selected_square = index;
+        return;
+    }
+    if (!is_adjacent(g, i, j))
+    {
+        g->b->index_selected_square = index;
+        return;
     }
     return;
+    /*
+    // swap check
+    g->b->index_selected_square = index;
+    cell tmp = g->b->content_square[g->b->index_selected_square];
+    g->b->content_square[g->b->index_selected_square] = g->b->content_square[index_board(g->b, i, j)];
+    g->b->content_square[index_board(g->b, i, j)] = tmp;
+    if (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b))
+    {
+        game_init_animation(ANIM_MOVE_GOODSWAP);
+        return;
+    }
+    else
+    {
+        cell tmp1 = g->b->content_square[g->b->index_selected_square];
+        g->b->content_square[g->b->index_selected_square] = g->b->content_square[index_board(g->b, i, j)];
+        g->b->content_square[index_board(g->b, i, j)] = tmp1;
+        game_init_animation(ANIM_MOVE_BADSWAP);
+        return;
+    }
+    return;*/
 }
 
 void game_handle_hint_request(game *)

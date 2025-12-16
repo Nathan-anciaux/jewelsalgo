@@ -278,9 +278,8 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
 }
 
 bool is_there_destructible_zone_row(board *b)
-// remove destructible zones
-{
-
+{ // remove destructible zones
+    /*
     cell a;
     bool change = false;
     int j;
@@ -296,54 +295,52 @@ bool is_there_destructible_zone_row(board *b)
                 b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
                 while (b->content_square[index_board(b, i, j + 1)].object == a.object)
                 {
-                    while (!stable)
+                    while (!change)
                     {
-                        bool row = is_there_destructible_zone_row(g->b);
-                        bool col = is_there_destructible_zone_col(g->b);
-                        bool verif = can_move_be_played(g->b);
+                        bool row = is_there_destructible_zone_row(b);
+                        bool col = is_there_destructible_zone_col(b);
+                        bool verif = can_move_be_played(b);
                         if ((row == false) && (col == false) && (verif == false))
                         {
-                            stable = true;
+                            change = true;
                         }
                     }
-                    return g;
+                    return change;
                     b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
                 }
                 change = true;
             }
             j++;
         }
-    }
-    return change;
+    }*/
     return false;
 }
-
 bool is_there_destructible_zone_col(board *b)
 // remove destructible zones
-{
-    cell a;
-    bool change = false;
-    int i;
-    for (int j = 0; j < b->width; j++)
-    {
-        i = 0;
-        while (i < b->height - 2)
-        {
-            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
-                (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
-            {
-                a.object = b->content_square[index_board(b, i + 1, j)].object;
-                b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
-                while (b->content_square[index_board(b, i + 1, j)].object == a.object)
-                {
-                    b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
-                }
-                change = true;
-            }
-            i++;
-        }
-    }
-    return change;
+{ /*
+     cell a;
+     bool change = false;
+     int i;
+     for (int j = 0; j < b->width; j++)
+     {
+         i = 0;
+         while (i < b->height - 2)
+         {
+             if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
+                 (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
+             {
+                 a.object = b->content_square[index_board(b, i + 1, j)].object;
+                 b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                 while (b->content_square[index_board(b, i + 1, j)].object == a.object)
+                 {
+                     b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                 }
+                 change = true;
+             }
+             i++;
+         }
+     }
+     return change;*/
     return false;
 }
 
