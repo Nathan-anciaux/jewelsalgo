@@ -40,9 +40,27 @@ void game_puzzle_end(void)
 /**********************************************************/
 /*+ Functions called by the GUI to modify the game state +*/
 /**********************************************************/
-
-void game_handle_mouse_click(game *, int, int)
+bool is_adjacent(game *g, int i, int j)
 {
+    if (i < 0 || i >= g->b->width || j < 0 || j >= g->b->height)
+    {
+        return EXIT_FAILURE;
+    }
+    int i_pos_select = g->b->index_selected_square / g->b->width;
+    int j_pos_select = g->b->index_selected_square % g->b->width;
+    if (((j == j_pos_select) && (i == i_pos_select + g->b->width || i == i_pos_select - g->b->width)) || ((i == i_pos_select) && (j == j_pos_select + 1 || j == j_pos_select - 1)))
+    {
+        return true;
+    }
+    return false;
+}
+
+void game_handle_mouse_click(game *g, int i, int j)
+{
+    if (board_get_picked(g->b, &i, &j) || !is_adjacent(g, i, j))
+    {
+        g->b->index_selected_square = index_board(g->b, i, j);
+    }
     return;
 }
 

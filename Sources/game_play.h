@@ -10,7 +10,8 @@
  * Déjà écrite : appelez-la mais NE LA MODIFIEZ PAS                  *
  *********************************************************************/
 
-typedef enum {
+typedef enum
+{
     ANIM_IDLE,
     ANIM_MOVE_GOODSWAP,
     ANIM_MOVE_BADSWAP,
@@ -33,7 +34,8 @@ void game_init_animation(anim_type type);
  * NE PAS MODIFIER                                                   *
  *********************************************************************/
 
-typedef enum {
+typedef enum
+{
     SIGNAL_END_LEVEL,
     SIGNAL_END_CLGAME,
     SIGNAL_END_PUZZLE,
@@ -53,6 +55,9 @@ void game_puzzle_end(void);
  * modifications de l'état du jeu. Vous devez implémenter ces fonctions (elles *
  * démarrent des animations).                                                  *
  *******************************************************************************/
+
+// vérifie si la cellule (i,j) est adjacente à la cellule sélectionnée
+bool is_adjacent(game *g, int i, int j);
 
 void game_handle_mouse_click(game *g, int i, int j);
 
@@ -76,7 +81,8 @@ void game_end_animation(game *g, anim_type type);
 
 direction game_get_cell_move(game *g, int i, int j, int *distance);
 
-typedef enum {
+typedef enum
+{
     KILL_NOKILL,
     KILL_SHRINK,
     KILL_SHATTER,
