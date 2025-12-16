@@ -146,6 +146,137 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     return g;
 }
 
+game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short refill_mode, int ini, bool balanced, short gravity_control)
+// Called by the interface to initialize a puzzle game with the specified width and height.
+{
+    // game part
+    game *g = malloc(sizeof(*g));
+    g->gravity_control = gravity_control;
+    g->lines = lines;
+    g->refill_mode = refill_mode;
+    g->upgrades = upgrades;
+    g->bombs = false;
+    g->easy = true;
+    g->gravity_gems = false;
+    g->nodelay = true;
+    g->puzzle = true;
+
+    // board part
+    g->b = malloc(sizeof(*(g->b)));
+    g->b->width = width;
+    g->b->height = height;
+    g->b->content_square = malloc(g->b->width * g->b->height * sizeof(cell));
+    for (int i = 0; i < g->b->width * g->b->height; i++)
+    {
+        g->b->content_square[i].object = 10;
+        g->b->content_square[i].power = GEM_BASIC;
+        g->b->content_square[i].countdown = 0;
+    }
+    g->b->direction = DOWN;
+    g->b->index_selected_square = -1;
+
+    // if balanced
+    if (balanced)
+    {
+        // creating another array with values ​​randomized 3 at a time
+        int h = g->b->height;
+        int w = g->b->height;
+
+        // h * w  have to be % 3 = 0
+        if (h % 3 == 1)
+        {
+            h = h - 1;
+        }
+        if (h % 3 == 2)
+        {
+            h = h - 2;
+        }
+
+        if (w % 3 == 1)
+        {
+            w = w - 1;
+        }
+        if (w % 3 == 2)
+        {
+            w = w - 2;
+        }
+
+        cell board_tab_rand[h * w];
+
+        // tab rand for all the gems values and empty
+        int tab[] = {0, 1, 2, 3, 4, 5, 6, 10};
+        int tab_size = 8;
+
+        // fill board_tab_rand
+        for (int i = 0; i < h * w; i++)
+        {
+
+            int r = rand() % tab_size;
+            int result = tab[r];
+
+            board_tab_rand[i].object = result;
+            board_tab_rand[i].power = GEM_BASIC;
+            board_tab_rand[i].countdown = 0;
+
+            board_tab_rand[i + 1].object = result;
+            board_tab_rand[i + 1].power = GEM_BASIC;
+            board_tab_rand[i + 1].countdown = 0;
+
+            board_tab_rand[i + 2].object = result;
+            board_tab_rand[i + 2].power = GEM_BASIC;
+            board_tab_rand[i + 2].countdown = 0;
+        }
+
+        // Copy these values randomised in the first board
+        int k = h * w - 1;
+        while (k > 0)
+        {
+            // assignement
+            int square_in_board_tab_rand = rand() % k;
+            int square_in_board = rand() % g->b->width;
+            int profondeur = g->b->height - 1;
+            while (g->b->content_square[index_board(g->b, profondeur, square_in_board)].object != EMPTY)
+            {
+                profondeur--;
+            }
+            g->b->content_square[index_board(g->b, profondeur, square_in_board)] = board_tab_rand[square_in_board_tab_rand];
+
+            // switch
+            cell tmp = board_tab_rand[square_in_board_tab_rand];
+            board_tab_rand[square_in_board_tab_rand] = board_tab_rand[k];
+            board_tab_rand[k] = tmp;
+
+            k--;
+        }
+    }
+    else
+    {
+        // tab rand for all the gems values and empty
+        int tab[] = {0, 1, 2, 3, 4, 5, 6, 10};
+        int tab_size = 8;
+        for (int i = 0; i < g->b->height; i++)
+        {
+            for (int j = 0; j < g->b->width; j++)
+            {
+                int r = rand() % tab_size;
+                int result = tab[r];
+
+                g->b->content_square[index_board(g->b, i, j)].object = result;
+                g->b->content_square[index_board(g->b, i, j)].power = GEM_BASIC;
+                g->b->content_square[index_board(g->b, i, j)].countdown = 0;
+            }
+        }
+    }
+
+    // queue part
+    g->b->q = create_queue();
+
+    // score part
+    g->score = calloc(1, sizeof(*(g->score)));
+
+    return g;
+}
+
 bool is_there_destructible_zone_row(board *b)
 // remove destructible zones
 {
@@ -213,19 +344,6 @@ bool is_there_destructible_zone_col(board *b)
         }
     }
     return change;
-    return false;
-}
-
-game *game_create_puzzle(int, int, bool, bool, short, int, bool, short)
-// Called by the interface to initialize a puzzle game with the specified width and height.
-
-{
-    return NULL;
-}
-
-bool can_move_be_played(board *b)
-// check if a move can be played
-{
     return false;
 }
 
