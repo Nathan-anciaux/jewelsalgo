@@ -181,7 +181,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     {
         // creating another array with values ​​randomized 3 at a time
         int h = g->b->height;
-        int w = g->b->height;
+        int w = g->b->width;
 
         // h * w  have to be % 3 = 0
         if (h % 3 == 1)
@@ -209,7 +209,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
         int tab_size = 8;
 
         // fill board_tab_rand
-        for (int i = 0; i < h * w; i++)
+        for (int i = 0; i < h * w; i = i + 3)
         {
 
             int r = rand() % tab_size;
@@ -270,7 +270,28 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     }
 
     // queue part
-    g->b->q = create_queue();
+    int tab2[] = {8, 9};
+    int tab2_size = 2;
+    cell tmp;
+    if (g->refill_mode == 0)
+    {
+        g->b->q = create_queue();
+    }
+    if (g->refill_mode == 1)
+    {
+        g->b->q = create_queue();
+        for (int i = 0; i < ini; i++)
+        {
+            int r2 = rand() % tab2_size;
+            int result2 = tab2[r2];
+
+            tmp.object = result2;
+            tmp.countdown = rand() % 15;
+            tmp.power = GEM_BASIC;
+
+            enqueue(tmp, g->b->q);
+        }
+    }
 
     // score part
     g->score = calloc(1, sizeof(*(g->score)));
