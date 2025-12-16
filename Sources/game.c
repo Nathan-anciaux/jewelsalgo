@@ -31,7 +31,7 @@ direction board_get_gravity(board *b)
     return b->direction;
 }
 
-bool board_get_picked(board *b, int *i, int *j)
+bool board_get_picked(board *b, int *j, int *i)
 // Retrieves the coordinates of the currently selected square on the board (if there is one).
 {
     if (b->index_selected_square != -1)
@@ -71,22 +71,8 @@ int board_refill_size(board *b)
 bool board_read_refill(board *b, int k, cell *c)
 // Reads an element from the storage queue (without removing it).
 {
-    if (k < board_refill_size(b))
-    {
-        return false;
-    }
 
-    for (int i = 0; i < board_refill_size(b) - k; i++)
-    {
-        enqueue(dequeue(b->q), b->q);
-    }
-    *c = dequeue(b->q);
-    enqueue(*c, b->q);
-    for (int j = 0; j < k; j++)
-    {
-        enqueue(dequeue(b->q), b->q);
-    }
-    return true;
+    return false;
 }
 
 /******************************************************************************/
@@ -138,7 +124,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     {
         bool row = is_there_destructible_zone_row(g->b);
         bool col = is_there_destructible_zone_col(g->b);
-        if ((row == false) && (col == false))
+        bool verif = can_move_be_played(g->b);
+        if ((row == false) && (col == false) && (verif == false))
         {
             stable = true;
         }
@@ -278,8 +265,8 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
 }
 
 bool is_there_destructible_zone_row(board *b)
-{ // remove destructible zones
-    /*
+// remove destructible zones
+{
     cell a;
     bool change = false;
     int j;
@@ -295,52 +282,120 @@ bool is_there_destructible_zone_row(board *b)
                 b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
                 while (b->content_square[index_board(b, i, j + 1)].object == a.object)
                 {
-                    while (!change)
-                    {
-                        bool row = is_there_destructible_zone_row(b);
-                        bool col = is_there_destructible_zone_col(b);
-                        bool verif = can_move_be_played(b);
-                        if ((row == false) && (col == false) && (verif == false))
-                        {
-                            change = true;
-                        }
-                    }
-                    return change;
                     b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
                 }
                 change = true;
             }
             j++;
         }
-    }*/
-    return false;
+    }
+    return change;
 }
+
 bool is_there_destructible_zone_col(board *b)
 // remove destructible zones
-{ /*
-     cell a;
-     bool change = false;
-     int i;
-     for (int j = 0; j < b->width; j++)
-     {
-         i = 0;
-         while (i < b->height - 2)
-         {
-             if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
-                 (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
-             {
-                 a.object = b->content_square[index_board(b, i + 1, j)].object;
-                 b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
-                 while (b->content_square[index_board(b, i + 1, j)].object == a.object)
-                 {
-                     b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
-                 }
-                 change = true;
-             }
-             i++;
-         }
-     }
-     return change;*/
+{
+    cell a;
+    bool change = false;
+    int i;
+    for (int j = 0; j < b->width; j++)
+    {
+        i = 0;
+        while (i < b->height - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
+                (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
+            {
+                a.object = b->content_square[index_board(b, i + 1, j)].object;
+                b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                while (b->content_square[index_board(b, i + 1, j)].object == a.object)
+                {
+                    b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
+                }
+                change = true;
+            }
+            i++;
+        }
+    }
+    return change;
+}
+
+bool can_move_be_played(board *b)
+// check if a move can be played
+{
+    cell tmp;
+
+    // up square
+    for (int i = 1; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
+            b->content_square[index_board(b, i - 1, j)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
+            b->content_square[index_board(b, i - 1, j)] = tmp;
+        }
+    }
+
+    // down square
+    for (int i = 0; i < b->height - 1; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
+            b->content_square[index_board(b, i + 1, j)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
+            b->content_square[index_board(b, i + 1, j)] = tmp;
+        }
+    }
+
+    // left square
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 1; j < b->width; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
+            b->content_square[index_board(b, i, j - 1)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
+            b->content_square[index_board(b, i, j - 1)] = tmp;
+        }
+    }
+
+    // right square
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width - 1; j++)
+        {
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
+            b->content_square[index_board(b, i, j + 1)] = tmp;
+            if (is_there_destructible_zone_row(b))
+            {
+                return true;
+            }
+            tmp = b->content_square[index_board(b, i, j)];
+            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
+            b->content_square[index_board(b, i, j + 1)] = tmp;
+        }
+    }
     return false;
 }
 
