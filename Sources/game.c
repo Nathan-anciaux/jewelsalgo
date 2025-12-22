@@ -115,12 +115,6 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->width = width;
     g->b->height = height;
     g->b->content_square = malloc(g->b->width * g->b->height * sizeof(cell));
-    for (int i = 0; i < g->b->width * g->b->height; i++)
-    {
-        g->b->content_square[i].object = rand() % 7;
-        g->b->content_square[i].power = GEM_BASIC;
-        g->b->content_square[i].countdown = 0;
-    }
     g->b->direction = DOWN;
     g->b->q = NULL;
     g->b->index_selected_square = -1;
@@ -136,10 +130,26 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 
     while (!stable)
     {
-        bool row = is_there_destructible_zone_row(g->b);
-        bool col = is_there_destructible_zone_col(g->b);
-        bool verif = can_move_be_played(g->b);
-        if ((row == false) && (col == false) && (verif == false))
+        for (int i = 0; i < g->b->width * g->b->height; i++)
+        {
+            g->b->content_square[i].object = rand() % 7;
+            g->b->content_square[i].power = GEM_BASIC;
+            g->b->content_square[i].countdown = 0;
+        }
+
+        bool destructible_zone = true;
+        while (destructible_zone)
+        {
+            bool row = remove_destructible_zone_row(g->b);
+            bool col = remove_destructible_zone_col(g->b);
+
+            if (!row && !col)
+            {
+                destructible_zone = false;
+            }
+        }
+
+        if (can_move_be_played(g->b))
         {
             stable = true;
         }
@@ -180,36 +190,18 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     if (balanced)
     {
         // creating another array with values ​​randomized 3 at a time
-        int h = g->b->height;
-        int w = g->b->width;
 
-        // h * w  have to be % 3 = 0
-        if (h % 3 == 1)
-        {
-            h = h - 1;
-        }
-        if (h % 3 == 2)
-        {
-            h = h - 2;
-        }
+        // we need to have a size%3 = 0
+        int size_board_tab_rand = (g->b->height * g->b->width) - ((g->b->height * g->b->width) % 3);
 
-        if (w % 3 == 1)
-        {
-            w = w - 1;
-        }
-        if (w % 3 == 2)
-        {
-            w = w - 2;
-        }
-
-        cell board_tab_rand[h * w];
+        cell board_tab_rand[size_board_tab_rand];
 
         // tab rand for all the gems values and empty
         int tab[] = {0, 1, 2, 3, 4, 5, 6, 10};
         int tab_size = 8;
 
         // fill board_tab_rand
-        for (int i = 0; i < h * w; i = i + 3)
+        for (int i = 0; i < size_board_tab_rand; i = i + 3)
         {
 
             int r = rand() % tab_size;
@@ -229,7 +221,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
         }
 
         // Copy these values randomised in the first board
-        int k = h * w - 1;
+        int k = size_board_tab_rand - 1;
         while (k > 0)
         {
             // assignement
@@ -239,6 +231,11 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
             while (g->b->content_square[index_board(g->b, profondeur, square_in_board)].object != EMPTY)
             {
                 profondeur--;
+                if (profondeur < 0)
+                {
+                    square_in_board = rand() % g->b->width;
+                    profondeur = g->b->height - 1;
+                }
             }
             g->b->content_square[index_board(g->b, profondeur, square_in_board)] = board_tab_rand[square_in_board_tab_rand];
 
@@ -299,7 +296,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     return g;
 }
 
-bool is_there_destructible_zone_row(board *b)
+bool remove_destructible_zone_row(board *b)
 // remove destructible zones
 {
     cell a;
@@ -327,7 +324,7 @@ bool is_there_destructible_zone_row(board *b)
     return change;
 }
 
-bool is_there_destructible_zone_col(board *b)
+bool remove_destructible_zone_col(board *b)
 // remove destructible zones
 {
     cell a;
@@ -354,6 +351,45 @@ bool is_there_destructible_zone_col(board *b)
     }
     return change;
 }
+bool is_there_destructible_zone_row(board *b)
+// remove destructible zones
+{
+    int j;
+    for (int i = 0; i < b->height; i++)
+    {
+        j = 0;
+        while (j < b->width - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i, j + 1)].object) &&
+                (b->content_square[index_board(b, i, j + 1)].object == b->content_square[index_board(b, i, j + 2)].object))
+            {
+                return true;
+            }
+            j++;
+        }
+    }
+    return false;
+}
+
+bool is_there_destructible_zone_col(board *b)
+// remove destructible zones
+{
+    int i;
+    for (int j = 0; j < b->width; j++)
+    {
+        i = 0;
+        while (i < b->height - 2)
+        {
+            if ((b->content_square[index_board(b, i, j)].object == b->content_square[index_board(b, i + 1, j)].object) &&
+                (b->content_square[index_board(b, i + 1, j)].object == b->content_square[index_board(b, i + 2, j)].object))
+            {
+                return true;
+            }
+            i++;
+        }
+    }
+    return false;
+}
 
 bool can_move_be_played(board *b)
 // check if a move can be played
@@ -370,11 +406,11 @@ bool can_move_be_played(board *b)
             b->content_square[index_board(b, i - 1, j)] = tmp;
             if (is_there_destructible_zone_row(b))
             {
+                tmp = b->content_square[index_board(b, i, j)];
+                b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
+                b->content_square[index_board(b, i - 1, j)] = tmp;
                 return true;
             }
-            tmp = b->content_square[index_board(b, i, j)];
-            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i - 1, j)];
-            b->content_square[index_board(b, i - 1, j)] = tmp;
         }
     }
 
@@ -388,11 +424,11 @@ bool can_move_be_played(board *b)
             b->content_square[index_board(b, i + 1, j)] = tmp;
             if (is_there_destructible_zone_row(b))
             {
+                tmp = b->content_square[index_board(b, i, j)];
+                b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
+                b->content_square[index_board(b, i + 1, j)] = tmp;
                 return true;
             }
-            tmp = b->content_square[index_board(b, i, j)];
-            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i + 1, j)];
-            b->content_square[index_board(b, i + 1, j)] = tmp;
         }
     }
 
@@ -406,11 +442,11 @@ bool can_move_be_played(board *b)
             b->content_square[index_board(b, i, j - 1)] = tmp;
             if (is_there_destructible_zone_row(b))
             {
+                tmp = b->content_square[index_board(b, i, j)];
+                b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
+                b->content_square[index_board(b, i, j - 1)] = tmp;
                 return true;
             }
-            tmp = b->content_square[index_board(b, i, j)];
-            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j - 1)];
-            b->content_square[index_board(b, i, j - 1)] = tmp;
         }
     }
 
@@ -424,11 +460,11 @@ bool can_move_be_played(board *b)
             b->content_square[index_board(b, i, j + 1)] = tmp;
             if (is_there_destructible_zone_row(b))
             {
+                tmp = b->content_square[index_board(b, i, j)];
+                b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
+                b->content_square[index_board(b, i, j + 1)] = tmp;
                 return true;
             }
-            tmp = b->content_square[index_board(b, i, j)];
-            b->content_square[index_board(b, i, j)] = b->content_square[index_board(b, i, j + 1)];
-            b->content_square[index_board(b, i, j + 1)] = tmp;
         }
     }
     return false;
