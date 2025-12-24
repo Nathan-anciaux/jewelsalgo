@@ -121,6 +121,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
 
     // Score part
     g->score = calloc(1, sizeof(*(g->score)));
+    g->score->level = 1;
     g->score->target_score = target_score;
     g->score->scale_score = scale_score;
 
@@ -136,10 +137,11 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
             g->b->content_square[i].power = GEM_BASIC;
             g->b->content_square[i].countdown = 0;
         }
-        while (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b))
+        while (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b) || is_there_destrucible_zone_sccs(g->b))
         {
             remove_destructible_zone_col(g->b);
             remove_destructible_zone_row(g->b);
+            remove_destructible_zone_sccs(g->b);
         }
         if (can_move_be_played(g->b))
         {
@@ -230,7 +232,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
                 }
             }
             g->b->content_square[index_board(g->b, profondeur, square_in_board)] = board_tab_rand[square_in_board_tab_rand];
-            if (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b))
+            if (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b) || is_there_destrucible_zone_sccs(g->b))
             {
                 g->b->content_square[index_board(g->b, profondeur, square_in_board)].object = EMPTY;
             }
@@ -247,19 +249,28 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     else
     {
         bool stable = false;
+        int tab_gem[] = {0, 1, 2, 3, 4, 5, 6, 10, 10, 10};
 
         while (!stable)
         {
-            for (int i = 0; i < g->b->width * g->b->height; i++)
+            for (int i = 0; i < g->b->width; i++)
+            {
+                int rando = rand() % 10;
+                g->b->content_square[i].object = tab_gem[rando];
+                g->b->content_square[i].power = GEM_BASIC;
+                g->b->content_square[i].countdown = 0;
+            }
+            for (int i = g->b->width; i < g->b->width * g->b->height; i++)
             {
                 g->b->content_square[i].object = rand() % 7;
                 g->b->content_square[i].power = GEM_BASIC;
                 g->b->content_square[i].countdown = 0;
             }
-            while (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b))
+            while (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b) || is_there_destrucible_zone_sccs(g->b))
             {
                 remove_destructible_zone_col(g->b);
                 remove_destructible_zone_row(g->b);
+                remove_destructible_zone_sccs(g->b);
             }
             if (can_move_be_played(g->b))
             {
@@ -295,15 +306,16 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
 
     // score part
     g->score = calloc(1, sizeof(*(g->score)));
+    g->score->level = 1;
+    g->score->target_score = 1000000000;
 
     return g;
 }
 
-bool remove_destructible_zone_row(board *b)
+void remove_destructible_zone_row(board *b)
 // remove destructible zones
 {
     cell a;
-    bool change = false;
     int j;
     for (int i = 0; i < b->height; i++)
     {
@@ -319,19 +331,17 @@ bool remove_destructible_zone_row(board *b)
                 {
                     b->content_square[index_board(b, i, j + 1)].object = rand() % 7;
                 }
-                change = true;
             }
             j++;
         }
     }
-    return change;
+    return;
 }
 
-bool remove_destructible_zone_col(board *b)
+void remove_destructible_zone_col(board *b)
 // remove destructible zones
 {
     cell a;
-    bool change = false;
     int i;
     for (int j = 0; j < b->width; j++)
     {
@@ -347,12 +357,11 @@ bool remove_destructible_zone_col(board *b)
                 {
                     b->content_square[index_board(b, i + 1, j)].object = rand() % 7;
                 }
-                change = true;
             }
             i++;
         }
     }
-    return change;
+    return;
 }
 bool is_there_destructible_zone_row(board *b)
 // check if there are destructible zones rows
@@ -400,6 +409,74 @@ bool is_there_destructible_zone_col(board *b)
         }
     }
     return false;
+}
+
+int find_sccs(board *b, int i, int j, element gem, bool *visited)
+{
+    if (i < 0 || i >= b->height || j < 0 || j >= b->width)
+    {
+        return 0;
+    }
+
+    if (visited[index_board(b, i, j)] || b->content_square[index_board(b, i, j)].object != gem)
+    {
+        return 0;
+    }
+
+    visited[index_board(b, i, j)] = true;
+
+    int s = 1;
+    s = s + find_sccs(b, i + 1, j, gem, visited);
+    s = s + find_sccs(b, i, j + 1, gem, visited);
+    s = s + find_sccs(b, i - 1, j, gem, visited);
+    s = s + find_sccs(b, i, j - 1, gem, visited);
+
+    return s;
+}
+
+bool is_there_destrucible_zone_sccs(board *b)
+{
+    bool *visited = calloc(b->height * b->width, sizeof(*visited));
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            if (b->content_square[index_board(b, i, j)].object != EMPTY)
+            {
+                if (find_sccs(b, i, j, b->content_square[index_board(b, i, j)].object, visited) >= 4)
+                {
+                    free(visited);
+                    return true;
+                }
+            }
+        }
+    }
+    free(visited);
+    return false;
+}
+
+void remove_destructible_zone_sccs(board *b)
+{
+    for (int i = 0; i < b->height; i++)
+    {
+        for (int j = 0; j < b->width; j++)
+        {
+            bool *visited = calloc(b->height * b->width, sizeof(*visited));
+            if (b->content_square[index_board(b, i, j)].object != EMPTY)
+            {
+                if (find_sccs(b, i, j, b->content_square[index_board(b, i, j)].object, visited) >= 4)
+                {
+                    element current_gem = b->content_square[index_board(b, i, j)].object;
+                    while (b->content_square[index_board(b, i, j)].object == current_gem)
+                    {
+                        b->content_square[index_board(b, i, j)].object = rand() % 7;
+                    }
+                }
+            }
+            free(visited);
+        }
+    }
+    return;
 }
 
 bool can_move_be_played(board *b)
@@ -493,20 +570,96 @@ bool can_move_be_played(board *b)
     return false;
 }
 
-void game_next_level(game *)
+void game_next_level(game *g)
 // Called by the interface when a level ends in classic mode to generate a new game board.
 {
+    bool stable = false;
+
+    while (!stable)
+    {
+        for (int i = 0; i < g->b->width * g->b->height; i++)
+        {
+            g->b->content_square[i].object = rand() % 7;
+            g->b->content_square[i].power = GEM_BASIC;
+            g->b->content_square[i].countdown = 0;
+        }
+        while (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b))
+        {
+            remove_destructible_zone_col(g->b);
+            remove_destructible_zone_row(g->b);
+        }
+        if (can_move_be_played(g->b))
+        {
+            stable = true;
+        }
+    }
+
+    // level up
+    g->score->level++;
+    g->score->level_score = 0;
+    g->score->target_score = g->score->target_score * ((g->score->scale_score * 0.01) + 1);
     return;
 }
 
-void game_release(game *)
+void game_release(game *g)
 // Called by the interface to free up memory allocated for a game.
 {
+    // board part
+    free(g->b->content_square);
+    if (g->b->q != NULL)
+    {
+        delete_queue(g->b->q);
+    }
+    free(g->b);
+
+    // score part
+    free(g->score);
+
+    // game part
+    free(g);
     return;
 }
 
-game *game_clone(game *)
+game *game_clone(game *g)
 // Called by the interface to clone a game structure.
 {
-    return NULL;
+    // game part
+    game *gclone = malloc(sizeof(*gclone));
+    gclone->gravity_control = g->gravity_control;
+    gclone->lines = g->lines;
+    gclone->refill_mode = g->refill_mode;
+    gclone->upgrades = g->upgrades;
+    gclone->bombs = g->bombs;
+    gclone->easy = g->easy;
+    gclone->gravity_gems = g->gravity_gems;
+    gclone->nodelay = g->nodelay;
+    gclone->puzzle = g->puzzle;
+
+    // board part
+    gclone->b = malloc(sizeof(*(gclone->b)));
+    gclone->b->width = g->b->width;
+    gclone->b->height = g->b->height;
+    gclone->b->content_square = malloc(gclone->b->width * gclone->b->height * sizeof(cell));
+    for (int i = 0; i < gclone->b->width * gclone->b->height; i++)
+    {
+        gclone->b->content_square[i].object = g->b->content_square[i].object;
+        gclone->b->content_square[i].power = g->b->content_square[i].power;
+        gclone->b->content_square[i].countdown = g->b->content_square[i].countdown;
+    }
+    gclone->b->direction = g->b->direction;
+    gclone->b->index_selected_square = g->b->index_selected_square;
+    if (g->b->q != NULL)
+    {
+        gclone->b->q = copy_queue(g->b->q);
+    }
+    else
+    {
+        gclone->b->q = NULL;
+    }
+
+    // score part
+    gclone->score = calloc(1, sizeof(*(gclone->score)));
+    *gclone->score = *g->score;
+
+    return gclone;
 }

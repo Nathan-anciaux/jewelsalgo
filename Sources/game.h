@@ -147,13 +147,19 @@ void game_release(game *g);
 
 game *game_clone(game *g);
 
-bool remove_destructible_zone_row(board *b);
+void remove_destructible_zone_row(board *b);
 
-bool remove_destructible_zone_col(board *b);
+void remove_destructible_zone_col(board *b);
 
 bool is_there_destructible_zone_row(board *b);
 
 bool is_there_destructible_zone_col(board *b);
+
+int find_sccs(board *b, int i, int j, element gem, bool *visited);
+
+bool is_there_destrucible_zone_sccs(board *b);
+
+void remove_destructible_zone_sccs(board *b);
 
 bool can_move_be_played(board *b);
 
