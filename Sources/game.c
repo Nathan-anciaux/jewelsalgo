@@ -245,6 +245,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
                 k--;
             }
         }
+        // k = 0 case
     }
     else
     {
