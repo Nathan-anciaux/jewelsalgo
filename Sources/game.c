@@ -246,6 +246,28 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
             }
         }
         // k = 0 case
+        bool puzzle_stable = false;
+        while (!puzzle_stable)
+        {
+            int square_in_board = rand() % g->b->width;
+            int profondeur = g->b->height - 1;
+            while (g->b->content_square[index_board(g->b, profondeur, square_in_board)].object != EMPTY)
+            {
+                profondeur--;
+                if (profondeur < 0)
+                {
+                    square_in_board = rand() % g->b->width;
+                    profondeur = g->b->height - 1;
+                }
+            }
+            g->b->content_square[index_board(g->b, profondeur, square_in_board)] = board_tab_rand[0];
+            puzzle_stable = true;
+            if (is_there_destructible_zone_col(g->b) || is_there_destructible_zone_row(g->b) || is_there_destrucible_zone_sccs(g->b))
+            {
+                g->b->content_square[index_board(g->b, profondeur, square_in_board)].object = EMPTY;
+                puzzle_stable = false;
+            }
+        }
     }
     else
     {
