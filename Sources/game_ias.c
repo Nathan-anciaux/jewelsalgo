@@ -226,26 +226,26 @@ bool ia_safe(game *g)
                 {
                     if (game_is_legal_move_lines(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -253,32 +253,32 @@ bool ia_safe(game *g)
         }
         if (g->b->direction == RIGHT)
         {
-            for (int j = 0; j < g->b->height; j++)
+            for (int j = 0; j < g->b->width; j++)
             {
-                for (int i = 0; i < g->b->width; i++)
+                for (int i = 0; i < g->b->height; i++)
                 {
                     if (game_is_legal_move_lines(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -292,26 +292,26 @@ bool ia_safe(game *g)
                 {
                     if (game_is_legal_move_lines(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -321,30 +321,30 @@ bool ia_safe(game *g)
         {
             for (int j = g->b->width - 1; j >= 0; j--)
             {
-                for (int i = 0; i < g->b->width; j++)
+                for (int i = 0; i < g->b->height; i++)
                 {
                     if (game_is_legal_move_lines(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_lines(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -363,26 +363,26 @@ bool ia_safe(game *g)
                 {
                     if (game_is_legal_move_sccs(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -390,32 +390,32 @@ bool ia_safe(game *g)
         }
         if (g->b->direction == RIGHT)
         {
-            for (int j = 0; j < g->b->height; j++)
+            for (int j = 0; j < g->b->width; j++)
             {
-                for (int i = 0; i < g->b->width; i++)
+                for (int i = 0; i < g->b->height; i++)
                 {
                     if (game_is_legal_move_sccs(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -429,26 +429,26 @@ bool ia_safe(game *g)
                 {
                     if (game_is_legal_move_sccs(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -458,30 +458,30 @@ bool ia_safe(game *g)
         {
             for (int j = g->b->width - 1; j >= 0; j--)
             {
-                for (int i = 0; i < g->b->width; i++)
+                for (int i = 0; i < g->b->height; i++)
                 {
                     if (game_is_legal_move_sccs(g->b, i, j, UP))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i - 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, DOWN))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i + 1, j);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j + 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
                         return true;
                     }
                     if (game_is_legal_move_sccs(g->b, i, j, LEFT))
                     {
-                        game_handle_mouse_click(g, i, j);
-                        game_handle_mouse_click(g, i, j - 1);
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
                         return true;
                     }
                 }
@@ -490,7 +490,282 @@ bool ia_safe(game *g)
     }
     return false;
 }
-bool ia_agressive(game *)
+
+bool ia_agressive(game *g)
 {
+
+    // lines mode
+    if (g->lines == true)
+    {
+        if (g->b->direction == UP)
+        {
+            for (int i = 0; i < g->b->height; i++)
+            {
+                for (int j = 0; j < g->b->width; j++)
+                {
+                    if (game_is_legal_move_lines(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == LEFT)
+        {
+            for (int j = 0; j < g->b->width; j++)
+            {
+                for (int i = 0; i < g->b->height; i++)
+                {
+                    if (game_is_legal_move_lines(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == DOWN)
+        {
+            for (int i = g->b->height - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < g->b->width; j++)
+                {
+                    if (game_is_legal_move_lines(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == RIGHT)
+        {
+            for (int j = g->b->width - 1; j >= 0; j--)
+            {
+                for (int i = 0; i < g->b->height; i++)
+                {
+                    if (game_is_legal_move_lines(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_lines(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    // scc mode
+    if (g->lines == false)
+    {
+        if (g->b->direction == DOWN)
+        {
+            for (int i = g->b->height - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < g->b->width; j++)
+                {
+                    if (game_is_legal_move_sccs(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == RIGHT)
+        {
+            for (int j = g->b->width - 1; j >= 0; j--)
+            {
+                for (int i = 0; i < g->b->height; i++)
+                {
+                    if (game_is_legal_move_sccs(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == UP)
+        {
+            for (int i = 0; i < g->b->height; i++)
+            {
+                for (int j = 0; j < g->b->width; j++)
+                {
+                    if (game_is_legal_move_sccs(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+        if (g->b->direction == LEFT)
+        {
+            for (int j = 0; j < g->b->width; j++)
+            {
+                for (int i = 0; i < g->b->height; i++)
+                {
+                    if (game_is_legal_move_sccs(g->b, i, j, UP))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i - 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, DOWN))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j, i + 1);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, RIGHT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j + 1, i);
+                        return true;
+                    }
+                    if (game_is_legal_move_sccs(g->b, i, j, LEFT))
+                    {
+                        game_handle_mouse_click(g, j, i);
+                        game_handle_mouse_click(g, j - 1, i);
+                        return true;
+                    }
+                }
+            }
+        }
+    }
     return false;
 }
