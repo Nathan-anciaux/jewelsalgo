@@ -3,7 +3,13 @@
 
 #include "game.h"
 
-typedef enum { IA_RANDOM, IA_SAFE, IA_AGRESSIVE, IA_CLASSIC_SIZE } ia_classic;
+typedef enum
+{
+    IA_RANDOM,
+    IA_SAFE,
+    IA_AGRESSIVE,
+    IA_CLASSIC_SIZE
+} ia_classic;
 
 extern bool (*ia_functions[IA_CLASSIC_SIZE])(game *);
 
@@ -15,4 +21,7 @@ bool ia_safe(game *g);
 
 bool ia_agressive(game *g);
 
+bool game_is_legal_move_lines(board *b, int i, int j, direction dir);
+
+bool game_is_legal_move_sccs(board *b, int i, int j, direction dir);
 #endif

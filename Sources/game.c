@@ -436,6 +436,7 @@ bool is_there_destructible_zone_col(board *b)
 
 int find_sccs(board *b, int i, int j, element gem, bool *visited)
 {
+    // reccursif algo
     if (i < 0 || i >= b->height || j < 0 || j >= b->width)
     {
         return 0;

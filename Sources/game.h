@@ -59,7 +59,7 @@ typedef struct
 {
     int width;
     int height;
-    int direction;             // gravité
+    direction direction;       // gravité
     int index_selected_square; // -1 si aucune cell selec
     cell *content_square;
     queue *q;
