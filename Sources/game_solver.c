@@ -165,16 +165,21 @@ bool hash_table_insert(hash_table *ht, int *elements, ulong i)
 /**********************/
 /*+ Solver functions +*/
 /**********************/
-/*
+
 int game_to_int_array(game *g, int *int_array)
 {
     int element_size = 0;
 
     // board part
+    int k = 0;
     for (int i = 0; i < g->b->height * g->b->width; i++)
     {
-        int_array[i] = g->b->content_square[i];
-        element_size++;
+        int_array[k] = g->b->content_square[i].object;
+        int_array[k + 1] = g->b->content_square[i].power;
+        int_array[k + 2] = g->b->content_square[i].countdown;
+        k = k + 3;
+
+        element_size = element_size + 3;
     }
 
     // gravity part
@@ -182,33 +187,90 @@ int game_to_int_array(game *g, int *int_array)
     element_size++;
 
     // queue part
-    for (int i = 0; i < g->b->width * g->b->height; i++)
+    int j = 0;
+    for (int i = 0; i < g->b->height * g->b->width; i++)
     {
         if (i < get_queuesize(g->b->q))
         {
 
             cell tmp;
             tmp = dequeue(g->b->q);
-            int_array[element_size + i] = tmp;
+            int_array[element_size + j] = tmp.object;
+            int_array[element_size + j + 1] = tmp.power;
+            int_array[element_size + j + 2] = tmp.countdown;
+
+            j = j + 3;
+
             enqueue(tmp, g->b->q);
         }
         else
         {
-            int_array[element_size + i] = -1;
+            int_array[element_size + j] = -1;
+            int_array[element_size + j + 1] = -1;
+            int_array[element_size + j + 2] = -1;
+
+            j = j + 3;
         }
     }
-    element_size = element_size + (g->b->width * g->b->height);
+    element_size = element_size + 3 * (g->b->width * g->b->height);
 
     return element_size;
 }
-*/
+
+void int_array_to_game(int *int_array, game *g)
+{
+    int element_size = 0;
+
+    // board part
+    int k = 0;
+    for (int i = 0; i < g->b->height * g->b->width; i++)
+    {
+        g->b->content_square[i].object = int_array[k];
+        g->b->content_square[i].power = int_array[k + 1];
+        g->b->content_square[i].countdown = int_array[k + 2];
+        k = k + 3;
+
+        element_size = element_size + 3;
+    }
+
+    g->b->direction = int_array[element_size];
+    element_size++;
+
+    // queue part
+    while (!isempty_queue(g->b->q))
+    {
+        dequeue(g->b->q);
+    }
+    int j = 0;
+    for (int i = 0; i < g->b->height * g->b->width; i++)
+    {
+        if (int_array[element_size + j] != -1)
+        {
+            cell tmp;
+            tmp.object = int_array[element_size + j];
+            tmp.power = int_array[element_size + j + 1];
+            tmp.countdown = int_array[element_size + j + 2];
+
+            j = j + 3;
+
+            enqueue(tmp, g->b->q);
+        }
+        else
+        {
+            j = j + 3;
+        }
+    }
+}
 
 solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type *result, int *nb_moves,
                           int *nb_configs)
 {
-    /*
+
     // same as game_to_int_array
-    int element_size = (2 * (g->b->height * g->b->width)) + 1;
+    int element_size = (6 * (g->b->height * g->b->width)) + 1;
+
+    // hash_table part
+    hash_table *hash = malloc(sizeof(*hash));
 
     // the extern storage
     int *ext_storage = malloc((MAX_STATES * element_size) * sizeof(*ext_storage));
@@ -221,18 +283,24 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
 
     if (method == SOLVER_BFS)
     {
-        queue *queue_BFS = create_queue();
+        queue_int *queue_BFS = create_queue_int();
 
-        game_to_int_array(g,ext_storage);
+        game_to_int_array(g, ext_storage);
 
-        enqueue()
+        hash_table_insert(hash, ext_storage, 0);
 
+        enqueue_int(0, queue_BFS);
 
+        parents[0] = -1;
+
+        int current_idx = 0;
+
+        game_to_int_array(g, ext_storage + (element_size * current_idx));
     }
 
     // stack for DFS
     stack *stack_DFS = create_stack();
-    */
+
     return NULL;
 }
 
