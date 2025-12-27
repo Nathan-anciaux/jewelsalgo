@@ -6,6 +6,8 @@
 /*+ Hash table (already programmed) +*/
 /*************************************/
 
+#define MAX_STATES 4000000
+
 hash_table *create_hash_table(int element_size)
 {
     // Allocating memory for the hash table structure.
@@ -163,10 +165,74 @@ bool hash_table_insert(hash_table *ht, int *elements, ulong i)
 /**********************/
 /*+ Solver functions +*/
 /**********************/
-
-solver_move *solve_puzzle(game *, solver, int, solver_result_type *, int *,
-                          int *)
+/*
+int game_to_int_array(game *g, int *int_array)
 {
+    int element_size = 0;
+
+    // board part
+    for (int i = 0; i < g->b->height * g->b->width; i++)
+    {
+        int_array[i] = g->b->content_square[i];
+        element_size++;
+    }
+
+    // gravity part
+    int_array[element_size] = g->b->direction;
+    element_size++;
+
+    // queue part
+    for (int i = 0; i < g->b->width * g->b->height; i++)
+    {
+        if (i < get_queuesize(g->b->q))
+        {
+
+            cell tmp;
+            tmp = dequeue(g->b->q);
+            int_array[element_size + i] = tmp;
+            enqueue(tmp, g->b->q);
+        }
+        else
+        {
+            int_array[element_size + i] = -1;
+        }
+    }
+    element_size = element_size + (g->b->width * g->b->height);
+
+    return element_size;
+}
+*/
+
+solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type *result, int *nb_moves,
+                          int *nb_configs)
+{
+    /*
+    // same as game_to_int_array
+    int element_size = (2 * (g->b->height * g->b->width)) + 1;
+
+    // the extern storage
+    int *ext_storage = malloc((MAX_STATES * element_size) * sizeof(*ext_storage));
+
+    // tab to know parents of each state
+    ulong *parents = (MAX_STATES * sizeof(*parents));
+
+    // tab to know the game play
+    solver_move *moves = malloc(MAX_STATES * sizeof(*moves));
+
+    if (method == SOLVER_BFS)
+    {
+        queue *queue_BFS = create_queue();
+
+        game_to_int_array(g,ext_storage);
+
+        enqueue()
+
+
+    }
+
+    // stack for DFS
+    stack *stack_DFS = create_stack();
+    */
     return NULL;
 }
 

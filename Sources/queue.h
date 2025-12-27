@@ -11,6 +11,7 @@
 
 typedef struct cell cell;
 typedef struct stack stack;
+typedef struct stack_int stack_int;
 
 /////////////////////////
 // Déclaration du type //
@@ -21,6 +22,12 @@ typedef struct queue
     stack *left, *right;
     int size;
 } queue;
+
+typedef struct queue_int
+{
+    stack_int *left, *right;
+    int size;
+} queue_int;
 
 // #include "game.h"
 // #include "stack.h"
@@ -81,6 +88,36 @@ cell pop(stack *);
 // Ajoute une valeur au sommet de la pile. Si le tableau est plein, il est
 // redimensionné au préalable, par la fonction grow_stack.
 void push(cell, stack *);
+
+// int part
+
+static void shrink_stack_int(stack_int *p);
+
+stack_int *create_stack_int(void);
+
+void delete_stack_int(stack_int *p);
+
+bool isempty_stack_int(stack_int *p);
+
+int pop_int(stack_int *p);
+
+void push_int(int val, stack_int *p);
+
+queue_int *create_queue_int(void);
+
+void delete_queue_int(queue_int *q);
+
+bool isempty_queue_int(queue_int *q);
+
+void enqueue_int(int val, queue_int *q);
+
+int dequeue_int(queue_int *q);
+
+int get_queuesize_int(queue_int *q);
+
+int getsize_queue_int(queue_int *q);
+
+queue_int *copy_queue_int(queue_int *q);
 
 #include "game.h"
 #endif // QUEUE_H_
