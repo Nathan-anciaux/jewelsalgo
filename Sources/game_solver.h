@@ -13,7 +13,8 @@
 /*+ Table de hachage (déjà écrite)  +*/
 /*************************************/
 
-typedef struct {
+typedef struct
+{
     ulong hash_capacity;
     ulong hash_size;
     ulong *hash_table;
@@ -30,32 +31,46 @@ bool hash_table_insert(hash_table *ht, int *elements, ulong i);
 /*+ Fonctions solveur +*/
 /**********************/
 
-typedef enum {
+typedef enum
+{
     SOLVER_SWAP,
     SOLVER_GRAVITY,
     SOLVER_CYCLE,
     SOLVER_STORAGE
 } solver_move_type;
 
-typedef struct solver_move {
+typedef struct solver_move
+{
     solver_move_type type;
     int index;
     direction dir;
     struct solver_move *next;
 } solver_move;
 
-typedef enum {
+typedef enum
+{
     SOLVER_TIMEOUT,
     SOLVER_UNSOLVABLE,
     SOLVER_SOLVED,
 } solver_result_type;
 
-typedef enum { SOLVER_DFS, SOLVER_BFS, SOLVER_ASTAR } solver;
+typedef enum
+{
+    SOLVER_DFS,
+    SOLVER_BFS,
+    SOLVER_ASTAR
+} solver;
 
 solver_move *solve_puzzle(game *g, solver method, int bound,
                           solver_result_type *result, int *nb_moves,
                           int *nb_configs);
 
 bool game_implement_solver_move(game *g, solver_move *move);
+
+int game_to_int_array(game *g, int *int_array);
+
+void int_array_to_game(int *int_array, game *g);
+
+bool is_game_win(game *g);
 
 #endif // GAME_SOLVER_H_

@@ -1,6 +1,7 @@
 #include "game_solver.h"
 #include "game_play.h"
 #include "game_save.h"
+#include "game_ias.h"
 
 /*************************************/
 /*+ Hash table (already programmed) +*/
@@ -262,45 +263,689 @@ void int_array_to_game(int *int_array, game *g)
     }
 }
 
+bool is_game_win(game *g)
+{
+    for (int i = 0; i < g->b->height; i++)
+    {
+        for (int j = 0; j < g->b->width; j++)
+        {
+            if (g->b->content_square[index_board(g->b, i, j)].object != EMPTY)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type *result, int *nb_moves,
                           int *nb_configs)
 {
-
     // same as game_to_int_array
     int element_size = (6 * (g->b->height * g->b->width)) + 1;
 
     // hash_table part
-    hash_table *hash = malloc(sizeof(*hash));
+    hash_table *hash = create_hash_table(element_size);
 
     // the extern storage
     int *ext_storage = malloc((MAX_STATES * element_size) * sizeof(*ext_storage));
 
     // tab to know parents of each state
-    ulong *parents = (MAX_STATES * sizeof(*parents));
+    ulong *parents = malloc(MAX_STATES * sizeof(*parents));
 
     // tab to know the game play
     solver_move *moves = malloc(MAX_STATES * sizeof(*moves));
 
-    if (method == SOLVER_BFS)
+    if (g->lines == false)
     {
-        queue_int *queue_BFS = create_queue_int();
 
-        game_to_int_array(g, ext_storage);
+        if (method == SOLVER_BFS)
+        {
+            queue_int *queue_BFS = create_queue_int();
 
-        hash_table_insert(hash, ext_storage, 0);
+            game_to_int_array(g, ext_storage);
 
-        enqueue_int(0, queue_BFS);
+            hash_table_insert(hash, ext_storage, 0);
 
-        parents[0] = -1;
+            enqueue_int(0, queue_BFS);
 
-        int current_idx = 0;
+            parents[0] = -1;
 
-        game_to_int_array(g, ext_storage + (element_size * current_idx));
+            int next_idx = 1;
+
+            while (!isempty_queue_int(queue_BFS))
+            {
+                game *tmp = game_clone(g);
+
+                int current_idx = dequeue_int(queue_BFS);
+
+                (*nb_configs)++;
+
+                int_array_to_game(ext_storage + (current_idx * element_size), tmp);
+
+                if (is_game_win(tmp))
+                {
+                    int final_idx = current_idx;
+                    int length_solution = 0;
+                    while (current_idx != 0)
+                    {
+                        current_idx = parents[current_idx];
+                        next_idx = current_idx;
+                        length_solution++;
+                    }
+
+                    // chain list to reverse the tab
+                    solver_move *head = NULL;
+                    int vic_idx = final_idx;
+
+                    while (vic_idx != 0)
+                    {
+                        solver_move *new_chain = malloc(sizeof(*new_chain));
+
+                        new_chain->dir = moves[vic_idx].dir;
+                        new_chain->index = moves[vic_idx].index;
+                        new_chain->type = moves[vic_idx].type;
+
+                        new_chain->next = head;
+                        head = new_chain;
+                        vic_idx = parents[vic_idx];
+                    }
+
+                    *nb_moves = length_solution;
+                    *result = SOLVER_SOLVED;
+                    return head;
+                }
+
+                // test new config
+                for (int i = 0; i < tmp->b->height; i++)
+                {
+                    for (int j = 0; j < tmp->b->width; j++)
+                    {
+                        if (game_is_legal_move_sccs(tmp->b, i, j, UP))
+                        {
+                            game *copie1 = game_clone(tmp);
+                            game_handle_mouse_click(copie1, i, j);
+                            game_handle_mouse_click(copie1, i - 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie1, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = UP;
+                                moves[next_idx].index = index_board(copie1->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie1);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, DOWN))
+                        {
+                            game *copie2 = game_clone(tmp);
+                            game_handle_mouse_click(copie2, i, j);
+                            game_handle_mouse_click(copie2, i + 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie2, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = DOWN;
+                                moves[next_idx].index = index_board(copie2->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie2);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, RIGHT))
+                        {
+                            game *copie3 = game_clone(tmp);
+                            game_handle_mouse_click(copie3, i, j);
+                            game_handle_mouse_click(copie3, i, j + 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie3, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = RIGHT;
+                                moves[next_idx].index = index_board(copie3->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie3);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, LEFT))
+                        {
+                            game *copie4 = game_clone(tmp);
+                            game_handle_mouse_click(copie4, i, j);
+                            game_handle_mouse_click(copie4, i, j - 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie4, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = LEFT;
+                                moves[next_idx].index = index_board(copie4->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie4);
+                        }
+                    }
+                }
+                game_release(tmp);
+            }
+        }
+        else if (method == SOLVER_DFS)
+        {
+            stack_int *stack_DFS = create_stack_int();
+
+            game_to_int_array(g, ext_storage);
+
+            hash_table_insert(hash, ext_storage, 0);
+
+            push_int(0, stack_DFS);
+
+            parents[0] = -1;
+
+            int next_idx = 1;
+
+            while (!isempty_stack_int(stack_DFS))
+            {
+                game *tmp = game_clone(g);
+
+                int current_idx = pop_int(stack_DFS);
+
+                (*nb_configs)++;
+
+                int_array_to_game(ext_storage + (current_idx * element_size), tmp);
+
+                if (is_game_win(tmp))
+                {
+                    int final_idx = current_idx;
+                    int length_solution = 0;
+                    while (current_idx != 0)
+                    {
+                        current_idx = parents[current_idx];
+                        next_idx = current_idx;
+                        length_solution++;
+                    }
+
+                    // chain list to reverse the tab
+                    solver_move *head = NULL;
+                    int vic_idx = final_idx;
+
+                    while (vic_idx != 0)
+                    {
+                        solver_move *new_chain = malloc(sizeof(*new_chain));
+
+                        new_chain->dir = moves[vic_idx].dir;
+                        new_chain->index = moves[vic_idx].index;
+                        new_chain->type = moves[vic_idx].type;
+
+                        new_chain->next = head;
+                        head = new_chain;
+                        vic_idx = parents[vic_idx];
+                    }
+
+                    *nb_moves = length_solution;
+                    *result = SOLVER_SOLVED;
+                    return head;
+                }
+
+                // test new config
+                for (int i = 0; i < tmp->b->height; i++)
+                {
+                    for (int j = 0; j < tmp->b->width; j++)
+                    {
+                        if (game_is_legal_move_sccs(tmp->b, i, j, UP))
+                        {
+                            game *copie1 = game_clone(tmp);
+                            game_handle_mouse_click(copie1, i, j);
+                            game_handle_mouse_click(copie1, i - 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie1, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = UP;
+                                moves[next_idx].index = index_board(copie1->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie1);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, DOWN))
+                        {
+                            game *copie2 = game_clone(tmp);
+                            game_handle_mouse_click(copie2, i, j);
+                            game_handle_mouse_click(copie2, i + 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie2, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = DOWN;
+                                moves[next_idx].index = index_board(copie2->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie2);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, RIGHT))
+                        {
+                            game *copie3 = game_clone(tmp);
+                            game_handle_mouse_click(copie3, i, j);
+                            game_handle_mouse_click(copie3, i, j + 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie3, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = RIGHT;
+                                moves[next_idx].index = index_board(copie3->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie3);
+                        }
+                        if (game_is_legal_move_sccs(tmp->b, i, j, LEFT))
+                        {
+                            game *copie4 = game_clone(tmp);
+                            game_handle_mouse_click(copie4, i, j);
+                            game_handle_mouse_click(copie4, i, j - 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie4, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = LEFT;
+                                moves[next_idx].index = index_board(copie4->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie4);
+                        }
+                    }
+                }
+                game_release(tmp);
+            }
+        }
+
+        // A method left and no free memory
+        return NULL;
     }
 
-    // stack for DFS
-    stack *stack_DFS = create_stack();
+    else if (g->lines == true)
+    {
 
+        if (method == SOLVER_BFS)
+        {
+            queue_int *queue_BFS = create_queue_int();
+
+            game_to_int_array(g, ext_storage);
+
+            hash_table_insert(hash, ext_storage, 0);
+
+            enqueue_int(0, queue_BFS);
+
+            parents[0] = -1;
+
+            int next_idx = 1;
+
+            while (!isempty_queue_int(queue_BFS))
+            {
+                game *tmp = game_clone(g);
+
+                int current_idx = dequeue_int(queue_BFS);
+
+                (*nb_configs)++;
+
+                int_array_to_game(ext_storage + (current_idx * element_size), tmp);
+
+                if (is_game_win(tmp))
+                {
+                    int final_idx = current_idx;
+                    int length_solution = 0;
+                    while (current_idx != 0)
+                    {
+                        current_idx = parents[current_idx];
+                        next_idx = current_idx;
+                        length_solution++;
+                    }
+
+                    // chain list to reverse the tab
+                    solver_move *head = NULL;
+                    int vic_idx = final_idx;
+
+                    while (vic_idx != 0)
+                    {
+                        solver_move *new_chain = malloc(sizeof(*new_chain));
+
+                        new_chain->dir = moves[vic_idx].dir;
+                        new_chain->index = moves[vic_idx].index;
+                        new_chain->type = moves[vic_idx].type;
+
+                        new_chain->next = head;
+                        head = new_chain;
+                        vic_idx = parents[vic_idx];
+                    }
+
+                    *nb_moves = length_solution;
+                    *result = SOLVER_SOLVED;
+                    return head;
+                }
+
+                // test new config
+                for (int i = 0; i < tmp->b->height; i++)
+                {
+                    for (int j = 0; j < tmp->b->width; j++)
+                    {
+                        if (game_is_legal_move_lines(tmp->b, i, j, UP))
+                        {
+                            game *copie1 = game_clone(tmp);
+                            game_handle_mouse_click(copie1, i, j);
+                            game_handle_mouse_click(copie1, i - 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie1, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = UP;
+                                moves[next_idx].index = index_board(copie1->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie1);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, DOWN))
+                        {
+                            game *copie2 = game_clone(tmp);
+                            game_handle_mouse_click(copie2, i, j);
+                            game_handle_mouse_click(copie2, i + 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie2, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = DOWN;
+                                moves[next_idx].index = index_board(copie2->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie2);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, RIGHT))
+                        {
+                            game *copie3 = game_clone(tmp);
+                            game_handle_mouse_click(copie3, i, j);
+                            game_handle_mouse_click(copie3, i, j + 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie3, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = RIGHT;
+                                moves[next_idx].index = index_board(copie3->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie3);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, LEFT))
+                        {
+                            game *copie4 = game_clone(tmp);
+                            game_handle_mouse_click(copie4, i, j);
+                            game_handle_mouse_click(copie4, i, j - 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie4, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                enqueue_int(next_idx, queue_BFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = LEFT;
+                                moves[next_idx].index = index_board(copie4->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie4);
+                        }
+                    }
+                }
+                game_release(tmp);
+            }
+        }
+        else if (method == SOLVER_DFS)
+        {
+            stack_int *stack_DFS = create_stack_int();
+
+            game_to_int_array(g, ext_storage);
+
+            hash_table_insert(hash, ext_storage, 0);
+
+            push_int(0, stack_DFS);
+
+            parents[0] = -1;
+
+            int next_idx = 1;
+
+            while (!isempty_stack_int(stack_DFS))
+            {
+                game *tmp = game_clone(g);
+
+                int current_idx = pop_int(stack_DFS);
+
+                (*nb_configs)++;
+
+                int_array_to_game(ext_storage + (current_idx * element_size), tmp);
+
+                if (is_game_win(tmp))
+                {
+                    int final_idx = current_idx;
+                    int length_solution = 0;
+                    while (current_idx != 0)
+                    {
+                        current_idx = parents[current_idx];
+                        next_idx = current_idx;
+                        length_solution++;
+                    }
+
+                    // chain list to reverse the tab
+                    solver_move *head = NULL;
+                    int vic_idx = final_idx;
+
+                    while (vic_idx != 0)
+                    {
+                        solver_move *new_chain = malloc(sizeof(*new_chain));
+
+                        new_chain->dir = moves[vic_idx].dir;
+                        new_chain->index = moves[vic_idx].index;
+                        new_chain->type = moves[vic_idx].type;
+
+                        new_chain->next = head;
+                        head = new_chain;
+                        vic_idx = parents[vic_idx];
+                    }
+
+                    *nb_moves = length_solution;
+                    *result = SOLVER_SOLVED;
+                    return head;
+                }
+
+                // test new config
+                for (int i = 0; i < tmp->b->height; i++)
+                {
+                    for (int j = 0; j < tmp->b->width; j++)
+                    {
+                        if (game_is_legal_move_lines(tmp->b, i, j, UP))
+                        {
+                            game *copie1 = game_clone(tmp);
+                            game_handle_mouse_click(copie1, i, j);
+                            game_handle_mouse_click(copie1, i - 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie1, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = UP;
+                                moves[next_idx].index = index_board(copie1->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie1);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, DOWN))
+                        {
+                            game *copie2 = game_clone(tmp);
+                            game_handle_mouse_click(copie2, i, j);
+                            game_handle_mouse_click(copie2, i + 1, j);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie2, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = DOWN;
+                                moves[next_idx].index = index_board(copie2->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie2);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, RIGHT))
+                        {
+                            game *copie3 = game_clone(tmp);
+                            game_handle_mouse_click(copie3, i, j);
+                            game_handle_mouse_click(copie3, i, j + 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie3, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = RIGHT;
+                                moves[next_idx].index = index_board(copie3->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie3);
+                        }
+                        if (game_is_legal_move_lines(tmp->b, i, j, LEFT))
+                        {
+                            game *copie4 = game_clone(tmp);
+                            game_handle_mouse_click(copie4, i, j);
+                            game_handle_mouse_click(copie4, i, j - 1);
+                            if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
+                            {
+                                printf("puzzle too hard");
+                                return NULL;
+                            }
+                            game_to_int_array(copie4, ext_storage + (next_idx * element_size));
+
+                            if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                            {
+                                push_int(next_idx, stack_DFS);
+                                parents[next_idx] = current_idx;
+                                moves[next_idx].dir = LEFT;
+                                moves[next_idx].index = index_board(copie4->b, i, j);
+                                moves[next_idx].type = SOLVER_SWAP;
+                                next_idx++;
+                            }
+                            game_release(copie4);
+                        }
+                    }
+                }
+                game_release(tmp);
+            }
+        }
+        // A method left and no free memory
+        return NULL;
+    }
     return NULL;
 }
 

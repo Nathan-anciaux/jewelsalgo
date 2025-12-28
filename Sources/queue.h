@@ -91,8 +91,6 @@ void push(cell, stack *);
 
 // int part
 
-static void shrink_stack_int(stack_int *p);
-
 stack_int *create_stack_int(void);
 
 void delete_stack_int(stack_int *p);
