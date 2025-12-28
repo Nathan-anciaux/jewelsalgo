@@ -118,6 +118,8 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->direction = DOWN;
     g->b->q = NULL;
     g->b->index_selected_square = -1;
+    g->b->gems_cible = calloc(width * height,sizeof(bool));
+
 
     // Score part
     g->score = calloc(1, sizeof(*(g->score)));
@@ -179,6 +181,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     }
     g->b->direction = DOWN;
     g->b->index_selected_square = -1;
+    g->b->gems_cible = calloc(width * height,sizeof(bool));
 
     // if balanced
     if (balanced)
