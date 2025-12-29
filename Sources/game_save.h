@@ -10,11 +10,13 @@
 #include "game.h"
 #include "game_scores.h"
 
-typedef enum {
+typedef enum
+{
     SK_WIDTH,
     SK_HEIGHT,
     SK_BOARD,
     SK_GRAVITY,
+    SK_REFILL_COUNT,
     SK_REFILL_QUEUE,
     SK_PUZZLE,
     SK_LINES,
@@ -30,7 +32,6 @@ typedef enum {
     SK_TARGET_SCORE,
     SK_SCALE_SCORE,
     SK_SCORE_ARRAY,
-    SK_REFILL_COUNT,
     SK_SIZE
 } save_keywords;
 
@@ -39,5 +40,7 @@ extern const char *save_keyword_strings[SK_SIZE];
 bool save_game(game *g, const char *filepath);
 
 game *load_game(const char *filepath);
+
+bool are_string_equal(const char *s1, const char *s2);
 
 #endif // GAME_SAVE_H
