@@ -71,6 +71,14 @@ void game_cycle_gravity(game *g);
 
 void game_handle_refill(game *g, int k);
 
+void marquer_gemmes(game *g);
+
+void gems_gravity(board *b);
+
+void fill_empty_cells(game *g);
+
+/*gem_kill game_get_cell_kill(game *g, int i, int j);*/
+
 void game_end_animation(game *g, anim_type type);
 
 /****************************************************************************
