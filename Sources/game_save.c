@@ -6,6 +6,7 @@ const char *save_keyword_strings[SK_SIZE] = {
     "height",
     "board",
     "gravity",
+    "refill_count",
     "refill_queue",
     "puzzle",
     "lines",
@@ -20,8 +21,7 @@ const char *save_keyword_strings[SK_SIZE] = {
     "level_score",
     "target_score",
     "scale_score",
-    "score_array",
-    "refill_count"};
+    "score_array"};
 
 bool save_game(game *g, const char *filepath)
 {
@@ -43,17 +43,26 @@ bool save_game(game *g, const char *filepath)
 
         fprintf(f, "%s %d\n", save_keyword_strings[SK_GRAVITY], g->b->direction);
 
-        fprintf(f, "%s %d\n", save_keyword_strings[SK_REFILL_COUNT], g->b->q->size);
-
-        fprintf(f, "%s ", save_keyword_strings[SK_REFILL_QUEUE]);
-        for (int i = 0; i < g->b->q->size; i++)
+        int q_size = 0;
+        if (g->b->q != NULL)
         {
-            cell tmp;
-            tmp = dequeue(g->b->q);
-            fprintf(f, "%d ", tmp.object);
-            fprintf(f, "%d ", tmp.power);
-            fprintf(f, "%d ", tmp.countdown);
-            enqueue(tmp, g->b->q);
+            q_size = g->b->q->size;
+        }
+
+        fprintf(f, "%s %d\n", save_keyword_strings[SK_REFILL_COUNT], q_size);
+
+        if (g->b->q != NULL && q_size > 0)
+        {
+            fprintf(f, "%s ", save_keyword_strings[SK_REFILL_QUEUE]);
+            for (int i = 0; i < g->b->q->size; i++)
+            {
+                cell tmp;
+                tmp = dequeue(g->b->q);
+                fprintf(f, "%d ", tmp.object);
+                fprintf(f, "%d ", tmp.power);
+                fprintf(f, "%d ", tmp.countdown);
+                enqueue(tmp, g->b->q);
+            }
         }
         fprintf(f, "\n");
 
@@ -115,14 +124,14 @@ game *load_game(const char *filepath)
     {
 
         // game part
-        game *g = malloc(sizeof(*g));
+        game *g = calloc(1, sizeof(*g));
 
         // board part
         g->b = calloc(1, sizeof(*(g->b)));
         g->b->q = calloc(1, sizeof(*(g->b->q)));
         g->score = calloc(1, sizeof(*(g->score)));
 
-        char comparing_tool[20];
+        char comparing_tool[128];
 
         int tmp;
 
@@ -148,6 +157,7 @@ game *load_game(const char *filepath)
                 break;
             case (SK_BOARD):
                 g->b->content_square = malloc((g->b->height * g->b->width) * sizeof(*(g->b->content_square)));
+                g->b->gems_cible = calloc(g->b->height * g->b->width, sizeof(*(g->b->gems_cible)));
                 for (int i = 0; i < g->b->height * g->b->width; i++)
                 {
                     fscanf(f, "%d", &g->b->content_square[i].object);
@@ -223,6 +233,12 @@ game *load_game(const char *filepath)
                 }
                 break;
             }
+        }
+
+        if (g->refill_mode == 2)
+        {
+            free(g->b->q);
+            g->b->q = NULL;
         }
         fclose(f);
         return g;

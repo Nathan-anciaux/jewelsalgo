@@ -1,9 +1,6 @@
 #include "game_scores.h"
 #include "game_save.h"
 
-// scores type -> col
-#define NB_TYPE_SCORE 9
-
 score_table *load_score_table(const char *filepath, int *player_score)
 {
     score_table *table = calloc(1, sizeof(*table));
@@ -24,11 +21,11 @@ score_table *load_score_table(const char *filepath, int *player_score)
         table->scores = malloc(table->size * sizeof(*(table->scores)));
         for (int i = 0; i < table->size; i++)
         {
-            table->scores[i] = malloc(NB_TYPE_SCORE * sizeof(int));
+            table->scores[i] = malloc(SC_SIZE * sizeof(int));
         }
         for (int i = 0; i < table->size; i++)
         {
-            for (int j = 0; j < NB_TYPE_SCORE; j++)
+            for (int j = 0; j < SC_SIZE; j++)
             {
                 fscanf(f, "%d", &(table->scores[i][j]));
             }
@@ -51,8 +48,8 @@ score_table *load_score_table(const char *filepath, int *player_score)
         table->permutation = realloc(table->permutation, table->size * sizeof(*(table->permutation)));
 
         table->scores = realloc(table->scores, table->size * sizeof(*(table->scores)));
-        table->scores[table->size - 1] = malloc(NB_TYPE_SCORE * sizeof(int));
-        for (int i = 0; i < NB_TYPE_SCORE; i++)
+        table->scores[table->size - 1] = malloc(SC_SIZE * sizeof(int));
+        for (int i = 0; i < SC_SIZE; i++)
         {
             table->scores[table->size - 1][i] = player_score[i];
         }
@@ -103,7 +100,7 @@ void save_score_table(score_table *table, const char *filepath, const char *play
     // score part
     for (int i = 0; i < table->size; i++)
     {
-        for (int j = 0; j < NB_TYPE_SCORE; j++)
+        for (int j = 0; j < SC_SIZE; j++)
         {
             fprintf(f, "%d ", table->scores[i][j]);
         }

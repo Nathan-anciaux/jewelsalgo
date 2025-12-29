@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct
+{
     char (*names)[64];
     int **scores;
     int size;
