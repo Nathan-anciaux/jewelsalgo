@@ -112,6 +112,8 @@ void game_handle_mouse_click(game *g, int j, int i)
     if (valid_move) {
         g->b->index_selected_square = -1;
         game_init_animation(ANIM_MOVE_GOODSWAP);
+        game_init_animation(ANIM_KILL);
+        
     } else {
         tmp = g->b->content_square[ind1];
         g->b->content_square[ind1] = g->b->content_square[ind2];
@@ -132,9 +134,37 @@ void game_handle_detonation(game *)
     return;
 }
 
-void game_set_gravity(game *, direction)
+void game_set_gravity(game *g, direction dir)
 {
-    return;
+    /*if (g->gravity_control == 0) {
+        return;
+    }
+    
+    if (g->gravity_control == 1) {
+        if (dir == DOWN || dir == RIGHT || dir == UP || dir == LEFT) {
+            g->b->direction = dir;
+        }
+    }
+    
+    else if (g->gravity_control == 2) {
+        if (dir == DOWN || dir == RIGHT || dir == UP || dir == LEFT) {
+            g->b->direction = dir;
+        }
+    }
+    
+    else if (g->gravity_control == 3) {
+        if (dir == DOWN || dir == RIGHT) {
+            g->b->direction = dir;
+        }
+    }
+    
+    else if (g->gravity_control == 4) {
+        if (dir == DOWN || dir == LEFT || dir == UP || dir == RIGHT) {
+            g->b->direction = dir;
+        }
+    }
+    
+    game_init_animation(ANIM_IDLE);*/
 }
 
 void game_cycle_gravity(game *g)
@@ -319,26 +349,11 @@ void game_end_animation(game *g, anim_type type)
     }
     
     else if (type == ANIM_MOVE_BADSWAP) {
-        g->b->index_selected_square = -1;
         return;
     }
     
     else if (type == ANIM_MOVE_GOODSWAP) {
         marquer_gemmes(g);
-        
-        bool has_marked = false;
-        for (int k = 0; k < size; k++) {
-            if (g->b->gems_cible[k]) {
-                has_marked = true;
-                break;
-            }
-        }
-        
-        if (has_marked) {
-            game_init_animation(ANIM_KILL);
-        } else {
-            game_init_animation(ANIM_IDLE);
-        }
         return;
     }
     
@@ -349,7 +364,6 @@ void game_end_animation(game *g, anim_type type)
                 g->b->gems_cible[k] = false;
             }
         }
-        
         game_init_animation(ANIM_MOVE_FALL);
         return;
     }
@@ -392,6 +406,7 @@ void game_end_animation(game *g, anim_type type)
         game_init_animation(ANIM_IDLE);
         return;
     }
+   return;
 }
 
 /*************************************************************************************/
@@ -463,14 +478,10 @@ gem_kill game_get_cell_kill(game *g, int j, int i)
         } else if (g->b->content_square[index].power == GEM_STAR) {
             return KILL_SHATTER;
         }
-        else if (g->b->content_square[index].power == GEM_BASIC)
+        else
         {
             return KILL_SHRINK;
         }
-    }
-    else 
-    {
-        return KILL_SHRINK;
     }
     return KILL_NOKILL;
 }
