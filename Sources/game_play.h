@@ -87,7 +87,7 @@ void game_end_animation(game *g, anim_type type);
  * pour que les animations s'affichent correctement.                         *
  *****************************************************************************/
 
-direction game_get_cell_move(game *g, int i, int j, int *distance);
+direction game_get_cell_move(game *g, int j, int i, int *distance);
 
 typedef enum
 {
@@ -99,8 +99,8 @@ typedef enum
     KILL_SIZE
 } gem_kill;
 
-gem_kill game_get_cell_kill(game *g, int i, int j);
+gem_kill game_get_cell_kill(game *g, int j, int i);
 
-bool game_retrieve_hint(game *g, int *i, int *j);
+bool game_retrieve_hint(game *g, int *j, int *i);
 
 #endif // GAME_PLAY_H_

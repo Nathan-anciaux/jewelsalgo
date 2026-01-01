@@ -674,6 +674,10 @@ game *game_clone(game *g)
         gclone->b->content_square[i].power = g->b->content_square[i].power;
         gclone->b->content_square[i].countdown = g->b->content_square[i].countdown;
     }
+    for (int i = 0; i < gclone->b->width * gclone->b->height; i++)
+    {
+        gclone->b->gems_cible[i]= g->b->gems_cible[i];
+    }
     gclone->b->direction = g->b->direction;
     gclone->b->index_selected_square = g->b->index_selected_square;
     gclone->b->gems_cible = calloc(g->b->width * g->b->height, sizeof(*(gclone->b->gems_cible)));
