@@ -118,8 +118,7 @@ game *game_create_classic(int width, int height, bool lines, int target_score, i
     g->b->direction = DOWN;
     g->b->q = NULL;
     g->b->index_selected_square = -1;
-    g->b->gems_cible = calloc(width * height,sizeof(bool));
-
+    g->b->gems_cible = calloc(width * height, sizeof(bool));
 
     // Score part
     g->score = calloc(1, sizeof(*(g->score)));
@@ -181,7 +180,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     }
     g->b->direction = DOWN;
     g->b->index_selected_square = -1;
-    g->b->gems_cible = calloc(width * height,sizeof(bool));
+    g->b->gems_cible = calloc(width * height, sizeof(bool));
 
     // if balanced
     if (balanced)
@@ -484,11 +483,12 @@ bool is_there_destrucible_zone_sccs(board *b)
 
 void remove_destructible_zone_sccs(board *b)
 {
+    bool *visited = calloc(b->height * b->width, sizeof(*visited));
+
     for (int i = 0; i < b->height; i++)
     {
         for (int j = 0; j < b->width; j++)
         {
-            bool *visited = calloc(b->height * b->width, sizeof(*visited));
             if (b->content_square[index_board(b, i, j)].object != EMPTY)
             {
                 if (find_sccs(b, i, j, b->content_square[index_board(b, i, j)].object, visited) >= 4)
@@ -500,9 +500,9 @@ void remove_destructible_zone_sccs(board *b)
                     }
                 }
             }
-            free(visited);
         }
     }
+    free(visited);
     return;
 }
 
@@ -680,6 +680,11 @@ game *game_clone(game *g)
     }
     gclone->b->direction = g->b->direction;
     gclone->b->index_selected_square = g->b->index_selected_square;
+    gclone->b->gems_cible = calloc(g->b->width * g->b->height, sizeof(*(gclone->b->gems_cible)));
+    for (int i = 0; i < gclone->b->width * gclone->b->height; i++)
+    {
+        gclone->b->gems_cible[i] = g->b->gems_cible[i];
+    }
     if (g->b->q != NULL)
     {
         gclone->b->q = copy_queue(g->b->q);
