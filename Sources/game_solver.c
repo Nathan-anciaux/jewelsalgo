@@ -188,29 +188,32 @@ int game_to_int_array(game *g, int *int_array)
     element_size++;
 
     // queue part
-    int j = 0;
-    for (int i = 0; i < g->b->height * g->b->width; i++)
+    if (g->b->q != NULL)
     {
-        if (i < get_queuesize(g->b->q))
+        int j = 0;
+        for (int i = 0; i < g->b->height * g->b->width; i++)
         {
+            if (i < get_queuesize(g->b->q))
+            {
 
-            cell tmp;
-            tmp = dequeue(g->b->q);
-            int_array[element_size + j] = tmp.object;
-            int_array[element_size + j + 1] = tmp.power;
-            int_array[element_size + j + 2] = tmp.countdown;
+                cell tmp;
+                tmp = dequeue(g->b->q);
+                int_array[element_size + j] = tmp.object;
+                int_array[element_size + j + 1] = tmp.power;
+                int_array[element_size + j + 2] = tmp.countdown;
 
-            j = j + 3;
+                j = j + 3;
 
-            enqueue(tmp, g->b->q);
-        }
-        else
-        {
-            int_array[element_size + j] = -1;
-            int_array[element_size + j + 1] = -1;
-            int_array[element_size + j + 2] = -1;
+                enqueue(tmp, g->b->q);
+            }
+            else
+            {
+                int_array[element_size + j] = -1;
+                int_array[element_size + j + 1] = -1;
+                int_array[element_size + j + 2] = -1;
 
-            j = j + 3;
+                j = j + 3;
+            }
         }
     }
     element_size = element_size + 3 * (g->b->width * g->b->height);
@@ -364,8 +367,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, UP))
                         {
                             game *copie1 = game_clone(tmp);
-                            game_handle_mouse_click(copie1, i, j);
-                            game_handle_mouse_click(copie1, i - 1, j);
+                            game_handle_mouse_click(copie1, j, i);
+                            game_handle_mouse_click(copie1, j, i - 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -387,8 +390,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, DOWN))
                         {
                             game *copie2 = game_clone(tmp);
-                            game_handle_mouse_click(copie2, i, j);
-                            game_handle_mouse_click(copie2, i + 1, j);
+                            game_handle_mouse_click(copie2, j, i);
+                            game_handle_mouse_click(copie2, j, i + 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -410,8 +413,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, RIGHT))
                         {
                             game *copie3 = game_clone(tmp);
-                            game_handle_mouse_click(copie3, i, j);
-                            game_handle_mouse_click(copie3, i, j + 1);
+                            game_handle_mouse_click(copie3, j, i);
+                            game_handle_mouse_click(copie3, j + 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -433,8 +436,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, LEFT))
                         {
                             game *copie4 = game_clone(tmp);
-                            game_handle_mouse_click(copie4, i, j);
-                            game_handle_mouse_click(copie4, i, j - 1);
+                            game_handle_mouse_click(copie4, j, i);
+                            game_handle_mouse_click(copie4, j - 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -523,8 +526,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, UP))
                         {
                             game *copie1 = game_clone(tmp);
-                            game_handle_mouse_click(copie1, i, j);
-                            game_handle_mouse_click(copie1, i - 1, j);
+                            game_handle_mouse_click(copie1, j, i);
+                            game_handle_mouse_click(copie1, j, i - 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -546,8 +549,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, DOWN))
                         {
                             game *copie2 = game_clone(tmp);
-                            game_handle_mouse_click(copie2, i, j);
-                            game_handle_mouse_click(copie2, i + 1, j);
+                            game_handle_mouse_click(copie2, j, i);
+                            game_handle_mouse_click(copie2, j, i + 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -569,8 +572,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, RIGHT))
                         {
                             game *copie3 = game_clone(tmp);
-                            game_handle_mouse_click(copie3, i, j);
-                            game_handle_mouse_click(copie3, i, j + 1);
+                            game_handle_mouse_click(copie3, j, i);
+                            game_handle_mouse_click(copie3, j + 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -592,8 +595,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_sccs(tmp->b, i, j, LEFT))
                         {
                             game *copie4 = game_clone(tmp);
-                            game_handle_mouse_click(copie4, i, j);
-                            game_handle_mouse_click(copie4, i, j - 1);
+                            game_handle_mouse_click(copie4, j, i);
+                            game_handle_mouse_click(copie4, j - 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -690,8 +693,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, UP))
                         {
                             game *copie1 = game_clone(tmp);
-                            game_handle_mouse_click(copie1, i, j);
-                            game_handle_mouse_click(copie1, i - 1, j);
+                            game_handle_mouse_click(copie1, j, i);
+                            game_handle_mouse_click(copie1, j, i - 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -713,8 +716,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, DOWN))
                         {
                             game *copie2 = game_clone(tmp);
-                            game_handle_mouse_click(copie2, i, j);
-                            game_handle_mouse_click(copie2, i + 1, j);
+                            game_handle_mouse_click(copie2, j, i);
+                            game_handle_mouse_click(copie2, j, i + 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -736,8 +739,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, RIGHT))
                         {
                             game *copie3 = game_clone(tmp);
-                            game_handle_mouse_click(copie3, i, j);
-                            game_handle_mouse_click(copie3, i, j + 1);
+                            game_handle_mouse_click(copie3, j, i);
+                            game_handle_mouse_click(copie3, j + 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -759,8 +762,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, LEFT))
                         {
                             game *copie4 = game_clone(tmp);
-                            game_handle_mouse_click(copie4, i, j);
-                            game_handle_mouse_click(copie4, i, j - 1);
+                            game_handle_mouse_click(copie4, j, i);
+                            game_handle_mouse_click(copie4, j - 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -849,8 +852,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, UP))
                         {
                             game *copie1 = game_clone(tmp);
-                            game_handle_mouse_click(copie1, i, j);
-                            game_handle_mouse_click(copie1, i - 1, j);
+                            game_handle_mouse_click(copie1, j, i);
+                            game_handle_mouse_click(copie1, j, i - 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -872,8 +875,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, DOWN))
                         {
                             game *copie2 = game_clone(tmp);
-                            game_handle_mouse_click(copie2, i, j);
-                            game_handle_mouse_click(copie2, i + 1, j);
+                            game_handle_mouse_click(copie2, j, i);
+                            game_handle_mouse_click(copie2, j, i + 1);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -895,8 +898,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, RIGHT))
                         {
                             game *copie3 = game_clone(tmp);
-                            game_handle_mouse_click(copie3, i, j);
-                            game_handle_mouse_click(copie3, i, j + 1);
+                            game_handle_mouse_click(copie3, j, i);
+                            game_handle_mouse_click(copie3, j + 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");
@@ -918,8 +921,8 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         if (game_is_legal_move_lines(tmp->b, i, j, LEFT))
                         {
                             game *copie4 = game_clone(tmp);
-                            game_handle_mouse_click(copie4, i, j);
-                            game_handle_mouse_click(copie4, i, j - 1);
+                            game_handle_mouse_click(copie4, j, i);
+                            game_handle_mouse_click(copie4, j - 1, i);
                             if ((next_idx >= MAX_STATES) || (bound > 0 && next_idx >= bound))
                             {
                                 printf("puzzle too hard");

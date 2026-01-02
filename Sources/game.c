@@ -71,7 +71,7 @@ int board_refill_size(board *b)
 bool board_read_refill(board *b, int k, cell *c)
 // Reads an element from the storage queue (without removing it).
 {
-    if (k < board_refill_size(b))
+    if (k < 0 || k >= board_refill_size(b))
     {
         return false;
     }
@@ -306,7 +306,7 @@ game *game_create_puzzle(int width, int height, bool lines, bool upgrades, short
     // for the refill mode = 2
     g->b->q = NULL;
     // queue part
-    int tab2[] = {8, 9};
+    int tab2[] = {BOMB, ROCK};
     int tab2_size = 2;
     cell tmp;
     if (g->refill_mode == 0)
@@ -673,10 +673,6 @@ game *game_clone(game *g)
         gclone->b->content_square[i].object = g->b->content_square[i].object;
         gclone->b->content_square[i].power = g->b->content_square[i].power;
         gclone->b->content_square[i].countdown = g->b->content_square[i].countdown;
-    }
-    for (int i = 0; i < gclone->b->width * gclone->b->height; i++)
-    {
-        gclone->b->gems_cible[i]= g->b->gems_cible[i];
     }
     gclone->b->direction = g->b->direction;
     gclone->b->index_selected_square = g->b->index_selected_square;
