@@ -7,7 +7,7 @@
 /*+ Hash table (already programmed) +*/
 /*************************************/
 
-#define MAX_STATES 4000000
+#define MAX_STATES 2000000
 
 hash_table *create_hash_table(int element_size)
 {
@@ -354,9 +354,34 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         vic_idx = parents[vic_idx];
                     }
 
+                    delete_hash_table(hash);
+                    free(parents);
+                    delete_queue_int(queue_BFS);
+                    free(moves);
                     *nb_moves = length_solution;
                     *result = SOLVER_SOLVED;
                     return head;
+                }
+
+                // gravity test
+                for (int i = 0; i < 4; i++)
+                {
+                    direction dir = (direction)i;
+                    game *game_dir = game_clone(tmp);
+
+                    game_set_gravity(game_dir, dir);
+
+                    if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                    {
+                        enqueue_int(next_idx, queue_BFS);
+                        parents[next_idx] = current_idx;
+
+                        moves[next_idx].dir = dir;
+                        moves[next_idx].index = -1;
+                        moves[next_idx].type = SOLVER_GRAVITY;
+                        next_idx++;
+                    }
+                    game_release(game_dir);
                 }
 
                 // test new config
@@ -460,6 +485,11 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                 }
                 game_release(tmp);
             }
+            delete_hash_table(hash);
+            free(parents);
+            delete_queue_int(queue_BFS);
+            free(moves);
+            return NULL;
         }
         else if (method == SOLVER_DFS)
         {
@@ -512,10 +542,34 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         head = new_chain;
                         vic_idx = parents[vic_idx];
                     }
+                    delete_hash_table(hash);
+                    delete_stack_int(stack_DFS);
+                    free(parents);
+                    free(moves);
 
                     *nb_moves = length_solution;
                     *result = SOLVER_SOLVED;
                     return head;
+                }
+                // test gravité
+                for (int i = 0; i < 4; i++)
+                {
+                    direction dir = (direction)i;
+                    game *game_dir = game_clone(tmp);
+
+                    game_set_gravity(game_dir, dir);
+
+                    if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                    {
+                        push_int(next_idx, stack_DFS);
+                        parents[next_idx] = current_idx;
+
+                        moves[next_idx].dir = dir;
+                        moves[next_idx].index = -1;
+                        moves[next_idx].type = SOLVER_GRAVITY;
+                        next_idx++;
+                    }
+                    game_release(game_dir);
                 }
 
                 // test new config
@@ -619,10 +673,12 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                 }
                 game_release(tmp);
             }
+            delete_hash_table(hash);
+            free(parents);
+            delete_stack_int(stack_DFS);
+            free(moves);
+            return NULL;
         }
-
-        // A method left and no free memory
-        return NULL;
     }
 
     else if (g->lines == true)
@@ -679,10 +735,34 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         head = new_chain;
                         vic_idx = parents[vic_idx];
                     }
+                    delete_hash_table(hash);
+                    free(parents);
+                    delete_queue_int(queue_BFS);
+                    free(moves);
 
                     *nb_moves = length_solution;
                     *result = SOLVER_SOLVED;
                     return head;
+                }
+                // test gravité
+                for (int i = 0; i < 4; i++)
+                {
+                    direction dir = (direction)i;
+                    game *game_dir = game_clone(tmp);
+
+                    game_set_gravity(game_dir, dir);
+
+                    if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                    {
+                        enqueue_int(next_idx, queue_BFS);
+                        parents[next_idx] = current_idx;
+
+                        moves[next_idx].dir = dir;
+                        moves[next_idx].index = -1;
+                        moves[next_idx].type = SOLVER_GRAVITY;
+                        next_idx++;
+                    }
+                    game_release(game_dir);
                 }
 
                 // test new config
@@ -786,6 +866,11 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                 }
                 game_release(tmp);
             }
+            delete_hash_table(hash);
+            free(parents);
+            delete_queue_int(queue_BFS);
+            free(moves);
+            return moves;
         }
         else if (method == SOLVER_DFS)
         {
@@ -838,10 +923,34 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                         head = new_chain;
                         vic_idx = parents[vic_idx];
                     }
+                    delete_hash_table(hash);
+                    free(parents);
+                    delete_stack_int(stack_DFS);
+                    free(moves);
 
                     *nb_moves = length_solution;
                     *result = SOLVER_SOLVED;
                     return head;
+                }
+                // test gravité
+                for (int i = 0; i < 4; i++)
+                {
+                    direction dir = (direction)i;
+                    game *game_dir = game_clone(tmp);
+
+                    game_set_gravity(game_dir, dir);
+
+                    if (hash_table_insert(hash, ext_storage + (element_size * next_idx), next_idx))
+                    {
+                        push_int(next_idx, stack_DFS);
+                        parents[next_idx] = current_idx;
+
+                        moves[next_idx].dir = dir;
+                        moves[next_idx].index = -1;
+                        moves[next_idx].type = SOLVER_GRAVITY;
+                        next_idx++;
+                    }
+                    game_release(game_dir);
                 }
 
                 // test new config
@@ -945,10 +1054,14 @@ solver_move *solve_puzzle(game *g, solver method, int bound, solver_result_type 
                 }
                 game_release(tmp);
             }
+            delete_hash_table(hash);
+            free(parents);
+            delete_stack_int(stack_DFS);
+            free(moves);
+            return NULL;
         }
-        // A method left and no free memory
-        return NULL;
     }
+    // A method not done
     return NULL;
 }
 
