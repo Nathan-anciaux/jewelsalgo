@@ -140,12 +140,29 @@ void game_handle_mouse_click(game *g, int j, int i)
 
 void game_handle_hint_request(game *)
 {
-    return;
+    int hint_i, hint_j;
+    if (game_retrieve_hint(g, &hint_j, &hint_i)) {
+        game_init_animation(ANIM_HINT);
+    }
 }
 
 void game_handle_detonation(game *)
 {
-    return;
+    if (g->nodelay) {
+        return;
+    }
+    bool destructible = false;
+    if (g->lines) {
+        destructible = is_there_destructible_zone_row(g->b) || 
+                          is_there_destructible_zone_col(g->b);
+    } else {
+        destructible = is_there_destrucible_zone_sccs(g->b);
+    }
+    
+    if (destructible) {
+        marquer_gemmes(g);
+        game_init_animation(ANIM_KILL);
+    }
 }
 
 void game_set_gravity(game *g, direction dir)
@@ -481,7 +498,12 @@ void game_end_animation(game *g, anim_type type)
         game_init_animation(ANIM_IDLE);
         return;
     }
-    return;
+    else if (type == ANIM_HINT) 
+    {
+        game_init_animation(ANIM_IDLE);
+        return;
+    }
+   return;
 }
 
 /*************************************************************************************/
