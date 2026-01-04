@@ -63,7 +63,7 @@ typedef struct
     int index_selected_square; // -1 si aucune cell selec
     cell *content_square;
     queue *q;
-    bool * gems_cible; // tableau de booleen indiquant si gemme est à detruire 
+    int *gems_cible; // tableau de gem_kill indiquant si gemme est à detruire
 } board;
 
 /***************************************************************************/

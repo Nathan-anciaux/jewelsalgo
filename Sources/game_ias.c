@@ -208,9 +208,83 @@ bool game_is_legal_move_sccs(board *b, int i, int j, direction dir)
     return false;
 }
 
-bool ia_random(game *)
+bool ia_random(game *g)
 {
-    return false;
+    bool dir = false;
+    int cpt = 0;
+    if (g->lines)
+    {
+        int i;
+        direction direct;
+        while (cpt < 1000 && !dir)
+        {
+            i = rand() % (g->b->height * g->b->width);
+            if (game_is_legal_move_lines(g->b, i / g->b->width, i % g->b->width, UP))
+            {
+                direct = UP;
+                dir = true;
+                cell tmp = g->b->content_square[i];
+                g->b->content_square[i] = g->b->content_square[i - g->b->width];
+                g->b->content_square[i - g->b->width] = tmp;
+                game_init_animation(ANIM_IDLE);
+                g->b->index_selected_square = -1;
+                game_init_animation(ANIM_MOVE_GOODSWAP);
+                game_init_animation(ANIM_KILL);
+            }
+            if (game_is_legal_move_lines(g->b, i / g->b->width, i % g->b->width, DOWN))
+            {
+                direct = DOWN;
+                dir = true;
+            }
+            if (game_is_legal_move_lines(g->b, i / g->b->width, i % g->b->width, LEFT))
+            {
+                direct = LEFT;
+                dir = true;
+            }
+            if (game_is_legal_move_lines(g->b, i / g->b->width, i % g->b->width, RIGHT))
+            {
+                direct = RIGHT;
+                dir = true;
+            }
+        }
+    }
+    else
+    {
+        int i;
+        direction direct;
+        while (cpt < 1000 && !dir)
+        {
+            i = rand() % (g->b->height * g->b->width);
+            if (game_is_legal_move_sccs(g->b, i / g->b->width, i % g->b->width, UP))
+            {
+                direct = UP;
+                dir = true;
+                cell tmp = g->b->content_square[i];
+                g->b->content_square[i] = g->b->content_square[i - g->b->width];
+                g->b->content_square[i - g->b->width] = tmp;
+                game_init_animation(ANIM_IDLE);
+                g->b->index_selected_square = -1;
+                game_init_animation(ANIM_MOVE_GOODSWAP);
+                game_init_animation(ANIM_KILL);
+            }
+            if (game_is_legal_move_sccs(g->b, i / g->b->width, i % g->b->width, DOWN))
+            {
+                direct = DOWN;
+                dir = true;
+            }
+            if (game_is_legal_move_sccs(g->b, i / g->b->width, i % g->b->width, LEFT))
+            {
+                direct = LEFT;
+                dir = true;
+            }
+            if (game_is_legal_move_sccs(g->b, i / g->b->width, i % g->b->width, RIGHT))
+            {
+                direct = RIGHT;
+                dir = true;
+            }
+        }
+    }
+    return dir;
 }
 
 bool ia_safe(game *g)

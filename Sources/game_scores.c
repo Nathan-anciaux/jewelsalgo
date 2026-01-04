@@ -115,7 +115,7 @@ void delete_score_table(score_table *table)
 {
     free(table->names);
     free(table->permutation);
-    for(int i = 0; i < table->size; i++)
+    for (int i = 0; i < table->size; i++)
     {
         free(table->scores[i]);
     }
@@ -124,15 +124,15 @@ void delete_score_table(score_table *table)
     return;
 }
 
-void sort_score_table(score_table * table, score_type type)
+void sort_score_table(score_table *table, score_type type)
 {
-    for (int i = 1; i< table->size; i++)
+    for (int i = 1; i < table->size; i++)
     {
         int pos = table->permutation[i];
-        int j = i-1;
-        while (j >=0 && table->scores[table->permutation[j]][type] < table->scores[pos][type])
+        int j = i - 1;
+        while (j >= 0 && table->scores[table->permutation[j]][type] < table->scores[pos][type])
         {
-            table->permutation[j+1] = table->permutation[j];
+            table->permutation[j + 1] = table->permutation[j];
             j--;
         }
         table->permutation[j + 1] = pos;
