@@ -1,0 +1,20 @@
+width 8
+height 8
+board 6 0 0 1 0 0 2 0 0 3 0 0 3 0 0 2 0 0 4 0 0 1 0 0 1 0 0 6 0 0 0 0 0 3 0 0 5 0 0 2 0 0 4 0 0 6 0 0 3 0 0 1 0 0 4 0 0 5 0 0 2 0 0 3 0 0 0 0 0 0 0 0 2 0 0 3 0 0 6 0 0 4 0 0 2 0 0 5 0 0 5 0 0 0 0 0 3 0 0 6 0 0 1 0 0 5 0 0 1 0 0 0 0 0 6 0 0 5 0 0 2 0 0 6 0 0 6 0 0 2 0 0 3 0 0 4 0 0 1 0 0 0 0 0 3 0 0 4 0 0 3 0 0 5 0 0 2 0 0 1 0 0 4 0 0 3 0 0 3 0 0 3 0 0 0 0 0 2 0 0 3 0 0 4 0 0 2 0 0 5 0 0 
+gravity 2
+refill_count 0
+
+puzzle 0
+lines 1
+upgrades 1
+nodelay 1
+easy 0
+wrap 0
+bombs 1
+refill 2
+gravity_control 2
+level 1
+level_score 1200
+target_score 10000
+scale_score 50
+score_array 1200 0 0 0 0 0 0 0 17 

@@ -138,7 +138,7 @@ void game_handle_mouse_click(game *g, int j, int i)
     }
 }
 
-void game_handle_hint_request(game *)
+void game_handle_hint_request(game *g)
 {
     int hint_i, hint_j;
     if (game_retrieve_hint(g, &hint_j, &hint_i)) {
@@ -146,7 +146,7 @@ void game_handle_hint_request(game *)
     }
 }
 
-void game_handle_detonation(game *)
+void game_handle_detonation(game *g)
 {
     if (g->nodelay) {
         return;
@@ -167,7 +167,7 @@ void game_handle_detonation(game *)
 
 void game_set_gravity(game *g, direction dir)
 {
-    /*if (g->gravity_control == 0) {
+    if (g->gravity_control == 0) {
         return;
     }
 
@@ -195,24 +195,169 @@ void game_set_gravity(game *g, direction dir)
         }
     }
 
-    game_init_animation(ANIM_IDLE);*/
+    game_init_animation(ANIM_IDLE);
 }
 
 void game_cycle_gravity(game *g)
 {
-    return;
+    if (g->gravity_control == 0)
+    {
+        return;
+    }
+    direction new_dir = g->b->direction;
+    if (g->gravity_control == 1 || g->gravity_control == 2) {
+        if (g->b->direction == DOWN) new_dir = RIGHT;
+        else if (g->b->direction == RIGHT) new_dir = UP;
+        else if (g->b->direction == UP) new_dir = LEFT;
+        else new_dir = DOWN;
+    }
+    else if (g->gravity_control == 3) {
+        if (g->b->direction == DOWN) new_dir = RIGHT;
+        else new_dir = DOWN;
+    }
+    else if (g->gravity_control == 4) {
+        if (g->b->direction == DOWN) new_dir = LEFT;
+        else if (g->b->direction == LEFT) new_dir = UP;
+        else if (g->b->direction == UP) new_dir = RIGHT;
+        else new_dir = DOWN;
+    }
+    g->b->direction = new_dir;
+    bool tomber = false;
+    if (g->b->direction == DOWN) {
+        for (int j = 0; j < g->b->width; j++) {
+            for (int i = g->b->height - 2; i >= 0; i--) {
+                int current = i * g->b->width + j;
+                int bas = (i + 1) * g->b->width + j;
+                if (g->b->content_square[current].object != EMPTY && 
+                    g->b->content_square[bas].object == EMPTY) {
+                    tomber = true;
+                }
+            }
+        }
+    }
+    else if (g->b->direction == UP) {
+        for (int j = 0; j < g->b->width; j++) {
+            for (int i = 1; i < g->b->height; i++) {
+                int current = i * g->b->width + j;
+                int haut = (i - 1) * g->b->width + j;
+                if (g->b->content_square[current].object != EMPTY && 
+                    g->b->content_square[haut].object == EMPTY) {
+                    tomber = true;
+                }
+            }
+        }
+    }
+    else if (g->b->direction == LEFT) {
+        for (int i = 0; i < g->b->height; i++) {
+            for (int j = 1; j < g->b->width; j++) {
+                int current = i * g->b->width + j;
+                int gauche = i * g->b->width + (j - 1);
+                if (g->b->content_square[current].object != EMPTY && 
+                    g->b->content_square[gauche].object == EMPTY) {
+                    tomber = true;
+                }
+            }
+        }
+    }
+    else if (g->b->direction == RIGHT) {
+        for (int i = 0; i < g->b->height; i++) {
+            for (int j = g->b->width - 2; j >= 0; j--) {
+                int current = i * g->b->width + j;
+                int droite = i * g->b->width + (j + 1);
+                if (g->b->content_square[current].object != EMPTY && 
+                    g->b->content_square[droite].object == EMPTY) {
+                    tomber = true;
+                }
+            }
+        }
+    }
+    if (tomber) {
+        game_init_animation(ANIM_MOVE_FALL);
+    } else {
+        game_init_animation(ANIM_IDLE);
+    }
 }
 
-void game_handle_refill(game *g, int)
+
+void game_handle_refill(game *g, int k)
 {
-    return;
+    if (!g->puzzle) return;
+    if (g->b->q == NULL) return;
+    if (k < 0 || k >= getsize_queue(g->b->q)) return;
+    
+    cell gem;
+    queue *temp = copy_queue(g->b->q);
+    
+    for (int i = 0; i < k; i++) {
+        dequeue(temp);
+    }
+    
+    gem = dequeue(temp);
+    delete_queue(temp);
+    
+    int w = g->b->width;
+    int h = g->b->height;
+    int position = -1;
+    
+    if (g->b->direction == DOWN) {
+        for (int j = 0; j < w; j++) {
+            int i = 0;
+            int current = i * w + j;
+            if (g->b->content_square[current].object == EMPTY) {
+                position = current;
+                break;
+            }
+        }
+    }
+    else if (g->b->direction == UP) {
+        for (int j = 0; j < w; j++) {
+            int i = h - 1;
+            int current = i * w + j;
+            if (g->b->content_square[current].object == EMPTY) {
+                position = current;
+                break;
+            }
+        }
+    }
+    else if (g->b->direction == LEFT) {
+        for (int i = 0; i < h; i++) {
+            int j = w - 1;
+            int current = i * w + j;
+            if (g->b->content_square[current].object == EMPTY) {
+                position = current;
+                break;
+            }
+        }
+    }
+    else if (g->b->direction == RIGHT) {
+        for (int i = 0; i < h; i++) {
+            int j = 0;
+            int current = i * w + j;
+            if (g->b->content_square[current].object == EMPTY) {
+                position = current;
+                break;
+            }
+        }
+    }
+    
+    if (position == -1) return;
+    
+    g->b->content_square[position] = gem;
+    
+    for (int i = 0; i < k; i++) {
+        enqueue(dequeue(g->b->q), g->b->q);
+    }
+    dequeue(g->b->q);
+    for (int i = k; i < getsize_queue(g->b->q); i++) {
+        enqueue(dequeue(g->b->q), g->b->q);
+    }
+    
+    game_init_animation(ANIM_MOVE_FALL);
 }
 
 void marquer_gemmes(game *g)
 {
-    int w = g->b->width;
-    int h = g->b->height;
-    int size = w * h;
+    int size = g->b->width * g->b->height;
 
     for (int k = 0; k < size; k++)
     {
@@ -221,16 +366,16 @@ void marquer_gemmes(game *g)
 
     if (g->lines)
     {
-        for (int i = 0; i < h; i++)
+        for (int i = 0; i < g->b->height; i++)
         {
-            for (int j = 0; j < w; j++)
+            for (int j = 0; j < g->b->width; j++)
             {
-                element type = g->b->content_square[i * w + j].object;
+                element type = g->b->content_square[i * g->b->width + j].object;
                 if (type != EMPTY && type != ROCK && type != BOMB)
                 {
                     int count = 1;
-                    while (j + count < w &&
-                           g->b->content_square[i * w + (j + count)].object == type)
+                    while (j + count < g->b->width &&
+                           g->b->content_square[i * g->b->width + (j + count)].object == type)
                     {
                         count++;
                     }
@@ -238,7 +383,7 @@ void marquer_gemmes(game *g)
                     {
                         for (int k = 0; k < count; k++)
                         {
-                            g->b->gems_cible[i * w + (j + k)] = true;
+                            g->b->gems_cible[i * g->b->width + (j + k)] = true;
                         }
                     }
                     j += count - 1;
@@ -246,16 +391,16 @@ void marquer_gemmes(game *g)
             }
         }
 
-        for (int j = 0; j < w; j++)
+        for (int j = 0; j < g->b->width; j++)
         {
-            for (int i = 0; i < h; i++)
+            for (int i = 0; i < g->b->height; i++)
             {
-                element type = g->b->content_square[i * w + j].object;
+                element type = g->b->content_square[i * g->b->width + j].object;
                 if (type != EMPTY && type != ROCK && type != BOMB)
                 {
                     int count = 1;
-                    while (i + count < h &&
-                           g->b->content_square[(i + count) * w + j].object == type)
+                    while (i + count < g->b->height &&
+                           g->b->content_square[(i + count) * g->b->width + j].object == type)
                     {
                         count++;
                     }
@@ -263,7 +408,7 @@ void marquer_gemmes(game *g)
                     {
                         for (int k = 0; k < count; k++)
                         {
-                            g->b->gems_cible[(i + k) * w + j] = true;
+                            g->b->gems_cible[(i + k) * g->b->width + j] = true;
                         }
                     }
                     i += count - 1;
@@ -275,11 +420,11 @@ void marquer_gemmes(game *g)
     {
         bool *visited = calloc(size, sizeof(bool));
 
-        for (int i = 0; i < h; i++)
+        for (int i = 0; i < g->b->height; i++)
         {
-            for (int j = 0; j < w; j++)
+            for (int j = 0; j < g->b->width; j++)
             {
-                int idx = i * w + j;
+                int idx = i * g->b->width + j;
                 element type = g->b->content_square[idx].object;
 
                 if (type != EMPTY && type != ROCK && type != BOMB && !visited[idx])
@@ -308,24 +453,22 @@ void marquer_gemmes(game *g)
 
 void gems_gravity(board *b)
 {
-    printf("gravity gemmes commencees\n");
-    int w = b->width;
-    int h = b->height;
+    //printf("gravity gemmes commencees\n");
     int i, j, dest, index, dest_index;
 
     if (b->direction == DOWN)
     {
-        for (j = 0; j < w; j++)
+        for (j = 0; j < b->width; j++)
         {
-            dest = h - 1;
-            for (i = h - 1; i >= 0; i--)
+            dest = b->height - 1;
+            for (i = b->height - 1; i >= 0; i--)
             {
-                index = i * w + j;
+                index = i * b->width + j;
                 if (b->content_square[index].object != EMPTY)
                 {
                     if (dest != i)
                     {
-                        dest_index = dest * w + j;
+                        dest_index = dest * b->width + j;
                         b->content_square[dest_index] = b->content_square[index];
                         b->content_square[index].object = EMPTY;
                     }
@@ -336,17 +479,17 @@ void gems_gravity(board *b)
     }
     else if (b->direction == UP)
     {
-        for (j = 0; j < w; j++)
+        for (j = 0; j < b->width; j++)
         {
             dest = 0;
-            for (i = 0; i < h; i++)
+            for (i = 0; i < b->height; i++)
             {
-                index = i * w + j;
+                index = i * b->width + j;
                 if (b->content_square[index].object != EMPTY)
                 {
                     if (dest != i)
                     {
-                        dest_index = dest * w + j;
+                        dest_index = dest * b->width + j;
                         b->content_square[dest_index] = b->content_square[index];
                         b->content_square[index].object = EMPTY;
                     }
@@ -357,17 +500,17 @@ void gems_gravity(board *b)
     }
     else if (b->direction == LEFT)
     {
-        for (i = 0; i < h; i++)
+        for (i = 0; i < b->height; i++)
         {
             dest = 0;
-            for (j = 0; j < w; j++)
+            for (j = 0; j < b->width; j++)
             {
-                index = i * w + j;
+                index = i * b->width + j;
                 if (b->content_square[index].object != EMPTY)
                 {
                     if (dest != j)
                     {
-                        dest_index = i * w + dest;
+                        dest_index = i * b->width + dest;
                         b->content_square[dest_index] = b->content_square[index];
                         b->content_square[index].object = EMPTY;
                     }
@@ -378,17 +521,17 @@ void gems_gravity(board *b)
     }
     else if (b->direction == RIGHT)
     {
-        for (i = 0; i < h; i++)
+        for (i = 0; i < b->height; i++)
         {
-            dest = w - 1;
-            for (j = w - 1; j >= 0; j--)
+            dest = b->width - 1;
+            for (j = b->width - 1; j >= 0; j--)
             {
-                index = i * w + j;
+                index = i * b->width + j;
                 if (b->content_square[index].object != EMPTY)
                 {
                     if (dest != j)
                     {
-                        dest_index = i * w + dest;
+                        dest_index = i * b->width + dest;
                         b->content_square[dest_index] = b->content_square[index];
                         b->content_square[index].object = EMPTY;
                     }
@@ -397,7 +540,7 @@ void gems_gravity(board *b)
             }
         }
     }
-    printf("gravity gemmes terminees\n");
+    //printf("gravity gemmes terminees\n");
 }
 void fill_empty_cells(game *g)
 {
@@ -438,14 +581,48 @@ void game_end_animation(game *g, anim_type type)
 
     else if (type == ANIM_KILL)
     {
-        for (int k = 0; k < size; k++)
-        {
-            if (g->b->gems_cible[k])
-            {
-                g->b->content_square[k].object = EMPTY;
-                g->b->gems_cible[k] = false;
+        int total_points = 0;
+    int flame_count = 0;
+    int star_count = 0;
+    int hypercube_count = 0;
+    int rock_bomb_count = 0;
+    
+    for(int k = 0; k < size; k++) {
+        if(g->b->gems_cible[k]) {
+            element obj = g->b->content_square[k].object;
+            gem_power power = g->b->content_square[k].power;
+            
+            if (obj >= AMBER && obj <= TOPAZ) {
+                if (power == GEM_BASIC || power == GEM_GRAVITY) {
+                    total_points += 100;
+                }
+                else if (power == GEM_FLAME) {
+                    total_points += 400;
+                    flame_count++;
+                }
+                else if (power == GEM_STAR) {
+                    total_points += 800;
+                    star_count++;
+                }
             }
+            else if (obj == HYPERCUBE) {
+                total_points += 1000;
+                hypercube_count++;
+            }
+            else if (obj == ROCK || obj == BOMB) {
+                total_points += 50;
+                rock_bomb_count++;
+            }
+            
+            g->b->content_square[k].object = EMPTY;
+            g->b->gems_cible[k] = false;
         }
+    }
+        g->score->scores[SC_GLOBAL] += total_points;
+        g->score->level_score += total_points;
+        g->score->scores[SC_FLAMED] += flame_count;
+        g->score->scores[SC_STARRED] += star_count;
+        g->score->scores[SC_HYPERCUBES] += hypercube_count;
         game_init_animation(ANIM_MOVE_FALL);
         return;
     }
